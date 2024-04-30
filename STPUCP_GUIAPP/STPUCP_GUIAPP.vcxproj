@@ -81,6 +81,8 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies />
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>Main</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -111,6 +113,38 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="RegistroForm.cpp" />
+    <ClCompile Include="SeleccionarActuarForm.cpp" />
+    <ClCompile Include="STPUCPMainForm.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="RegistroForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="SeleccionarActuarForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="STPUCPMainForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="RegistroForm.resx">
+      <DependentUpon>RegistroForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SeleccionarActuarForm.resx">
+      <DependentUpon>SeleccionarActuarForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STPUCPMainForm.resx">
+      <DependentUpon>STPUCPMainForm.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
