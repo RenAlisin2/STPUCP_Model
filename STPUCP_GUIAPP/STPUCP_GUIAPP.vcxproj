@@ -120,15 +120,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ConfiguraciondeServicioForm.cpp" />
     <ClCompile Include="RegistroForm.cpp" />
+    <ClCompile Include="RegistroHuellaDactilarForm.cpp" />
+    <ClCompile Include="Registro_Conductor.cpp" />
     <ClCompile Include="SeleccionarActuarForm.cpp" />
+    <ClCompile Include="ServicioDriverForm.cpp" />
     <ClCompile Include="STPUCPMainForm.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ConfiguraciondeServicioForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="RegistroForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="RegistroHuellaDactilarForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Registro_Conductor.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="SeleccionarActuarForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ServicioDriverForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="STPUCPMainForm.h">
@@ -136,11 +152,23 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ConfiguraciondeServicioForm.resx">
+      <DependentUpon>ConfiguraciondeServicioForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RegistroForm.resx">
       <DependentUpon>RegistroForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RegistroHuellaDactilarForm.resx">
+      <DependentUpon>RegistroHuellaDactilarForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registro_Conductor.resx">
+      <DependentUpon>Registro_Conductor.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SeleccionarActuarForm.resx">
       <DependentUpon>SeleccionarActuarForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServicioDriverForm.resx">
+      <DependentUpon>ServicioDriverForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="STPUCPMainForm.resx">
       <DependentUpon>STPUCPMainForm.h</DependentUpon>
