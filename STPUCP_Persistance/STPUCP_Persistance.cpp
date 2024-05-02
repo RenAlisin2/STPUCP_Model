@@ -24,6 +24,13 @@ void STPUCPPersistance::Persistance::PersistTextFile(String^ fileName, Object^ p
             writer->WriteLine(v->Id + "," + v->HoraSalida + "," + v->FechaViaje + "," + v->DescripcionViaje + "," + v->UltimoParadero + "," + v->PrecioViaje);
         }
     }
+    if (persistObject->GetType() == List<Promocion^>::typeid) {
+        List<Promocion^>^ promocion = (List<Promocion^>^) persistObject;
+        for (int i = 0; i < promocion->Count; i++) {
+            Promocion^ p = promocion[i];
+            writer->WriteLine(p->Id + "," + p->Porcentaje + "," + p->NombrePromo);
+        }
+    }
     if (writer != nullptr) writer->Close();
     if (file != nullptr) file->Close();
 }
@@ -75,6 +82,19 @@ Object^ STPUCPPersistance::Persistance::LoadTextFile(String^ fileName)
                 viaje->UltimoParadero = record[4];
                 viaje->PrecioViaje = Convert::ToInt32(record[5]);
                 ((List<Viaje^>^)result)->Add(viaje);
+            }
+        }
+        if (fileName->Equals(PROMOCION_FILE_NAME)) {
+            result = gcnew List<Promocion^>();
+            while (true) {
+                String^ line = reader->ReadLine();
+                if (line == nullptr) break;
+                array<String^>^ record = line->Split(',');
+                Promocion^ promocion = gcnew Promocion();
+                promocion->Id = Convert::ToInt32(record[0]);
+                promocion->Porcentaje = Convert::ToInt32(record[1]);
+                promocion->NombrePromo = record[2];
+                ((List<Promocion^>^)result)->Add(promocion);
             }
         }
         if (reader != nullptr) reader->Close();
