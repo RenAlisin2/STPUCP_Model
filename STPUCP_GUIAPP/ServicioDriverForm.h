@@ -1,4 +1,4 @@
-
+#include "VerificarHuellaDactilarForm.h"
 #pragma once
 
 namespace STPUCPGUIAPP {
@@ -68,7 +68,7 @@ namespace STPUCPGUIAPP {
 					L"San Juan de Miraflores", L"San Luis", L"San Martín de Porres", L"San Miguel", L"Santa Anita", L"Santa María del Mar", L"Santa Rosa",
 					L"Santiago de Surco", L"Surquillo", L"Villa El Salvador", L"Villa María del Triunfo"
 			});
-			this->listBox1->Location = System::Drawing::Point(1, 48);
+			this->listBox1->Location = System::Drawing::Point(-1, 38);
 			this->listBox1->Name = L"listBox1";
 			this->listBox1->Size = System::Drawing::Size(601, 292);
 			this->listBox1->TabIndex = 0;
@@ -101,6 +101,16 @@ namespace STPUCPGUIAPP {
 		}
 #pragma endregion
 	private: System::Void listBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+		int selectedIndex = listBox1->SelectedIndex;
+		if (selectedIndex>=1 && selectedIndex<=100) {
+			// Crear una nueva instancia de la ventana de ingreso de huella dactilar
+			VerificarHuellaDactilarForm^ huellaForm = gcnew VerificarHuellaDactilarForm();
+			// Mostrar la ventana de ingreso de huella dactilar
+			this->Close();
+			huellaForm->TopMost = true;
+			huellaForm->Show();
+		}
+		
 	}
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}

@@ -1,5 +1,6 @@
 #pragma once
 #include "Registro_Conductor.h"
+#include "PantallaPasajeroForm.h"
 
 namespace STPUCPGUIAPP {
 
@@ -77,14 +78,14 @@ namespace STPUCPGUIAPP {
             this->btnIngresarConductor->TabIndex = 1;
             this->btnIngresarConductor->Text = L"INGRESAR COMO CONDUCTOR";
             this->btnIngresarConductor->UseVisualStyleBackColor = true;
-            this->btnIngresarConductor->Click += gcnew System::EventHandler(this, &SeleccionarActuarForm::btnIngresarConductor_Click); // Agregar el manejador de eventos
+            this->btnIngresarConductor->Click += gcnew System::EventHandler(this, &SeleccionarActuarForm::btnIngresarConductor_Click);
             // 
             // SeleccionarActuarForm
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->AutoSize = true;
-            this->ClientSize = System::Drawing::Size(564, 368);
+            this->ClientSize = System::Drawing::Size(499, 221);
             this->Controls->Add(this->btnIngresarConductor);
             this->Controls->Add(this->btn_IngresarPasajero);
             this->Name = L"SeleccionarActuarForm";
@@ -96,10 +97,9 @@ namespace STPUCPGUIAPP {
 
         // Manejador de evento de clic para btnIngresarConductor
     private: System::Void btnIngresarConductor_Click(System::Object^ sender, System::EventArgs^ e) {
-        // Crear una instancia de la ventana de Registro_Conductor
         STPUCPGUIAPP::Registro_Conductor^ registroConductorForm = gcnew STPUCPGUIAPP::Registro_Conductor();
-
-        // Mostrar la ventana de Registro_Conductor
+        this->Close();
+        registroConductorForm->TopMost = true;
         registroConductorForm->ShowDialog();
     }
 

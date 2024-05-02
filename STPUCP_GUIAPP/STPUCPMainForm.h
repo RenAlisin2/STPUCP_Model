@@ -1,6 +1,7 @@
 #pragma once
 #include "RegistroForm.h"
 #include "Registro_Conductor.h"
+#include "SeleccionarActuarForm.h"
 
 namespace STPUCPGUIAPP {
 
@@ -74,7 +75,7 @@ namespace STPUCPGUIAPP {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->textIngresar_usuario = (gcnew System::Windows::Forms::TextBox());
 			this->textIngresar_contraseña = (gcnew System::Windows::Forms::TextBox());
-			this->StartPosition = FormStartPosition::CenterScreen;
+			//this->StartPosition = FormStartPosition::CenterScreen;
 			this->SuspendLayout();
 			
 			// 
@@ -95,6 +96,7 @@ namespace STPUCPGUIAPP {
 			this->btn_IngresarCuenta->TabIndex = 2;
 			this->btn_IngresarCuenta->Text = L"INGRESAR CUENTA";
 			this->btn_IngresarCuenta->UseVisualStyleBackColor = true;
+			this->btn_IngresarCuenta->Click += gcnew System::EventHandler(this, &STPUCPMainForm::btn_IngresarCuenta_Click);
 			// 
 			// label1
 			// 
@@ -208,9 +210,15 @@ private: System::Void btn_salir_Click(System::Object^ sender, System::EventArgs^
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 	RegistroForm^ registroform = gcnew RegistroForm();
-	registroform->StartPosition = FormStartPosition::CenterScreen; 
 	registroform->TopMost = true; 
 	registroform->Show();
+	
+}
+
+private: System::Void btn_IngresarCuenta_Click(System::Object^ sender, System::EventArgs^ e) {
+	SeleccionarActuarForm^ seleccionarform = gcnew SeleccionarActuarForm();
+	seleccionarform->TopMost = true;
+	seleccionarform->Show();
 }
 private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
 }

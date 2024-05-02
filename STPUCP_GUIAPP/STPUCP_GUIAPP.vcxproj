@@ -120,16 +120,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CondicionesDellevadoForm.cpp" />
     <ClCompile Include="ConfiguraciondeServicioForm.cpp" />
+    <ClCompile Include="PantallaPasajeroForm.cpp" />
     <ClCompile Include="RegistroForm.cpp" />
     <ClCompile Include="RegistroHuellaDactilarForm.cpp" />
     <ClCompile Include="Registro_Conductor.cpp" />
     <ClCompile Include="SeleccionarActuarForm.cpp" />
     <ClCompile Include="ServicioDriverForm.cpp" />
     <ClCompile Include="STPUCPMainForm.cpp" />
+    <ClCompile Include="VentanadeConfirmacionForm.cpp" />
+    <ClCompile Include="VerificarHuellaDactilarForm.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CondicionesDellevadoForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="ConfiguraciondeServicioForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="PantallaPasajeroForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="RegistroForm.h">
@@ -150,8 +160,17 @@
     <ClInclude Include="STPUCPMainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="VentanadeConfirmacionForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="VerificarHuellaDactilarForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CondicionesDellevadoForm.resx">
+      <DependentUpon>CondicionesDellevadoForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConfiguraciondeServicioForm.resx">
       <DependentUpon>ConfiguraciondeServicioForm.h</DependentUpon>
     </EmbeddedResource>
@@ -172,6 +191,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="STPUCPMainForm.resx">
       <DependentUpon>STPUCPMainForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentanadeConfirmacionForm.resx">
+      <DependentUpon>VentanadeConfirmacionForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerificarHuellaDactilarForm.resx">
+      <DependentUpon>VerificarHuellaDactilarForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
