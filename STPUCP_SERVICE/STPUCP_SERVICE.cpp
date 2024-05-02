@@ -13,7 +13,7 @@ int STPUCP_SERVICE::Service::UpdateUser(Usuario^)
 
 
 
-Usuario^ STPUCP_SERVICE::Service::(int Id)
+Usuario^ STPUCP_SERVICE::Service::IdUsers(int Id)
 {
 	throw gcnew System::NotImplementedException();
 	// TODO: Insertar una instrucción "return" aquí

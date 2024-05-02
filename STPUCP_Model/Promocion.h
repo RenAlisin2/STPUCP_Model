@@ -4,17 +4,17 @@
 #pragma once
 //#include "Pasajero.h"
 
-#ifndef _PROMOCIÓN_H
-#define _PROMOCIÓN_H
+#ifndef _PROMOCION_H
+#define _PROMOCION_H
 using namespace System;
 
 namespace STPUCP_Model {
-    public ref class Promoción {
+    public ref class Promocion {
     public:
         property int Id;
-        property double Porcentaje;
+        property int Porcentaje;
         property String^ NombrePromo;
     };
 }
 
-#endif //_PROMOCIÓN_H
+#endif //_PROMOCION_H
