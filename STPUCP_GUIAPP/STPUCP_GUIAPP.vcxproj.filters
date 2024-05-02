@@ -46,7 +46,7 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="VentanadeConfirmacionForm.cpp">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
