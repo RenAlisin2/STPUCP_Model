@@ -6,10 +6,11 @@ int STPUCPAdminController::controller::AddUser(Usuario^ Usuario)
 {
 	return Persistance::AddUser(Usuario);
 }
-//
+
 void STPUCPAdminController::controller::UpdateUser(Usuario^ Usuario)
 {
 	Persistance::UpdateUser(Usuario);
+	//
 }
 
 void STPUCPAdminController::controller::DeleteUser(int UsuarioID)

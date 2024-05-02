@@ -11,6 +11,7 @@ namespace STPUCPPersistance {
 		static List<Usuario^>^ UsuarioListDB = gcnew List<Usuario^>();
 		static List<Viaje^>^ ViajesListDB = gcnew List<Viaje^>();
 		static List<Promocion^>^ PromocionesListDB = gcnew List<Promocion^>();
+
 	public:
 		static String^ USUARIO_FILE_NAME = "UsuariosDB.txt";
 
