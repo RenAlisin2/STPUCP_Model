@@ -291,7 +291,7 @@ namespace STPUCPGUIAPP {
 	private: System::Void btn_CrearCuenta_Click(System::Object^ sender, System::EventArgs^ e) {
 		SeleccionarActuarForm^ seleccionarTipo = gcnew SeleccionarActuarForm();
 		this->Close();
-	    seleccionarTipo->StartPosition = FormStartPosition::CenterScreen;
+	   // seleccionarTipo->StartPosition = FormStartPosition::CenterScreen;
 		seleccionarTipo->Show();
 	}
 };

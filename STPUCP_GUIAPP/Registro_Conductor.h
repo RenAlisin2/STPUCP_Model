@@ -336,10 +336,10 @@ namespace STPUCPGUIAPP {
 
         System::Void btn_CrearCuentaConductor_Click(System::Object^ sender, System::EventArgs^ e) {
             ServicioDriverForm^ servicedriverForm = gcnew ServicioDriverForm();
+            this->Close();
             servicedriverForm->StartPosition = FormStartPosition::CenterScreen;
             servicedriverForm->TopMost = true;
             servicedriverForm->ShowDialog();
-            //this->Close();
          }
     };
 }

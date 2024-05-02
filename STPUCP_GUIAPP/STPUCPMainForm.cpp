@@ -2,6 +2,7 @@
 
 using namespace System;
 using namespace STPUCPGUIAPP;
+
 [STAThread]
 
 int Main(array<String^>^ args) {
