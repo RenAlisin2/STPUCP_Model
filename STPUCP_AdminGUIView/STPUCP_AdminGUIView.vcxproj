@@ -133,10 +133,19 @@
     <ClInclude Include="BlackListForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="LoginForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="MetricasForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="PromocionesForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="QuesoyForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="RegistroForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ServiciosForm.h">
@@ -152,8 +161,11 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="AdminMainForm.cpp" />
     <ClCompile Include="BlackListForm.cpp" />
+    <ClCompile Include="LoginForm.cpp" />
     <ClCompile Include="MetricasForm.cpp" />
     <ClCompile Include="PromocionesForm.cpp" />
+    <ClCompile Include="QuesoyForm.cpp" />
+    <ClCompile Include="RegistroForm.cpp" />
     <ClCompile Include="ServiciosForm.cpp" />
     <ClCompile Include="UsuariosForm.cpp" />
     <ClCompile Include="pch.cpp">
@@ -181,11 +193,20 @@
     <EmbeddedResource Include="BlackListForm.resx">
       <DependentUpon>BlackListForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MetricasForm.resx">
       <DependentUpon>MetricasForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PromocionesForm.resx">
       <DependentUpon>PromocionesForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuesoyForm.resx">
+      <DependentUpon>QuesoyForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistroForm.resx">
+      <DependentUpon>RegistroForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ServiciosForm.resx">
       <DependentUpon>ServiciosForm.h</DependentUpon>
