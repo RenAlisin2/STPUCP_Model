@@ -71,12 +71,22 @@ namespace STPUCPAdminGUIView {
 
 
 
+
+
+
+
+	private: System::Windows::Forms::Label^ lblCodigoPUCP;
+	private: System::Windows::Forms::TextBox^ txtCodigoPUCP;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ UsuarioID;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ UsuarioNombre;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ApellidoPaterno;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ApellidoMaterno;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ CodigoPUCP;
-	private: System::Windows::Forms::Label^ lblCodigoPUCP;
-	private: System::Windows::Forms::TextBox^ txtCodigoPUCP;
+
+
+
+
+
 
 
 
@@ -119,6 +129,7 @@ namespace STPUCPAdminGUIView {
 			this->UsuarioID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->UsuarioNombre = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->ApellidoPaterno = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->ApellidoMaterno = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->CodigoPUCP = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->txtNombre = (gcnew System::Windows::Forms::TextBox());
 			this->lblApellidoPaterno = (gcnew System::Windows::Forms::Label());
@@ -137,7 +148,7 @@ namespace STPUCPAdminGUIView {
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->archivoToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(439, 24);
+			this->menuStrip1->Size = System::Drawing::Size(506, 24);
 			this->menuStrip1->TabIndex = 0;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -177,6 +188,7 @@ namespace STPUCPAdminGUIView {
 			this->lblId->Size = System::Drawing::Size(19, 13);
 			this->lblId->TabIndex = 1;
 			this->lblId->Text = L"Id:";
+			this->lblId->Click += gcnew System::EventHandler(this, &UsuariosForm::lblId_Click);
 			// 
 			// lblNombre
 			// 
@@ -186,17 +198,19 @@ namespace STPUCPAdminGUIView {
 			this->lblNombre->Size = System::Drawing::Size(47, 13);
 			this->lblNombre->TabIndex = 2;
 			this->lblNombre->Text = L"Nombre:";
+			this->lblNombre->Click += gcnew System::EventHandler(this, &UsuariosForm::lblNombre_Click);
 			// 
 			// txtId
 			// 
-			this->txtId->Location = System::Drawing::Point(109, 32);
+			this->txtId->Location = System::Drawing::Point(134, 32);
 			this->txtId->Name = L"txtId";
 			this->txtId->Size = System::Drawing::Size(64, 20);
 			this->txtId->TabIndex = 4;
+			this->txtId->TextChanged += gcnew System::EventHandler(this, &UsuariosForm::txtId_TextChanged);
 			// 
 			// btnAgregar
 			// 
-			this->btnAgregar->Location = System::Drawing::Point(86, 207);
+			this->btnAgregar->Location = System::Drawing::Point(89, 217);
 			this->btnAgregar->Name = L"btnAgregar";
 			this->btnAgregar->Size = System::Drawing::Size(75, 23);
 			this->btnAgregar->TabIndex = 7;
@@ -206,34 +220,37 @@ namespace STPUCPAdminGUIView {
 			// 
 			// btnModificar
 			// 
-			this->btnModificar->Location = System::Drawing::Point(178, 207);
+			this->btnModificar->Location = System::Drawing::Point(206, 217);
 			this->btnModificar->Name = L"btnModificar";
 			this->btnModificar->Size = System::Drawing::Size(75, 23);
 			this->btnModificar->TabIndex = 8;
 			this->btnModificar->Text = L"Modificar";
 			this->btnModificar->UseVisualStyleBackColor = true;
+			this->btnModificar->Click += gcnew System::EventHandler(this, &UsuariosForm::btnModificar_Click);
 			// 
 			// btnEliminar
 			// 
-			this->btnEliminar->Location = System::Drawing::Point(271, 207);
+			this->btnEliminar->Location = System::Drawing::Point(322, 217);
 			this->btnEliminar->Name = L"btnEliminar";
 			this->btnEliminar->Size = System::Drawing::Size(75, 23);
 			this->btnEliminar->TabIndex = 9;
 			this->btnEliminar->Text = L"Eliminar";
 			this->btnEliminar->UseVisualStyleBackColor = true;
+			this->btnEliminar->Click += gcnew System::EventHandler(this, &UsuariosForm::btnEliminar_Click);
 			// 
 			// dgvUsuarios
 			// 
 			this->dgvUsuarios->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dgvUsuarios->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
+			this->dgvUsuarios->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
 				this->UsuarioID,
-					this->UsuarioNombre, this->ApellidoPaterno, this->CodigoPUCP
+					this->UsuarioNombre, this->ApellidoPaterno, this->ApellidoMaterno, this->CodigoPUCP
 			});
 			this->dgvUsuarios->Location = System::Drawing::Point(12, 266);
 			this->dgvUsuarios->Name = L"dgvUsuarios";
-			this->dgvUsuarios->Size = System::Drawing::Size(415, 253);
+			this->dgvUsuarios->Size = System::Drawing::Size(482, 253);
 			this->dgvUsuarios->TabIndex = 10;
 			this->dgvUsuarios->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &UsuariosForm::dgvUsuarios_CellClick);
+			this->dgvUsuarios->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &UsuariosForm::dgvUsuarios_CellContentClick);
 			// 
 			// UsuarioID
 			// 
@@ -248,21 +265,26 @@ namespace STPUCPAdminGUIView {
 			// 
 			// ApellidoPaterno
 			// 
-			this->ApellidoPaterno->HeaderText = L"Apellido";
+			this->ApellidoPaterno->HeaderText = L"Apellido Paterno";
 			this->ApellidoPaterno->Name = L"ApellidoPaterno";
-			this->ApellidoPaterno->Width = 150;
+			// 
+			// ApellidoMaterno
+			// 
+			this->ApellidoMaterno->HeaderText = L"Apellido Materno";
+			this->ApellidoMaterno->Name = L"ApellidoMaterno";
 			// 
 			// CodigoPUCP
 			// 
-			this->CodigoPUCP->HeaderText = L"CodigoPUCP";
+			this->CodigoPUCP->HeaderText = L"Codigo PUCP";
 			this->CodigoPUCP->Name = L"CodigoPUCP";
 			// 
 			// txtNombre
 			// 
-			this->txtNombre->Location = System::Drawing::Point(109, 62);
+			this->txtNombre->Location = System::Drawing::Point(134, 62);
 			this->txtNombre->Name = L"txtNombre";
 			this->txtNombre->Size = System::Drawing::Size(140, 20);
 			this->txtNombre->TabIndex = 11;
+			this->txtNombre->TextChanged += gcnew System::EventHandler(this, &UsuariosForm::txtNombre_TextChanged);
 			// 
 			// lblApellidoPaterno
 			// 
@@ -272,6 +294,7 @@ namespace STPUCPAdminGUIView {
 			this->lblApellidoPaterno->Size = System::Drawing::Size(87, 13);
 			this->lblApellidoPaterno->TabIndex = 12;
 			this->lblApellidoPaterno->Text = L"Apellido Paterno:";
+			this->lblApellidoPaterno->Click += gcnew System::EventHandler(this, &UsuariosForm::lblApellidoPaterno_Click);
 			// 
 			// lblApellidoMaterno
 			// 
@@ -281,20 +304,23 @@ namespace STPUCPAdminGUIView {
 			this->lblApellidoMaterno->Size = System::Drawing::Size(89, 13);
 			this->lblApellidoMaterno->TabIndex = 13;
 			this->lblApellidoMaterno->Text = L"Apellido Materno:";
+			this->lblApellidoMaterno->Click += gcnew System::EventHandler(this, &UsuariosForm::lblApellidoMaterno_Click);
 			// 
 			// txtApellidoPaterno
 			// 
-			this->txtApellidoPaterno->Location = System::Drawing::Point(109, 92);
+			this->txtApellidoPaterno->Location = System::Drawing::Point(134, 91);
 			this->txtApellidoPaterno->Name = L"txtApellidoPaterno";
 			this->txtApellidoPaterno->Size = System::Drawing::Size(140, 20);
 			this->txtApellidoPaterno->TabIndex = 14;
+			this->txtApellidoPaterno->TextChanged += gcnew System::EventHandler(this, &UsuariosForm::txtApellidoPaterno_TextChanged);
 			// 
 			// txtApellidoMaterno
 			// 
-			this->txtApellidoMaterno->Location = System::Drawing::Point(109, 121);
+			this->txtApellidoMaterno->Location = System::Drawing::Point(134, 121);
 			this->txtApellidoMaterno->Name = L"txtApellidoMaterno";
 			this->txtApellidoMaterno->Size = System::Drawing::Size(140, 20);
 			this->txtApellidoMaterno->TabIndex = 15;
+			this->txtApellidoMaterno->TextChanged += gcnew System::EventHandler(this, &UsuariosForm::txtApellidoMaterno_TextChanged);
 			// 
 			// lblCodigoPUCP
 			// 
@@ -304,19 +330,21 @@ namespace STPUCPAdminGUIView {
 			this->lblCodigoPUCP->Size = System::Drawing::Size(72, 13);
 			this->lblCodigoPUCP->TabIndex = 16;
 			this->lblCodigoPUCP->Text = L"CodigoPUCP:";
+			this->lblCodigoPUCP->Click += gcnew System::EventHandler(this, &UsuariosForm::lblCodigoPUCP_Click);
 			// 
 			// txtCodigoPUCP
 			// 
-			this->txtCodigoPUCP->Location = System::Drawing::Point(109, 151);
+			this->txtCodigoPUCP->Location = System::Drawing::Point(134, 151);
 			this->txtCodigoPUCP->Name = L"txtCodigoPUCP";
 			this->txtCodigoPUCP->Size = System::Drawing::Size(140, 20);
 			this->txtCodigoPUCP->TabIndex = 17;
+			this->txtCodigoPUCP->TextChanged += gcnew System::EventHandler(this, &UsuariosForm::txtCodigoPUCP_TextChanged);
 			// 
 			// UsuariosForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(439, 541);
+			this->ClientSize = System::Drawing::Size(506, 541);
 			this->Controls->Add(this->txtCodigoPUCP);
 			this->Controls->Add(this->lblCodigoPUCP);
 			this->Controls->Add(this->txtApellidoMaterno);
@@ -335,6 +363,7 @@ namespace STPUCPAdminGUIView {
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"UsuariosForm";
 			this->Text = L"UsuariosForm";
+			this->Load += gcnew System::EventHandler(this, &UsuariosForm::UsuariosForm_Load_1);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvUsuarios))->EndInit();
@@ -373,26 +402,48 @@ namespace STPUCPAdminGUIView {
 		txtApellidoMaterno->Text = Usuario->ApellidoMaterno;
 		txtCodigoPUCP->Text = "" + Usuario->CodigoPUCP;
      }
-	private: System::Void btnUpdate_Click(System::Object^ sender, System::EventArgs^ e) {
-		Usuario^ Usuario = gcnew STPUCP_Model::Usuario();
-		Usuario->Id = Int32::Parse(txtId->Text);
-		txtId->Text = "" + Usuario->Id;
-		txtNombre->Text = Usuario->Nombre;
-		txtApellidoPaterno->Text = Usuario->ApellidoPaterno;
-		txtApellidoMaterno->Text = Usuario->ApellidoMaterno;
-		txtCodigoPUCP->Text = "" + Usuario->CodigoPUCP;
+		   
+private: System::Void btnModificar_Click(System::Object^ sender, System::EventArgs^ e) {
+	Usuario^ Usuario = gcnew STPUCP_Model::Usuario();
+	Usuario->Id = Int32::Parse(txtId->Text);
 
-		controller::UpdateUser(Usuario);
-		RefreshGrid();
-	}
-	private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^ e) {
-		int id = Int32::Parse(txtId->Text);
-		controller::DeleteUser(id);
-		RefreshGrid();
-	}
-	private: System::Void UsuariosForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		RefreshGrid();
-	}
-		   //
+	Usuario->Nombre = txtNombre->Text;
+	Usuario->ApellidoPaterno = txtApellidoPaterno->Text ;
+	Usuario->ApellidoMaterno = txtApellidoMaterno->Text ;
+	Usuario->CodigoPUCP = Int32::Parse(txtCodigoPUCP->Text);
+
+	controller::UpdateUser(Usuario);
+	RefreshGrid();
+}
+private: System::Void btnEliminar_Click(System::Object^ sender, System::EventArgs^ e) {
+	int id = Int32::Parse(txtId->Text);
+	controller::DeleteUser(id);
+	RefreshGrid();
+}
+private: System::Void UsuariosForm_Load_1(System::Object^ sender, System::EventArgs^ e) {
+	RefreshGrid();
+}
+private: System::Void lblCodigoPUCP_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void txtApellidoMaterno_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void txtApellidoPaterno_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void lblApellidoMaterno_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void lblApellidoPaterno_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void txtNombre_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void dgvUsuarios_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+}
+private: System::Void txtCodigoPUCP_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void txtId_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void lblNombre_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void lblId_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

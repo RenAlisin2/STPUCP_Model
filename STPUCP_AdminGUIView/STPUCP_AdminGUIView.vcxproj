@@ -130,6 +130,18 @@
     <ClInclude Include="AdminMainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="BlackListForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="MetricasForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="PromocionesForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ServiciosForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="UsuariosForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -139,6 +151,10 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="AdminMainForm.cpp" />
+    <ClCompile Include="BlackListForm.cpp" />
+    <ClCompile Include="MetricasForm.cpp" />
+    <ClCompile Include="PromocionesForm.cpp" />
+    <ClCompile Include="ServiciosForm.cpp" />
     <ClCompile Include="UsuariosForm.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -161,6 +177,18 @@
   <ItemGroup>
     <EmbeddedResource Include="AdminMainForm.resx">
       <DependentUpon>AdminMainForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BlackListForm.resx">
+      <DependentUpon>BlackListForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MetricasForm.resx">
+      <DependentUpon>MetricasForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PromocionesForm.resx">
+      <DependentUpon>PromocionesForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiciosForm.resx">
+      <DependentUpon>ServiciosForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsuariosForm.resx">
       <DependentUpon>UsuariosForm.h</DependentUpon>

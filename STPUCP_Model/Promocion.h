@@ -12,7 +12,7 @@ namespace STPUCP_Model {
     public ref class Promocion {
     public:
         property int Id;
-        property double Porcentaje;
+        property int Porcentaje;
         property String^ NombrePromo;
     };
 }

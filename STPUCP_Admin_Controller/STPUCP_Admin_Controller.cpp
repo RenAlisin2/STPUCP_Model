@@ -27,56 +27,52 @@ List<Usuario^>^ STPUCPAdminController::controller::QueryAllUsers()
 	return Persistance::QueryAllUsers();
 }
 
-int STPUCPAdminController::controller::AddJourney(Viaje^)
+int STPUCPAdminController::controller::AddJourney(Viaje^ viaje)
 {
-	return 0;
+	return Persistance::AddJourney(viaje);
 }
 
-void STPUCPAdminController::controller::UpdateJourney(Viaje^)
+void STPUCPAdminController::controller::UpdateJourney(Viaje^ viaje)
 {
-	throw gcnew System::NotImplementedException();
+	Persistance::UpdateJourney(viaje);
 }
 
 void STPUCPAdminController::controller::DeleteJourney(int ViajeID)
 {
-	throw gcnew System::NotImplementedException();
+	Persistance::DeleteJourney(ViajeID);
 }
 
 Viaje^ STPUCPAdminController::controller::QueryJourneysById(int ViajeID)
 {
-	throw gcnew System::NotImplementedException();
-	// TODO: Insertar una instrucción "return" aquí
+	return Persistance::QueryJourneysById(ViajeID);
 }
 
 List<Viaje^>^ STPUCPAdminController::controller::QueryAllJourneys()
 {
-	throw gcnew System::NotImplementedException();
-	// TODO: Insertar una instrucción "return" aquí
+	return Persistance::QueryAllJourneys();
 }
 
-int STPUCPAdminController::controller::AddPromotion(Promocion^)
+int STPUCPAdminController::controller::AddPromotion(Promocion^ promocion)
 {
-	return 0;
+	return Persistance::AddPromotion(promocion);
 }
 
-void STPUCPAdminController::controller::UpdatePromotion(Promocion^)
+void STPUCPAdminController::controller::UpdatePromotion(Promocion^ promocion)
 {
-	throw gcnew System::NotImplementedException();
+	Persistance::UpdatePromotion(promocion);
 }
 
 void STPUCPAdminController::controller::DeletePromotion(int PromocionID)
 {
-	throw gcnew System::NotImplementedException();
+	Persistance::DeletePromotion(PromocionID);
 }
 
 Promocion^ STPUCPAdminController::controller::QueryPromotionsById(int PromocionID)
 {
-	throw gcnew System::NotImplementedException();
-	// TODO: Insertar una instrucción "return" aquí
+	return Persistance::QueryPromotionsById(PromocionID);
 }
 
 List<Promocion^>^ STPUCPAdminController::controller::QueryAllPromotions()
 {
-	throw gcnew System::NotImplementedException();
-	// TODO: Insertar una instrucción "return" aquí
+	return Persistance::QueryAllPromotions();
 }

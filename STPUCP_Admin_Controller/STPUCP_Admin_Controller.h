@@ -4,7 +4,7 @@ using namespace System;
 using namespace STPUCP_Model;
 using namespace System::Collections::Generic;
 
-namespace STPUCPAdminController {
+namespace STPUCPAdminController {  
 	public ref class controller
 	{
 	private:

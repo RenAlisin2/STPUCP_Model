@@ -1,5 +1,10 @@
 #pragma once
 #include "UsuariosForm.h"
+#include "ServiciosForm.h"
+#include "MetricasForm.h"
+#include "BlackListForm.h"
+#include "PromocionesForm.h"
+
 namespace STPUCPAdminGUIView {
 
 	using namespace System;
@@ -45,12 +50,14 @@ namespace STPUCPAdminGUIView {
 	private: System::Windows::Forms::ToolStripMenuItem^ promocionesToolStripMenuItem;
 
 	private: System::Windows::Forms::ToolStripMenuItem^ verToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ generarToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ blackListToolStripMenuItem;
 
-	private: System::Windows::Forms::ToolStripMenuItem^ modificarToolStripMenuItem1;
+
+
+
 	private: System::Windows::Forms::ToolStripMenuItem^ verTodasToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ blackListToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ verToolStripMenuItem1;
+
 	protected:
 
 
@@ -77,10 +84,8 @@ namespace STPUCPAdminGUIView {
 			this->verToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->promocionesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->verTodasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->generarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->blackListToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->verToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->modificarToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -123,13 +128,14 @@ namespace STPUCPAdminGUIView {
 			// serviciosToolStripMenuItem
 			// 
 			this->serviciosToolStripMenuItem->Name = L"serviciosToolStripMenuItem";
-			this->serviciosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->serviciosToolStripMenuItem->Size = System::Drawing::Size(120, 22);
 			this->serviciosToolStripMenuItem->Text = L"Servicios";
+			this->serviciosToolStripMenuItem->Click += gcnew System::EventHandler(this, &AdminMainForm::serviciosToolStripMenuItem_Click);
 			// 
 			// conductoresToolStripMenuItem
 			// 
 			this->conductoresToolStripMenuItem->Name = L"conductoresToolStripMenuItem";
-			this->conductoresToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->conductoresToolStripMenuItem->Size = System::Drawing::Size(120, 22);
 			this->conductoresToolStripMenuItem->Text = L"Usuarios";
 			this->conductoresToolStripMenuItem->Click += gcnew System::EventHandler(this, &AdminMainForm::conductoresToolStripMenuItem_Click);
 			// 
@@ -145,13 +151,11 @@ namespace STPUCPAdminGUIView {
 			this->verToolStripMenuItem->Name = L"verToolStripMenuItem";
 			this->verToolStripMenuItem->Size = System::Drawing::Size(90, 22);
 			this->verToolStripMenuItem->Text = L"Ver";
+			this->verToolStripMenuItem->Click += gcnew System::EventHandler(this, &AdminMainForm::verToolStripMenuItem_Click);
 			// 
 			// promocionesToolStripMenuItem
 			// 
-			this->promocionesToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
-				this->verTodasToolStripMenuItem,
-					this->generarToolStripMenuItem
-			});
+			this->promocionesToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->verTodasToolStripMenuItem });
 			this->promocionesToolStripMenuItem->Name = L"promocionesToolStripMenuItem";
 			this->promocionesToolStripMenuItem->Size = System::Drawing::Size(89, 20);
 			this->promocionesToolStripMenuItem->Text = L"Promociones";
@@ -159,21 +163,13 @@ namespace STPUCPAdminGUIView {
 			// verTodasToolStripMenuItem
 			// 
 			this->verTodasToolStripMenuItem->Name = L"verTodasToolStripMenuItem";
-			this->verTodasToolStripMenuItem->Size = System::Drawing::Size(115, 22);
+			this->verTodasToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->verTodasToolStripMenuItem->Text = L"Ver";
-			// 
-			// generarToolStripMenuItem
-			// 
-			this->generarToolStripMenuItem->Name = L"generarToolStripMenuItem";
-			this->generarToolStripMenuItem->Size = System::Drawing::Size(115, 22);
-			this->generarToolStripMenuItem->Text = L"Generar";
+			this->verTodasToolStripMenuItem->Click += gcnew System::EventHandler(this, &AdminMainForm::verTodasToolStripMenuItem_Click);
 			// 
 			// blackListToolStripMenuItem
 			// 
-			this->blackListToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
-				this->verToolStripMenuItem1,
-					this->modificarToolStripMenuItem1
-			});
+			this->blackListToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->verToolStripMenuItem1 });
 			this->blackListToolStripMenuItem->Name = L"blackListToolStripMenuItem";
 			this->blackListToolStripMenuItem->Size = System::Drawing::Size(65, 20);
 			this->blackListToolStripMenuItem->Text = L"BlackList";
@@ -181,14 +177,9 @@ namespace STPUCPAdminGUIView {
 			// verToolStripMenuItem1
 			// 
 			this->verToolStripMenuItem1->Name = L"verToolStripMenuItem1";
-			this->verToolStripMenuItem1->Size = System::Drawing::Size(125, 22);
+			this->verToolStripMenuItem1->Size = System::Drawing::Size(180, 22);
 			this->verToolStripMenuItem1->Text = L"Ver";
-			// 
-			// modificarToolStripMenuItem1
-			// 
-			this->modificarToolStripMenuItem1->Name = L"modificarToolStripMenuItem1";
-			this->modificarToolStripMenuItem1->Size = System::Drawing::Size(125, 22);
-			this->modificarToolStripMenuItem1->Text = L"Modificar";
+			this->verToolStripMenuItem1->Click += gcnew System::EventHandler(this, &AdminMainForm::verToolStripMenuItem1_Click);
 			// 
 			// AdminMainForm
 			// 
@@ -217,5 +208,27 @@ private: System::Void conductoresToolStripMenuItem_Click(System::Object^ sender,
 	usuariosForm->Show();
 
 }
+
+private: System::Void serviciosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	ServiciosForm^ serviciosForm = gcnew ServiciosForm();
+	serviciosForm->MdiParent = this;
+	serviciosForm->Show();
+}
+private: System::Void verToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	MetricasForm^ metricasForm = gcnew MetricasForm();
+	metricasForm->MdiParent = this;
+	metricasForm->Show();
+}
+private: System::Void verTodasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	PromocionesForm^ promocionesForm = gcnew PromocionesForm();
+	promocionesForm->MdiParent = this;
+	promocionesForm->Show();
+}
+private: System::Void verToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
+	BlackListForm^ blackListForm = gcnew BlackListForm();
+	blackListForm->MdiParent = this;
+	blackListForm->Show();
+}
+
 };
 }

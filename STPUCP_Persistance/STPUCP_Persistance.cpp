@@ -16,6 +16,14 @@ void STPUCPPersistance::Persistance::PersistTextFile(String^ fileName, Object^ p
             writer->WriteLine(r->Id + "," + r->Nombre + "," + r->ApellidoPaterno + "," + r->ApellidoMaterno + "," + r->CodigoPUCP);
         }
     }
+
+    if (persistObject->GetType() == List<Viaje^>::typeid) {
+        List<Viaje^>^ viaje = (List<Viaje^>^) persistObject;
+        for (int i = 0; i < viaje->Count; i++) {
+            Viaje^ v = viaje[i];
+            writer->WriteLine(v->Id + "," + v->HoraSalida + "," + v->FechaViaje + "," + v->DescripcionViaje + "," + v->UltimoParadero + "," + v->PrecioViaje);
+        }
+    }
     if (writer != nullptr) writer->Close();
     if (file != nullptr) file->Close();
 }
@@ -51,6 +59,22 @@ Object^ STPUCPPersistance::Persistance::LoadTextFile(String^ fileName)
                 usuario->ApellidoMaterno = record[3];
                 usuario->CodigoPUCP = Convert::ToInt32(record[4]);
                 ((List<Usuario^>^)result)->Add(usuario);
+            }
+        }
+        if (fileName->Equals(VIAJE_FILE_NAME)) {
+            result = gcnew List<Viaje^>();
+            while (true) {
+                String^ line = reader->ReadLine();
+                if (line == nullptr) break;
+                array<String^>^ record = line->Split(',');
+                Viaje^ viaje = gcnew Viaje();
+                viaje->Id = Convert::ToInt32(record[0]);
+                viaje->HoraSalida = Convert::ToInt32(record[1]);
+                viaje->FechaViaje = record[2];
+                viaje->DescripcionViaje = record[3];
+                viaje->UltimoParadero = record[4];
+                viaje->PrecioViaje = Convert::ToInt32(record[5]);
+                ((List<Viaje^>^)result)->Add(viaje);
             }
         }
         if (reader != nullptr) reader->Close();
@@ -120,4 +144,104 @@ List<Usuario^>^ STPUCPPersistance::Persistance::QueryAllUsers()
     if (UsuarioListDB == nullptr)
         UsuarioListDB = gcnew List<Usuario^>();
     return UsuarioListDB;
+}
+
+int STPUCPPersistance::Persistance::AddJourney(Viaje^ Viaje)
+{
+    ViajesListDB->Add(Viaje);
+    PersistTextFile(VIAJE_FILE_NAME, ViajesListDB);
+    return 1;
+}
+
+void STPUCPPersistance::Persistance::UpdateJourney(Viaje^ Viaje)
+{
+    for (int i = 0; i < ViajesListDB->Count; i++) {
+        if (ViajesListDB[i]->Id == Viaje->Id) {
+            ViajesListDB[i] = Viaje;
+            PersistTextFile(VIAJE_FILE_NAME, ViajesListDB);
+            return;
+        }
+    }
+}
+
+void STPUCPPersistance::Persistance::DeleteJourney(int ViajeID)
+{
+    for (int i = 0; i < ViajesListDB->Count; i++) {
+        if (ViajesListDB[i]->Id == ViajeID) {
+            ViajesListDB->RemoveAt(i);
+            PersistTextFile(VIAJE_FILE_NAME, ViajesListDB);
+            return;
+        }
+    }
+}
+
+Viaje^ STPUCPPersistance::Persistance::QueryJourneysById(int ViajeID)
+{
+    ViajesListDB = (List<Viaje^>^) LoadTextFile(VIAJE_FILE_NAME);
+    Viaje^ viaje = nullptr;
+    for (int i = 0; i < ViajesListDB->Count; i++) {
+        if (ViajesListDB[i]->Id == ViajeID) {
+            viaje = ViajesListDB[i];
+            return viaje;
+        }
+    }
+    return viaje;
+}
+
+List<Viaje^>^ STPUCPPersistance::Persistance::QueryAllJourneys()
+{
+    ViajesListDB = (List<Viaje^>^) LoadTextFile(VIAJE_FILE_NAME);
+    if (ViajesListDB == nullptr)
+        ViajesListDB = gcnew List<Viaje^>();
+    return ViajesListDB;
+}
+
+int STPUCPPersistance::Persistance::AddPromotion(Promocion^ Promocion)
+{
+    PromocionesListDB->Add(Promocion);
+    PersistTextFile(PROMOCION_FILE_NAME, PromocionesListDB);
+    return 1;
+}
+
+void STPUCPPersistance::Persistance::UpdatePromotion(Promocion^ Promocion)
+{
+    for (int i = 0; i < PromocionesListDB->Count; i++) {
+        if (PromocionesListDB[i]->Id == Promocion->Id) {
+            PromocionesListDB[i] = Promocion;
+            PersistTextFile(PROMOCION_FILE_NAME, PromocionesListDB);
+            return;
+        }
+    }
+}
+
+void STPUCPPersistance::Persistance::DeletePromotion(int PromocionID)
+{
+    for (int i = 0; i < PromocionesListDB->Count; i++) {
+        if (PromocionesListDB[i]->Id == PromocionID) {
+            PromocionesListDB->RemoveAt(i);
+            PersistTextFile(PROMOCION_FILE_NAME, PromocionesListDB);
+            return;
+        }
+    }
+}
+
+Promocion^ STPUCPPersistance::Persistance::QueryPromotionsById(int PromocionID)
+{
+    PromocionesListDB = (List<Promocion^>^) LoadTextFile(PROMOCION_FILE_NAME);
+    Promocion^ promocion = nullptr;
+    for (int i = 0; i < PromocionesListDB->Count; i++) {
+        if (PromocionesListDB[i]->Id == PromocionID) {
+            promocion = PromocionesListDB[i];
+            return promocion;
+        }
+    }
+    return promocion;
+}
+
+List<Promocion^>^ STPUCPPersistance::Persistance::QueryAllPromotions()
+{
+    PromocionesListDB = (List<Promocion^>^) LoadTextFile(PROMOCION_FILE_NAME);
+    if (PromocionesListDB == nullptr)
+        PromocionesListDB = gcnew List<Promocion^>();
+    return PromocionesListDB;
 }
