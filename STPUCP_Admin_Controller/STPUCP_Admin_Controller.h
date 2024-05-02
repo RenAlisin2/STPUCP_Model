@@ -1,5 +1,5 @@
 #pragma once
-
+//
 using namespace System;
 using namespace STPUCP_Model;
 using namespace System::Collections::Generic;
