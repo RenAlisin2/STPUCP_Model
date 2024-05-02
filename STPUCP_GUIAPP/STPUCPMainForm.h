@@ -1,5 +1,6 @@
 #pragma once
 #include "RegistroForm.h"
+#include "Registro_Conductor.h"
 
 namespace STPUCPGUIAPP {
 
@@ -73,7 +74,9 @@ namespace STPUCPGUIAPP {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->textIngresar_usuario = (gcnew System::Windows::Forms::TextBox());
 			this->textIngresar_contraseña = (gcnew System::Windows::Forms::TextBox());
+			this->StartPosition = FormStartPosition::CenterScreen;
 			this->SuspendLayout();
+			
 			// 
 			// menuStrip1
 			// 
@@ -86,7 +89,7 @@ namespace STPUCPGUIAPP {
 			// 
 			// btn_IngresarCuenta
 			// 
-			this->btn_IngresarCuenta->Location = System::Drawing::Point(260, 241);
+			this->btn_IngresarCuenta->Location = System::Drawing::Point(255, 311);
 			this->btn_IngresarCuenta->Name = L"btn_IngresarCuenta";
 			this->btn_IngresarCuenta->Size = System::Drawing::Size(171, 40);
 			this->btn_IngresarCuenta->TabIndex = 2;
@@ -96,7 +99,7 @@ namespace STPUCPGUIAPP {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(257, 48);
+			this->label1->Location = System::Drawing::Point(12, 48);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(120, 16);
 			this->label1->TabIndex = 4;
@@ -106,7 +109,7 @@ namespace STPUCPGUIAPP {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(257, 327);
+			this->label2->Location = System::Drawing::Point(252, 396);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(149, 16);
 			this->label2->TabIndex = 5;
@@ -115,7 +118,7 @@ namespace STPUCPGUIAPP {
 			// 
 			// btn_salir
 			// 
-			this->btn_salir->Location = System::Drawing::Point(556, 48);
+			this->btn_salir->Location = System::Drawing::Point(556, 425);
 			this->btn_salir->Name = L"btn_salir";
 			this->btn_salir->Size = System::Drawing::Size(130, 23);
 			this->btn_salir->TabIndex = 7;
@@ -125,7 +128,7 @@ namespace STPUCPGUIAPP {
 			// 
 			// btn_registrarse
 			// 
-			this->btn_registrarse->Location = System::Drawing::Point(260, 372);
+			this->btn_registrarse->Location = System::Drawing::Point(260, 415);
 			this->btn_registrarse->Name = L"btn_registrarse";
 			this->btn_registrarse->Size = System::Drawing::Size(130, 23);
 			this->btn_registrarse->TabIndex = 9;
@@ -136,7 +139,7 @@ namespace STPUCPGUIAPP {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(257, 162);
+			this->label3->Location = System::Drawing::Point(252, 166);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(174, 16);
 			this->label3->TabIndex = 11;
@@ -145,22 +148,24 @@ namespace STPUCPGUIAPP {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(257, 88);
+			this->label4->Location = System::Drawing::Point(257, 98);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(144, 16);
 			this->label4->TabIndex = 12;
 			this->label4->Text = L"IINGRESAR USUARIO";
+			this->label4->Click += gcnew System::EventHandler(this, &STPUCPMainForm::label4_Click);
 			// 
 			// textIngresar_usuario
 			// 
-			this->textIngresar_usuario->Location = System::Drawing::Point(260, 127);
+			this->textIngresar_usuario->Location = System::Drawing::Point(273, 126);
 			this->textIngresar_usuario->Name = L"textIngresar_usuario";
 			this->textIngresar_usuario->Size = System::Drawing::Size(117, 22);
 			this->textIngresar_usuario->TabIndex = 13;
+			this->textIngresar_usuario->TextChanged += gcnew System::EventHandler(this, &STPUCPMainForm::textIngresar_usuario_TextChanged);
 			// 
 			// textIngresar_contraseña
 			// 
-			this->textIngresar_contraseña->Location = System::Drawing::Point(260, 191);
+			this->textIngresar_contraseña->Location = System::Drawing::Point(273, 195);
 			this->textIngresar_contraseña->Name = L"textIngresar_contraseña";
 			this->textIngresar_contraseña->Size = System::Drawing::Size(117, 22);
 			this->textIngresar_contraseña->TabIndex = 14;
@@ -203,10 +208,13 @@ private: System::Void btn_salir_Click(System::Object^ sender, System::EventArgs^
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 	RegistroForm^ registroform = gcnew RegistroForm();
-	registroform -> MdiParent = this;
+	registroform->StartPosition = FormStartPosition::CenterScreen; 
+	registroform->TopMost = true; 
 	registroform->Show();
-
-
+}
+private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void textIngresar_usuario_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

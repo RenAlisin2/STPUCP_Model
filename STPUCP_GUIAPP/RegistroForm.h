@@ -2,6 +2,7 @@
 #include "SeleccionarActuarForm.h"
 
 
+
 namespace STPUCPGUIAPP {
 
 	using namespace System;
@@ -247,9 +248,9 @@ namespace STPUCPGUIAPP {
 			// btn_CrearCuenta
 			// 
 			this->btn_CrearCuenta->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->btn_CrearCuenta->Location = System::Drawing::Point(296, 410);
+			this->btn_CrearCuenta->Location = System::Drawing::Point(253, 410);
 			this->btn_CrearCuenta->Name = L"btn_CrearCuenta";
-			this->btn_CrearCuenta->Size = System::Drawing::Size(133, 23);
+			this->btn_CrearCuenta->Size = System::Drawing::Size(229, 23);
 			this->btn_CrearCuenta->TabIndex = 18;
 			this->btn_CrearCuenta->Text = L"CREAR CUENTA";
 			this->btn_CrearCuenta->UseVisualStyleBackColor = false;
@@ -281,7 +282,7 @@ namespace STPUCPGUIAPP {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Name = L"RegistroForm";
-			this->Text = L"RegistroForm";
+			this->Text = L"Registro Inicial";
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -289,7 +290,9 @@ namespace STPUCPGUIAPP {
 #pragma endregion
 	private: System::Void btn_CrearCuenta_Click(System::Object^ sender, System::EventArgs^ e) {
 		SeleccionarActuarForm^ seleccionarTipo = gcnew SeleccionarActuarForm();
-	seleccionarTipo->Show();
+		this->Close();
+	    seleccionarTipo->StartPosition = FormStartPosition::CenterScreen;
+		seleccionarTipo->Show();
 	}
 };
 }
