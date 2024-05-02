@@ -1,21 +1,30 @@
 #pragma once
-#include "../STPUCP_Model/Usuario.h"
+
+
 
 using namespace System;
 using namespace STPUCP_Model;
+
 using namespace System::Collections::Generic;
+
 
 namespace STPUCP_SERVICE {
 	public ref class Service
 	{
 	private:
 		
-		static List<Usuario^>^ User = gcnew List<Usuario^>();
+		static List<Viaje^>^ ViajeDB = gcnew List<Viaje^>();
 	public:
-		static int AddUser(Usuario^);
-		static int UpdateUser(Usuario^);
+
 		
-		static List<Usuario^>^ GeneralUsers();
-		static Usuario^ IdUsers(int Id);
+		
+		// METODOS CRUD CONDUCTOR
+		
+
+		static int AddViaje(Viaje^);
+		static int EliminarViaje(int viajeid);
+		static int ModificarViaje(Viaje^);
+		static List<Viaje^>^ consultarViajes();
+		static Viaje^ ConsultarviajeporID(int viajeId);
 	};
 }

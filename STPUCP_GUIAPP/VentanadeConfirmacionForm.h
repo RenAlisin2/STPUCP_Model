@@ -54,6 +54,7 @@ namespace STPUCPGUIAPP {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(282, 253);
 			this->Name = L"VentanadeConfirmacionForm";
 			this->Text = L"Ventana de confirmación";

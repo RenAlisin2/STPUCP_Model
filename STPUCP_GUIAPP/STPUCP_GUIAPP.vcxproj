@@ -199,6 +199,14 @@
       <DependentUpon>VerificarHuellaDactilarForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\STPUCP_Model\STPUCP_Model.vcxproj">
+      <Project>{ed5969e8-6a43-477d-835e-3b6897aa356b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\STPUCP_SERVICE\STPUCP_SERVICE.vcxproj">
+      <Project>{8fa1d73e-9d05-4ae7-8017-d4b6817a8746}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

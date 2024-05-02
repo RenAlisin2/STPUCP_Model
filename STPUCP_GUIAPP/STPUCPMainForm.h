@@ -75,9 +75,7 @@ namespace STPUCPGUIAPP {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->textIngresar_usuario = (gcnew System::Windows::Forms::TextBox());
 			this->textIngresar_contraseña = (gcnew System::Windows::Forms::TextBox());
-			//this->StartPosition = FormStartPosition::CenterScreen;
 			this->SuspendLayout();
-			
 			// 
 			// menuStrip1
 			// 
@@ -90,7 +88,7 @@ namespace STPUCPGUIAPP {
 			// 
 			// btn_IngresarCuenta
 			// 
-			this->btn_IngresarCuenta->Location = System::Drawing::Point(255, 311);
+			this->btn_IngresarCuenta->Location = System::Drawing::Point(255, 255);
 			this->btn_IngresarCuenta->Name = L"btn_IngresarCuenta";
 			this->btn_IngresarCuenta->Size = System::Drawing::Size(171, 40);
 			this->btn_IngresarCuenta->TabIndex = 2;
@@ -111,7 +109,7 @@ namespace STPUCPGUIAPP {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(252, 396);
+			this->label2->Location = System::Drawing::Point(257, 331);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(149, 16);
 			this->label2->TabIndex = 5;
@@ -130,7 +128,7 @@ namespace STPUCPGUIAPP {
 			// 
 			// btn_registrarse
 			// 
-			this->btn_registrarse->Location = System::Drawing::Point(260, 415);
+			this->btn_registrarse->Location = System::Drawing::Point(260, 377);
 			this->btn_registrarse->Name = L"btn_registrarse";
 			this->btn_registrarse->Size = System::Drawing::Size(130, 23);
 			this->btn_registrarse->TabIndex = 9;
@@ -177,6 +175,7 @@ namespace STPUCPGUIAPP {
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoSize = true;
+			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(698, 460);
 			this->Controls->Add(this->textIngresar_contraseña);
 			this->Controls->Add(this->textIngresar_usuario);

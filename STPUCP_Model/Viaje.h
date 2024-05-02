@@ -17,6 +17,8 @@ namespace STPUCP_Model {
         property String^ UltimoParadero;
         property double PrecioViaje;
 
+
+      
     };
 }
 

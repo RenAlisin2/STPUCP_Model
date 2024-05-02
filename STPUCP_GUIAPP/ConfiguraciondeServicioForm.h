@@ -57,9 +57,12 @@ namespace STPUCPGUIAPP {
 			this->ClientSize = System::Drawing::Size(619, 301);
 			this->Name = L"ConfiguraciondeServicioForm";
 			this->Text = L"ConfiguraciondeServicioForm";
+			this->Load += gcnew System::EventHandler(this, &ConfiguraciondeServicioForm::ConfiguraciondeServicioForm_Load);
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
+	private: System::Void ConfiguraciondeServicioForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
 	};
 }

@@ -85,6 +85,7 @@ namespace STPUCPGUIAPP {
             this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->AutoSize = true;
+            this->BackColor = System::Drawing::SystemColors::ActiveCaption;
             this->ClientSize = System::Drawing::Size(499, 221);
             this->Controls->Add(this->btnIngresarConductor);
             this->Controls->Add(this->btn_IngresarPasajero);

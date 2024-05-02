@@ -67,6 +67,7 @@ namespace STPUCPGUIAPP {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(746, 295);
 			this->Controls->Add(this->button1);
 			this->Name = L"VerificarHuellaDactilarForm";
@@ -74,8 +75,6 @@ namespace STPUCPGUIAPP {
 			this->Load += gcnew System::EventHandler(this, &VerificarHuellaDactilarForm::VerificarHuellaDactilarForm_Load);
 			this->ResumeLayout(false);
 
-
-			///this->Controls->Add(this->button1);
 		}
 #pragma endregion
 	private: System::Void VerificarHuellaDactilarForm_Load(System::Object^ sender, System::EventArgs^ e) {
