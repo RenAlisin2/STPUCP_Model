@@ -4,6 +4,7 @@
 #include "MetricasForm.h"
 #include "BlackListForm.h"
 #include "PromocionesForm.h"
+#include "LoginForm.h"
 
 namespace STPUCPAdminGUIView {
 
@@ -163,7 +164,7 @@ namespace STPUCPAdminGUIView {
 			// verTodasToolStripMenuItem
 			// 
 			this->verTodasToolStripMenuItem->Name = L"verTodasToolStripMenuItem";
-			this->verTodasToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->verTodasToolStripMenuItem->Size = System::Drawing::Size(90, 22);
 			this->verTodasToolStripMenuItem->Text = L"Ver";
 			this->verTodasToolStripMenuItem->Click += gcnew System::EventHandler(this, &AdminMainForm::verTodasToolStripMenuItem_Click);
 			// 
@@ -177,7 +178,7 @@ namespace STPUCPAdminGUIView {
 			// verToolStripMenuItem1
 			// 
 			this->verToolStripMenuItem1->Name = L"verToolStripMenuItem1";
-			this->verToolStripMenuItem1->Size = System::Drawing::Size(180, 22);
+			this->verToolStripMenuItem1->Size = System::Drawing::Size(90, 22);
 			this->verToolStripMenuItem1->Text = L"Ver";
 			this->verToolStripMenuItem1->Click += gcnew System::EventHandler(this, &AdminMainForm::verToolStripMenuItem1_Click);
 			// 
@@ -191,6 +192,7 @@ namespace STPUCPAdminGUIView {
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"AdminMainForm";
 			this->Text = L"AdminMainForm";
+			this->Load += gcnew System::EventHandler(this, &AdminMainForm::AdminMainForm_Load);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			this->ResumeLayout(false);
@@ -230,5 +232,9 @@ private: System::Void verToolStripMenuItem1_Click(System::Object^ sender, System
 	blackListForm->Show();
 }
 
+private: System::Void AdminMainForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	LoginForm^ loginForm = gcnew LoginForm(); //Le mandamos este objeto(form) al login
+	loginForm->ShowDialog();
+}
 };
 }
