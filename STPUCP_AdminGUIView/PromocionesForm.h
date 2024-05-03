@@ -164,6 +164,7 @@ namespace STPUCPAdminGUIView {
 			this->dgvPromo->Size = System::Drawing::Size(339, 253);
 			this->dgvPromo->TabIndex = 24;
 			this->dgvPromo->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &PromocionesForm::dgvPromo_CellClick);
+			//this->dgvPromo->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &PromocionesForm::dgvPromo_CellContentClick);
 			// 
 			// PromoID
 			// 
@@ -225,7 +226,6 @@ namespace STPUCPAdminGUIView {
 			this->lblNombre->Size = System::Drawing::Size(128, 13);
 			this->lblNombre->TabIndex = 19;
 			this->lblNombre->Text = L"Porcentaje de promoción:";
-
 			// 
 			// lblId
 			// 
