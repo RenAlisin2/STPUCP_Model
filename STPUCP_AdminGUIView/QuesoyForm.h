@@ -42,7 +42,7 @@ namespace STPUCPAdminGUIView {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -88,6 +88,15 @@ namespace STPUCPAdminGUIView {
 		}
 #pragma endregion
 	
+
+
+
+
+
+
+
+
+
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		ServicioDriverForm^ servicioDriverform = gcnew ServicioDriverForm();
 		this->Close();
