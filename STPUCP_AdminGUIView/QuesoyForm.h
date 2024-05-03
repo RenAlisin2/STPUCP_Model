@@ -1,4 +1,5 @@
 #pragma once
+#include "PasajeroForm.h"
 
 namespace STPUCPAdminGUIView {
 
@@ -63,6 +64,7 @@ namespace STPUCPAdminGUIView {
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"ALUMNO";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &QuesoyForm::btnIngresarPasajero_Click);
 			// 
 			// button2
 			// 
@@ -86,5 +88,12 @@ namespace STPUCPAdminGUIView {
 
 		}
 #pragma endregion
+	private: System::Void btnIngresarPasajero_Click(System::Object^ sender, System::EventArgs^ e) {
+		STPUCPAdminGUIView::PasajeroForm^ pasajeroForm = gcnew STPUCPAdminGUIView::PasajeroForm();
+		this->Close();
+		pasajeroForm->TopMost = true;
+		pasajeroForm->ShowDialog();
+	}
 	};
+
 }
