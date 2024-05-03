@@ -1,5 +1,5 @@
 #pragma once
-
+#include "ServicioDriverForm.h"
 namespace STPUCPAdminGUIView {
 
 	using namespace System;
@@ -57,7 +57,7 @@ namespace STPUCPAdminGUIView {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(102, 37);
+			this->button1->Location = System::Drawing::Point(39, 35);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(426, 125);
 			this->button1->TabIndex = 0;
@@ -66,18 +66,19 @@ namespace STPUCPAdminGUIView {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(102, 221);
+			this->button2->Location = System::Drawing::Point(39, 193);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(426, 125);
 			this->button2->TabIndex = 1;
 			this->button2->Text = L"CHOFER";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &QuesoyForm::button2_Click);
 			// 
 			// QuesoyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(625, 387);
+			this->ClientSize = System::Drawing::Size(522, 387);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Name = L"QuesoyForm";
@@ -86,5 +87,12 @@ namespace STPUCPAdminGUIView {
 
 		}
 #pragma endregion
+	
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		ServicioDriverForm^ servicioDriverform = gcnew ServicioDriverForm();
+		this->Close();
+		servicioDriverform->TopMost = true;
+		servicioDriverform->Show();
+	}
 	};
 }

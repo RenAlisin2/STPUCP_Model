@@ -44,5 +44,15 @@ namespace STPUCPPersistance {
 		static void DeletePromotion(int PromocionID);
 		static Promocion^ QueryPromotionsById(int PromocionID);
 		static List<Promocion^>^ QueryAllPromotions();
+		/*
+		static String^ VIAJECONDUCTOR_FILE_NAME = "ViajeConductorDB.txt";
+
+		static int AddViaje(Promocion^ Promocion);
+		static void ModificarViaje(Promocion^ Promocion);
+		static void EliminarViaje(int PromocionID);
+		static Promocion^ ConsultarviajeporID(int PromocionID);
+		static List<Promocion^>^ consultarViajes();
+		*/
+
 	};
 }

@@ -2,6 +2,7 @@
 
 #include "STPUCP_Admin_Controller.h"
 using namespace STPUCPPersistance;
+
 int STPUCPAdminController::controller::AddUser(Usuario^ Usuario)
 {
 	return Persistance::AddUser(Usuario);
@@ -77,3 +78,54 @@ List<Promocion^>^ STPUCPAdminController::controller::QueryAllPromotions()
 {
 	return Persistance::QueryAllPromotions();
 }
+
+
+
+/*
+int STPUCPAdminController::controller::AddViaje(Viaje^ viajecito)
+{
+	ViajeDB->Add(viajecito);
+	return viajecito->Id;
+
+}
+
+int STPUCPAdminController::controller::EliminarViaje(int viajeid)
+{
+	for (int i = 0; i < ViajeDB->Count; i++) {
+		if (ViajeDB[i]->Id == viajeid) {
+			ViajeDB->RemoveAt(i);
+			return viajeid;
+		}
+	}
+	return 0;
+
+}
+
+int STPUCPAdminController::controller::ModificarViaje(Viaje^ viajecito)
+{
+	for (int i = 0; i < ViajeDB->Count; i++) {
+		if (ViajeDB[i]->Id == viajecito->Id) {
+			ViajeDB[i] = viajecito;
+			return viajecito->Id;
+		}
+	}
+	return 0;
+}
+
+List<Viaje^>^ STPUCPAdminController::controller::consultarViajes()
+{
+	return ViajeDB;
+}
+
+
+
+Viaje^ STPUCPAdminController::controller::ConsultarviajeporID(int viajeId)
+{
+	for (int i = 0; i < ViajeDB->Count; i++) {
+		if (ViajeDB[i]->Id == viajeId) {
+			return ViajeDB[i];
+		}
+	}
+	return nullptr;
+}
+*/
