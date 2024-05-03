@@ -113,13 +113,14 @@ namespace STPUCPAdminGUIView {
 				this->ID, this->HORA,
 					this->COSTO, this->FECHA, this->LUGAR, this->ASIENTOS
 			});
-			this->dgv_VIAJE->Location = System::Drawing::Point(55, 234);
-			this->dgv_VIAJE->Margin = System::Windows::Forms::Padding(2);
+			this->dgv_VIAJE->Location = System::Drawing::Point(128, 522);
+			this->dgv_VIAJE->Margin = System::Windows::Forms::Padding(5, 4, 5, 4);
 			this->dgv_VIAJE->Name = L"dgv_VIAJE";
 			this->dgv_VIAJE->RowHeadersWidth = 51;
 			this->dgv_VIAJE->RowTemplate->Height = 24;
-			this->dgv_VIAJE->Size = System::Drawing::Size(598, 115);
+			this->dgv_VIAJE->Size = System::Drawing::Size(1395, 257);
 			this->dgv_VIAJE->TabIndex = 33;
+			this->dgv_VIAJE->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ConductorForm::dgv_VIAJE_CellContentClick);
 			// 
 			// ID
 			// 
@@ -166,152 +167,160 @@ namespace STPUCPAdminGUIView {
 			// 
 			// btn_add
 			// 
-			this->btn_add->Location = System::Drawing::Point(405, 20);
-			this->btn_add->Margin = System::Windows::Forms::Padding(2);
+			this->btn_add->Location = System::Drawing::Point(945, 45);
+			this->btn_add->Margin = System::Windows::Forms::Padding(5, 4, 5, 4);
 			this->btn_add->Name = L"btn_add";
-			this->btn_add->Size = System::Drawing::Size(125, 41);
+			this->btn_add->Size = System::Drawing::Size(292, 91);
 			this->btn_add->TabIndex = 32;
 			this->btn_add->Text = L"AÑADIR";
 			this->btn_add->UseVisualStyleBackColor = true;
-			//this->btn_add->Click += gcnew System::EventHandler(this, &ConductorForm::btn_add_Click);
+			this->btn_add->Click += gcnew System::EventHandler(this, &ConductorForm::button4_Click);
 			// 
 			// btn_modificar
 			// 
-			this->btn_modificar->Location = System::Drawing::Point(405, 65);
-			this->btn_modificar->Margin = System::Windows::Forms::Padding(2);
+			this->btn_modificar->Location = System::Drawing::Point(945, 145);
+			this->btn_modificar->Margin = System::Windows::Forms::Padding(5, 4, 5, 4);
 			this->btn_modificar->Name = L"btn_modificar";
-			this->btn_modificar->Size = System::Drawing::Size(125, 39);
+			this->btn_modificar->Size = System::Drawing::Size(292, 87);
 			this->btn_modificar->TabIndex = 31;
 			this->btn_modificar->Text = L"MODIFICAR";
 			this->btn_modificar->UseVisualStyleBackColor = true;
+			this->btn_modificar->Click += gcnew System::EventHandler(this, &ConductorForm::btn_modificar_Click);
 			// 
 			// btn_eliminar
 			// 
-			this->btn_eliminar->Location = System::Drawing::Point(405, 104);
-			this->btn_eliminar->Margin = System::Windows::Forms::Padding(2);
+			this->btn_eliminar->Location = System::Drawing::Point(945, 232);
+			this->btn_eliminar->Margin = System::Windows::Forms::Padding(5, 4, 5, 4);
 			this->btn_eliminar->Name = L"btn_eliminar";
-			this->btn_eliminar->Size = System::Drawing::Size(125, 42);
+			this->btn_eliminar->Size = System::Drawing::Size(292, 94);
 			this->btn_eliminar->TabIndex = 30;
 			this->btn_eliminar->Text = L"ELIMINAR";
 			this->btn_eliminar->UseVisualStyleBackColor = true;
+			this->btn_eliminar->Click += gcnew System::EventHandler(this, &ConductorForm::btn_eliminar_Click);
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(52, 23);
-			this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label6->Location = System::Drawing::Point(121, 51);
+			this->label6->Margin = System::Windows::Forms::Padding(5, 0, 5, 0);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(56, 13);
+			this->label6->Size = System::Drawing::Size(123, 29);
 			this->label6->TabIndex = 28;
 			this->label6->Text = L"Ingrese ID";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(52, 106);
-			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label5->Location = System::Drawing::Point(121, 236);
+			this->label5->Margin = System::Windows::Forms::Padding(5, 0, 5, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(122, 13);
+			this->label5->Size = System::Drawing::Size(272, 29);
 			this->label5->TabIndex = 26;
 			this->label5->Text = L"Ingrese fecha de partida";
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(52, 161);
-			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label4->Location = System::Drawing::Point(121, 359);
+			this->label4->Margin = System::Windows::Forms::Padding(5, 0, 5, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(137, 13);
+			this->label4->Size = System::Drawing::Size(308, 29);
 			this->label4->TabIndex = 21;
 			this->label4->Text = L"Ingrese asientos ocupados:";
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(52, 133);
-			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label3->Location = System::Drawing::Point(121, 297);
+			this->label3->Margin = System::Windows::Forms::Padding(5, 0, 5, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(121, 13);
+			this->label3->Size = System::Drawing::Size(274, 29);
 			this->label3->TabIndex = 20;
 			this->label3->Text = L"Ingrese lugar de partida:";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(52, 78);
-			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label2->Location = System::Drawing::Point(121, 174);
+			this->label2->Margin = System::Windows::Forms::Padding(5, 0, 5, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(74, 13);
+			this->label2->Size = System::Drawing::Size(164, 29);
 			this->label2->TabIndex = 19;
 			this->label2->Text = L"Ingrese costo:";
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(52, 52);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label1->Location = System::Drawing::Point(121, 116);
+			this->label1->Margin = System::Windows::Forms::Padding(5, 0, 5, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(119, 13);
+			this->label1->Size = System::Drawing::Size(268, 29);
 			this->label1->TabIndex = 18;
 			this->label1->Text = L"Ingrese hora de partida:";
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(388, 161);
-			this->button1->Margin = System::Windows::Forms::Padding(2);
+			this->button1->Location = System::Drawing::Point(905, 359);
+			this->button1->Margin = System::Windows::Forms::Padding(5, 4, 5, 4);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(163, 64);
+			this->button1->Size = System::Drawing::Size(380, 143);
 			this->button1->TabIndex = 17;
 			this->button1->Text = L"Confirmar Viaje";
 			this->button1->UseVisualStyleBackColor = true;
 			// 
 			// txtID
 			// 
-			this->txtID->Location = System::Drawing::Point(113, 20);
+			this->txtID->Location = System::Drawing::Point(264, 45);
+			this->txtID->Margin = System::Windows::Forms::Padding(7);
 			this->txtID->Name = L"txtID";
-			this->txtID->Size = System::Drawing::Size(249, 20);
+			this->txtID->Size = System::Drawing::Size(576, 35);
 			this->txtID->TabIndex = 34;
 			// 
 			// txtHoraPartida
 			// 
-			this->txtHoraPartida->Location = System::Drawing::Point(176, 46);
+			this->txtHoraPartida->Location = System::Drawing::Point(411, 103);
+			this->txtHoraPartida->Margin = System::Windows::Forms::Padding(7);
 			this->txtHoraPartida->Name = L"txtHoraPartida";
-			this->txtHoraPartida->Size = System::Drawing::Size(186, 20);
+			this->txtHoraPartida->Size = System::Drawing::Size(429, 35);
 			this->txtHoraPartida->TabIndex = 35;
 			// 
 			// txtCosto
 			// 
-			this->txtCosto->Location = System::Drawing::Point(131, 75);
+			this->txtCosto->Location = System::Drawing::Point(306, 167);
+			this->txtCosto->Margin = System::Windows::Forms::Padding(7);
 			this->txtCosto->Name = L"txtCosto";
-			this->txtCosto->Size = System::Drawing::Size(231, 20);
+			this->txtCosto->Size = System::Drawing::Size(534, 35);
 			this->txtCosto->TabIndex = 36;
 			// 
 			// txtFecha
 			// 
-			this->txtFecha->Location = System::Drawing::Point(176, 103);
+			this->txtFecha->Location = System::Drawing::Point(411, 230);
+			this->txtFecha->Margin = System::Windows::Forms::Padding(7);
 			this->txtFecha->Name = L"txtFecha";
-			this->txtFecha->Size = System::Drawing::Size(186, 20);
+			this->txtFecha->Size = System::Drawing::Size(429, 35);
 			this->txtFecha->TabIndex = 37;
 			// 
 			// txtAsientos
 			// 
-			this->txtAsientos->Location = System::Drawing::Point(194, 159);
+			this->txtAsientos->Location = System::Drawing::Point(453, 355);
+			this->txtAsientos->Margin = System::Windows::Forms::Padding(7);
 			this->txtAsientos->Name = L"txtAsientos";
-			this->txtAsientos->Size = System::Drawing::Size(168, 20);
+			this->txtAsientos->Size = System::Drawing::Size(387, 35);
 			this->txtAsientos->TabIndex = 39;
 			// 
 			// txtLugar
 			// 
-			this->txtLugar->Location = System::Drawing::Point(178, 130);
+			this->txtLugar->Location = System::Drawing::Point(415, 290);
+			this->txtLugar->Margin = System::Windows::Forms::Padding(7);
 			this->txtLugar->Name = L"txtLugar";
-			this->txtLugar->Size = System::Drawing::Size(184, 20);
+			this->txtLugar->Size = System::Drawing::Size(424, 35);
 			this->txtLugar->TabIndex = 38;
 			// 
 			// ConductorForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(14, 29);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(675, 379);
+			this->ClientSize = System::Drawing::Size(1575, 845);
 			this->Controls->Add(this->txtAsientos);
 			this->Controls->Add(this->txtLugar);
 			this->Controls->Add(this->txtFecha);
@@ -329,43 +338,18 @@ namespace STPUCPAdminGUIView {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->button1);
+			this->Margin = System::Windows::Forms::Padding(7);
 			this->Name = L"ConductorForm";
 			this->Text = L"ConductorForm";
+			this->Load += gcnew System::EventHandler(this, &ConductorForm::ConductorForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_VIAJE))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-/*
-private: System::Void CondicionesDellevadoForm_Load(System::Object^ sender, System::EventArgs^ e) {
-}
-
-	   Void VerificarServicios() {
-		   List<Viaje^>^ Viajelista = controller::consultarViajes();
-		   if (Viajelista->Count == 0) {
-			   btn_add->Enabled = true; // Habilitar el botón Agregar
-			   btn_eliminar->Enabled = false;
-			   btn_modificar->Enabled = false;
-		   }
-		   else {
-			   btn_add->Enabled = false; // Deshabilitar el botón Agregar
-			   btn_eliminar->Enabled = true;
-			   btn_modificar->Enabled = true;
-		   }
-	   }
-private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-}
-
-	   void ClearControls() {
-		   txtID->Text = "";
-		   txtHoraPartida->Text = "";
-		   txtLugar->Text = "";
-		   txtFecha->Text = "";
-		   txtCosto->Text = "";
 
 
-	   }
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 	int id = Convert::ToInt32(txtID->Text);
 	int horaSalida = Convert::ToInt32(txtHoraPartida->Text);
@@ -389,8 +373,31 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 
 
 }
+
+Void VerificarServicios() {
+	List<Viaje^>^ Viajelista = controller::consultarViajes();
+	if (Viajelista->Count == 0) {
+		btn_add->Enabled = true; // Habilitar el botón Agregar
+		btn_eliminar->Enabled = false;
+		btn_modificar->Enabled = false;
+	}
+	else {
+		btn_add->Enabled = false; // Deshabilitar el botón Agregar
+		btn_eliminar->Enabled = true;
+		btn_modificar->Enabled = true;
+	}
+}
+
+void ClearControls() {
+	txtID->Text = "";
+	txtHoraPartida->Text = "";
+	txtLugar->Text = "";
+	txtFecha->Text = "";
+	txtCosto->Text = "";
+}
+
 void ShowViaje() {
-	List<Viaje^>^ Viajelista = Service::consultarViajes();
+	List<Viaje^>^ Viajelista = controller::consultarViajes();
 	dgv_VIAJE->Rows->Clear();
 	for (int i = 0; i < Viajelista->Count; i++) {
 	dgv_VIAJE->Rows->Add(gcnew array<String^> {"" + Viajelista[i]->Id, "" + Viajelista[i]->HoraSalida,
@@ -424,6 +431,13 @@ private: System::Void btn_modificar_Click(System::Object^ sender, System::EventA
 	ShowViaje();
 	VerificarServicios();
 }
-*/
+
+private: System::Void ConductorForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	VerificarServicios();
+}
+
+private: System::Void dgv_VIAJE_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+ 	ClearControls();
+}
 };
 }

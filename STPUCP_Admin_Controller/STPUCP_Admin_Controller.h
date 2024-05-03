@@ -33,13 +33,13 @@ namespace STPUCPAdminController {
 		static void DeletePromotion(int PromocionID);
 		static Promocion^ QueryPromotionsById(int PromocionID);
 		static List<Promocion^>^ QueryAllPromotions();
-		/*
+		
 		//CHOFER
 		static int AddViaje(Viaje^);
 		static int EliminarViaje(int viajeid);
 		static int ModificarViaje(Viaje^);
 		static List<Viaje^>^ consultarViajes();
 		static Viaje^ ConsultarviajeporID(int viajeId);
-		*/
+		
 	};
 }

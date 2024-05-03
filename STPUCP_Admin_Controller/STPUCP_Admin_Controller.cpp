@@ -81,7 +81,7 @@ List<Promocion^>^ STPUCPAdminController::controller::QueryAllPromotions()
 
 
 
-/*
+
 int STPUCPAdminController::controller::AddViaje(Viaje^ viajecito)
 {
 	ViajeDB->Add(viajecito);
@@ -128,4 +128,3 @@ Viaje^ STPUCPAdminController::controller::ConsultarviajeporID(int viajeId)
 	}
 	return nullptr;
 }
-*/
