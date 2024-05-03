@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RegistroForm.h"
+#include "QuesoyForm.h"
 
 namespace STPUCPAdminGUIView {
 
@@ -107,6 +108,7 @@ namespace STPUCPAdminGUIView {
 			this->btnIngresar->TabIndex = 4;
 			this->btnIngresar->Text = L"Ingresar";
 			this->btnIngresar->UseVisualStyleBackColor = true;
+			this->btnIngresar->Click += gcnew System::EventHandler(this, &LoginForm::btnIngresar_Click);
 			// 
 			// btnRegistrarse
 			// 
@@ -153,6 +155,12 @@ private: System::Void btnRegistrarse_Click(System::Object^ sender, System::Event
 	registroform->TopMost = true;
 	registroform->Show();
 
+}
+private: System::Void btnIngresar_Click(System::Object^ sender, System::EventArgs^ e) {
+	QuesoyForm^ quesoyform = gcnew QuesoyForm();
+	this->Close();
+	quesoyform->TopMost = true;
+	quesoyform->Show();
 }
 };
 }

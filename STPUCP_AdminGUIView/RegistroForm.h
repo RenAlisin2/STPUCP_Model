@@ -282,6 +282,8 @@ namespace STPUCPAdminGUIView {
 		this->Close();
 		quesoyform->TopMost = true;
 		quesoyform->Show();
+		
 	}
+
 };
 }

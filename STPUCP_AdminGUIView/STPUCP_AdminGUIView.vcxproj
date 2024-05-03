@@ -133,6 +133,12 @@
     <ClInclude Include="BlackListForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="ConductorForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="HuellaForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="BoletaInterfazForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -157,6 +163,9 @@
     <ClInclude Include="RegistroForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="ServicioDriverForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="ServiciosForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -173,6 +182,8 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="AdminMainForm.cpp" />
     <ClCompile Include="BlackListForm.cpp" />
+    <ClCompile Include="ConductorForm.cpp" />
+    <ClCompile Include="HuellaForm.cpp" />
     <ClCompile Include="BoletaInterfazForm.cpp" />
     <ClCompile Include="LoginForm.cpp" />
     <ClCompile Include="MetricasForm.cpp" />
@@ -181,6 +192,7 @@
     <ClCompile Include="PromocionesForm.cpp" />
     <ClCompile Include="QuesoyForm.cpp" />
     <ClCompile Include="RegistroForm.cpp" />
+    <ClCompile Include="ServicioDriverForm.cpp" />
     <ClCompile Include="ServiciosForm.cpp" />
     <ClCompile Include="UsuariosForm.cpp" />
     <ClCompile Include="pch.cpp">
@@ -209,6 +221,12 @@
     <EmbeddedResource Include="BlackListForm.resx">
       <DependentUpon>BlackListForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ConductorForm.resx">
+      <DependentUpon>ConductorForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HuellaForm.resx">
+      <DependentUpon>HuellaForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BoletaInterfazForm.resx">
       <DependentUpon>BoletaInterfazForm.h</DependentUpon>
     </EmbeddedResource>
@@ -232,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegistroForm.resx">
       <DependentUpon>RegistroForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServicioDriverForm.resx">
+      <DependentUpon>ServicioDriverForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ServiciosForm.resx">
       <DependentUpon>ServiciosForm.h</DependentUpon>
