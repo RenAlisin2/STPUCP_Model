@@ -133,10 +133,19 @@
     <ClInclude Include="BlackListForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="BoletaInterfazForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="LoginForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="MetricasForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="PasajeroForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="PasajeroRutaForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="PromocionesForm.h">
@@ -156,13 +165,19 @@
     </ClInclude>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="VentanaPagoForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="AdminMainForm.cpp" />
     <ClCompile Include="BlackListForm.cpp" />
+    <ClCompile Include="BoletaInterfazForm.cpp" />
     <ClCompile Include="LoginForm.cpp" />
     <ClCompile Include="MetricasForm.cpp" />
+    <ClCompile Include="PasajeroForm.cpp" />
+    <ClCompile Include="PasajeroRutaForm.cpp" />
     <ClCompile Include="PromocionesForm.cpp" />
     <ClCompile Include="QuesoyForm.cpp" />
     <ClCompile Include="RegistroForm.cpp" />
@@ -175,6 +190,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="STPUCP_AdminGUIView.cpp" />
+    <ClCompile Include="VentanaPagoForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="app.ico" />
@@ -193,11 +209,20 @@
     <EmbeddedResource Include="BlackListForm.resx">
       <DependentUpon>BlackListForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BoletaInterfazForm.resx">
+      <DependentUpon>BoletaInterfazForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MetricasForm.resx">
       <DependentUpon>MetricasForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasajeroForm.resx">
+      <DependentUpon>PasajeroForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasajeroRutaForm.resx">
+      <DependentUpon>PasajeroRutaForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PromocionesForm.resx">
       <DependentUpon>PromocionesForm.h</DependentUpon>
@@ -213,6 +238,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UsuariosForm.resx">
       <DependentUpon>UsuariosForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentanaPagoForm.resx">
+      <DependentUpon>VentanaPagoForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
