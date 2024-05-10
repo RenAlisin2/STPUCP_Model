@@ -11,6 +11,7 @@ namespace STPUCPPersistance {
 		static List<Usuario^>^ UsuarioListDB = gcnew List<Usuario^>();
 		static List<Viaje^>^ ViajesListDB = gcnew List<Viaje^>();
 		static List<Promocion^>^ PromocionesListDB = gcnew List<Promocion^>();
+		static List<Viaje^>^ ViajeConductorDB = gcnew List<Viaje^>();
 
 	public:
 		static String^ USUARIO_FILE_NAME = "UsuariosDB.txt";
@@ -44,15 +45,15 @@ namespace STPUCPPersistance {
 		static void DeletePromotion(int PromocionID);
 		static Promocion^ QueryPromotionsById(int PromocionID);
 		static List<Promocion^>^ QueryAllPromotions();
-		/*
+		
 		static String^ VIAJECONDUCTOR_FILE_NAME = "ViajeConductorDB.txt";
 
-		static int AddViaje(Promocion^ Promocion);
-		static void ModificarViaje(Promocion^ Promocion);
-		static void EliminarViaje(int PromocionID);
-		static Promocion^ ConsultarviajeporID(int PromocionID);
-		static List<Promocion^>^ consultarViajes();
-		*/
+		static int AddViaje(Viaje^ viajecito);
+		static void ModificarViaje(Viaje^ viajecito);
+		static void EliminarViaje(int viajeid);
+		static Viaje^ ConsultarviajeporID(int viajeId);
+		static List<Viaje^>^ consultarViajes();
+		
 
 	};
 }

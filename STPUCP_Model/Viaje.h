@@ -9,6 +9,8 @@ using namespace System;
 
 namespace STPUCP_Model {
     public ref class Viaje {
+    private:
+
     public:
         property int Id;
         property int HoraSalida;
@@ -16,6 +18,8 @@ namespace STPUCP_Model {
         property String^ DescripcionViaje;
         property String^ UltimoParadero;
         property double PrecioViaje;
+        property int ConductorId;
+
 
     };
 }

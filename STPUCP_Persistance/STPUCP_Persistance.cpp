@@ -265,3 +265,55 @@ List<Promocion^>^ STPUCPPersistance::Persistance::QueryAllPromotions()
         PromocionesListDB = gcnew List<Promocion^>();
     return PromocionesListDB;
 }
+
+
+//CHOFER
+int STPUCPPersistance::Persistance::AddViaje(Viaje^ viajecito)
+{
+    ViajeConductorDB->Add(viajecito);
+    PersistTextFile(VIAJECONDUCTOR_FILE_NAME, ViajeConductorDB);
+    return 1;
+}
+
+void STPUCPPersistance::Persistance::ModificarViaje(Viaje^ viajecito)
+{
+    for (int i = 0; i < ViajeConductorDB->Count; i++) {
+        if (ViajeConductorDB[i]->Id == viajecito->Id) {
+            ViajeConductorDB[i] = viajecito;
+            PersistTextFile(VIAJECONDUCTOR_FILE_NAME, ViajeConductorDB);
+            return;
+        }
+    }
+}
+
+void STPUCPPersistance::Persistance::EliminarViaje(int viajeid)
+{
+    for (int i = 0; i < PromocionesListDB->Count; i++) {
+        if (ViajeConductorDB[i]->Id == viajeid) {
+            ViajeConductorDB->RemoveAt(i);
+            PersistTextFile(VIAJECONDUCTOR_FILE_NAME, ViajeConductorDB);
+            return;
+        }
+    }
+}
+
+Viaje^ STPUCPPersistance::Persistance::ConsultarviajeporID(int viajeId)
+{
+    ViajeConductorDB = (List<Viaje^>^) LoadTextFile(VIAJECONDUCTOR_FILE_NAME);
+    Viaje^ viaje = nullptr;
+    for (int i = 0; i < ViajeConductorDB->Count; i++) {
+        if (ViajeConductorDB[i]->Id == viajeId) {
+            viaje = ViajeConductorDB[i];
+            return viaje;
+        }
+    }
+    return viaje;
+}
+
+List<Viaje^>^ STPUCPPersistance::Persistance::consultarViajes()
+{
+    ViajeConductorDB = (List<Viaje^>^) LoadTextFile(VIAJECONDUCTOR_FILE_NAME);
+    if (ViajeConductorDB == nullptr)
+        ViajeConductorDB = gcnew List<Viaje^>();
+    return ViajeConductorDB;
+}

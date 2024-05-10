@@ -36,10 +36,10 @@ namespace STPUCPAdminController {
 		
 		//CHOFER
 		static int AddViaje(Viaje^);
-		static int EliminarViaje(int viajeid);
-		static int ModificarViaje(Viaje^);
+		static void EliminarViaje(int viajeid);
+		static void ModificarViaje(Viaje^);
 		static List<Viaje^>^ consultarViajes();
-		static Viaje^ ConsultarviajeporID(int viajeId);
+		static Viaje^ ConsultarviajeporID(int viajeid);
 		
 	};
 }
