@@ -24,6 +24,7 @@ namespace STPUCP_Model {
         property double Calificacion;
         property int CantServiciosRealizados;
         property int TiempoPenalizacion;
+        property String^ MotivoBan;
         property bool ListaNegra;
 
 

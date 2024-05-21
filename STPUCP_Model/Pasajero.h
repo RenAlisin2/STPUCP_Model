@@ -15,13 +15,15 @@ namespace STPUCP_Model {
         property int TiempoPenalizacion;
         property bool ListaNegra;
         property int ViajesId;
-
+        property String^ MotivoBan;
+       
         Pasajero() {}
-        Pasajero(int id, String^ apellidoPaterno, String^ apellidoMaterno, int codigoPUCP, int numeroTelefono, String^ correo, String^ contraseña, String^ nombre, int tiempoPenalizacion, int cantServiciosTomados , bool listaNegra, int ViajesId) :
+        Pasajero(int id, String^ apellidoPaterno, String^ apellidoMaterno, int codigoPUCP, int numeroTelefono, String^ correo, String^ contraseña, String^ nombre, int tiempoPenalizacion, int cantServiciosTomados , bool listaNegra, int ViajesId, String^ motivoBan) :
             Usuario(id, apellidoPaterno, apellidoMaterno, codigoPUCP, numeroTelefono, correo, contraseña, nombre) {
             TiempoPenalizacion = tiempoPenalizacion;
             CantServiciosTomados = cantServiciosTomados;
             ListaNegra = listaNegra;
+            MotivoBan = motivoBan;
         }
 
         void ElegirVehiculo();

@@ -99,6 +99,7 @@ namespace STPUCPAdminGUIView {
 			this->txtContraseña->Name = L"txtContraseña";
 			this->txtContraseña->Size = System::Drawing::Size(205, 20);
 			this->txtContraseña->TabIndex = 3;
+			this->txtContraseña->UseSystemPasswordChar = true;
 			// 
 			// btnIngresar
 			// 

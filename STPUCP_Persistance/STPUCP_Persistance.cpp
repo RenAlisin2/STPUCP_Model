@@ -31,6 +31,30 @@ void STPUCPPersistance::Persistance::PersistTextFile(String^ fileName, Object^ p
             writer->WriteLine(p->Id + "," + p->Porcentaje + "," + p->NombrePromo);
         }
     }
+    if (persistObject->GetType() == List<Orden^>::typeid) {
+        List<Orden^>^ orden = (List<Orden^>^) persistObject;
+        for (int i = 0; i < orden->Count; i++) {
+            Orden^ o = orden[i];
+            writer->WriteLine(o->Id + "," + o->Distrito + "," + o->CalificacionEstrellas + "," + o->Fecha + "," + o->Precio);
+        }
+    }
+    if (persistObject->GetType() == List<Pasajero^>::typeid) {
+        List<Pasajero^>^ blacklistPasajeros = (List<Pasajero^>^) persistObject;
+        for (int i = 0; i < blacklistPasajeros->Count; i++) {
+            Pasajero^ p = blacklistPasajeros[i];
+            writer->WriteLine(p->Id + "," + p->Nombre + "," + p->ApellidoPaterno + "," + p->ApellidoMaterno + "," + p->MotivoBan + "," + p->TiempoPenalizacion);
+        }
+    }
+
+    if (persistObject->GetType() == List<Conductor^>::typeid) {
+        List<Conductor^>^ blacklistConductores = (List<Conductor^>^) persistObject;
+        for (int i = 0; i < blacklistConductores->Count; i++) {
+            Conductor^ c = blacklistConductores[i];
+            writer->WriteLine(c->Id + "," + c->Nombre + "," + c->ApellidoPaterno + "," + c->ApellidoMaterno + "," + c->MotivoBan + "," + c->TiempoPenalizacion);
+        }
+    }
+
+
     if (writer != nullptr) writer->Close();
     if (file != nullptr) file->Close();
 }
@@ -97,6 +121,59 @@ Object^ STPUCPPersistance::Persistance::LoadTextFile(String^ fileName)
                 ((List<Promocion^>^)result)->Add(promocion);
             }
         }
+        if (fileName->Equals(ORDER_FILE_NAME)) {
+            result = gcnew List<Orden^>();
+            while (true) {
+                String^ line = reader->ReadLine();
+                if (line == nullptr) break;
+                array<String^>^ record = line->Split(',');
+                Orden^ orden = gcnew Orden();
+                orden->Id = Convert::ToInt32(record[0]);
+                orden->Distrito = record[1];
+                orden->CalificacionEstrellas = Convert::ToInt32(record[2]);
+                orden->Fecha = record[3];
+                orden->Precio = Convert::ToInt32(record[4]);
+                ((List<Orden^>^)result)->Add(orden);
+            }
+        }
+
+        if (fileName->Equals(BL_PASAJEROS_FILE_NAME)) {
+            List<Pasajero^>^ blacklistPasajeros = gcnew List<Pasajero^>();
+            while (true) {
+                String^ line = reader->ReadLine();
+                if (line == nullptr) break;
+                array<String^>^ record = line->Split(',');
+                Pasajero^ BLpasajero = gcnew Pasajero();
+                BLpasajero->Id = Convert::ToInt32(record[0]);
+                BLpasajero->Nombre = record[1];
+                BLpasajero->ApellidoPaterno = record[2];
+                BLpasajero->ApellidoMaterno = record[3];
+                BLpasajero->MotivoBan = record[4];
+                BLpasajero->TiempoPenalizacion = Convert::ToInt32(record[5]);
+                blacklistPasajeros->Add(BLpasajero);
+            }
+            result = blacklistPasajeros;
+        }
+
+        if (fileName->Equals(BL_CONDUCTORES_FILE_NAME)) {
+            List<Conductor^>^ blacklistConductores = gcnew List<Conductor^>();
+            while (true) {
+                String^ line = reader->ReadLine();
+                if (line == nullptr) break;
+                array<String^>^ record = line->Split(',');
+                Conductor^ BLconductor = gcnew Conductor();
+                BLconductor->Id = Convert::ToInt32(record[0]);
+                BLconductor->Nombre = record[1];
+                BLconductor->ApellidoPaterno = record[2];
+                BLconductor->ApellidoMaterno = record[3];
+                BLconductor->MotivoBan = record[4];
+                BLconductor->TiempoPenalizacion = Convert::ToInt32(record[5]);
+                blacklistConductores->Add(BLconductor);
+            }
+            result = blacklistConductores;
+        }
+
+
         if (reader != nullptr) reader->Close();
         if (file != nullptr) file->Close();
     }
@@ -264,6 +341,162 @@ List<Promocion^>^ STPUCPPersistance::Persistance::QueryAllPromotions()
     if (PromocionesListDB == nullptr)
         PromocionesListDB = gcnew List<Promocion^>();
     return PromocionesListDB;
+}
+
+int STPUCPPersistance::Persistance::AddOrder(Orden^ orden)
+{
+    OrdenListDB->Add(orden);
+    PersistTextFile(ORDER_FILE_NAME, OrdenListDB);
+    return 1;
+}
+
+void STPUCPPersistance::Persistance::UpdateOrder(Orden^ orden)
+{
+    for (int i = 0; i < OrdenListDB->Count; i++) {
+        if (OrdenListDB[i]->Id == orden->Id) {
+            OrdenListDB[i] = orden;
+            PersistTextFile(ORDER_FILE_NAME, OrdenListDB);
+            return;
+        }
+    }
+}
+
+void STPUCPPersistance::Persistance::DeleteOrder(int ordenID)
+{
+    for (int i = 0; i < OrdenListDB->Count; i++) {
+        if (OrdenListDB[i]->Id == ordenID) {
+            OrdenListDB->RemoveAt(i);
+            PersistTextFile(ORDER_FILE_NAME, OrdenListDB);
+            return;
+        }
+    }
+}
+
+Orden^ STPUCPPersistance::Persistance::QueryOrderById(int ordenID)
+{
+    OrdenListDB = (List<Orden^>^) LoadTextFile(ORDER_FILE_NAME);
+    Orden^ orden = nullptr;
+    for (int i = 0; i < OrdenListDB->Count; i++) {
+        if (OrdenListDB[i]->Id == ordenID) {
+            orden = OrdenListDB[i];
+            return orden;
+        }
+    }
+    return orden;
+}
+
+List<Orden^>^ STPUCPPersistance::Persistance::QueryAllOrders()
+{
+    OrdenListDB = (List<Orden^>^) LoadTextFile(ORDER_FILE_NAME);
+    if (OrdenListDB == nullptr)
+        OrdenListDB = gcnew List<Orden^>();
+    return OrdenListDB;
+}
+
+int STPUCPPersistance::Persistance::AddBL_Pasajero(Pasajero^ BL_Pasajero)
+{
+    if (BL_Pasajero->ListaNegra) {
+        BL_PasajeroListDB->Add(BL_Pasajero);
+        PersistTextFile(BL_PASAJEROS_FILE_NAME, BL_PasajeroListDB);
+        return 1;
+    }
+    return 0;
+}   
+
+void STPUCPPersistance::Persistance::UpdateBL_Pasajero(Pasajero^ BL_Pasajero)
+{
+    for (int i = 0; i < BL_PasajeroListDB->Count; i++) {
+        if (BL_PasajeroListDB[i]->Id == BL_Pasajero->Id) {
+            BL_PasajeroListDB[i] = BL_Pasajero;
+            PersistTextFile(BL_PASAJEROS_FILE_NAME, BL_PasajeroListDB);
+            break;
+        }
+    }
+}
+
+void STPUCPPersistance::Persistance::DeleteBL_Pasajero(int BL_PasajeroID)
+{
+    for (int i = 0; i < BL_PasajeroListDB->Count; i++) {
+        if (BL_PasajeroListDB[i]->Id == BL_PasajeroID) {
+            BL_PasajeroListDB->RemoveAt(i);
+            PersistTextFile(BL_PASAJEROS_FILE_NAME, BL_PasajeroListDB);
+            break;
+        }
+    }
+}
+
+Pasajero^ STPUCPPersistance::Persistance::QueryBL_PasajeroById(int BL_PasajeroID)
+{
+    BL_PasajeroListDB = (List<Pasajero^>^) LoadTextFile(BL_PASAJEROS_FILE_NAME);
+    Pasajero^ BL_pasajero = nullptr;
+    for (int i = 0; i < BL_PasajeroListDB->Count; i++) {
+        if (BL_PasajeroListDB[i]->Id == BL_PasajeroID) {
+            BL_pasajero = BL_PasajeroListDB[i];
+            return BL_pasajero;
+        }
+    }
+    return BL_pasajero;
+}
+
+List<Pasajero^>^ STPUCPPersistance::Persistance::QueryAllBL_Pasajeros()
+{
+    BL_PasajeroListDB = (List<Pasajero^>^) LoadTextFile(BL_PASAJEROS_FILE_NAME);
+    if (BL_PasajeroListDB == nullptr)
+        BL_PasajeroListDB = gcnew List<Pasajero^>();
+    return BL_PasajeroListDB;
+}
+
+int STPUCPPersistance::Persistance::AddBL_Conductor(Conductor^ BL_Conductor)
+{
+    if (BL_Conductor->ListaNegra) {
+        BL_ConductorListDB->Add(BL_Conductor);
+        PersistTextFile(BL_CONDUCTORES_FILE_NAME, BL_ConductorListDB);
+        return 1;
+    }
+    return 0;
+}
+
+void STPUCPPersistance::Persistance::UpdateBL_Conductor(Conductor^ BL_Conductor)
+{
+    for (int i = 0; i < BL_ConductorListDB->Count; i++) {
+        if (BL_ConductorListDB[i]->Id == BL_Conductor->Id) {
+            BL_ConductorListDB[i] = BL_Conductor;
+            PersistTextFile(BL_CONDUCTORES_FILE_NAME, BL_ConductorListDB);
+            break;
+        }
+    }
+}
+
+void STPUCPPersistance::Persistance::DeleteBL_Conductor(int BL_ConductorID)
+{
+    for (int i = 0; i < BL_ConductorListDB->Count; i++) {
+        if (BL_ConductorListDB[i]->Id == BL_ConductorID) {
+            BL_ConductorListDB->RemoveAt(i);
+            PersistTextFile(BL_CONDUCTORES_FILE_NAME, BL_ConductorListDB);
+            break;
+        }
+    }
+}
+
+Conductor^ STPUCPPersistance::Persistance::QueryBL_ConductorById(int BL_ConductorID)
+{
+    BL_ConductorListDB = (List<Conductor^>^) LoadTextFile(BL_CONDUCTORES_FILE_NAME);
+    Conductor^ BL_conductor = nullptr;
+    for (int i = 0; i < BL_ConductorListDB->Count; i++) {
+        if (BL_ConductorListDB[i]->Id == BL_ConductorID) {
+            BL_conductor = BL_ConductorListDB[i];
+            return BL_conductor;
+        }
+    }
+    return BL_conductor;
+}
+
+List<Conductor^>^ STPUCPPersistance::Persistance::QueryAllBL_Conductores()
+{
+    BL_ConductorListDB = (List<Conductor^>^) LoadTextFile(BL_CONDUCTORES_FILE_NAME);
+    if (BL_ConductorListDB == nullptr)
+        BL_ConductorListDB = gcnew List<Conductor^>();
+    return BL_ConductorListDB;
 }
 
 
