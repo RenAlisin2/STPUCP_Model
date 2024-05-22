@@ -16,9 +16,6 @@ namespace STPUCPPersistance {
 		static List<Pasajero^>^ BL_PasajeroListDB = gcnew List<Pasajero^>();
 		static List<Conductor^>^ BL_ConductorListDB = gcnew List<Conductor^>();
 
-	public:
-		static String^ USUARIO_FILE_NAME = "UsuariosDB.txt";
-
 		static void PersistTextFile(String^ fileName, Object^ persistObject);
 		static void PersistXMLFile(String^ fileName, Object^ persistObject);
 		static void PersistBinaryFile(String^ fileName, Object^ persistObject);
@@ -27,6 +24,11 @@ namespace STPUCPPersistance {
 		static Object^ LoadXMLFile(String^ fileName);
 		static Object^ LoadBinaryFile(String^ fileName);
 
+
+	public:
+
+		static String^ BIN_USUARIO_FILE_NAME = "UsuariosDB.bin";
+		static String^ TXT_USUARIO_FILE_NAME = "UsuariosDB.txt";
 		static int AddUser(Usuario^ Usuario);
 		static void UpdateUser(Usuario^ Usuario);
 		static void DeleteUser(int UsuarioID);

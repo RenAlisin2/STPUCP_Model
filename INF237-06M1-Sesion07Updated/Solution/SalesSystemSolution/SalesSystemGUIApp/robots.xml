@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfRobotWaiter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <RobotWaiter>
+    <Speed>1.2</Speed>
+    <LoadCapacity>40</LoadCapacity>
+    <Model>BellaBot</Model>
+    <Brand>Pudu</Brand>
+    <Name>Kitty</Name>
+    <Id>1</Id>
+  </RobotWaiter>
+  <RobotWaiter>
+    <Speed>1.2</Speed>
+    <LoadCapacity>45</LoadCapacity>
+    <Model>DinerBot</Model>
+    <Brand>Keenon</Brand>
+    <Name>Jaime</Name>
+    <Id>2</Id>
+  </RobotWaiter>
+  <RobotWaiter>
+    <Speed>1.2</Speed>
+    <LoadCapacity>60</LoadCapacity>
+    <Model>LuckyBot Pro</Model>
+    <Brand>OrionStar</Brand>
+    <Name>Perkins</Name>
+    <Id>3</Id>
+  </RobotWaiter>
+  <RobotWaiter>
+    <Speed>1.2</Speed>
+    <LoadCapacity>40</LoadCapacity>
+    <Model>CADEBOT L100</Model>
+    <Brand>UBTECH</Brand>
+    <Name>Don Gato</Name>
+    <Id>4</Id>
+  </RobotWaiter>
+</ArrayOfRobotWaiter>

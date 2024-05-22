@@ -10,6 +10,7 @@ using namespace System;
 #include "Pasajero.h"
 
 namespace STPUCP_Model {
+    [Serializable]
     public ref class Conductor : public Usuario {
     public:
         property String^ ModeloCarro;

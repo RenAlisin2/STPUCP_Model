@@ -8,6 +8,7 @@
 using namespace System;
 
 namespace STPUCP_Model {
+    [Serializable]
     public ref class Usuario {
     public:
         property int Id;

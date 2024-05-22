@@ -82,6 +82,14 @@ namespace STPUCPAdminGUIView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ApellidoPaterno;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ApellidoMaterno;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ CodigoPUCP;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Contraseña;
+	private: System::Windows::Forms::TextBox^ txtContraseña;
+	private: System::Windows::Forms::Label^ label1;
+
+
+
+
+
 
 
 
@@ -126,11 +134,6 @@ namespace STPUCPAdminGUIView {
 			this->btnModificar = (gcnew System::Windows::Forms::Button());
 			this->btnEliminar = (gcnew System::Windows::Forms::Button());
 			this->dgvUsuarios = (gcnew System::Windows::Forms::DataGridView());
-			this->UsuarioID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->UsuarioNombre = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->ApellidoPaterno = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->ApellidoMaterno = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->CodigoPUCP = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->txtNombre = (gcnew System::Windows::Forms::TextBox());
 			this->lblApellidoPaterno = (gcnew System::Windows::Forms::Label());
 			this->lblApellidoMaterno = (gcnew System::Windows::Forms::Label());
@@ -138,6 +141,14 @@ namespace STPUCPAdminGUIView {
 			this->txtApellidoMaterno = (gcnew System::Windows::Forms::TextBox());
 			this->lblCodigoPUCP = (gcnew System::Windows::Forms::Label());
 			this->txtCodigoPUCP = (gcnew System::Windows::Forms::TextBox());
+			this->txtContraseña = (gcnew System::Windows::Forms::TextBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->UsuarioID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->UsuarioNombre = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->ApellidoPaterno = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->ApellidoMaterno = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->CodigoPUCP = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Contraseña = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvUsuarios))->BeginInit();
 			this->SuspendLayout();
@@ -241,9 +252,9 @@ namespace STPUCPAdminGUIView {
 			// dgvUsuarios
 			// 
 			this->dgvUsuarios->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dgvUsuarios->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
+			this->dgvUsuarios->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 				this->UsuarioID,
-					this->UsuarioNombre, this->ApellidoPaterno, this->ApellidoMaterno, this->CodigoPUCP
+					this->UsuarioNombre, this->ApellidoPaterno, this->ApellidoMaterno, this->CodigoPUCP, this->Contraseña
 			});
 			this->dgvUsuarios->Location = System::Drawing::Point(12, 266);
 			this->dgvUsuarios->Name = L"dgvUsuarios";
@@ -251,32 +262,6 @@ namespace STPUCPAdminGUIView {
 			this->dgvUsuarios->TabIndex = 10;
 			this->dgvUsuarios->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &UsuariosForm::dgvUsuarios_CellClick);
 			this->dgvUsuarios->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &UsuariosForm::dgvUsuarios_CellContentClick);
-			// 
-			// UsuarioID
-			// 
-			this->UsuarioID->HeaderText = L"ID";
-			this->UsuarioID->Name = L"UsuarioID";
-			this->UsuarioID->Width = 50;
-			// 
-			// UsuarioNombre
-			// 
-			this->UsuarioNombre->HeaderText = L"Nombre";
-			this->UsuarioNombre->Name = L"UsuarioNombre";
-			// 
-			// ApellidoPaterno
-			// 
-			this->ApellidoPaterno->HeaderText = L"Apellido Paterno";
-			this->ApellidoPaterno->Name = L"ApellidoPaterno";
-			// 
-			// ApellidoMaterno
-			// 
-			this->ApellidoMaterno->HeaderText = L"Apellido Materno";
-			this->ApellidoMaterno->Name = L"ApellidoMaterno";
-			// 
-			// CodigoPUCP
-			// 
-			this->CodigoPUCP->HeaderText = L"Codigo PUCP";
-			this->CodigoPUCP->Name = L"CodigoPUCP";
 			// 
 			// txtNombre
 			// 
@@ -340,11 +325,60 @@ namespace STPUCPAdminGUIView {
 			this->txtCodigoPUCP->TabIndex = 17;
 			this->txtCodigoPUCP->TextChanged += gcnew System::EventHandler(this, &UsuariosForm::txtCodigoPUCP_TextChanged);
 			// 
+			// txtContraseña
+			// 
+			this->txtContraseña->Location = System::Drawing::Point(134, 177);
+			this->txtContraseña->Name = L"txtContraseña";
+			this->txtContraseña->Size = System::Drawing::Size(140, 20);
+			this->txtContraseña->TabIndex = 19;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(17, 177);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(64, 13);
+			this->label1->TabIndex = 18;
+			this->label1->Text = L"Contraseña:";
+			// 
+			// UsuarioID
+			// 
+			this->UsuarioID->HeaderText = L"ID";
+			this->UsuarioID->Name = L"UsuarioID";
+			this->UsuarioID->Width = 50;
+			// 
+			// UsuarioNombre
+			// 
+			this->UsuarioNombre->HeaderText = L"Nombre";
+			this->UsuarioNombre->Name = L"UsuarioNombre";
+			// 
+			// ApellidoPaterno
+			// 
+			this->ApellidoPaterno->HeaderText = L"Apellido Paterno";
+			this->ApellidoPaterno->Name = L"ApellidoPaterno";
+			// 
+			// ApellidoMaterno
+			// 
+			this->ApellidoMaterno->HeaderText = L"Apellido Materno";
+			this->ApellidoMaterno->Name = L"ApellidoMaterno";
+			// 
+			// CodigoPUCP
+			// 
+			this->CodigoPUCP->HeaderText = L"Codigo PUCP";
+			this->CodigoPUCP->Name = L"CodigoPUCP";
+			// 
+			// Contraseña
+			// 
+			this->Contraseña->HeaderText = L"Contraseña";
+			this->Contraseña->Name = L"Contraseña";
+			// 
 			// UsuariosForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(506, 541);
+			this->Controls->Add(this->txtContraseña);
+			this->Controls->Add(this->label1);
 			this->Controls->Add(this->txtCodigoPUCP);
 			this->Controls->Add(this->lblCodigoPUCP);
 			this->Controls->Add(this->txtApellidoMaterno);
@@ -380,6 +414,7 @@ namespace STPUCPAdminGUIView {
 		usuario->ApellidoPaterno = txtApellidoPaterno->Text;
 		usuario->ApellidoMaterno = txtApellidoMaterno->Text;
 		usuario->CodigoPUCP = Int32::Parse(txtCodigoPUCP->Text);
+		usuario->Contraseña = txtContraseña->Text;
 
 		STPUCPAdminController::controller::AddUser(usuario);
 				RefreshGrid();
@@ -390,7 +425,7 @@ namespace STPUCPAdminGUIView {
 			   dgvUsuarios->Rows->Clear();
 			   for (int i = 0; i < UsuarioList->Count; i++) {
 				   Usuario^ usuario = UsuarioList[i];
-				   dgvUsuarios->Rows->Add(gcnew array<String^> {"" + usuario->Id, usuario->Nombre, usuario->ApellidoPaterno, usuario->ApellidoMaterno, "" + usuario->CodigoPUCP});
+				   dgvUsuarios->Rows->Add(gcnew array<String^> {"" + usuario->Id, usuario->Nombre, usuario->ApellidoPaterno, usuario->ApellidoMaterno, "" + usuario->CodigoPUCP, usuario->Contraseña});
 			   }
 		   }
 	private: System::Void dgvUsuarios_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
@@ -401,6 +436,7 @@ namespace STPUCPAdminGUIView {
 		txtApellidoPaterno->Text = Usuario->ApellidoPaterno;
 		txtApellidoMaterno->Text = Usuario->ApellidoMaterno;
 		txtCodigoPUCP->Text = "" + Usuario->CodigoPUCP;
+		txtContraseña->Text = Usuario->Contraseña;
      }
 		   
 private: System::Void btnModificar_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -411,7 +447,7 @@ private: System::Void btnModificar_Click(System::Object^ sender, System::EventAr
 	Usuario->ApellidoPaterno = txtApellidoPaterno->Text ;
 	Usuario->ApellidoMaterno = txtApellidoMaterno->Text ;
 	Usuario->CodigoPUCP = Int32::Parse(txtCodigoPUCP->Text);
-
+	Usuario->Contraseña = txtContraseña->Text;
 	controller::UpdateUser(Usuario);
 	RefreshGrid();
 }

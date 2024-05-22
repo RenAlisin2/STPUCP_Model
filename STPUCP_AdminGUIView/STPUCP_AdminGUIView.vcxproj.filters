@@ -80,6 +80,9 @@
     <ClInclude Include="BL_PasajerosForm.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="RegistroConductorForm.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="STPUCP_AdminGUIView.cpp">
@@ -143,6 +146,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
     <ClCompile Include="BL_PasajerosForm.cpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClCompile>
+    <ClCompile Include="RegistroConductorForm.cpp">
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
   </ItemGroup>

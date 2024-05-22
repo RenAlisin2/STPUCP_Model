@@ -1,5 +1,5 @@
 #pragma once
-#include "ServicioDriverForm.h"
+#include "RegistroConductorForm.h"
 #include "PasajeroForm.h"
 
 namespace STPUCPAdminGUIView {
@@ -101,10 +101,10 @@ namespace STPUCPAdminGUIView {
 
 
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		ServicioDriverForm^ servicioDriverform = gcnew ServicioDriverForm();
+		RegistroConductorForm^ registroConductorForm = gcnew RegistroConductorForm();
 		this->Close();
-		servicioDriverform->TopMost = true;
-		servicioDriverform->Show();
+		registroConductorForm->TopMost = true;
+		registroConductorForm->Show();
 	}
 	private: System::Void btnIngresarPasajero_Click(System::Object^ sender, System::EventArgs^ e) {
 		STPUCPAdminGUIView::PasajeroForm^ pasajeroForm = gcnew STPUCPAdminGUIView::PasajeroForm();

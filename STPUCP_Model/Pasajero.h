@@ -9,6 +9,7 @@
 using namespace System;
 
 namespace STPUCP_Model {
+    [Serializable]
     public ref  class Pasajero : public Usuario {
     public:
         property int CantServiciosTomados;

@@ -2,7 +2,8 @@
 
 #include "STPUCP_Persistance.h"
 using namespace System::IO;
-
+using namespace System::Xml::Serialization;
+using namespace System::Runtime::Serialization::Formatters::Binary;
 void STPUCPPersistance::Persistance::PersistTextFile(String^ fileName, Object^ persistObject)
 {
     FileStream^ file;
@@ -66,7 +67,19 @@ void STPUCPPersistance::Persistance::PersistXMLFile(String^ fileName, Object^ pe
 
 void STPUCPPersistance::Persistance::PersistBinaryFile(String^ fileName, Object^ persistObject)
 {
-    throw gcnew System::NotImplementedException();
+    FileStream^ file;
+    BinaryFormatter^ formatter = gcnew BinaryFormatter();
+    try {
+        file = gcnew FileStream(fileName, FileMode::Create, FileAccess::Write);
+        formatter->Serialize(file, persistObject);
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        if (file != nullptr) file->Close();
+    }
+
 }
 
 Object^ STPUCPPersistance::Persistance::LoadTextFile(String^ fileName)
@@ -77,7 +90,7 @@ Object^ STPUCPPersistance::Persistance::LoadTextFile(String^ fileName)
     if (File::Exists(fileName)) {
         file = gcnew FileStream(fileName, FileMode::Open, FileAccess::Read);
         reader = gcnew StreamReader(file);
-        if (fileName->Equals(USUARIO_FILE_NAME)) {
+        if (fileName->Equals(TXT_USUARIO_FILE_NAME)) {
             result = gcnew List<Usuario^>();
             while (true) {
                 String^ line = reader->ReadLine();
@@ -188,14 +201,30 @@ Object^ STPUCPPersistance::Persistance::LoadXMLFile(String^ fileName)
 
 Object^ STPUCPPersistance::Persistance::LoadBinaryFile(String^ fileName)
 {
-    throw gcnew System::NotImplementedException();
-    // TODO: Insertar una instrucción "return" aquí
+    FileStream^ file;
+    Object^ result;
+    BinaryFormatter^ formatter;
+    try {
+        if (File::Exists(fileName)) {
+            file = gcnew FileStream(fileName, FileMode::Open, FileAccess::Read);
+            formatter = gcnew BinaryFormatter();
+            result = formatter->Deserialize(file);
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        if (file != nullptr) file->Close();
+    }
+
+    return result;
 }
 
 int STPUCPPersistance::Persistance::AddUser(Usuario^ Usuario)
 {
     UsuarioListDB->Add(Usuario);
-    PersistTextFile(USUARIO_FILE_NAME, UsuarioListDB);
+    PersistBinaryFile(BIN_USUARIO_FILE_NAME, UsuarioListDB);
     return 1;
 }
 
@@ -204,7 +233,7 @@ void STPUCPPersistance::Persistance::UpdateUser(Usuario^ Usuario)
     for (int i = 0; i < UsuarioListDB->Count; i++) {
         if (UsuarioListDB[i]->Id == Usuario->Id) {
             UsuarioListDB[i] = Usuario;
-            PersistTextFile(USUARIO_FILE_NAME, UsuarioListDB);
+            PersistBinaryFile(BIN_USUARIO_FILE_NAME, UsuarioListDB);
             return;
         }
     }
@@ -215,7 +244,7 @@ void STPUCPPersistance::Persistance::DeleteUser(int UsuarioID)
     for (int i = 0; i < UsuarioListDB->Count; i++) {
         if (UsuarioListDB[i]->Id == UsuarioID) {
             UsuarioListDB->RemoveAt(i);
-            PersistTextFile(USUARIO_FILE_NAME, UsuarioListDB);
+            PersistBinaryFile(BIN_USUARIO_FILE_NAME, UsuarioListDB);
             return;
         }
     }
@@ -223,7 +252,7 @@ void STPUCPPersistance::Persistance::DeleteUser(int UsuarioID)
 
 Usuario^ STPUCPPersistance::Persistance::QueryUsersById(int UsuarioID)
 {
-    UsuarioListDB = (List<Usuario^>^) LoadTextFile(USUARIO_FILE_NAME);
+    UsuarioListDB = (List<Usuario^>^) LoadBinaryFile(BIN_USUARIO_FILE_NAME);
     Usuario^ Usuario = nullptr;
     for (int i = 0; i < UsuarioListDB->Count; i++) {
         if (UsuarioListDB[i]->Id == UsuarioID) {
@@ -237,7 +266,7 @@ Usuario^ STPUCPPersistance::Persistance::QueryUsersById(int UsuarioID)
 
 List<Usuario^>^ STPUCPPersistance::Persistance::QueryAllUsers()
 {
-    UsuarioListDB = (List<Usuario^>^) LoadTextFile(USUARIO_FILE_NAME);
+    UsuarioListDB = (List<Usuario^>^) LoadBinaryFile(BIN_USUARIO_FILE_NAME);
     if (UsuarioListDB == nullptr)
         UsuarioListDB = gcnew List<Usuario^>();
     return UsuarioListDB;
