@@ -1,7 +1,8 @@
 #pragma once
 
 #include "RegistroForm.h"
-#include "QuesoyForm.h"
+
+//#include "AdminMainForm.h"
 
 namespace STPUCPAdminGUIView {
 
@@ -11,6 +12,7 @@ namespace STPUCPAdminGUIView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace STPUCPAdminController;
 
 	/// <summary>
 	/// Resumen de LoginForm
@@ -100,10 +102,11 @@ namespace STPUCPAdminGUIView {
 			this->txtContraseña->Size = System::Drawing::Size(205, 20);
 			this->txtContraseña->TabIndex = 3;
 			this->txtContraseña->UseSystemPasswordChar = true;
+			this->txtContraseña->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &LoginForm::txtContraseña_KeyDown);
 			// 
 			// btnIngresar
 			// 
-			this->btnIngresar->Location = System::Drawing::Point(154, 125);
+			this->btnIngresar->Location = System::Drawing::Point(156, 132);
 			this->btnIngresar->Name = L"btnIngresar";
 			this->btnIngresar->Size = System::Drawing::Size(158, 31);
 			this->btnIngresar->TabIndex = 4;
@@ -144,6 +147,7 @@ namespace STPUCPAdminGUIView {
 			this->Controls->Add(this->label1);
 			this->Name = L"LoginForm";
 			this->Text = L"LoginForm";
+//			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &LoginForm::LoginForm_FormClosing);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -151,36 +155,21 @@ namespace STPUCPAdminGUIView {
 #pragma endregion
 	
 
-private: System::Void btnRegistrarse_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void btnRegistrarse_Click(System::Object^ sender, System::EventArgs^ e){
+	
 	RegistroForm^ registroform = gcnew RegistroForm();
-	registroform->TopMost = true;
-	registroform->Show();
+		
+	registroform->ShowDialog();
+
 
 }
-private: System::Void btnIngresar_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void btnIngresar_Click(System::Object^ sender, System::EventArgs^ e); 
+//private: System::Void LoginForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e); 
 	
 	
-	/*
-	String^ username = txtUsuario->Text;
-	String^ password = txtContraseña->Text;
-
-	Usuario^ usuarios = STPUCPAdminController::controller::ValidarUsuario(codigoPUCP, password);
-	
-
-	if (emp != nullptr) {
-
-	}
-	else {
-		MessageBox::Show("Usuario y contraseña incorrectos")
-	}
-	
-	
-	QuesoyForm^ quesoyform = gcnew QuesoyForm();
-	this->Close();
-	quesoyform->TopMost = true;
-	quesoyform->Show();
-	*/
+private: System::Void txtContraseña_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+	if (e->KeyData == Keys::Enter)
+		btnIngresar->PerformClick();
 }
-
 };
 }

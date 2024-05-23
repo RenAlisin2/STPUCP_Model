@@ -105,8 +105,7 @@ namespace STPUCPAdminGUIView {
 			PasajeroRutaForm^ rutaForm = gcnew PasajeroRutaForm();
 			// Mostrar la ventana 
 			this->Close();
-			rutaForm->TopMost = true;
-			rutaForm->Show();
+			rutaForm->ShowDialog();
 		}
 	}
 	};
