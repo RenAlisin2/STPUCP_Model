@@ -65,6 +65,14 @@ void STPUCPPersistance::Persistance::PersistXMLFile(String^ fileName, Object^ pe
     throw gcnew System::NotImplementedException();
 }
 
+
+
+
+
+
+
+
+
 void STPUCPPersistance::Persistance::PersistBinaryFile(String^ fileName, Object^ persistObject)
 {
     FileStream^ file;
@@ -81,6 +89,29 @@ void STPUCPPersistance::Persistance::PersistBinaryFile(String^ fileName, Object^
     }
 
 }
+
+Object^ STPUCPPersistance::Persistance::LoadBinaryFile(String^ fileName)
+{
+    FileStream^ file;
+    Object^ result;
+    BinaryFormatter^ formatter;
+    try {
+        if (File::Exists(fileName)) {
+            file = gcnew FileStream(fileName, FileMode::Open, FileAccess::Read);
+            formatter = gcnew BinaryFormatter();
+            result = formatter->Deserialize(file);
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        if (file != nullptr) file->Close();
+    }
+
+    return result;
+}
+
 
 Object^ STPUCPPersistance::Persistance::LoadTextFile(String^ fileName)
 {
@@ -199,27 +230,13 @@ Object^ STPUCPPersistance::Persistance::LoadXMLFile(String^ fileName)
     // TODO: Insertar una instrucción "return" aquí
 }
 
-Object^ STPUCPPersistance::Persistance::LoadBinaryFile(String^ fileName)
-{
-    FileStream^ file;
-    Object^ result;
-    BinaryFormatter^ formatter;
-    try {
-        if (File::Exists(fileName)) {
-            file = gcnew FileStream(fileName, FileMode::Open, FileAccess::Read);
-            formatter = gcnew BinaryFormatter();
-            result = formatter->Deserialize(file);
-        }
-    }
-    catch (Exception^ ex) {
-        throw ex;
-    }
-    finally {
-        if (file != nullptr) file->Close();
-    }
 
-    return result;
-}
+
+
+
+
+
+//PERSISTENCIAS//
 
 int STPUCPPersistance::Persistance::AddUser(Usuario^ Usuario)
 {
@@ -578,4 +595,14 @@ List<Viaje^>^ STPUCPPersistance::Persistance::consultarViajes()
     if (ViajeConductorDB == nullptr)
         ViajeConductorDB = gcnew List<Viaje^>();
     return ViajeConductorDB;
+}
+
+Usuario^ STPUCPPersistance::Persistance::ValidarUsuario(int codigoPucp, String^ password)
+{
+    List<Usuario^>^ UsersList = QueryAllUsers();
+    for (int i = 0; i < UsersList->Count; i++) {
+        if (UsersList[i]->Nombre->Equals(codigoPucp) && UsersList[i]->Contraseña->Equals(password)) {
+            return UsersList[i];
+        }
+    }
 }

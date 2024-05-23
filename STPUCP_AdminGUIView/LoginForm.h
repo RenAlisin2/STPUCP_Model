@@ -158,10 +158,29 @@ private: System::Void btnRegistrarse_Click(System::Object^ sender, System::Event
 
 }
 private: System::Void btnIngresar_Click(System::Object^ sender, System::EventArgs^ e) {
+	
+	
+	/*
+	String^ username = txtUsuario->Text;
+	String^ password = txtContraseña->Text;
+
+	Usuario^ usuarios = STPUCPAdminController::controller::ValidarUsuario(codigoPUCP, password);
+	
+
+	if (emp != nullptr) {
+
+	}
+	else {
+		MessageBox::Show("Usuario y contraseña incorrectos")
+	}
+	
+	
 	QuesoyForm^ quesoyform = gcnew QuesoyForm();
 	this->Close();
 	quesoyform->TopMost = true;
 	quesoyform->Show();
+	*/
 }
+
 };
 }

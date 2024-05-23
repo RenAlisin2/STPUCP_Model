@@ -13,6 +13,7 @@ namespace STPUCPPersistance {
 		static List<Promocion^>^ PromocionesListDB = gcnew List<Promocion^>();
 		static List<Viaje^>^ ViajeConductorDB = gcnew List<Viaje^>();
 		static List<Orden^>^ OrdenListDB = gcnew List<Orden^>();
+
 		static List<Pasajero^>^ BL_PasajeroListDB = gcnew List<Pasajero^>();
 		static List<Conductor^>^ BL_ConductorListDB = gcnew List<Conductor^>();
 
@@ -83,6 +84,7 @@ namespace STPUCPPersistance {
 		static Viaje^ ConsultarviajeporID(int viajeId);
 		static List<Viaje^>^ consultarViajes();
 
+		static Usuario^ ValidarUsuario(int codigoPUCP, String^ password);
 
 		
 

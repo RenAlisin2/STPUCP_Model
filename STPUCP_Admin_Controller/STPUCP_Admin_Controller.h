@@ -62,5 +62,7 @@ namespace STPUCPAdminController {
 		static List<Viaje^>^ consultarViajes();
 		static Viaje^ ConsultarviajeporID(int viajeid);
 		
+
+		static Usuario^ ValidarUsuario(int codigoPUCP, String^ password);
 	};
 }

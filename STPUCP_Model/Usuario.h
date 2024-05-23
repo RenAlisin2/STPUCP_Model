@@ -19,10 +19,13 @@ namespace STPUCP_Model {
         property String^ Correo;
         property String^ Contraseña;
         property String^ Nombre;
+        property String^ Rol;
+
+
         void Verificarcontraseña();
 
         Usuario();
-        Usuario(int id, String^ apellidoPaterno, String^ apellidoMaterno, int codigoPUCP, int numeroTelefono, String^ correo, String^ contraseña, String^ nombre);
+        Usuario(int id, String^ apellidoPaterno, String^ apellidoMaterno, int codigoPUCP, int numeroTelefono, String^ correo, String^ contraseña, String^ nombre, String^ rol);
 
 
     };

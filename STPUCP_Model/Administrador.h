@@ -10,6 +10,7 @@
 using namespace System;
 
 namespace STPUCP_Model {
+    [Serializable]
     public ref class Administrador : public Usuario {
     public:
         property int CantCuentasModificadas;
@@ -23,8 +24,8 @@ namespace STPUCP_Model {
         void GenerarPromo();
 
         Administrador() {}
-        Administrador(int id, String^ apellidoPaterno, String^ apellidoMaterno, int codigoPUCP, int numeroTelefono, String^ correo, String^ contraseña, String^ nombre, int cantServiciosTransporteModificados, int cantCuentasModificadas) :
-        Usuario(id, apellidoPaterno, apellidoMaterno, codigoPUCP, numeroTelefono, correo, contraseña, nombre) {
+        Administrador(int id, String^ apellidoPaterno, String^ apellidoMaterno, int codigoPUCP, int numeroTelefono, String^ correo, String^ contraseña, String^ nombre, String^ rol, int cantServiciosTransporteModificados, int cantCuentasModificadas) :
+        Usuario(id, apellidoPaterno, apellidoMaterno, codigoPUCP, numeroTelefono, correo, contraseña, nombre, rol) {
             CantCuentasModificadas = cantCuentasModificadas;
             CantServiciosTransporteModificados = cantServiciosTransporteModificados;
         }
