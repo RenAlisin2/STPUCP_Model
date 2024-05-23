@@ -59,7 +59,7 @@ namespace STPUCPAdminGUIView {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(39, 35);
+			this->button1->Location = System::Drawing::Point(39, 43);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(426, 125);
 			this->button1->TabIndex = 0;
@@ -107,10 +107,8 @@ namespace STPUCPAdminGUIView {
 		registroConductorForm->Show();
 	}
 	private: System::Void btnIngresarPasajero_Click(System::Object^ sender, System::EventArgs^ e) {
-		STPUCPAdminGUIView::PasajeroForm^ pasajeroForm = gcnew STPUCPAdminGUIView::PasajeroForm();
 		this->Close();
-		pasajeroForm->TopMost = true;
-		pasajeroForm->ShowDialog();
+		
 	}
 	};
 

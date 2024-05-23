@@ -284,6 +284,8 @@ namespace STPUCPAdminGUIView {
 		conductor->PlacaCarro = txtPlacaCarro->Text;
 		conductor->ColorCarro = txtColorCarro->Text;
 		conductor->CantAsientos = Int32::Parse(txtCantidadAsientos->Text);
+
+
 		if (pBConductor != nullptr && pBConductor->Image != nullptr) {
 			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
 			pBConductor->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
@@ -295,14 +297,18 @@ namespace STPUCPAdminGUIView {
 			conductor->FotoCarro = ms->ToArray();
 		}
 
-		STPUCPAdminController::controller::AddUser(conductor);
-		MessageBox::Show("Conductor registrado exitosamente");
-		this->Close();
+		if ((txtModeloCarro->Text != "") && (txtPlacaCarro->Text != "") && (txtPlacaCarro->Text != "")) {
 
-		ServicioDriverForm^ servicioDriverform = gcnew ServicioDriverForm();
-		this->Close();
-		servicioDriverform->TopMost = true;
-		servicioDriverform->Show();
+
+			STPUCPAdminController::controller::AddUser(conductor);
+			MessageBox::Show("Conductor registrado exitosamente");
+			this->Close();
+		}
+		else
+		{
+
+			MessageBox::Show(" llenar todos los espacios", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
 	}
 private: System::Void btnConductor_Click(System::Object^ sender, System::EventArgs^ e) {
 	OpenFileDialog^ ofd = gcnew OpenFileDialog();

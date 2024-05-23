@@ -5,6 +5,7 @@ using namespace System::IO;
 using namespace System::Xml::Serialization;
 using namespace System::Runtime::Serialization::Formatters::Binary;
 void STPUCPPersistance::Persistance::PersistTextFile(String^ fileName, Object^ persistObject)
+
 {
     FileStream^ file;
     StreamWriter^ writer;
