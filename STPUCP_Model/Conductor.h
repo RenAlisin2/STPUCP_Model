@@ -27,7 +27,27 @@ namespace STPUCP_Model {
         property int TiempoPenalizacion;
         property String^ MotivoBan;
         property bool ListaNegra;
+        Conductor() {}
+        Conductor(int id, String^ apellidoPaterno, String^ apellidoMaterno, int codigoPUCP, int numeroTelefono, String^ correo, String^ contraseña, String^ nombre, String^ rol,
+            String^ modeloCarro, String^ placaCarro, String^ colorCarro, int cantAsientos, array<Byte>^ fotoConductor, 
+            array<Byte>^ fotoCarro, int dni, bool breveteConfirmacion, String^ huellaDactilar, double calificacion, 
+            int cantServiciosRealizados, int tiempoPenalizacion, String^ motivoBan, bool listaNegra) :
+            Usuario(id, apellidoPaterno, apellidoMaterno, codigoPUCP, numeroTelefono, correo, contraseña, nombre, rol) {
+            this->ModeloCarro = modeloCarro;
+            this->PlacaCarro = placaCarro;
+            this->CantAsientos = cantAsientos;
+            this->FotoConductor = fotoConductor;
+            this->FotoCarro = fotoCarro;
+            this->DNI = dni;
+            this->BreveteConfirmacion = breveteConfirmacion;
+            this->HuellaDactilar = huellaDactilar;
+            this->Calificacion = calificacion;
+            this->CantServiciosRealizados = cantServiciosRealizados;
+            this->TiempoPenalizacion = tiempoPenalizacion;
+            this->MotivoBan = motivoBan;
+            this->ListaNegra = listaNegra;
 
+        }
 
         void ValidarLicencia();
 

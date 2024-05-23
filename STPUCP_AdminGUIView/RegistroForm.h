@@ -36,23 +36,34 @@ namespace STPUCPAdminGUIView {
 			}
 		}
 	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::TextBox^ textNOMBRE;
+	private: System::Windows::Forms::TextBox^ textAP_MATERNO;
+
 	protected:
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::TextBox^ textBox2;
+
+
 	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::TextBox^ textBox3;
+	private: System::Windows::Forms::TextBox^ textAP_PATERNO;
+
 	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::TextBox^ textBox4;
+	private: System::Windows::Forms::TextBox^ textID;
+
 	private: System::Windows::Forms::Label^ label4;
-	private: System::Windows::Forms::TextBox^ textBox5;
+	private: System::Windows::Forms::TextBox^ text_telefono;
+
 	private: System::Windows::Forms::Label^ label5;
-	private: System::Windows::Forms::TextBox^ textBox6;
+	private: System::Windows::Forms::TextBox^ textCodigo;
+
 	private: System::Windows::Forms::Label^ label6;
-	private: System::Windows::Forms::TextBox^ textBox7;
+	private: System::Windows::Forms::TextBox^ text_contraseña;
+
 	private: System::Windows::Forms::Label^ label7;
-	private: System::Windows::Forms::TextBox^ textBox8;
+	private: System::Windows::Forms::TextBox^ textrepeat_contraseña;
+
+
 	private: System::Windows::Forms::Label^ label8;
-	private: System::Windows::Forms::TextBox^ textBox9;
+	private: System::Windows::Forms::TextBox^ text_correo;
+
 	private: System::Windows::Forms::Label^ label9;
 	private: System::Windows::Forms::Button^ button1;
 
@@ -72,22 +83,22 @@ namespace STPUCPAdminGUIView {
 		void InitializeComponent(void)
 		{
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->textNOMBRE = (gcnew System::Windows::Forms::TextBox());
+			this->textAP_MATERNO = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+			this->textAP_PATERNO = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
+			this->textID = (gcnew System::Windows::Forms::TextBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
+			this->text_telefono = (gcnew System::Windows::Forms::TextBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
+			this->textCodigo = (gcnew System::Windows::Forms::TextBox());
 			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->textBox7 = (gcnew System::Windows::Forms::TextBox());
+			this->text_contraseña = (gcnew System::Windows::Forms::TextBox());
 			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->textBox8 = (gcnew System::Windows::Forms::TextBox());
+			this->textrepeat_contraseña = (gcnew System::Windows::Forms::TextBox());
 			this->label8 = (gcnew System::Windows::Forms::Label());
-			this->textBox9 = (gcnew System::Windows::Forms::TextBox());
+			this->text_correo = (gcnew System::Windows::Forms::TextBox());
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
@@ -101,19 +112,19 @@ namespace STPUCPAdminGUIView {
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Ingrese su nombre";
 			// 
-			// textBox1
+			// textNOMBRE
 			// 
-			this->textBox1->Location = System::Drawing::Point(136, 33);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(260, 20);
-			this->textBox1->TabIndex = 1;
+			this->textNOMBRE->Location = System::Drawing::Point(136, 33);
+			this->textNOMBRE->Name = L"textNOMBRE";
+			this->textNOMBRE->Size = System::Drawing::Size(260, 20);
+			this->textNOMBRE->TabIndex = 1;
 			// 
-			// textBox2
+			// textAP_MATERNO
 			// 
-			this->textBox2->Location = System::Drawing::Point(181, 85);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(215, 20);
-			this->textBox2->TabIndex = 3;
+			this->textAP_MATERNO->Location = System::Drawing::Point(181, 85);
+			this->textAP_MATERNO->Name = L"textAP_MATERNO";
+			this->textAP_MATERNO->Size = System::Drawing::Size(215, 20);
+			this->textAP_MATERNO->TabIndex = 3;
 			// 
 			// label2
 			// 
@@ -124,12 +135,12 @@ namespace STPUCPAdminGUIView {
 			this->label2->TabIndex = 2;
 			this->label2->Text = L"Ingrese su Apellido Materno";
 			// 
-			// textBox3
+			// textAP_PATERNO
 			// 
-			this->textBox3->Location = System::Drawing::Point(181, 59);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(215, 20);
-			this->textBox3->TabIndex = 5;
+			this->textAP_PATERNO->Location = System::Drawing::Point(181, 59);
+			this->textAP_PATERNO->Name = L"textAP_PATERNO";
+			this->textAP_PATERNO->Size = System::Drawing::Size(215, 20);
+			this->textAP_PATERNO->TabIndex = 5;
 			// 
 			// label3
 			// 
@@ -140,12 +151,12 @@ namespace STPUCPAdminGUIView {
 			this->label3->TabIndex = 4;
 			this->label3->Text = L"Ingrese su Apellido Paterno";
 			// 
-			// textBox4
+			// textID
 			// 
-			this->textBox4->Location = System::Drawing::Point(120, 137);
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(276, 20);
-			this->textBox4->TabIndex = 11;
+			this->textID->Location = System::Drawing::Point(120, 137);
+			this->textID->Name = L"textID";
+			this->textID->Size = System::Drawing::Size(276, 20);
+			this->textID->TabIndex = 11;
 			// 
 			// label4
 			// 
@@ -156,12 +167,12 @@ namespace STPUCPAdminGUIView {
 			this->label4->TabIndex = 10;
 			this->label4->Text = L"Ingrese su DNI";
 			// 
-			// textBox5
+			// text_telefono
 			// 
-			this->textBox5->Location = System::Drawing::Point(181, 163);
-			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(215, 20);
-			this->textBox5->TabIndex = 9;
+			this->text_telefono->Location = System::Drawing::Point(181, 163);
+			this->text_telefono->Name = L"text_telefono";
+			this->text_telefono->Size = System::Drawing::Size(215, 20);
+			this->text_telefono->TabIndex = 9;
 			// 
 			// label5
 			// 
@@ -172,12 +183,12 @@ namespace STPUCPAdminGUIView {
 			this->label5->TabIndex = 8;
 			this->label5->Text = L"Ingrese su número telefónico";
 			// 
-			// textBox6
+			// textCodigo
 			// 
-			this->textBox6->Location = System::Drawing::Point(165, 111);
-			this->textBox6->Name = L"textBox6";
-			this->textBox6->Size = System::Drawing::Size(231, 20);
-			this->textBox6->TabIndex = 7;
+			this->textCodigo->Location = System::Drawing::Point(165, 111);
+			this->textCodigo->Name = L"textCodigo";
+			this->textCodigo->Size = System::Drawing::Size(231, 20);
+			this->textCodigo->TabIndex = 7;
 			// 
 			// label6
 			// 
@@ -188,12 +199,12 @@ namespace STPUCPAdminGUIView {
 			this->label6->TabIndex = 6;
 			this->label6->Text = L"Ingrese su código PUCP";
 			// 
-			// textBox7
+			// text_contraseña
 			// 
-			this->textBox7->Location = System::Drawing::Point(161, 215);
-			this->textBox7->Name = L"textBox7";
-			this->textBox7->Size = System::Drawing::Size(235, 20);
-			this->textBox7->TabIndex = 17;
+			this->text_contraseña->Location = System::Drawing::Point(161, 215);
+			this->text_contraseña->Name = L"text_contraseña";
+			this->text_contraseña->Size = System::Drawing::Size(235, 20);
+			this->text_contraseña->TabIndex = 17;
 			// 
 			// label7
 			// 
@@ -204,12 +215,12 @@ namespace STPUCPAdminGUIView {
 			this->label7->TabIndex = 16;
 			this->label7->Text = L"Ingrese una contraseña";
 			// 
-			// textBox8
+			// textrepeat_contraseña
 			// 
-			this->textBox8->Location = System::Drawing::Point(161, 241);
-			this->textBox8->Name = L"textBox8";
-			this->textBox8->Size = System::Drawing::Size(235, 20);
-			this->textBox8->TabIndex = 15;
+			this->textrepeat_contraseña->Location = System::Drawing::Point(161, 241);
+			this->textrepeat_contraseña->Name = L"textrepeat_contraseña";
+			this->textrepeat_contraseña->Size = System::Drawing::Size(235, 20);
+			this->textrepeat_contraseña->TabIndex = 15;
 			// 
 			// label8
 			// 
@@ -220,12 +231,12 @@ namespace STPUCPAdminGUIView {
 			this->label8->TabIndex = 14;
 			this->label8->Text = L"Repita esa contraseña";
 			// 
-			// textBox9
+			// text_correo
 			// 
-			this->textBox9->Location = System::Drawing::Point(181, 189);
-			this->textBox9->Name = L"textBox9";
-			this->textBox9->Size = System::Drawing::Size(215, 20);
-			this->textBox9->TabIndex = 13;
+			this->text_correo->Location = System::Drawing::Point(181, 189);
+			this->text_correo->Name = L"text_correo";
+			this->text_correo->Size = System::Drawing::Size(215, 20);
+			this->text_correo->TabIndex = 13;
 			// 
 			// label9
 			// 
@@ -252,23 +263,23 @@ namespace STPUCPAdminGUIView {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(448, 353);
 			this->Controls->Add(this->button1);
-			this->Controls->Add(this->textBox7);
+			this->Controls->Add(this->text_contraseña);
 			this->Controls->Add(this->label7);
-			this->Controls->Add(this->textBox8);
+			this->Controls->Add(this->textrepeat_contraseña);
 			this->Controls->Add(this->label8);
-			this->Controls->Add(this->textBox9);
+			this->Controls->Add(this->text_correo);
 			this->Controls->Add(this->label9);
-			this->Controls->Add(this->textBox4);
+			this->Controls->Add(this->textID);
 			this->Controls->Add(this->label4);
-			this->Controls->Add(this->textBox5);
+			this->Controls->Add(this->text_telefono);
 			this->Controls->Add(this->label5);
-			this->Controls->Add(this->textBox6);
+			this->Controls->Add(this->textCodigo);
 			this->Controls->Add(this->label6);
-			this->Controls->Add(this->textBox3);
+			this->Controls->Add(this->textAP_PATERNO);
 			this->Controls->Add(this->label3);
-			this->Controls->Add(this->textBox2);
+			this->Controls->Add(this->textAP_MATERNO);
 			this->Controls->Add(this->label2);
-			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->textNOMBRE);
 			this->Controls->Add(this->label1);
 			this->Name = L"RegistroForm";
 			this->Text = L"Nueva Cuenta";
@@ -278,10 +289,52 @@ namespace STPUCPAdminGUIView {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		QuesoyForm^ quesoyform = gcnew QuesoyForm();
-		this->Close();
-		quesoyform->TopMost = true;
-		quesoyform->Show();
+		
+		String^ nombre = textNOMBRE->Text;
+		int id = Int32::Parse(textID->Text);
+
+		String^ apellido_paterno = textAP_PATERNO->Text;
+		String^ apellido_materno = textAP_MATERNO->Text;
+		int codigo = Int32::Parse(textCodigo->Text);
+		int telefono = Int32::Parse(text_telefono->Text);
+		String^ correo = text_correo->Text;
+		String^ contraseña = text_contraseña->Text;
+		String^ repetir_contraseña = textrepeat_contraseña->Text;
+
+
+		if ((nombre != "") && (apellido_paterno != "") && (apellido_materno != "") && (contraseña != "") && (repetir_contraseña != "") && (correo != "")) {
+
+			if (contraseña == repetir_contraseña) {
+				Usuario^ nuevo_usuario = gcnew Usuario();
+				nuevo_usuario->Id = id;
+				nuevo_usuario->ApellidoMaterno = apellido_materno;
+				nuevo_usuario->ApellidoPaterno = apellido_paterno;
+				nuevo_usuario->CodigoPUCP = codigo;
+
+				nuevo_usuario->NumeroTelefono = telefono;
+				nuevo_usuario->Correo = correo;
+				nuevo_usuario->Contraseña = contraseña;
+				nuevo_usuario->Nombre = nombre;
+
+
+
+				STPUCPAdminController::controller::AddUser(nuevo_usuario);
+				MessageBox::Show("Cuenta creada con exito.");
+				QuesoyForm^ quesoyform = gcnew QuesoyForm();
+				this->Close();
+				quesoyform->TopMost = true;
+				quesoyform->Show();
+			}
+			else {
+				MessageBox::Show(" LAS CONTRASEÑAS NO SON IGUALES", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+
+		}
+		else {
+			MessageBox::Show("SE DEBE COMPLETAR TODOS LOS ESPACIOS", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		
+		
 		
 	}
 

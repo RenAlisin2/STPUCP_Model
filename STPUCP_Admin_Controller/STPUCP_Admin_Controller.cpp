@@ -186,3 +186,8 @@ Viaje^ STPUCPAdminController::controller::ConsultarviajeporID(int viajeId)
 {
 	return Persistance::ConsultarviajeporID(viajeId);
 }
+
+Usuario^ STPUCPAdminController::controller::ValidarUsuario(int codigoPUCP, String^ password)
+{
+	return Persistance::ValidarUsuario(codigoPUCP, password);
+}

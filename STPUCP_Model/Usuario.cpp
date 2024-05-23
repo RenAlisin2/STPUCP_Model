@@ -18,7 +18,7 @@ void STPUCP_Model::Usuario::Verificarcontraseña()
 STPUCP_Model::Usuario::Usuario(){
 }
 
-STPUCP_Model::Usuario::Usuario(int id, String^ apellidoPaterno, String^ apellidoMaterno, int codigoPUCP, int numeroTelefono, String^ correo, String^ contraseña, String^ nombre)
+STPUCP_Model::Usuario::Usuario(int id, String^ apellidoPaterno, String^ apellidoMaterno, int codigoPUCP, int numeroTelefono, String^ correo, String^ contraseña, String^ nombre,String^ rol)
 {
 	this->Id = id;
 	this->ApellidoMaterno = apellidoMaterno;
@@ -28,5 +28,6 @@ STPUCP_Model::Usuario::Usuario(int id, String^ apellidoPaterno, String^ apellido
 	this->Correo = correo;
 	this->Contraseña = contraseña;
 	this->Nombre = nombre;
+	this->Rol = rol;
 }
 
