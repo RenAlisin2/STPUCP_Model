@@ -19,9 +19,13 @@ namespace STPUCPAdminGUIView {
 	/// </summary>
 	public ref class LoginForm : public System::Windows::Forms::Form
 	{
+	private:
+		Form^ RefAdminMainForm; 
 	public:
-		LoginForm(void)
+		LoginForm(Form^ Form)
 		{
+			this->RefAdminMainForm;
+
 			InitializeComponent();
 			//
 			//TODO: agregar código de constructor aquí

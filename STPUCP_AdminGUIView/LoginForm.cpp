@@ -17,6 +17,16 @@ System::Void STPUCPAdminGUIView::LoginForm::btnIngresar_Click(System::Object^ se
 	if (usuarios != nullptr) {
 		MessageBox::Show("Bienvenido" + usuarios->Nombre + "" + usuarios->ApellidoPaterno);
 		AdminMainForm::user = usuarios;
+		if (usuarios->GetType() == Administrador::typeid) {
+			((AdminMainForm^)this->RefAdminMainForm)->EnablePermisoAdministrador();
+		}	
+		else if (usuarios->GetType() == Pasajero::typeid) {
+			((AdminMainForm^)this->RefAdminMainForm)->EnablePermisoPasajero();
+		}	
+		else {
+			((AdminMainForm^)this->RefAdminMainForm)->EnablePermisoConductor();
+		}			
+
 		this->Close();
 	}
 	else {
