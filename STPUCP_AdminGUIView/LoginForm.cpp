@@ -6,9 +6,13 @@ System::Void STPUCPAdminGUIView::LoginForm::btnIngresar_Click(System::Object^ se
 {
 	String^ password = txtContraseña->Text;
 	int codigoPUCP = Int32::Parse(txtUsuario->Text);
+	//String^ codigoPUCPStr = txtUsuario->Text;
 
 	Usuario^ usuarios = STPUCPAdminController::controller::ValidarUsuario(codigoPUCP, password);
-
+	if (String::IsNullOrWhiteSpace(password)) {
+		MessageBox::Show("Falta completar el usuario o la contraseña", "Advertencia", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		return;
+	}
 
 	if (usuarios != nullptr) {
 		MessageBox::Show("Bienvenido" + usuarios->Nombre + "" + usuarios->ApellidoPaterno);
@@ -18,6 +22,7 @@ System::Void STPUCPAdminGUIView::LoginForm::btnIngresar_Click(System::Object^ se
 	else {
 		MessageBox::Show("Usuario y contraseña incorrectos");
 	}
+
 }
 /*
 System::Void STPUCPAdminGUIView::LoginForm::LoginForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e)
