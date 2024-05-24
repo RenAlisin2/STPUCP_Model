@@ -304,7 +304,7 @@ private: System::Void verToolStripMenuItem1_Click(System::Object^ sender, System
 }
 
 private: System::Void AdminMainForm_Load(System::Object^ sender, System::EventArgs^ e) {
-	LoginForm^ loginForm = gcnew LoginForm(); //Le mandamos este objeto(form) al login
+	LoginForm^ loginForm = gcnew LoginForm(this); //Le mandamos este objeto(form) al login
 	loginForm->ShowDialog();
 }
 private: System::Void ordenesToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -319,16 +319,28 @@ private: System::Void pasajerosToolStripMenuItem_Click(System::Object^ sender, S
 }
 	   public:
 		   void EnablePermisoAdministrador() {
-			   this->menuStrip1->Visible = true;
-			   this->menuStrip1->Visible = false;
+			   this->modificarToolStripMenuItem->Visible = true;
+			   this->métricasToolStripMenuItem->Visible = true;
+			   this->promocionesToolStripMenuItem->Visible = true;
+			   this->blackListToolStripMenuItem->Visible = true;
+			   this->ofrecerServicioToolStripMenuItem->Visible = false;
+			   this->escogerServicioToolStripMenuItem->Visible = false;
 		   }
 		   void EnablePermisoPasajero() {
-			   this->menuStrip1->Visible = true;
-			   this->menuStrip1->Visible = false;
+			   this->modificarToolStripMenuItem->Visible = false;
+			   this->métricasToolStripMenuItem->Visible = false;
+			   this->promocionesToolStripMenuItem->Visible = false;
+			   this->blackListToolStripMenuItem->Visible = false;
+			   this->ofrecerServicioToolStripMenuItem->Visible = true;
+			   this->escogerServicioToolStripMenuItem->Visible = false;
 		   }
 		   void EnablePermisoConductor() {
-			   this->menuStrip1->Visible = true;
-			   this->menuStrip1->Visible = false;
+			   this->modificarToolStripMenuItem->Visible = false;
+			   this->métricasToolStripMenuItem->Visible = false;
+			   this->promocionesToolStripMenuItem->Visible = false;
+			   this->blackListToolStripMenuItem->Visible = false;
+			   this->ofrecerServicioToolStripMenuItem->Visible = false;
+			   this->escogerServicioToolStripMenuItem->Visible = true;
 		   }
 private: System::Void transporteToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	PasajeroForm^ PasajerosForm = gcnew PasajeroForm();
