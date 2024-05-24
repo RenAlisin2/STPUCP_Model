@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "LoginForm.h"
 #include "AdminMainForm.h"
+#include "QuesoyForm.h"
 
 System::Void STPUCPAdminGUIView::LoginForm::btnIngresar_Click(System::Object^ sender, System::EventArgs^ e)
 {
@@ -28,6 +29,8 @@ System::Void STPUCPAdminGUIView::LoginForm::btnIngresar_Click(System::Object^ se
 		}			
 
 		this->Close();
+
+
 	}
 	else {
 		MessageBox::Show("Usuario y contraseña incorrectos");
