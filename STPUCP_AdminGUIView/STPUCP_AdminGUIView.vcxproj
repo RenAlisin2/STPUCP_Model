@@ -238,6 +238,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConductorForm.resx">
       <DependentUpon>ConductorForm.h</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="HuellaForm.resx">
       <DependentUpon>HuellaForm.h</DependentUpon>

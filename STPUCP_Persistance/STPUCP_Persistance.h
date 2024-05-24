@@ -86,6 +86,8 @@ namespace STPUCPPersistance {
 
 		static Usuario^ ValidarUsuario(int codigoPUCP, String^ password);
 
+		static String^ CONDUCTOR_FILE_NAME = "Conductor.txt";
+
 		
 
 	};
