@@ -11,7 +11,6 @@ int STPUCPAdminController::controller::AddUser(Usuario^ Usuario)
 void STPUCPAdminController::controller::UpdateUser(Usuario^ Usuario)
 {
 	Persistance::UpdateUser(Usuario);
-	//
 }
 
 void STPUCPAdminController::controller::DeleteUser(int UsuarioID)
@@ -154,40 +153,46 @@ List<Conductor^>^ STPUCPAdminController::controller::QueryAllBL_Conductores()
 	return Persistance::QueryAllBL_Conductores();
 }
 
-
-
-
-int STPUCPAdminController::controller::AddViaje(Viaje^ viajecito)
-{
-	
-	return Persistance::AddViaje(viajecito);
-
-}
-
-void STPUCPAdminController::controller::EliminarViaje(int viajeid)
-{
-	return Persistance::EliminarViaje(viajeid);
-
-}
-
-void STPUCPAdminController::controller::ModificarViaje(Viaje^ viajecito)
-{
-	return Persistance::ModificarViaje(viajecito);
-}
-
-List<Viaje^>^ STPUCPAdminController::controller::consultarViajes()
-{
-	return Persistance::consultarViajes();
-}
-
-
-
-Viaje^ STPUCPAdminController::controller::ConsultarviajeporID(int viajeId)
-{
-	return Persistance::ConsultarviajeporID(viajeId);
-}
-
 Usuario^ STPUCPAdminController::controller::ValidarUsuario(int codigoPUCP, String^ password)
 {
 	return Persistance::ValidarUsuario(codigoPUCP, password);
 }
+
+void STPUCPAdminController::controller::OpenPort()
+{
+	try {
+		ArduinoPort = gcnew SerialPort();
+		ArduinoPort->PortName = "COM3";
+		ArduinoPort->BaudRate = 9600;
+		ArduinoPort->Open();
+
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+}
+
+void STPUCPAdminController::controller::ClosePort()
+{
+	try {
+		if (ArduinoPort->IsOpen) ArduinoPort->Close();
+
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+}
+
+/*
+array<Byte>^ STPUCPAdminController::controller::GuardarHuella()
+{
+	try {
+		OpenPort();
+
+		ClosePort();
+	}
+	catch(Exception^ ex){
+		throw ex;
+	}
+}
+*/
