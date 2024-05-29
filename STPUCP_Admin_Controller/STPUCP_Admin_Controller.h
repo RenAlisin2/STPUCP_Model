@@ -3,19 +3,23 @@
 using namespace System;
 using namespace STPUCP_Model;
 using namespace System::Collections::Generic;
+using namespace System::IO::Ports;
+
 
 namespace STPUCPAdminController {  
 	public ref class controller
 	{
 	private:
-
-		static List<Usuario^>^ UserlistDB = gcnew List<Usuario^>();
+		//static List<Usuario^>^ UserlistDB = gcnew List<Usuario^>();
 		static List<Viaje^>^ JourneyListDB = gcnew List<Viaje^>();
 		static List<Promocion^>^ PromotionListDB = gcnew List<Promocion^>();
 		static List<Viaje^>^ ViajeDB = gcnew List<Viaje^>();
 		static List<Orden^>^ OrdenListDB = gcnew List<Orden^>();
 		static List<Pasajero^>^ BL_PasajeroListDB = gcnew List<Pasajero^>();
 		static List<Conductor^>^ BL_ConductorListDB = gcnew List<Conductor^>();
+
+		//ARDUINO//
+		static SerialPort^ ArduinoPort;
 
 	public:
 
@@ -55,14 +59,12 @@ namespace STPUCPAdminController {
 		static Conductor^ QueryBL_ConductorById(int BL_ConductorID);
 		static List<Conductor^>^ QueryAllBL_Conductores();
 		
-		//CHOFER
-		static int AddViaje(Viaje^);
-		static void EliminarViaje(int viajeid);
-		static void ModificarViaje(Viaje^);
-		static List<Viaje^>^ consultarViajes();
-		static Viaje^ ConsultarviajeporID(int viajeid);
-		
 
 		static Usuario^ ValidarUsuario(int codigoPUCP, String^ password);
+
+		//PARA ARDUINO//
+		static void OpenPort();
+		static void ClosePort();
+		//static array<Byte>^ GuardarHuella();
 	};
 }

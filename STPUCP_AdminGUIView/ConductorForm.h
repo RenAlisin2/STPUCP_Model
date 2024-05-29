@@ -361,14 +361,14 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 	viajecito->FechaViaje = fechaViaje;
 	viajecito->PrecioViaje = precioViaje;
 
-	controller::AddViaje(viajecito);
+	controller::AddJourney(viajecito);
 	ShowViaje();
 
 
 }
 
 Void VerificarServicios() {
-	List<Viaje^>^ Viajelista = controller::consultarViajes();
+	List<Viaje^>^ Viajelista = controller::QueryAllJourneys();
 	if (Viajelista->Count == 0) {
 		btn_add->Enabled = true; // Habilitar el botón Agregar
 		btn_eliminar->Enabled = false;
@@ -390,7 +390,7 @@ void ClearControls() {
 }
 
 void ShowViaje() {
-	List<Viaje^>^ Viajelista = controller::consultarViajes();
+	List<Viaje^>^ Viajelista = controller::QueryAllJourneys();
 	dgv_VIAJE->Rows->Clear();
 	for (int i = 0; i < Viajelista->Count; i++) {
 	dgv_VIAJE->Rows->Add(gcnew array<String^> {"" + Viajelista[i]->Id, "" + Viajelista[i]->HoraSalida,
@@ -399,7 +399,7 @@ void ShowViaje() {
 }
 private: System::Void btn_eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
 	int id = Convert::ToInt32(txtID->Text);
-	controller::EliminarViaje(id);
+	controller::DeleteJourney(id);
 	ShowViaje();
 	VerificarServicios();
 }
@@ -420,7 +420,7 @@ private: System::Void btn_modificar_Click(System::Object^ sender, System::EventA
 	viajecito->PrecioViaje = precioViaje;
 
 
-	controller::ModificarViaje(viajecito);
+	controller::UpdateJourney(viajecito);
 	ShowViaje();
 	VerificarServicios();
 }

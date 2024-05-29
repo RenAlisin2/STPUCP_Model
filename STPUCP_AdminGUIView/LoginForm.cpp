@@ -27,10 +27,7 @@ System::Void STPUCPAdminGUIView::LoginForm::btnIngresar_Click(System::Object^ se
 		else {
 			((AdminMainForm^)this->RefAdminMainForm)->EnablePermisoConductor();
 		}			
-
 		this->Close();
-
-
 	}
 	else {
 		MessageBox::Show("Usuario y contraseña incorrectos");

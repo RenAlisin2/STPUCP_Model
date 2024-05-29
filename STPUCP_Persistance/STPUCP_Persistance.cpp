@@ -4,6 +4,7 @@
 using namespace System::IO;
 using namespace System::Xml::Serialization;
 using namespace System::Runtime::Serialization::Formatters::Binary;
+
 void STPUCPPersistance::Persistance::PersistTextFile(String^ fileName, Object^ persistObject)
 
 {
@@ -59,58 +60,6 @@ void STPUCPPersistance::Persistance::PersistTextFile(String^ fileName, Object^ p
 
     if (writer != nullptr) writer->Close();
     if (file != nullptr) file->Close();
-}
-
-void STPUCPPersistance::Persistance::PersistXMLFile(String^ fileName, Object^ persistObject)
-{
-    throw gcnew System::NotImplementedException();
-}
-
-
-
-
-
-
-
-
-
-void STPUCPPersistance::Persistance::PersistBinaryFile(String^ fileName, Object^ persistObject)
-{
-    FileStream^ file;
-    BinaryFormatter^ formatter = gcnew BinaryFormatter();
-    try {
-        file = gcnew FileStream(fileName, FileMode::Create, FileAccess::Write);
-        formatter->Serialize(file, persistObject);
-    }
-    catch (Exception^ ex) {
-        throw ex;
-    }
-    finally {
-        if (file != nullptr) file->Close();
-    }
-
-}
-
-Object^ STPUCPPersistance::Persistance::LoadBinaryFile(String^ fileName)
-{
-    FileStream^ file;
-    Object^ result;
-    BinaryFormatter^ formatter;
-    try {
-        if (File::Exists(fileName)) {
-            file = gcnew FileStream(fileName, FileMode::Open, FileAccess::Read);
-            formatter = gcnew BinaryFormatter();
-            result = formatter->Deserialize(file);
-        }
-    }
-    catch (Exception^ ex) {
-        throw ex;
-    }
-    finally {
-        if (file != nullptr) file->Close();
-    }
-
-    return result;
 }
 
 
@@ -225,16 +174,47 @@ Object^ STPUCPPersistance::Persistance::LoadTextFile(String^ fileName)
     return result;
 }
 
-Object^ STPUCPPersistance::Persistance::LoadXMLFile(String^ fileName)
+
+
+
+void STPUCPPersistance::Persistance::PersistBinaryFile(String^ fileName, Object^ persistObject)
 {
-    throw gcnew System::NotImplementedException();
-    // TODO: Insertar una instrucción "return" aquí
+    FileStream^ file;
+    BinaryFormatter^ formatter = gcnew BinaryFormatter();
+    try {
+        file = gcnew FileStream(fileName, FileMode::Create, FileAccess::Write);
+        formatter->Serialize(file, persistObject);
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        if (file != nullptr) file->Close();
+    }
+
 }
 
+Object^ STPUCPPersistance::Persistance::LoadBinaryFile(String^ fileName)
+{
+    FileStream^ file;
+    Object^ result;
+    BinaryFormatter^ formatter;
+    try {
+        if (File::Exists(fileName)) {
+            file = gcnew FileStream(fileName, FileMode::Open, FileAccess::Read);
+            formatter = gcnew BinaryFormatter();
+            result = formatter->Deserialize(file);
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        if (file != nullptr) file->Close();
+    }
 
-
-
-
+    return result;
+}
 
 
 //PERSISTENCIAS//
@@ -546,57 +526,6 @@ List<Conductor^>^ STPUCPPersistance::Persistance::QueryAllBL_Conductores()
     return BL_ConductorListDB;
 }
 
-
-//CHOFER
-int STPUCPPersistance::Persistance::AddViaje(Viaje^ viajecito)
-{
-    ViajeConductorDB->Add(viajecito);
-    PersistTextFile(VIAJECONDUCTOR_FILE_NAME, ViajeConductorDB);
-    return 1;
-}
-
-void STPUCPPersistance::Persistance::ModificarViaje(Viaje^ viajecito)
-{
-    for (int i = 0; i < ViajeConductorDB->Count; i++) {
-        if (ViajeConductorDB[i]->Id == viajecito->Id) {
-            ViajeConductorDB[i] = viajecito;
-            PersistTextFile(VIAJECONDUCTOR_FILE_NAME, ViajeConductorDB);
-            return;
-        }
-    }
-}
-
-void STPUCPPersistance::Persistance::EliminarViaje(int viajeid)
-{
-    for (int i = 0; i < PromocionesListDB->Count; i++) {
-        if (ViajeConductorDB[i]->Id == viajeid) {
-            ViajeConductorDB->RemoveAt(i);
-            PersistTextFile(VIAJECONDUCTOR_FILE_NAME, ViajeConductorDB);
-            return;
-        }
-    }
-}
-
-Viaje^ STPUCPPersistance::Persistance::ConsultarviajeporID(int viajeId)
-{
-    ViajeConductorDB = (List<Viaje^>^) LoadTextFile(VIAJECONDUCTOR_FILE_NAME);
-    Viaje^ viaje = nullptr;
-    for (int i = 0; i < ViajeConductorDB->Count; i++) {
-        if (ViajeConductorDB[i]->Id == viajeId) {
-            viaje = ViajeConductorDB[i];
-            return viaje;
-        }
-    }
-    return viaje;
-}
-
-List<Viaje^>^ STPUCPPersistance::Persistance::consultarViajes()
-{
-    ViajeConductorDB = (List<Viaje^>^) LoadTextFile(VIAJECONDUCTOR_FILE_NAME);
-    if (ViajeConductorDB == nullptr)
-        ViajeConductorDB = gcnew List<Viaje^>();
-    return ViajeConductorDB;
-}
 
 Usuario^ STPUCPPersistance::Persistance::ValidarUsuario(int codigoPucp, String^ password)
 {

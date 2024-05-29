@@ -65,7 +65,8 @@ namespace STPUCPAdminGUIView {
 	private: System::Windows::Forms::TextBox^ text_correo;
 
 	private: System::Windows::Forms::Label^ label9;
-	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ btnCreate;
+
 
 
 
@@ -100,7 +101,7 @@ namespace STPUCPAdminGUIView {
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->text_correo = (gcnew System::Windows::Forms::TextBox());
 			this->label9 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->btnCreate = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -247,22 +248,22 @@ namespace STPUCPAdminGUIView {
 			this->label9->TabIndex = 12;
 			this->label9->Text = L"Ingrese su correo electrónico";
 			// 
-			// button1
+			// btnCreate
 			// 
-			this->button1->Location = System::Drawing::Point(39, 283);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(356, 57);
-			this->button1->TabIndex = 18;
-			this->button1->Text = L"Crear cuenta";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &RegistroForm::button1_Click);
+			this->btnCreate->Location = System::Drawing::Point(39, 283);
+			this->btnCreate->Name = L"btnCreate";
+			this->btnCreate->Size = System::Drawing::Size(356, 57);
+			this->btnCreate->TabIndex = 18;
+			this->btnCreate->Text = L"Crear cuenta";
+			this->btnCreate->UseVisualStyleBackColor = true;
+			this->btnCreate->Click += gcnew System::EventHandler(this, &RegistroForm::button1_Click);
 			// 
 			// RegistroForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(448, 353);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->btnCreate);
 			this->Controls->Add(this->text_contraseña);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->textrepeat_contraseña);
@@ -291,8 +292,6 @@ namespace STPUCPAdminGUIView {
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		
 		String^ nombre = textNOMBRE->Text;
-		int id = Int32::Parse(textID->Text);
-
 		String^ apellido_paterno = textAP_PATERNO->Text;
 		String^ apellido_materno = textAP_MATERNO->Text;
 		int codigo = Int32::Parse(textCodigo->Text);
@@ -300,8 +299,14 @@ namespace STPUCPAdminGUIView {
 		String^ correo = text_correo->Text;
 		String^ contraseña = text_contraseña->Text;
 		String^ repetir_contraseña = textrepeat_contraseña->Text;
-
-
+		
+		
+		if (String::IsNullOrWhiteSpace(nombre) || String::IsNullOrWhiteSpace(apellido_paterno) || String::IsNullOrWhiteSpace(apellido_paterno)) {
+			MessageBox::Show("Falta completar algún(unos) campos del registro", "Advertencia", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			return;
+		}
+		
+	
 		if ((nombre != "") && (apellido_paterno != "") && (apellido_materno != "") && (contraseña != "") && (repetir_contraseña != "") && (correo != "")) {
 
 			if (contraseña == repetir_contraseña) {
