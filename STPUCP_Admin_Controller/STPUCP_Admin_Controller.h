@@ -10,10 +10,11 @@ namespace STPUCPAdminController {
 	public ref class controller
 	{
 	private:
-		//static List<Usuario^>^ UserlistDB = gcnew List<Usuario^>();
-		static List<Viaje^>^ JourneyListDB = gcnew List<Viaje^>();
-		static List<Promocion^>^ PromotionListDB = gcnew List<Promocion^>();
-		static List<Viaje^>^ ViajeDB = gcnew List<Viaje^>();
+
+		static List<Usuario^>^ UsuarioListDB = gcnew List<Usuario^>();
+		//static List<Viaje^>^ JourneyListDB = gcnew List<Viaje^>();
+		static List<Promocion^>^ PromocionesListDB = gcnew List<Promocion^>();
+		static List<Viaje^>^ ViajesListDB = gcnew List<Viaje^>();
 		static List<Orden^>^ OrdenListDB = gcnew List<Orden^>();
 		static List<Pasajero^>^ BL_PasajeroListDB = gcnew List<Pasajero^>();
 		static List<Conductor^>^ BL_ConductorListDB = gcnew List<Conductor^>();

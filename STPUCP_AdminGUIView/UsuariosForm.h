@@ -429,6 +429,7 @@ namespace STPUCPAdminGUIView {
 			   }
 		   }
 	private: System::Void dgvUsuarios_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+		//RegistroForm^ mainForm = gcnew RegistroForm();
 		int UsuarioID = Int32::Parse(dgvUsuarios->Rows[dgvUsuarios->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString());
 		Usuario^ Usuario = controller::QueryUsersById(UsuarioID);
 		txtId->Text = "" + Usuario->Id;
