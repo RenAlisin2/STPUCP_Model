@@ -1,6 +1,10 @@
 #include "pch.h"
-
 #include "STPUCP_Persistance.h"
+
+using namespace System;
+using namespace System::Collections::Generic;
+using namespace System::Windows::Forms;
+//using namespace STPUCPAdminController;
 using namespace System::IO;
 using namespace System::Xml::Serialization;
 using namespace System::Runtime::Serialization::Formatters::Binary;
@@ -24,21 +28,21 @@ void STPUCPPersistance::Persistance::PersistTextFile(String^ fileName, Object^ p
         List<Viaje^>^ viaje = (List<Viaje^>^) persistObject;
         for (int i = 0; i < viaje->Count; i++) {
             Viaje^ v = viaje[i];
-            writer->WriteLine(v->Id + "," + v->HoraSalida + "," + v->FechaViaje + "," + v->DescripcionViaje + "," + v->UltimoParadero + "," + v->PrecioViaje);
+            writer->WriteLine(v->Id_Viaje + "," +v ->Id + ","  + v->HoraSalida + "," + v->FechaViaje + "," + v->DescripcionViaje + "," + v->UltimoParadero + "," + v->PrecioViaje);
         }
     }
     if (persistObject->GetType() == List<Promocion^>::typeid) {
         List<Promocion^>^ promocion = (List<Promocion^>^) persistObject;
         for (int i = 0; i < promocion->Count; i++) {
             Promocion^ p = promocion[i];
-            writer->WriteLine(p->Id + "," + p->Porcentaje + "," + p->NombrePromo);
+            writer->WriteLine(p->Id + ","+ p->Id_promo + "," + p->Porcentaje + "," + p->NombrePromo);
         }
     }
     if (persistObject->GetType() == List<Orden^>::typeid) {
         List<Orden^>^ orden = (List<Orden^>^) persistObject;
         for (int i = 0; i < orden->Count; i++) {
             Orden^ o = orden[i];
-            writer->WriteLine(o->Id + "," + o->Distrito + "," + o->CalificacionEstrellas + "," + o->Fecha + "," + o->Precio);
+            writer->WriteLine(o->Id_Orden + ","+ o->Id + "," + o->Distrito + "," + o->CalificacionEstrellas + "," + o->Fecha + "," + o->Precio);
         }
     }
     if (persistObject->GetType() == List<Pasajero^>::typeid) {
@@ -93,12 +97,13 @@ Object^ STPUCPPersistance::Persistance::LoadTextFile(String^ fileName)
                 if (line == nullptr) break;
                 array<String^>^ record = line->Split(',');
                 Viaje^ viaje = gcnew Viaje();
-                viaje->Id = Convert::ToInt32(record[0]);
-                viaje->HoraSalida = Convert::ToInt32(record[1]);
-                viaje->FechaViaje = record[2];
-                viaje->DescripcionViaje = record[3];
-                viaje->UltimoParadero = record[4];
-                viaje->PrecioViaje = Convert::ToInt32(record[5]);
+                viaje->Id_Viaje = Convert::ToInt32(record[0]);
+                viaje->Id = Convert::ToInt32(record[1]);
+                viaje->HoraSalida = Convert::ToInt32(record[2]);
+                viaje->FechaViaje = record[3];
+                viaje->DescripcionViaje = record[4];
+                viaje->UltimoParadero = record[5];
+                viaje->PrecioViaje = Convert::ToInt32(record[6]);
                 ((List<Viaje^>^)result)->Add(viaje);
             }
         }
@@ -110,8 +115,9 @@ Object^ STPUCPPersistance::Persistance::LoadTextFile(String^ fileName)
                 array<String^>^ record = line->Split(',');
                 Promocion^ promocion = gcnew Promocion();
                 promocion->Id = Convert::ToInt32(record[0]);
-                promocion->Porcentaje = Convert::ToInt32(record[1]);
-                promocion->NombrePromo = record[2];
+                promocion->Id_promo = Convert::ToInt32(record[1]);
+                promocion->Porcentaje = Convert::ToInt32(record[2]);
+                promocion->NombrePromo = record[3];
                 ((List<Promocion^>^)result)->Add(promocion);
             }
         }
@@ -182,7 +188,7 @@ void STPUCPPersistance::Persistance::PersistBinaryFile(String^ fileName, Object^
     FileStream^ file;
     BinaryFormatter^ formatter = gcnew BinaryFormatter();
     try {
-        file = gcnew FileStream(fileName, FileMode::Create, FileAccess::Write);
+        file = gcnew FileStream(fileName, FileMode::Append, FileAccess::Write);
         formatter->Serialize(file, persistObject);
     }
     catch (Exception^ ex) {
@@ -194,16 +200,18 @@ void STPUCPPersistance::Persistance::PersistBinaryFile(String^ fileName, Object^
 
 }
 
-Object^ STPUCPPersistance::Persistance::LoadBinaryFile(String^ fileName)
+List<Object^>^ STPUCPPersistance::Persistance::LoadBinaryFile(String^ fileName)
 {
     FileStream^ file;
-    Object^ result;
+    List<Object^>^ results = gcnew List<Object^>();
     BinaryFormatter^ formatter;
     try {
         if (File::Exists(fileName)) {
             file = gcnew FileStream(fileName, FileMode::Open, FileAccess::Read);
             formatter = gcnew BinaryFormatter();
-            result = formatter->Deserialize(file);
+            while (file->Position < file->Length) {
+                results->Add(formatter->Deserialize(file));
+            }
         }
     }
     catch (Exception^ ex) {
@@ -213,16 +221,28 @@ Object^ STPUCPPersistance::Persistance::LoadBinaryFile(String^ fileName)
         if (file != nullptr) file->Close();
     }
 
-    return result;
+    return results;
 }
 
 
 //PERSISTENCIAS//
 
-int STPUCPPersistance::Persistance::AddUser(Usuario^ Usuario)
+int STPUCPPersistance::Persistance::AddUser(Usuario^ usuario)
 {
-    UsuarioListDB->Add(Usuario);
-    PersistBinaryFile(BIN_USUARIO_FILE_NAME, UsuarioListDB);
+    
+    UsuarioListDB->Add(usuario);
+    PersistBinaryFile(BIN_USUARIO_FILE_NAME, usuario);
+    for (int i = 0; i < UsuarioListDB->Count; i++) {
+        Usuario^ usuario1 = UsuarioListDB[i];
+        MessageBox::Show("1-" + usuario1->Nombre + " " + usuario1->Contraseña + " " + usuario1->CodigoPUCP, "Advertencia", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+    };
+    List<Usuario^>^ ListaUsuario = QueryAllUsers();
+    for (int i = 0; i < ListaUsuario->Count; i++) {
+        Usuario^ usuario1 = ListaUsuario[i];
+        MessageBox::Show("2-" + usuario1->Nombre + " " + usuario1->Contraseña + " " + usuario1->CodigoPUCP, "Advertencia", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+    };
+    
+    //MessageBox::Show(" " + Usuario->Nombre + " " + Usuario->Contraseña + " " + Usuario->CodigoPUCP, "Advertencia", MessageBoxButtons::OK, MessageBoxIcon::Warning);
     return 1;
 }
 
@@ -264,9 +284,24 @@ Usuario^ STPUCPPersistance::Persistance::QueryUsersById(int UsuarioID)
 
 List<Usuario^>^ STPUCPPersistance::Persistance::QueryAllUsers()
 {
-    UsuarioListDB = (List<Usuario^>^) LoadBinaryFile(BIN_USUARIO_FILE_NAME);
-    if (UsuarioListDB == nullptr)
-        UsuarioListDB = gcnew List<Usuario^>();
+   // UsuarioListDB = (List<Usuario^>^) LoadBinaryFile(BIN_USUARIO_FILE_NAME);
+    List<Object^>^ objects = LoadBinaryFile(BIN_USUARIO_FILE_NAME);
+    List<Usuario^>^ UsuarioListDB = gcnew List<Usuario^>();
+
+    for each (Object ^ obj in objects)
+    {
+        Usuario^ usuario = dynamic_cast<Usuario^>(obj);
+        if (usuario != nullptr)
+        {
+            UsuarioListDB->Add(usuario);
+        }
+    }
+    for (int i = 0; i < UsuarioListDB->Count; i++) {
+        Usuario^ usuario = UsuarioListDB[i];
+        MessageBox::Show(" " + usuario->Nombre + " " + usuario->Contraseña + " " + usuario->CodigoPUCP, "Advertencia", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+    };
+    /*if (UsuarioListDB == nullptr)
+        UsuarioListDB = gcnew List<Usuario^>();*/
     return UsuarioListDB;
 }
 
@@ -280,7 +315,7 @@ int STPUCPPersistance::Persistance::AddJourney(Viaje^ Viaje)
 void STPUCPPersistance::Persistance::UpdateJourney(Viaje^ Viaje)
 {
     for (int i = 0; i < ViajesListDB->Count; i++) {
-        if (ViajesListDB[i]->Id == Viaje->Id) {
+        if (ViajesListDB[i]->Id_Viaje == Viaje->Id_Viaje) {
             ViajesListDB[i] = Viaje;
             PersistTextFile(VIAJE_FILE_NAME, ViajesListDB);
             return;
@@ -291,7 +326,7 @@ void STPUCPPersistance::Persistance::UpdateJourney(Viaje^ Viaje)
 void STPUCPPersistance::Persistance::DeleteJourney(int ViajeID)
 {
     for (int i = 0; i < ViajesListDB->Count; i++) {
-        if (ViajesListDB[i]->Id == ViajeID) {
+        if (ViajesListDB[i]->Id_Viaje == ViajeID) {
             ViajesListDB->RemoveAt(i);
             PersistTextFile(VIAJE_FILE_NAME, ViajesListDB);
             return;
@@ -304,7 +339,7 @@ Viaje^ STPUCPPersistance::Persistance::QueryJourneysById(int ViajeID)
     ViajesListDB = (List<Viaje^>^) LoadTextFile(VIAJE_FILE_NAME);
     Viaje^ viaje = nullptr;
     for (int i = 0; i < ViajesListDB->Count; i++) {
-        if (ViajesListDB[i]->Id == ViajeID) {
+        if (ViajesListDB[i]->Id_Viaje == ViajeID) {
             viaje = ViajesListDB[i];
             return viaje;
         }
@@ -330,7 +365,7 @@ int STPUCPPersistance::Persistance::AddPromotion(Promocion^ Promocion)
 void STPUCPPersistance::Persistance::UpdatePromotion(Promocion^ Promocion)
 {
     for (int i = 0; i < PromocionesListDB->Count; i++) {
-        if (PromocionesListDB[i]->Id == Promocion->Id) {
+        if (PromocionesListDB[i]->Id_promo == Promocion->Id_promo) {
             PromocionesListDB[i] = Promocion;
             PersistTextFile(PROMOCION_FILE_NAME, PromocionesListDB);
             return;
@@ -341,7 +376,7 @@ void STPUCPPersistance::Persistance::UpdatePromotion(Promocion^ Promocion)
 void STPUCPPersistance::Persistance::DeletePromotion(int PromocionID)
 {
     for (int i = 0; i < PromocionesListDB->Count; i++) {
-        if (PromocionesListDB[i]->Id == PromocionID) {
+        if (PromocionesListDB[i]->Id_promo == PromocionID) {
             PromocionesListDB->RemoveAt(i);
             PersistTextFile(PROMOCION_FILE_NAME, PromocionesListDB);
             return;
@@ -354,7 +389,7 @@ Promocion^ STPUCPPersistance::Persistance::QueryPromotionsById(int PromocionID)
     PromocionesListDB = (List<Promocion^>^) LoadTextFile(PROMOCION_FILE_NAME);
     Promocion^ promocion = nullptr;
     for (int i = 0; i < PromocionesListDB->Count; i++) {
-        if (PromocionesListDB[i]->Id == PromocionID) {
+        if (PromocionesListDB[i]->Id_promo == PromocionID) {
             promocion = PromocionesListDB[i];
             return promocion;
         }
@@ -380,7 +415,7 @@ int STPUCPPersistance::Persistance::AddOrder(Orden^ orden)
 void STPUCPPersistance::Persistance::UpdateOrder(Orden^ orden)
 {
     for (int i = 0; i < OrdenListDB->Count; i++) {
-        if (OrdenListDB[i]->Id == orden->Id) {
+        if (OrdenListDB[i]->Id_Orden == orden->Id_Orden) {
             OrdenListDB[i] = orden;
             PersistTextFile(ORDER_FILE_NAME, OrdenListDB);
             return;
@@ -391,7 +426,7 @@ void STPUCPPersistance::Persistance::UpdateOrder(Orden^ orden)
 void STPUCPPersistance::Persistance::DeleteOrder(int ordenID)
 {
     for (int i = 0; i < OrdenListDB->Count; i++) {
-        if (OrdenListDB[i]->Id == ordenID) {
+        if (OrdenListDB[i]->Id_Orden == ordenID) {
             OrdenListDB->RemoveAt(i);
             PersistTextFile(ORDER_FILE_NAME, OrdenListDB);
             return;
@@ -404,7 +439,7 @@ Orden^ STPUCPPersistance::Persistance::QueryOrderById(int ordenID)
     OrdenListDB = (List<Orden^>^) LoadTextFile(ORDER_FILE_NAME);
     Orden^ orden = nullptr;
     for (int i = 0; i < OrdenListDB->Count; i++) {
-        if (OrdenListDB[i]->Id == ordenID) {
+        if (OrdenListDB[i]->Id_Orden == ordenID) {
             orden = OrdenListDB[i];
             return orden;
         }
@@ -531,7 +566,7 @@ Usuario^ STPUCPPersistance::Persistance::ValidarUsuario(int codigoPucp, String^ 
 {
     List<Usuario^>^ UsersList = QueryAllUsers();
     for (int i = 0; i < UsersList->Count; i++) {
-        if (UsersList[i]->Nombre->Equals(codigoPucp) && UsersList[i]->Contraseña->Equals(password)) {
+        if (UsersList[i]->CodigoPUCP==codigoPucp && UsersList[i]->Contraseña->Equals(password)) {
             return UsersList[i];
         }
     }
