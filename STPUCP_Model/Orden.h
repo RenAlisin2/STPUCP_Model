@@ -7,11 +7,9 @@
 using namespace System;
 #include "Pasajero.h"
 namespace STPUCP_Model {
-
-    public ref class Orden : public Usuario {
+    public ref class Orden {
     public:
-        // Id propia que enumera los numeros de orden , pero asimismo tiene un ID que lo relaciona con la persona
-        property int Id_Orden;
+        property int Id;
         property String^ Distrito;
         property double CalificacionEstrellas;
         property double Precio;

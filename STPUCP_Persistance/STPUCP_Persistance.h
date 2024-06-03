@@ -19,7 +19,7 @@ namespace STPUCPPersistance {
 		static void PersistBinaryFile(String^ fileName, Object^ persistObject);
 
 		static Object^ LoadTextFile(String^ fileName);
-		static List<Object^>^ LoadBinaryFile(String^ fileName);
+		static Object^ LoadBinaryFile(String^ fileName);
 
 
 	public:
@@ -31,7 +31,7 @@ namespace STPUCPPersistance {
 		static Usuario^ QueryUsersById(int UsuarioID);
 		static List<Usuario^>^ QueryAllUsers();
 
-		//Métodos para viajes
+		//Métodos para promociones
 		static String^ VIAJE_FILE_NAME = "ViajesDB.txt";
 		static int AddJourney(Viaje^ Viaje);
 		static void UpdateJourney(Viaje^ Viaje);

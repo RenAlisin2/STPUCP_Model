@@ -11,6 +11,7 @@ namespace STPUCP_Model {
     [Serializable]
     public ref class Usuario {
     public:
+        property int Id;
         property String^ ApellidoPaterno;
         property String^ ApellidoMaterno;
         property int CodigoPUCP;
@@ -19,15 +20,8 @@ namespace STPUCP_Model {
         property String^ Contraseña;
         property String^ Nombre;
         property String^ Rol;
-        //Hacemos que el codigo PUCP sea el ID 
-        property int Id {
-            int get() {
-                return CodigoPUCP;
-            }
-            void set(int value) {
-                CodigoPUCP = value;
-            }
-        }
+
+
         void Verificarcontraseña();
 
         Usuario();

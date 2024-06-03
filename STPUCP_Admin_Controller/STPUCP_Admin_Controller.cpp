@@ -13,14 +13,14 @@ void STPUCPAdminController::controller::UpdateUser(Usuario^ Usuario)
 	Persistance::UpdateUser(Usuario);
 }
 
-void STPUCPAdminController::controller::DeleteUser(int UsuarioId)
+void STPUCPAdminController::controller::DeleteUser(int UsuarioID)
 {
-	Persistance::DeleteUser(UsuarioId);
+	Persistance::DeleteUser(UsuarioID);
 }
 
-Usuario^ STPUCPAdminController::controller::QueryUsersById(int UsuarioID)
+Usuario^ STPUCPAdminController::controller::QueryUsersById(int UsuarioId)
 {
-	return Persistance::QueryUsersById(UsuarioID);
+	return Persistance::QueryUsersById(UsuarioId);
 }
 
 List<Usuario^>^ STPUCPAdminController::controller::QueryAllUsers()

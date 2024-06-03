@@ -1,9 +1,5 @@
 #pragma once
 #include "QuesoyForm.h"
-#include "UsuariosForm.h"
-
-
-//#include "AdminMainForm.h"
 
 namespace STPUCPAdminGUIView {
 
@@ -13,10 +9,6 @@ namespace STPUCPAdminGUIView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-	using namespace STPUCP_Model;
-	using namespace STPUCPAdminController;
-	//using namespace STPUCPPersistance;
-
 
 	/// <summary>
 	/// Resumen de RegistroForm
@@ -269,7 +261,6 @@ namespace STPUCPAdminGUIView {
 			// RegistroForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
-			//this->Load += gcnew System::EventHandler(this, &RegistroForm::button1_Click);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(448, 353);
 			this->Controls->Add(this->btnCreate);
@@ -298,11 +289,9 @@ namespace STPUCPAdminGUIView {
 
 		}
 #pragma endregion
-
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		
 		String^ nombre = textNOMBRE->Text;
-		//int id = Int32::Parse(textID->Text);
 		String^ apellido_paterno = textAP_PATERNO->Text;
 		String^ apellido_materno = textAP_MATERNO->Text;
 		int codigo = Int32::Parse(textCodigo->Text);
@@ -321,16 +310,20 @@ namespace STPUCPAdminGUIView {
 		if ((nombre != "") && (apellido_paterno != "") && (apellido_materno != "") && (contraseña != "") && (repetir_contraseña != "") && (correo != "")) {
 
 			if (contraseña == repetir_contraseña) {
-				STPUCP_Model::Usuario^ nuevo_usuario = gcnew STPUCP_Model::Usuario();
-				//nuevo_usuario->Id = id;
+				Usuario^ nuevo_usuario = gcnew Usuario();
+				nuevo_usuario->Id = id;
 				nuevo_usuario->ApellidoMaterno = apellido_materno;
 				nuevo_usuario->ApellidoPaterno = apellido_paterno;
 				nuevo_usuario->CodigoPUCP = codigo;
+
 				nuevo_usuario->NumeroTelefono = telefono;
 				nuevo_usuario->Correo = correo;
 				nuevo_usuario->Contraseña = contraseña;
 				nuevo_usuario->Nombre = nombre;
-				controller::AddUser(nuevo_usuario);
+
+
+
+				STPUCPAdminController::controller::AddUser(nuevo_usuario);
 				MessageBox::Show("Cuenta creada con exito.");
 				QuesoyForm^ quesoyform = gcnew QuesoyForm();
 				this->Close();
@@ -345,9 +338,10 @@ namespace STPUCPAdminGUIView {
 		else {
 			MessageBox::Show("SE DEBE COMPLETAR TODOS LOS ESPACIOS", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
+		
+		
+		
 	}
-  
 
 };
-
 }

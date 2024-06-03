@@ -12,7 +12,7 @@ namespace STPUCPAdminGUIView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-	//using namespace STPUCPAdminController;
+	using namespace STPUCPAdminController;
 
 	/// <summary>
 	/// Resumen de LoginForm
@@ -162,13 +162,13 @@ namespace STPUCPAdminGUIView {
 private: System::Void btnRegistrarse_Click(System::Object^ sender, System::EventArgs^ e){
 	
 	RegistroForm^ registroform = gcnew RegistroForm();
-
+		
 	registroform->ShowDialog();
 
 
 }
-	private: System::Void btnIngresar_Click(System::Object^ sender, System::EventArgs^ e);
-    //private: System::Void LoginForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e); 
+private: System::Void btnIngresar_Click(System::Object^ sender, System::EventArgs^ e); 
+//private: System::Void LoginForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e); 
 	
 	
 private: System::Void txtContraseña_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {

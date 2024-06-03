@@ -7,7 +7,6 @@ System::Void STPUCPAdminGUIView::LoginForm::btnIngresar_Click(System::Object^ se
 {
 	String^ password = txtContraseña->Text;
 	int codigoPUCP = Int32::Parse(txtUsuario->Text);
-	MessageBox::Show("Login" + " " + password + " " + codigoPUCP, "Advertencia", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 	//String^ codigoPUCPStr = txtUsuario->Text;
 
 	Usuario^ usuarios = STPUCPAdminController::controller::ValidarUsuario(codigoPUCP, password);
@@ -21,13 +20,13 @@ System::Void STPUCPAdminGUIView::LoginForm::btnIngresar_Click(System::Object^ se
 		AdminMainForm::user = usuarios;
 		if (usuarios->GetType() == Administrador::typeid) {
 			((AdminMainForm^)this->RefAdminMainForm)->EnablePermisoAdministrador();
-		}
+		}	
 		else if (usuarios->GetType() == Pasajero::typeid) {
 			((AdminMainForm^)this->RefAdminMainForm)->EnablePermisoPasajero();
-		}
+		}	
 		else {
 			((AdminMainForm^)this->RefAdminMainForm)->EnablePermisoConductor();
-		}
+		}			
 		this->Close();
 	}
 	else {
@@ -43,4 +42,3 @@ System::Void STPUCPAdminGUIView::LoginForm::LoginForm_FormClosing(System::Object
 	}
 }
 */
-
