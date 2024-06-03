@@ -342,6 +342,7 @@ private: System::Void pasajerosToolStripMenuItem_Click(System::Object^ sender, S
 			   this->ofrecerServicioToolStripMenuItem->Visible = false;
 			   this->escogerServicioToolStripMenuItem->Visible = true;
 		   }
+
 private: System::Void transporteToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	PasajeroForm^ PasajerosForm = gcnew PasajeroForm();
 	PasajerosForm->ShowDialog();

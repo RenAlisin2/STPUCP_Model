@@ -16,7 +16,7 @@ namespace STPUCPPersistance {
 		static List<Conductor^>^ BL_ConductorListDB = gcnew List<Conductor^>();
 
 		static void PersistTextFile(String^ fileName, Object^ persistObject);
-		static void PersistBinaryFile(String^ fileName, Object^ persistObject);
+		static void PersistBinaryFile(String^ fileName, List<Object^>^ persistObject);
 
 		static Object^ LoadTextFile(String^ fileName);
 		static List<Object^>^ LoadBinaryFile(String^ fileName);

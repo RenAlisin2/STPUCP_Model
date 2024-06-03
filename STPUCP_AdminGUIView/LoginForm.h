@@ -22,10 +22,9 @@ namespace STPUCPAdminGUIView {
 	private:
 		Form^ RefAdminMainForm; 
 	public:
-		LoginForm(Form^ Form)
+		LoginForm(Form^ form)
 		{
-			this->RefAdminMainForm;
-
+			RefAdminMainForm = form;
 			InitializeComponent();
 			//
 			//TODO: agregar código de constructor aquí

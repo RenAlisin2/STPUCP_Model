@@ -1,7 +1,6 @@
 #pragma once
 #include "RegistroConductorForm.h"
 #include "PasajeroForm.h"
-
 namespace STPUCPAdminGUIView {
 
 	using namespace System;
@@ -36,9 +35,12 @@ namespace STPUCPAdminGUIView {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ Pasajero;
+	private: System::Windows::Forms::Button^ Conductor;
 	protected:
-	private: System::Windows::Forms::Button^ button2;
+
+	protected:
+
 
 	private:
 		/// <summary>
@@ -53,63 +55,53 @@ namespace STPUCPAdminGUIView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->Pasajero = (gcnew System::Windows::Forms::Button());
+			this->Conductor = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
-			// button1
+			// Pasajero
 			// 
-			this->button1->Location = System::Drawing::Point(39, 43);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(426, 125);
-			this->button1->TabIndex = 0;
-			this->button1->Text = L"ALUMNO";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &QuesoyForm::btnIngresarPasajero_Click);
+			this->Pasajero->Location = System::Drawing::Point(39, 43);
+			this->Pasajero->Name = L"Pasajero";
+			this->Pasajero->Size = System::Drawing::Size(426, 125);
+			this->Pasajero->TabIndex = 0;
+			this->Pasajero->Text = L"ALUMNO";
+			this->Pasajero->UseVisualStyleBackColor = true;
+			this->Pasajero->Click += gcnew System::EventHandler(this, &QuesoyForm::Pasajero_Click);
 			// 
-			// button2
+			// Conductor
 			// 
-			this->button2->Location = System::Drawing::Point(39, 193);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(426, 125);
-			this->button2->TabIndex = 1;
-			this->button2->Text = L"CHOFER";
-			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &QuesoyForm::button2_Click);
+			this->Conductor->Location = System::Drawing::Point(39, 193);
+			this->Conductor->Name = L"Conductor";
+			this->Conductor->Size = System::Drawing::Size(426, 125);
+			this->Conductor->TabIndex = 1;
+			this->Conductor->Text = L"CHOFER";
+			this->Conductor->UseVisualStyleBackColor = true;
+			this->Conductor->Click += gcnew System::EventHandler(this, &QuesoyForm::Conductor_Click);
 			// 
 			// QuesoyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(522, 387);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->Conductor);
+			this->Controls->Add(this->Pasajero);
 			this->Name = L"QuesoyForm";
 			this->Text = L"QuesoyForm";
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
-	
 
-
-
-
-
-
-
-
-
-	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void Conductor_Click(System::Object^ sender, System::EventArgs^ e) {
 		RegistroConductorForm^ registroConductorForm = gcnew RegistroConductorForm();
 		this->Close();
 		registroConductorForm->TopMost = true;
 		registroConductorForm->Show();
 	}
-	private: System::Void btnIngresarPasajero_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	private: System::Void Pasajero_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
-		
 	}
 	};
-
 }

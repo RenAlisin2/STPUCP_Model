@@ -20,7 +20,7 @@ void STPUCPPersistance::Persistance::PersistTextFile(String^ fileName, Object^ p
         List<Usuario^>^ usuario = (List<Usuario^>^) persistObject;
         for (int i = 0; i < usuario->Count; i++) {
             Usuario^ r = usuario[i];
-            writer->WriteLine(r->Id + "," + r->Nombre + "," + r->ApellidoPaterno + "," + r->ApellidoMaterno + "," + r->CodigoPUCP);
+            writer->WriteLine(r->CodigoPUCP + "," + r->Nombre + "," + r->ApellidoPaterno + "," + r->ApellidoMaterno);
         }
     }
 
@@ -49,7 +49,7 @@ void STPUCPPersistance::Persistance::PersistTextFile(String^ fileName, Object^ p
         List<Pasajero^>^ blacklistPasajeros = (List<Pasajero^>^) persistObject;
         for (int i = 0; i < blacklistPasajeros->Count; i++) {
             Pasajero^ p = blacklistPasajeros[i];
-            writer->WriteLine(p->Id + "," + p->Nombre + "," + p->ApellidoPaterno + "," + p->ApellidoMaterno + "," + p->MotivoBan + "," + p->TiempoPenalizacion);
+            writer->WriteLine(p->CodigoPUCP + "," + p->Nombre + "," + p->ApellidoPaterno + "," + p->ApellidoMaterno + "," + p->MotivoBan + "," + p->TiempoPenalizacion);
         }
     }
 
@@ -57,7 +57,7 @@ void STPUCPPersistance::Persistance::PersistTextFile(String^ fileName, Object^ p
         List<Conductor^>^ blacklistConductores = (List<Conductor^>^) persistObject;
         for (int i = 0; i < blacklistConductores->Count; i++) {
             Conductor^ c = blacklistConductores[i];
-            writer->WriteLine(c->Id + "," + c->Nombre + "," + c->ApellidoPaterno + "," + c->ApellidoMaterno + "," + c->MotivoBan + "," + c->TiempoPenalizacion);
+            writer->WriteLine(c->CodigoPUCP + "," + c->Nombre + "," + c->ApellidoPaterno + "," + c->ApellidoMaterno + "," + c->MotivoBan + "," + c->TiempoPenalizacion);
         }
     }
 
@@ -82,11 +82,11 @@ Object^ STPUCPPersistance::Persistance::LoadTextFile(String^ fileName)
                 if (line == nullptr) break;
                 array<String^>^ record = line->Split(',');
                 Usuario^ usuario = gcnew Usuario();
-                usuario->Id = Convert::ToInt32(record[0]);
+                usuario->CodigoPUCP = Convert::ToInt32(record[0]);
                 usuario->Nombre = record[1];
                 usuario->ApellidoPaterno = record[2];
                 usuario->ApellidoMaterno = record[3];
-                usuario->CodigoPUCP = Convert::ToInt32(record[4]);
+                
                 ((List<Usuario^>^)result)->Add(usuario);
             }
         }
@@ -144,7 +144,7 @@ Object^ STPUCPPersistance::Persistance::LoadTextFile(String^ fileName)
                 if (line == nullptr) break;
                 array<String^>^ record = line->Split(',');
                 Pasajero^ BLpasajero = gcnew Pasajero();
-                BLpasajero->Id = Convert::ToInt32(record[0]);
+                BLpasajero->CodigoPUCP = Convert::ToInt32(record[0]);
                 BLpasajero->Nombre = record[1];
                 BLpasajero->ApellidoPaterno = record[2];
                 BLpasajero->ApellidoMaterno = record[3];
@@ -162,7 +162,7 @@ Object^ STPUCPPersistance::Persistance::LoadTextFile(String^ fileName)
                 if (line == nullptr) break;
                 array<String^>^ record = line->Split(',');
                 Conductor^ BLconductor = gcnew Conductor();
-                BLconductor->Id = Convert::ToInt32(record[0]);
+                BLconductor->CodigoPUCP = Convert::ToInt32(record[0]);
                 BLconductor->Nombre = record[1];
                 BLconductor->ApellidoPaterno = record[2];
                 BLconductor->ApellidoMaterno = record[3];
@@ -183,75 +183,73 @@ Object^ STPUCPPersistance::Persistance::LoadTextFile(String^ fileName)
 
 
 
-void STPUCPPersistance::Persistance::PersistBinaryFile(String^ fileName, Object^ persistObject)
+void STPUCPPersistance::Persistance::PersistBinaryFile(String^ fileName, List<Object^>^ persistObject)
 {
-    FileStream^ file;
-    BinaryFormatter^ formatter = gcnew BinaryFormatter();
-    try {
-        file = gcnew FileStream(fileName, FileMode::Append, FileAccess::Write);
-        formatter->Serialize(file, persistObject);
+    for each (Object ^ obj in persistObject) {
+        Usuario^ usuario = dynamic_cast<Usuario^>(obj);
+        if (usuario != nullptr) {
+            String^ userFileName = "Usuario_" + usuario->CodigoPUCP + ".bin";
+            FileStream^ file;
+            BinaryFormatter^ formatter = gcnew BinaryFormatter();
+            try {
+                file = gcnew FileStream(userFileName, FileMode::Create, FileAccess::Write);
+                formatter->Serialize(file, usuario);
+            }
+            catch (Exception^ ex) {
+                throw ex;
+            }
+            finally {
+                if (file != nullptr) file->Close();
+            }
+        }
     }
-    catch (Exception^ ex) {
-        throw ex;
-    }
-    finally {
-        if (file != nullptr) file->Close();
-    }
-
 }
+
 
 List<Object^>^ STPUCPPersistance::Persistance::LoadBinaryFile(String^ fileName)
 {
-    FileStream^ file;
     List<Object^>^ results = gcnew List<Object^>();
-    BinaryFormatter^ formatter;
     try {
-        if (File::Exists(fileName)) {
-            file = gcnew FileStream(fileName, FileMode::Open, FileAccess::Read);
-            formatter = gcnew BinaryFormatter();
-            while (file->Position < file->Length) {
-                results->Add(formatter->Deserialize(file));
+        for each (String ^ file in Directory::GetFiles(".", "Usuario_*.bin")) {
+            FileStream^ fileStream = nullptr;
+            try {
+                fileStream = gcnew FileStream(file, FileMode::Open, FileAccess::Read);
+                BinaryFormatter^ formatter = gcnew BinaryFormatter();
+                while (fileStream->Position < fileStream->Length) {
+                    results->Add(formatter->Deserialize(fileStream));
+                }
+            }
+            catch (Exception^ ex) {
+                throw ex;
+            }
+            finally {
+                if (fileStream != nullptr) fileStream->Close();
             }
         }
     }
     catch (Exception^ ex) {
         throw ex;
     }
-    finally {
-        if (file != nullptr) file->Close();
-    }
-
     return results;
 }
-
-
 //PERSISTENCIAS//
 
 int STPUCPPersistance::Persistance::AddUser(Usuario^ usuario)
 {
-    
-    UsuarioListDB->Add(usuario);
-    PersistBinaryFile(BIN_USUARIO_FILE_NAME, usuario);
-    for (int i = 0; i < UsuarioListDB->Count; i++) {
-        Usuario^ usuario1 = UsuarioListDB[i];
-        MessageBox::Show("1-" + usuario1->Nombre + " " + usuario1->Contraseña + " " + usuario1->CodigoPUCP, "Advertencia", MessageBoxButtons::OK, MessageBoxIcon::Warning);
-    };
-    List<Usuario^>^ ListaUsuario = QueryAllUsers();
-    for (int i = 0; i < ListaUsuario->Count; i++) {
-        Usuario^ usuario1 = ListaUsuario[i];
-        MessageBox::Show("2-" + usuario1->Nombre + " " + usuario1->Contraseña + " " + usuario1->CodigoPUCP, "Advertencia", MessageBoxButtons::OK, MessageBoxIcon::Warning);
-    };
-    
-    //MessageBox::Show(" " + Usuario->Nombre + " " + Usuario->Contraseña + " " + Usuario->CodigoPUCP, "Advertencia", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+    List<Object^>^ usuarios = LoadBinaryFile(BIN_USUARIO_FILE_NAME);
+    usuarios->Add(usuario);
+    PersistBinaryFile(BIN_USUARIO_FILE_NAME, usuarios);
     return 1;
 }
 
-void STPUCPPersistance::Persistance::UpdateUser(Usuario^ Usuario)
+void STPUCPPersistance::Persistance::UpdateUser(Usuario^ usuario)
 {
-    for (int i = 0; i < UsuarioListDB->Count; i++) {
-        if (UsuarioListDB[i]->Id == Usuario->Id) {
-            UsuarioListDB[i] = Usuario;
-            PersistBinaryFile(BIN_USUARIO_FILE_NAME, UsuarioListDB);
+    List<Object^>^ usuarios = LoadBinaryFile(BIN_USUARIO_FILE_NAME);
+    for (int i = 0; i < usuarios->Count; i++) {
+        Usuario^ currentUser = dynamic_cast<Usuario^>(usuarios[i]);
+        if (currentUser != nullptr && currentUser->CodigoPUCP == usuario->CodigoPUCP) {
+            usuarios[i] = usuario;
+            PersistBinaryFile(BIN_USUARIO_FILE_NAME, usuarios);
             return;
         }
     }
@@ -259,50 +257,49 @@ void STPUCPPersistance::Persistance::UpdateUser(Usuario^ Usuario)
 
 void STPUCPPersistance::Persistance::DeleteUser(int UsuarioID)
 {
-    for (int i = 0; i < UsuarioListDB->Count; i++) {
-        if (UsuarioListDB[i]->Id == UsuarioID) {
-            UsuarioListDB->RemoveAt(i);
-            PersistBinaryFile(BIN_USUARIO_FILE_NAME, UsuarioListDB);
-            return;
+    // Eliminar el archivo binario del usuario
+    String^ fileName = "Usuario_" + UsuarioID + ".bin";
+    if (File::Exists(fileName)) {
+        File::Delete(fileName);
+    }
+
+    // Actualizar la lista de usuarios en la memoria
+    List<Object^>^ usuarios = LoadBinaryFile(BIN_USUARIO_FILE_NAME);
+    for (int i = 0; i < usuarios->Count; i++) {
+        Usuario^ currentUser = dynamic_cast<Usuario^>(usuarios[i]);
+        if (currentUser != nullptr && currentUser->CodigoPUCP == UsuarioID) {
+            usuarios->RemoveAt(i);
+            break;
         }
     }
+
+    // Guardar la lista actualizada de usuarios
+    PersistBinaryFile(BIN_USUARIO_FILE_NAME, usuarios);
 }
 
 Usuario^ STPUCPPersistance::Persistance::QueryUsersById(int UsuarioID)
 {
-    UsuarioListDB = (List<Usuario^>^) LoadBinaryFile(BIN_USUARIO_FILE_NAME);
-    Usuario^ Usuario = nullptr;
-    for (int i = 0; i < UsuarioListDB->Count; i++) {
-        if (UsuarioListDB[i]->Id == UsuarioID) {
-            Usuario = UsuarioListDB[i];
-            return Usuario;
+    List<Object^>^ usuarios = LoadBinaryFile(BIN_USUARIO_FILE_NAME);
+    for (int i = 0; i < usuarios->Count; i++) {
+        Usuario^ currentUser = dynamic_cast<Usuario^>(usuarios[i]);
+        if (currentUser != nullptr && currentUser->CodigoPUCP == UsuarioID) {
+            return currentUser;
         }
     }
-    return Usuario;
-
+    return nullptr;
 }
 
 List<Usuario^>^ STPUCPPersistance::Persistance::QueryAllUsers()
 {
-   // UsuarioListDB = (List<Usuario^>^) LoadBinaryFile(BIN_USUARIO_FILE_NAME);
     List<Object^>^ objects = LoadBinaryFile(BIN_USUARIO_FILE_NAME);
-    List<Usuario^>^ UsuarioListDB = gcnew List<Usuario^>();
-
-    for each (Object ^ obj in objects)
-    {
+    List<Usuario^>^ usuarios = gcnew List<Usuario^>();
+    for each (Object ^ obj in objects) {
         Usuario^ usuario = dynamic_cast<Usuario^>(obj);
-        if (usuario != nullptr)
-        {
-            UsuarioListDB->Add(usuario);
+        if (usuario != nullptr) {
+            usuarios->Add(usuario);
         }
     }
-    for (int i = 0; i < UsuarioListDB->Count; i++) {
-        Usuario^ usuario = UsuarioListDB[i];
-        MessageBox::Show(" " + usuario->Nombre + " " + usuario->Contraseña + " " + usuario->CodigoPUCP, "Advertencia", MessageBoxButtons::OK, MessageBoxIcon::Warning);
-    };
-    /*if (UsuarioListDB == nullptr)
-        UsuarioListDB = gcnew List<Usuario^>();*/
-    return UsuarioListDB;
+    return usuarios;
 }
 
 int STPUCPPersistance::Persistance::AddJourney(Viaje^ Viaje)

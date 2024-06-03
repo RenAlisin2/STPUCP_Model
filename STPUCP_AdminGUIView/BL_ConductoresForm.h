@@ -66,13 +66,19 @@ namespace STPUCPAdminGUIView {
 	private: System::Windows::Forms::TextBox^ textTiempoPenalizacion;
 
 
+
+
+
+
+
+
+	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ BLConductoresID;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Distrito;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ApellidoPaterno;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ApellidoMaterno;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Precio;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ TiempoPenalizacion;
-	private: System::Windows::Forms::Label^ label1;
 
 	private:
 		/// <summary>
@@ -95,12 +101,6 @@ namespace STPUCPAdminGUIView {
 			this->lblFechaViaje = (gcnew System::Windows::Forms::Label());
 			this->txtNombre = (gcnew System::Windows::Forms::TextBox());
 			this->dgvBLConductores = (gcnew System::Windows::Forms::DataGridView());
-			this->BLConductoresID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Distrito = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->ApellidoPaterno = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->ApellidoMaterno = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Precio = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->TiempoPenalizacion = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->btnEliminar = (gcnew System::Windows::Forms::Button());
 			this->btnModificar = (gcnew System::Windows::Forms::Button());
 			this->btnAgregar = (gcnew System::Windows::Forms::Button());
@@ -110,6 +110,12 @@ namespace STPUCPAdminGUIView {
 			this->Id = (gcnew System::Windows::Forms::Label());
 			this->textTiempoPenalizacion = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->BLConductoresID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Distrito = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->ApellidoPaterno = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->ApellidoMaterno = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Precio = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->TiempoPenalizacion = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvBLConductores))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -180,37 +186,6 @@ namespace STPUCPAdminGUIView {
 			this->dgvBLConductores->Size = System::Drawing::Size(440, 253);
 			this->dgvBLConductores->TabIndex = 56;
 			// 
-			// BLConductoresID
-			// 
-			this->BLConductoresID->HeaderText = L"ID";
-			this->BLConductoresID->Name = L"BLConductoresID";
-			this->BLConductoresID->Width = 50;
-			// 
-			// Distrito
-			// 
-			this->Distrito->HeaderText = L"Nombre";
-			this->Distrito->Name = L"Distrito";
-			// 
-			// ApellidoPaterno
-			// 
-			this->ApellidoPaterno->HeaderText = L"Apellido Paterno";
-			this->ApellidoPaterno->Name = L"ApellidoPaterno";
-			// 
-			// ApellidoMaterno
-			// 
-			this->ApellidoMaterno->HeaderText = L"Apellido Materno";
-			this->ApellidoMaterno->Name = L"ApellidoMaterno";
-			// 
-			// Precio
-			// 
-			this->Precio->HeaderText = L"Motivo de Baneo";
-			this->Precio->Name = L"Precio";
-			// 
-			// TiempoPenalizacion
-			// 
-			this->TiempoPenalizacion->HeaderText = L"Tiempo de penalización";
-			this->TiempoPenalizacion->Name = L"TiempoPenalizacion";
-			// 
 			// btnEliminar
 			// 
 			this->btnEliminar->Location = System::Drawing::Point(335, 211);
@@ -271,9 +246,9 @@ namespace STPUCPAdminGUIView {
 			this->Id->AutoSize = true;
 			this->Id->Location = System::Drawing::Point(14, 26);
 			this->Id->Name = L"Id";
-			this->Id->Size = System::Drawing::Size(21, 13);
+			this->Id->Size = System::Drawing::Size(72, 13);
 			this->Id->TabIndex = 64;
-			this->Id->Text = L"ID:";
+			this->Id->Text = L"CodigoPUCP:";
 			// 
 			// textTiempoPenalizacion
 			// 
@@ -290,6 +265,37 @@ namespace STPUCPAdminGUIView {
 			this->label1->Size = System::Drawing::Size(123, 26);
 			this->label1->TabIndex = 84;
 			this->label1->Text = L"Tiempo de Penalización:\r\n(Días)";
+			// 
+			// BLConductoresID
+			// 
+			this->BLConductoresID->HeaderText = L"CodigoPUCP";
+			this->BLConductoresID->Name = L"BLConductoresID";
+			this->BLConductoresID->Width = 50;
+			// 
+			// Distrito
+			// 
+			this->Distrito->HeaderText = L"Nombre";
+			this->Distrito->Name = L"Distrito";
+			// 
+			// ApellidoPaterno
+			// 
+			this->ApellidoPaterno->HeaderText = L"Apellido Paterno";
+			this->ApellidoPaterno->Name = L"ApellidoPaterno";
+			// 
+			// ApellidoMaterno
+			// 
+			this->ApellidoMaterno->HeaderText = L"Apellido Materno";
+			this->ApellidoMaterno->Name = L"ApellidoMaterno";
+			// 
+			// Precio
+			// 
+			this->Precio->HeaderText = L"Motivo de Baneo";
+			this->Precio->Name = L"Precio";
+			// 
+			// TiempoPenalizacion
+			// 
+			this->TiempoPenalizacion->HeaderText = L"Tiempo de penalización";
+			this->TiempoPenalizacion->Name = L"TiempoPenalizacion";
 			// 
 			// BL_ConductoresForm
 			// 
@@ -325,7 +331,7 @@ namespace STPUCPAdminGUIView {
 
 private: System::Void btnAgregar_Click(System::Object^ sender, System::EventArgs^ e) {
 	STPUCP_Model::Conductor^ BLConductor = gcnew STPUCP_Model::Conductor();
-	BLConductor->Id = Int32::Parse(txtId->Text);
+	BLConductor->CodigoPUCP = Int32::Parse(txtId->Text);
 	BLConductor->Nombre = txtNombre->Text;
 	BLConductor->ApellidoPaterno = txtApellidoPaterno->Text;
 	BLConductor->ApellidoMaterno = txtApellidoMaterno->Text;
@@ -341,12 +347,12 @@ private: System::Void btnAgregar_Click(System::Object^ sender, System::EventArgs
 		   dgvBLConductores->Rows->Clear();
 		   for (int i = 0; i < BLConductorList->Count; i++) {
 			   Conductor^ BLConductor = BLConductorList[i];
-			   dgvBLConductores->Rows->Add(gcnew array<String^> {"" + BLConductor->Id, BLConductor->Nombre, BLConductor-> ApellidoPaterno, BLConductor-> ApellidoMaterno, BLConductor->MotivoBan, "" + BLConductor->TiempoPenalizacion});
+			   dgvBLConductores->Rows->Add(gcnew array<String^> {"" + BLConductor->CodigoPUCP, BLConductor->Nombre, BLConductor-> ApellidoPaterno, BLConductor-> ApellidoMaterno, BLConductor->MotivoBan, "" + BLConductor->TiempoPenalizacion});
 		   }
 	   }
 private: System::Void btnModificar_Click(System::Object^ sender, System::EventArgs^ e) {
 	Conductor^ BLConductor = gcnew STPUCP_Model::Conductor();
-	BLConductor->Id = Int32::Parse(txtId->Text);
+	BLConductor->CodigoPUCP = Int32::Parse(txtId->Text);
 	BLConductor->Nombre = txtNombre->Text;
 	BLConductor->ApellidoPaterno = txtApellidoPaterno->Text;
 	BLConductor->ApellidoMaterno = txtApellidoMaterno->Text;
@@ -357,8 +363,8 @@ private: System::Void btnModificar_Click(System::Object^ sender, System::EventAr
 	RefreshGrid();
 }
 private: System::Void btnEliminar_Click(System::Object^ sender, System::EventArgs^ e) {
-	int id = Int32::Parse(txtId->Text);
-	controller::DeleteBL_Conductor(id);
+	int codigopucp = Int32::Parse(txtId->Text);
+	controller::DeleteBL_Conductor(codigopucp);
 	RefreshGrid();
 }
 private: System::Void BL_ConductoresForm_Load(System::Object^ sender, System::EventArgs^ e) {
