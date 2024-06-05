@@ -258,7 +258,7 @@ namespace STPUCPAdminGUIView {
             this->PerformLayout();
         }
 #pragma endregion
-
+        //.
 
     public: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
         // Verificar si hay un usuario registrado y cambiar su rol
