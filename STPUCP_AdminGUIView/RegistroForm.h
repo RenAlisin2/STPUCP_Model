@@ -1,8 +1,8 @@
 #pragma once
+#include "RegistroForm.h"
 #include "QuesoyForm.h"
 #include "UsuariosForm.h"
-
-
+#include "Contexto.h"
 //#include "AdminMainForm.h"
 
 namespace STPUCPAdminGUIView {
@@ -54,7 +54,8 @@ namespace STPUCPAdminGUIView {
 	private: System::Windows::Forms::TextBox^ textAP_PATERNO;
 
 	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::TextBox^ textID;
+	private: System::Windows::Forms::TextBox^ textDNI;
+
 
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::TextBox^ text_telefono;
@@ -97,7 +98,7 @@ namespace STPUCPAdminGUIView {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->textAP_PATERNO = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->textID = (gcnew System::Windows::Forms::TextBox());
+			this->textDNI = (gcnew System::Windows::Forms::TextBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->text_telefono = (gcnew System::Windows::Forms::TextBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
@@ -160,12 +161,12 @@ namespace STPUCPAdminGUIView {
 			this->label3->TabIndex = 4;
 			this->label3->Text = L"Ingrese su Apellido Paterno:";
 			// 
-			// textID
+			// textDNI
 			// 
-			this->textID->Location = System::Drawing::Point(208, 137);
-			this->textID->Name = L"textID";
-			this->textID->Size = System::Drawing::Size(188, 20);
-			this->textID->TabIndex = 11;
+			this->textDNI->Location = System::Drawing::Point(208, 137);
+			this->textDNI->Name = L"textDNI";
+			this->textDNI->Size = System::Drawing::Size(188, 20);
+			this->textDNI->TabIndex = 11;
 			// 
 			// label4
 			// 
@@ -278,7 +279,7 @@ namespace STPUCPAdminGUIView {
 			this->Controls->Add(this->label8);
 			this->Controls->Add(this->text_correo);
 			this->Controls->Add(this->label9);
-			this->Controls->Add(this->textID);
+			this->Controls->Add(this->textDNI);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->text_telefono);
 			this->Controls->Add(this->label5);
@@ -306,14 +307,25 @@ public: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
 	String^ nombre = textNOMBRE->Text;
 	String^ apellido_paterno = textAP_PATERNO->Text;
 	String^ apellido_materno = textAP_MATERNO->Text;
-	int codigo = Int32::Parse(textCodigo->Text);
-	int telefono = Int32::Parse(text_telefono->Text);
+
 	String^ correo = text_correo->Text;
 	String^ contraseña = text_contraseña->Text;
 	String^ repetir_contraseña = textrepeat_contraseña->Text;
 
+	int codigo,dni,telefono;
+	if (String::IsNullOrWhiteSpace(textCodigo->Text)) {
+		codigo = 0;
+	} else if (String::IsNullOrWhiteSpace(textDNI->Text)) {
+		dni = 0;
+	}else if (String::IsNullOrWhiteSpace(text_telefono->Text)) {
+		telefono = 0;
+	}else {
+		codigo = Int32::Parse(textCodigo->Text);
+		dni = Int32::Parse(textDNI->Text);
+		telefono = Int32::Parse(text_telefono->Text);
+	}
 	// Validación de campos
-	if (String::IsNullOrWhiteSpace(nombre) || String::IsNullOrWhiteSpace(apellido_paterno) || String::IsNullOrWhiteSpace(apellido_materno)) {
+	if (String::IsNullOrWhiteSpace(nombre) || String::IsNullOrWhiteSpace(apellido_paterno) || String::IsNullOrWhiteSpace(apellido_materno) || String::IsNullOrWhiteSpace(correo) || String::IsNullOrWhiteSpace(contraseña) || String::IsNullOrWhiteSpace(repetir_contraseña) || codigo == 0 || dni == 0 || telefono == 0) {
 		MessageBox::Show("Falta completar algún(unos) campos del registro", "Advertencia", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 		return;
 	}
@@ -321,6 +333,16 @@ public: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
 	if ((nombre != "") && (apellido_paterno != "") && (apellido_materno != "") && (contraseña != "") && (repetir_contraseña != "") && (correo != "")) {
 		if (contraseña == repetir_contraseña) {
 			STPUCP_Model::Usuario^ nuevo_usuario = gcnew STPUCP_Model::Usuario();
+			nuevo_usuario->Rol = "Pasajero";
+			if (nuevo_usuario->Rol == "Administrador") {
+				nuevo_usuario = gcnew STPUCP_Model::Administrador();
+			}
+			else if (nuevo_usuario->Rol == "Pasajero") {
+				nuevo_usuario = gcnew STPUCP_Model::Pasajero();
+			}
+			else if (nuevo_usuario->Rol == "Conductor") {
+				nuevo_usuario = gcnew STPUCP_Model::Conductor();
+			}
 			nuevo_usuario->ApellidoMaterno = apellido_materno;
 			nuevo_usuario->ApellidoPaterno = apellido_paterno;
 			nuevo_usuario->CodigoPUCP = codigo;
@@ -328,10 +350,15 @@ public: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
 			nuevo_usuario->Correo = correo;
 			nuevo_usuario->Contraseña = contraseña;
 			nuevo_usuario->Nombre = nombre;
+			nuevo_usuario->DNI = dni;
+			nuevo_usuario->NumeroTelefono = telefono;
+			nuevo_usuario->Correo = correo;
+			nuevo_usuario->Contraseña = contraseña;
 			nuevo_usuario->Rol = "Pasajero";
 
-			// Guardar usuario registrado
-			usuario_registrado = nuevo_usuario;
+
+			// Guardar el usuario registrado
+			Contexto::Instancia->usuario_registrado = nuevo_usuario;
 
 			// Agregar usuario al sistema
 			controller::AddUser(nuevo_usuario);

@@ -19,8 +19,8 @@ namespace STPUCP_Model {
         property String^ MotivoBan;
        
         Pasajero() {}
-        Pasajero(int id, String^ apellidoPaterno, String^ apellidoMaterno, int codigoPUCP, int numeroTelefono, String^ correo, String^ contraseña, String^ nombre, String^ rol, int tiempoPenalizacion, int cantServiciosTomados , bool listaNegra, int ViajesId, String^ motivoBan) :
-            Usuario(id, apellidoPaterno, apellidoMaterno, codigoPUCP, numeroTelefono, correo, contraseña, nombre, rol) {
+        Pasajero(int id, String^ apellidoPaterno, String^ apellidoMaterno, int codigoPUCP, int numeroTelefono, String^ correo, String^ contraseña, String^ nombre, String^ rol, int dni, int tiempoPenalizacion, int cantServiciosTomados , bool listaNegra, int ViajesId, String^ motivoBan) :
+            Usuario(id, apellidoPaterno, apellidoMaterno, codigoPUCP, numeroTelefono, correo, contraseña, nombre, rol, dni) {
             CantServiciosTomados = cantServiciosTomados;
             TiempoPenalizacion = tiempoPenalizacion;
             CantServiciosTomados = cantServiciosTomados;

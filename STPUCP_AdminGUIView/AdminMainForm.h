@@ -331,16 +331,16 @@ private: System::Void pasajerosToolStripMenuItem_Click(System::Object^ sender, S
 			   this->métricasToolStripMenuItem->Visible = false;
 			   this->promocionesToolStripMenuItem->Visible = false;
 			   this->blackListToolStripMenuItem->Visible = false;
-			   this->ofrecerServicioToolStripMenuItem->Visible = true;
-			   this->escogerServicioToolStripMenuItem->Visible = false;
+			   this->ofrecerServicioToolStripMenuItem->Visible = false;
+			   this->escogerServicioToolStripMenuItem->Visible = true;
 		   }
 		   void EnablePermisoConductor() {
 			   this->modificarToolStripMenuItem->Visible = false;
 			   this->métricasToolStripMenuItem->Visible = false;
 			   this->promocionesToolStripMenuItem->Visible = false;
 			   this->blackListToolStripMenuItem->Visible = false;
-			   this->ofrecerServicioToolStripMenuItem->Visible = false;
-			   this->escogerServicioToolStripMenuItem->Visible = true;
+			   this->ofrecerServicioToolStripMenuItem->Visible = true;
+			   this->escogerServicioToolStripMenuItem->Visible = false;
 		   }
 
 private: System::Void transporteToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {

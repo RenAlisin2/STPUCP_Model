@@ -19,7 +19,6 @@ namespace STPUCP_Model {
         property int CantAsientos;
         property array<Byte>^ FotoConductor;
         property array<Byte>^ FotoCarro;
-        property int DNI;
         property bool BreveteConfirmacion;
         property String^ HuellaDactilar;
         property double Calificacion;
@@ -28,17 +27,16 @@ namespace STPUCP_Model {
         property String^ MotivoBan;
         property bool ListaNegra;
         Conductor() {}
-        Conductor(int id, String^ apellidoPaterno, String^ apellidoMaterno, int codigoPUCP, int numeroTelefono, String^ correo, String^ contraseña, String^ nombre, String^ rol,
+        Conductor(int id, String^ apellidoPaterno, String^ apellidoMaterno, int codigoPUCP, int numeroTelefono, String^ correo, String^ contraseña, String^ nombre, String^ rol, int dni,
             String^ modeloCarro, String^ placaCarro, String^ colorCarro, int cantAsientos, array<Byte>^ fotoConductor, 
-            array<Byte>^ fotoCarro, int dni, bool breveteConfirmacion, String^ huellaDactilar, double calificacion, 
+            array<Byte>^ fotoCarro, bool breveteConfirmacion, String^ huellaDactilar, double calificacion, 
             int cantServiciosRealizados, int tiempoPenalizacion, String^ motivoBan, bool listaNegra) :
-            Usuario(id, apellidoPaterno, apellidoMaterno, codigoPUCP, numeroTelefono, correo, contraseña, nombre, rol) {
+            Usuario(id, apellidoPaterno, apellidoMaterno, codigoPUCP, numeroTelefono, correo, contraseña, nombre, rol, dni) {
             this->ModeloCarro = modeloCarro;
             this->PlacaCarro = placaCarro;
             this->CantAsientos = cantAsientos;
             this->FotoConductor = fotoConductor;
             this->FotoCarro = fotoCarro;
-            this->DNI = dni;
             this->BreveteConfirmacion = breveteConfirmacion;
             this->HuellaDactilar = huellaDactilar;
             this->Calificacion = calificacion;

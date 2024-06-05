@@ -1,6 +1,7 @@
 #pragma once
 #include "ServicioDriverForm.h"
-
+#include "RegistroForm.h"
+#include "Contexto.h"
 namespace STPUCPAdminGUIView {
 
     using namespace System;
@@ -9,6 +10,7 @@ namespace STPUCPAdminGUIView {
     using namespace System::Windows::Forms;
     using namespace System::Data;
     using namespace System::Drawing;
+    using namespace STPUCP_Model;
 
     public ref class RegistroConductorForm : public System::Windows::Forms::Form
     {
@@ -257,25 +259,28 @@ namespace STPUCPAdminGUIView {
         }
 #pragma endregion
 
+
     public: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
         // Verificar si hay un usuario registrado y cambiar su rol
-            STPUCP_Model::Conductor^ conductor = gcnew STPUCP_Model::Conductor();
+        if (usuario_registrado != nullptr) {
+            Conductor^ conductor = gcnew Conductor();
+
+            // Copiar datos del usuario registrado al conductor
+            conductor->ApellidoMaterno = usuario_registrado->ApellidoMaterno;
+            conductor->ApellidoPaterno = usuario_registrado->ApellidoPaterno;
+            conductor->CodigoPUCP = usuario_registrado->CodigoPUCP;
+            conductor->NumeroTelefono = usuario_registrado->NumeroTelefono;
+            conductor->Correo = usuario_registrado->Correo;
+            conductor->Contraseña = usuario_registrado->Contraseña;
+            conductor->Nombre = usuario_registrado->Nombre;
+            conductor->DNI = usuario_registrado->DNI;
+
+            // Datos específicos del conductor
             conductor->ModeloCarro = txtModeloCarro->Text;
             conductor->PlacaCarro = txtPlacaCarro->Text;
             conductor->ColorCarro = txtColorCarro->Text;
             conductor->CantAsientos = Int32::Parse(txtCantidadAsientos->Text);
             conductor->Rol = "Conductor";
-
-            // Si se lograra copiar todos los datos de nuevoUsuario a conductor, podría funcionar
-            /*
-            conductor->ApellidoMaterno = usuario_registrado;
-			conductor->ApellidoPaterno = usuario_registrado;
-			conductor->CodigoPUCP = usuario_registrado;
-			conductor->NumeroTelefono = usuario_registrado;
-			conductor->Correo = usuario_registrado;
-			conductor->Contraseña = usuario_registrado;
-			conductor->Nombre = usuario_registrado;
-            */
 
             if (pBConductor != nullptr && pBConductor->Image != nullptr) {
                 System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
@@ -288,18 +293,20 @@ namespace STPUCPAdminGUIView {
                 conductor->FotoCarro = ms->ToArray();
             }
 
-            if ((txtModeloCarro->Text != "") && (txtPlacaCarro->Text != "") && (txtPlacaCarro->Text != "")) {
-
+            if ((txtModeloCarro->Text != "") && (txtPlacaCarro->Text != "") && (txtColorCarro->Text != "")) {
                 STPUCPAdminController::controller::AddUser(conductor);
                 MessageBox::Show("Conductor registrado exitosamente");
                 this->Close();
             }
-            else
-            {
-
-                MessageBox::Show(" llenar todos los espacios", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+            else {
+                MessageBox::Show("Llenar todos los espacios", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
             }
+        }
+        else {
+            MessageBox::Show("No hay usuario registrado para convertir a conductor", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+        }
     }
+
 private: System::Void btnConductor_Click(System::Object^ sender, System::EventArgs^ e) {
     OpenFileDialog^ ofd = gcnew OpenFileDialog();
     ofd->Filter = "Image Files (*.jpg;*.jpeg;)|*.jpg;*.jpeg;";

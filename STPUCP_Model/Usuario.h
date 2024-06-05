@@ -1,6 +1,3 @@
-/*   * Project Sistema STPUCP
-*  */
-
 #pragma once
 
 #ifndef _USUARIO_H
@@ -19,6 +16,8 @@ namespace STPUCP_Model {
         property String^ Contraseña;
         property String^ Nombre;
         property String^ Rol;
+        //Añadimos DNI para que verifique el brevete con este
+        property int DNI;
         //Hacemos que el codigo PUCP sea el ID 
         property int Id {
             int get() {
@@ -31,9 +30,7 @@ namespace STPUCP_Model {
         void Verificarcontraseña();
 
         Usuario();
-        Usuario(int id, String^ apellidoPaterno, String^ apellidoMaterno, int codigoPUCP, int numeroTelefono, String^ correo, String^ contraseña, String^ nombre, String^ rol);
-
-
+        Usuario(int id, String^ apellidoPaterno, String^ apellidoMaterno, int codigoPUCP, int numeroTelefono, String^ correo, String^ contraseña, String^ nombre, String^ rol, int dni);
     };
 }
 

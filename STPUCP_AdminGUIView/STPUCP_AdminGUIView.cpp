@@ -19,6 +19,10 @@ int Main(array<System::String ^> ^args)
     Admin->ApellidoMaterno = "Admin";
     Admin->Contraseña = "lpoo";
     Admin->Rol = "Administrador";
+    Admin->DNI = 65401234;
+    Admin->NumeroTelefono = 910910910;
+    Admin->Correo = "Administrador@pucp.edu.pe";
+
     STPUCPAdminController::controller::AddUser(Admin);
     
 

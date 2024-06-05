@@ -122,6 +122,7 @@
     <ClInclude Include="Administrador.h" />
     <ClInclude Include="Boleta.h" />
     <ClInclude Include="Conductor.h" />
+    <ClInclude Include="Contexto.h" />
     <ClInclude Include="Orden.h" />
     <ClInclude Include="Pasajero.h" />
     <ClInclude Include="pch.h" />
@@ -137,6 +138,7 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Boleta.cpp" />
     <ClCompile Include="Conductor.cpp" />
+    <ClCompile Include="Contexto.cpp" />
     <ClCompile Include="Orden.cpp" />
     <ClCompile Include="Pasajero.cpp" />
     <ClCompile Include="pch.cpp">
