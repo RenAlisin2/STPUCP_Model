@@ -8,7 +8,7 @@ namespace STPUCP_Model {
 
     public ref class Contexto
     {
-    private:
+    public:
         static initonly Contexto^ instancia = gcnew Contexto();
         Usuario^ usuario_registrado;
 

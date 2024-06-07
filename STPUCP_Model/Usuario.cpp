@@ -6,19 +6,19 @@
 #include "pch.h"
 #include "Usuario.h"
 
-/**
- * Usuario implementation
- */
+ /**
+  * Usuario implementation
+  */
 
 void STPUCP_Model::Usuario::Verificarcontraseña()
 {
-	
+
 }
 
-STPUCP_Model::Usuario::Usuario(){
+STPUCP_Model::Usuario::Usuario() {
 }
 
-STPUCP_Model::Usuario::Usuario(int id, String^ apellidoPaterno, String^ apellidoMaterno, int codigoPUCP, int numeroTelefono, String^ correo, String^ contraseña, String^ nombre,String^ rol, int dni)
+STPUCP_Model::Usuario::Usuario(int id, String^ apellidoPaterno, String^ apellidoMaterno, int codigoPUCP, int numeroTelefono, String^ correo, String^ contraseña, String^ nombre, String^ rol, int dni)
 {
 	this->Id = id;
 	this->ApellidoMaterno = apellidoMaterno;

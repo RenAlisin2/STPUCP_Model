@@ -1,8 +1,5 @@
 #pragma once
 #include "ServicioDriverForm.h"
-//#include "RegistroForm.h"
-//#include "RegistroForm.h"
-//#include "Contexto.h"
 namespace STPUCPAdminGUIView {
 
     using namespace System;
@@ -12,7 +9,6 @@ namespace STPUCPAdminGUIView {
     using namespace System::Data;
     using namespace System::Drawing;
     using namespace STPUCP_Model;
-    using namespace STPUCPAdminController;
 
     public ref class RegistroConductorForm : public System::Windows::Forms::Form
     {
@@ -264,8 +260,7 @@ namespace STPUCPAdminGUIView {
         //.
 
     public: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-        // Verificar si hay un usuario registrado y cambiar su rol
-        STPUCP_Model::Usuario^ usuario_registrado = gcnew STPUCP_Model::Usuario();
+        Usuario^ usuario_registrado = STPUCP_Model::Contexto::Instancia->Usuario_registrado;
         if (usuario_registrado != nullptr) {
             Conductor^ conductor = gcnew Conductor();
 
@@ -278,7 +273,6 @@ namespace STPUCPAdminGUIView {
             conductor->Contraseña = usuario_registrado->Contraseña;
             conductor->Nombre = usuario_registrado->Nombre;
             conductor->DNI = usuario_registrado->DNI;
-            conductor->Rol = usuario_registrado->Rol;
 
             // Datos específicos del conductor
             conductor->ModeloCarro = txtModeloCarro->Text;
@@ -287,6 +281,7 @@ namespace STPUCPAdminGUIView {
             conductor->CantAsientos = Int32::Parse(txtCantidadAsientos->Text);
             conductor->Rol = "Conductor";
 
+            // Guardar las imágenes en el objeto Conductor
             if (pBConductor != nullptr && pBConductor->Image != nullptr) {
                 System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
                 pBConductor->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
@@ -297,6 +292,11 @@ namespace STPUCPAdminGUIView {
                 pBCarro->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
                 conductor->FotoCarro = ms->ToArray();
             }
+            /*if (pBYape != nullptr && pBYape->Image != nullptr) {
+                System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
+                pBYape->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
+                conductor->FotoQR = ms->ToArray();
+            }*/
 
             if ((txtModeloCarro->Text != "") && (txtPlacaCarro->Text != "") && (txtColorCarro->Text != "")) {
                 STPUCPAdminController::controller::AddUser(conductor);
@@ -312,20 +312,20 @@ namespace STPUCPAdminGUIView {
         }
     }
 
-private: System::Void btnConductor_Click(System::Object^ sender, System::EventArgs^ e) {
-    OpenFileDialog^ ofd = gcnew OpenFileDialog();
-    ofd->Filter = "Image Files (*.jpg;*.jpeg;)|*.jpg;*.jpeg;";
-    if (ofd->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-        pBConductor->Image = gcnew Bitmap(ofd->FileName);
+    private: System::Void btnConductor_Click(System::Object^ sender, System::EventArgs^ e) {
+        OpenFileDialog^ ofd = gcnew OpenFileDialog();
+        ofd->Filter = "Image Files (*.jpg;*.jpeg;)|*.jpg;*.jpeg;";
+        if (ofd->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+            pBConductor->Image = gcnew Bitmap(ofd->FileName);
+        }
     }
-}
-private: System::Void btnCarro_Click(System::Object^ sender, System::EventArgs^ e) {
-    OpenFileDialog^ ofd = gcnew OpenFileDialog();
-    ofd->Filter = "Image Files (*.jpg;*.jpeg;)|*.jpg;*.jpeg;";
-    if (ofd->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-        pBCarro->Image = gcnew Bitmap(ofd->FileName);
+    private: System::Void btnCarro_Click(System::Object^ sender, System::EventArgs^ e) {
+        OpenFileDialog^ ofd = gcnew OpenFileDialog();
+        ofd->Filter = "Image Files (*.jpg;*.jpeg;)|*.jpg;*.jpeg;";
+        if (ofd->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+            pBCarro->Image = gcnew Bitmap(ofd->FileName);
+        }
     }
-}
 
-};
-}
+    };
+    }

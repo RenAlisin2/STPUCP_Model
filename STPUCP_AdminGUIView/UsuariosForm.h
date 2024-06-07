@@ -107,7 +107,8 @@ namespace STPUCPAdminGUIView {
 
 
 	private: System::Windows::Forms::PictureBox^ pBConductor;
-	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::PictureBox^ pBCarro;
+
 	private: System::Windows::Forms::PictureBox^ pictureBox2;
 	private: System::Windows::Forms::TextBox^ txtAsientos;
 
@@ -202,6 +203,19 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			this->btnModificar = (gcnew System::Windows::Forms::Button());
 			this->btnEliminar = (gcnew System::Windows::Forms::Button());
 			this->dgvUsuarios = (gcnew System::Windows::Forms::DataGridView());
+			this->CodigoPUCP = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->UsuarioNombre = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->ApellidoPaterno = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->ApellidoMaterno = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Contraseña = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->DNI = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Teléfono = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->CorreoElectrónico = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->TipoUsuario = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->ModeloVehiculo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->PlacaVehiculo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->ColorVehiculo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->CantidadAsientos = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->txtNombre = (gcnew System::Windows::Forms::TextBox());
 			this->lblApellidoPaterno = (gcnew System::Windows::Forms::Label());
 			this->lblApellidoMaterno = (gcnew System::Windows::Forms::Label());
@@ -214,7 +228,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->txtTipoUsuario = (gcnew System::Windows::Forms::TextBox());
 			this->pBConductor = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->pBCarro = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->txtAsientos = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -235,23 +249,10 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->label13 = (gcnew System::Windows::Forms::Label());
-			this->CodigoPUCP = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->UsuarioNombre = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->ApellidoPaterno = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->ApellidoMaterno = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Contraseña = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->DNI = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Teléfono = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->CorreoElectrónico = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->TipoUsuario = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->ModeloVehiculo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->PlacaVehiculo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->ColorVehiculo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->CantidadAsientos = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvUsuarios))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBConductor))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBCarro))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -347,6 +348,72 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			this->dgvUsuarios->TabIndex = 10;
 			this->dgvUsuarios->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &UsuariosForm::dgvUsuarios_CellClick);
 			this->dgvUsuarios->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &UsuariosForm::dgvUsuarios_CellContentClick);
+			// 
+			// CodigoPUCP
+			// 
+			this->CodigoPUCP->HeaderText = L"Codigo PUCP";
+			this->CodigoPUCP->Name = L"CodigoPUCP";
+			// 
+			// UsuarioNombre
+			// 
+			this->UsuarioNombre->HeaderText = L"Nombre";
+			this->UsuarioNombre->Name = L"UsuarioNombre";
+			// 
+			// ApellidoPaterno
+			// 
+			this->ApellidoPaterno->HeaderText = L"Apellido Paterno";
+			this->ApellidoPaterno->Name = L"ApellidoPaterno";
+			// 
+			// ApellidoMaterno
+			// 
+			this->ApellidoMaterno->HeaderText = L"Apellido Materno";
+			this->ApellidoMaterno->Name = L"ApellidoMaterno";
+			// 
+			// Contraseña
+			// 
+			this->Contraseña->HeaderText = L"Contraseña";
+			this->Contraseña->Name = L"Contraseña";
+			// 
+			// DNI
+			// 
+			this->DNI->HeaderText = L"DNI";
+			this->DNI->Name = L"DNI";
+			// 
+			// Teléfono
+			// 
+			this->Teléfono->HeaderText = L"Teléfono";
+			this->Teléfono->Name = L"Teléfono";
+			// 
+			// CorreoElectrónico
+			// 
+			this->CorreoElectrónico->HeaderText = L"Correo Electrónico";
+			this->CorreoElectrónico->Name = L"CorreoElectrónico";
+			this->CorreoElectrónico->Width = 150;
+			// 
+			// TipoUsuario
+			// 
+			this->TipoUsuario->HeaderText = L"Tipo de Usuario";
+			this->TipoUsuario->Name = L"TipoUsuario";
+			// 
+			// ModeloVehiculo
+			// 
+			this->ModeloVehiculo->HeaderText = L"Modelo de Vehículo";
+			this->ModeloVehiculo->Name = L"ModeloVehiculo";
+			// 
+			// PlacaVehiculo
+			// 
+			this->PlacaVehiculo->HeaderText = L"Placa de Vehículo";
+			this->PlacaVehiculo->Name = L"PlacaVehiculo";
+			// 
+			// ColorVehiculo
+			// 
+			this->ColorVehiculo->HeaderText = L"Color de Vehículo";
+			this->ColorVehiculo->Name = L"ColorVehiculo";
+			// 
+			// CantidadAsientos
+			// 
+			this->CantidadAsientos->HeaderText = L"Cantidad de Asientos";
+			this->CantidadAsientos->Name = L"CantidadAsientos";
 			// 
 			// txtNombre
 			// 
@@ -452,15 +519,15 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			this->pBConductor->TabIndex = 42;
 			this->pBConductor->TabStop = false;
 			// 
-			// pictureBox1
+			// pBCarro
 			// 
-			this->pictureBox1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->pictureBox1->Location = System::Drawing::Point(793, 47);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(138, 147);
-			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			this->pictureBox1->TabIndex = 43;
-			this->pictureBox1->TabStop = false;
+			this->pBCarro->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->pBCarro->Location = System::Drawing::Point(793, 47);
+			this->pBCarro->Name = L"pBCarro";
+			this->pBCarro->Size = System::Drawing::Size(138, 147);
+			this->pBCarro->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pBCarro->TabIndex = 43;
+			this->pBCarro->TabStop = false;
 			// 
 			// pictureBox2
 			// 
@@ -627,72 +694,6 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			this->label13->TabIndex = 63;
 			this->label13->Text = L"Foto del QR";
 			// 
-			// CodigoPUCP
-			// 
-			this->CodigoPUCP->HeaderText = L"Codigo PUCP";
-			this->CodigoPUCP->Name = L"CodigoPUCP";
-			// 
-			// UsuarioNombre
-			// 
-			this->UsuarioNombre->HeaderText = L"Nombre";
-			this->UsuarioNombre->Name = L"UsuarioNombre";
-			// 
-			// ApellidoPaterno
-			// 
-			this->ApellidoPaterno->HeaderText = L"Apellido Paterno";
-			this->ApellidoPaterno->Name = L"ApellidoPaterno";
-			// 
-			// ApellidoMaterno
-			// 
-			this->ApellidoMaterno->HeaderText = L"Apellido Materno";
-			this->ApellidoMaterno->Name = L"ApellidoMaterno";
-			// 
-			// Contraseña
-			// 
-			this->Contraseña->HeaderText = L"Contraseña";
-			this->Contraseña->Name = L"Contraseña";
-			// 
-			// DNI
-			// 
-			this->DNI->HeaderText = L"DNI";
-			this->DNI->Name = L"DNI";
-			// 
-			// Teléfono
-			// 
-			this->Teléfono->HeaderText = L"Teléfono";
-			this->Teléfono->Name = L"Teléfono";
-			// 
-			// CorreoElectrónico
-			// 
-			this->CorreoElectrónico->HeaderText = L"Correo Electrónico";
-			this->CorreoElectrónico->Name = L"CorreoElectrónico";
-			this->CorreoElectrónico->Width = 150;
-			// 
-			// TipoUsuario
-			// 
-			this->TipoUsuario->HeaderText = L"Tipo de Usuario";
-			this->TipoUsuario->Name = L"TipoUsuario";
-			// 
-			// ModeloVehiculo
-			// 
-			this->ModeloVehiculo->HeaderText = L"Modelo de Vehículo";
-			this->ModeloVehiculo->Name = L"ModeloVehiculo";
-			// 
-			// PlacaVehiculo
-			// 
-			this->PlacaVehiculo->HeaderText = L"Placa de Vehículo";
-			this->PlacaVehiculo->Name = L"PlacaVehiculo";
-			// 
-			// ColorVehiculo
-			// 
-			this->ColorVehiculo->HeaderText = L"Color de Vehículo";
-			this->ColorVehiculo->Name = L"ColorVehiculo";
-			// 
-			// CantidadAsientos
-			// 
-			this->CantidadAsientos->HeaderText = L"Cantidad de Asientos";
-			this->CantidadAsientos->Name = L"CantidadAsientos";
-			// 
 			// UsuariosForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -718,7 +719,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			this->Controls->Add(this->txtTelefono);
 			this->Controls->Add(this->label8);
 			this->Controls->Add(this->pictureBox2);
-			this->Controls->Add(this->pictureBox1);
+			this->Controls->Add(this->pBCarro);
 			this->Controls->Add(this->pBConductor);
 			this->Controls->Add(this->txtTipoUsuario);
 			this->Controls->Add(this->label2);
@@ -745,7 +746,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			this->menuStrip1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvUsuarios))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBConductor))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBCarro))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -754,9 +755,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 #pragma endregion
 
 	private: System::Void btnAgregar_Click(System::Object^ sender, System::EventArgs^ e) {
- 		STPUCP_Model::Usuario^ usuario;
+		STPUCP_Model::Usuario^ usuario;
 
-		String^ tipoUsuario = txtTipoUsuario->Text; 
+		String^ tipoUsuario = txtTipoUsuario->Text;
 
 		if (tipoUsuario == "Administrador") {
 			usuario = gcnew STPUCP_Model::Administrador();
@@ -766,9 +767,14 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 		}
 		else if (tipoUsuario == "Conductor") {
 			usuario = gcnew STPUCP_Model::Conductor();
+			Conductor^ conductor = dynamic_cast<Conductor^>(usuario);
+			conductor->ModeloCarro = txtModelo->Text;
+			conductor->PlacaCarro = txtPlaca->Text;
+			conductor->ColorCarro = txtColor->Text;
+			conductor->CantAsientos = Int32::Parse(txtAsientos->Text);
 		}
 		else {
-			
+
 			MessageBox::Show("Seleccione un tipo de usuario válido.");
 			return;
 		}
@@ -782,7 +788,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 		usuario->Correo = txtcorreo->Text;
 		usuario->DNI = Int32::Parse(txtDNI->Text);
 		usuario->NumeroTelefono = Int32::Parse(txtTelefono->Text);
-		
+
 		STPUCPAdminController::controller::AddUser(usuario);
 		RefreshGrid();
 	}
@@ -792,7 +798,12 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			   dgvUsuarios->Rows->Clear();
 			   for (int i = 0; i < UsuarioList->Count; i++) {
 				   Usuario^ usuario = UsuarioList[i];
-				   dgvUsuarios->Rows->Add(gcnew array<String^> {"" + usuario->CodigoPUCP, usuario->Nombre, usuario->ApellidoPaterno, usuario->ApellidoMaterno, usuario->Contraseña, "" + usuario->DNI, "" + usuario->NumeroTelefono, usuario->Correo, usuario->Rol});
+				   if (usuario->Rol == "Conductor") {
+					   Conductor^ conductor = dynamic_cast<Conductor^>(usuario);
+					   dgvUsuarios->Rows->Add(gcnew array<String^> {"" + conductor->CodigoPUCP, conductor->Nombre, conductor->ApellidoPaterno, conductor->ApellidoMaterno, conductor->Contraseña, "" + conductor->DNI, "" + conductor->NumeroTelefono, conductor->Correo, conductor->Rol, conductor->ModeloCarro, conductor->PlacaCarro, conductor->ColorCarro, "" + conductor->CantAsientos});
+				   }
+				   else
+					   dgvUsuarios->Rows->Add(gcnew array<String^> {"" + usuario->CodigoPUCP, usuario->Nombre, usuario->ApellidoPaterno, usuario->ApellidoMaterno, usuario->Contraseña, "" + usuario->DNI, "" + usuario->NumeroTelefono, usuario->Correo, usuario->Rol});
 			   }
 		   }
 
@@ -802,15 +813,58 @@ private: System::Void dgvUsuarios_CellClick(System::Object^ sender, System::Wind
 		int UsuarioID = Int32::Parse(dgvUsuarios->Rows[dgvUsuarios->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString());
 		Usuario^ Usuario = controller::QueryUsersById(UsuarioID);
 		if (Usuario != nullptr) {
-		txtCodigoPUCP->Text = "" + Usuario->CodigoPUCP;
-		txtNombre->Text = Usuario->Nombre;
-		txtApellidoPaterno->Text = Usuario->ApellidoPaterno;
-		txtApellidoMaterno->Text = Usuario->ApellidoMaterno;
-		txtContraseña->Text = Usuario->Contraseña;
-		txtTipoUsuario->Text = Usuario->Rol;
-		txtcorreo->Text = Usuario->Correo;
-		txtDNI->Text = "" + Usuario->DNI;
-		txtTelefono->Text = "" + Usuario->NumeroTelefono;
+			txtCodigoPUCP->Text = "" + Usuario->CodigoPUCP;
+			txtNombre->Text = Usuario->Nombre;
+			txtApellidoPaterno->Text = Usuario->ApellidoPaterno;
+			txtApellidoMaterno->Text = Usuario->ApellidoMaterno;
+			txtContraseña->Text = Usuario->Contraseña;
+			txtTipoUsuario->Text = Usuario->Rol;
+			txtcorreo->Text = Usuario->Correo;
+			txtDNI->Text = "" + Usuario->DNI;
+			txtTelefono->Text = "" + Usuario->NumeroTelefono;
+		}
+		if (Usuario->Rol == "Conductor") {
+			Conductor^ conductor = dynamic_cast<Conductor^>(Usuario);
+			txtModelo->Text = conductor->ModeloCarro;
+			txtPlaca->Text = conductor->PlacaCarro;
+			txtColor->Text = conductor->ColorCarro;
+			txtAsientos->Text = "" + conductor->CantAsientos;
+
+			// Cargar la imagen del conductor
+			if (conductor->FotoConductor != nullptr) {
+				System::IO::MemoryStream^ msConductor = gcnew System::IO::MemoryStream(conductor->FotoConductor);
+				pBConductor->Image = Image::FromStream(msConductor);
+			}
+			else {
+				pBConductor->Image = nullptr;
+			}
+
+			// Cargar la imagen del carro
+			if (conductor->FotoCarro != nullptr) {
+				System::IO::MemoryStream^ msCarro = gcnew System::IO::MemoryStream(conductor->FotoCarro);
+				pBCarro->Image = Image::FromStream(msCarro);
+			}
+			else {
+				pBCarro->Image = nullptr;
+			}
+
+			/*Cargar la imagen del QR
+			if (conductor->FotoQR != nullptr) {
+				System::IO::MemoryStream^ msQR = gcnew System::IO::MemoryStream(conductor->FotoQR);
+				pBVerQR->Image = Image::FromStream(msQR);
+			}
+			else {
+				pBVerQR->Image = nullptr;
+			}else {
+				pBVerConductor->Image = nullptr;
+				pBVerCarro->Image = nullptr;
+				pBVerQR->Image = nullptr;
+			}*/
+		}
+		else {
+			pBConductor->Image = nullptr;
+			pBCarro->Image = nullptr;
+			//pBVerQR->Image = nullptr;
 		}
 	}
 }
@@ -828,6 +882,11 @@ private: System::Void btnModificar_Click(System::Object^ sender, System::EventAr
 	}
 	else if (tipoUsuario == "Conductor") {
 		usuario = gcnew STPUCP_Model::Conductor();
+		Conductor^ conductor = dynamic_cast<Conductor^>(usuario);
+		conductor->ModeloCarro = txtModelo->Text;
+		conductor->PlacaCarro = txtPlaca->Text;
+		conductor->ColorCarro = txtColor->Text;
+		conductor->CantAsientos = Int32::Parse(txtAsientos->Text);
 	}
 	else {
 		MessageBox::Show("Seleccione un tipo de usuario válido.");
