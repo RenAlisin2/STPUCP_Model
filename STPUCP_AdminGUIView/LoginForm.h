@@ -150,6 +150,7 @@ namespace STPUCPAdminGUIView {
 			this->Controls->Add(this->label1);
 			this->Name = L"LoginForm";
 			this->Text = L"LoginForm";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &LoginForm::LoginForm_FormClosed);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -172,6 +173,13 @@ private: System::Void btnRegistrarse_Click(System::Object^ sender, System::Event
 private: System::Void txtContraseña_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 	if (e->KeyData == Keys::Enter)
 		btnIngresar->PerformClick();
+}
+private: System::Void LoginForm_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+	String^ password = txtContraseña->Text;
+	int codigoPUCP;
+	if (String::IsNullOrWhiteSpace(password) || codigoPUCP == 0) {
+		Application::Exit();
+	}
 }
 };
 }

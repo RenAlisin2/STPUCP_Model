@@ -7,7 +7,7 @@
 #include "OrdenForm.h"
 #include "PromocionesForm.h"
 #include "LoginForm.h"
-
+#include "PasajeroRutaForm.h"
 
 
 
@@ -344,8 +344,8 @@ private: System::Void pasajerosToolStripMenuItem_Click(System::Object^ sender, S
 		   }
 
 private: System::Void transporteToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	PasajeroForm^ PasajerosForm = gcnew PasajeroForm();
-	PasajerosForm->ShowDialog();
+	PasajeroRutaForm^ pasajeroRutaForm = gcnew PasajeroRutaForm();
+	pasajeroRutaForm->ShowDialog();
 }
 private: System::Void viajeToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	ServicioDriverForm^ ServicioDriver = gcnew ServicioDriverForm();
