@@ -7,6 +7,7 @@ using namespace System::Windows::Forms;
 //using namespace STPUCPAdminController;
 using namespace System::IO;
 using namespace System::Xml::Serialization;
+using namespace STPUCP_Model;
 using namespace System::Runtime::Serialization::Formatters::Binary;
 
 void STPUCPPersistance::Persistance::PersistTextFile(String^ fileName, Object^ persistObject)
@@ -20,7 +21,7 @@ void STPUCPPersistance::Persistance::PersistTextFile(String^ fileName, Object^ p
         List<Usuario^>^ usuario = (List<Usuario^>^) persistObject;
         for (int i = 0; i < usuario->Count; i++) {
             Usuario^ r = usuario[i];
-            writer->WriteLine(r->CodigoPUCP + "," + r->Nombre + "," + r->ApellidoPaterno + "," + r->ApellidoMaterno);
+            writer->WriteLine(r->CodigoPUCP + "," + r->Nombre + "," + r->ApellidoPaterno + "," + r->ApellidoMaterno + "," + r->Rol);
         }
     }
 
@@ -28,21 +29,21 @@ void STPUCPPersistance::Persistance::PersistTextFile(String^ fileName, Object^ p
         List<Viaje^>^ viaje = (List<Viaje^>^) persistObject;
         for (int i = 0; i < viaje->Count; i++) {
             Viaje^ v = viaje[i];
-            writer->WriteLine(v->Id_Viaje + "," +v ->Id + ","  + v->HoraSalida + "," + v->FechaViaje + "," + v->DescripcionViaje + "," + v->UltimoParadero + "," + v->PrecioViaje);
+            writer->WriteLine(v ->Id + ","  + v->HoraSalida + "," + v->FechaViaje + "," + v->Distrito + ","+v -> Lugar + v->UltimoParadero + "," + v->PrecioViaje);
         }
     }
     if (persistObject->GetType() == List<Promocion^>::typeid) {
         List<Promocion^>^ promocion = (List<Promocion^>^) persistObject;
         for (int i = 0; i < promocion->Count; i++) {
             Promocion^ p = promocion[i];
-            writer->WriteLine(p->Id + ","+ p->Id_promo + "," + p->Porcentaje + "," + p->NombrePromo);
+            writer->WriteLine(p->Id + "," + p->Porcentaje + "," + p->NombrePromo);
         }
     }
     if (persistObject->GetType() == List<Orden^>::typeid) {
         List<Orden^>^ orden = (List<Orden^>^) persistObject;
         for (int i = 0; i < orden->Count; i++) {
             Orden^ o = orden[i];
-            writer->WriteLine(o->Id_Orden + ","+ o->Id + "," + o->Distrito + "," + o->CalificacionEstrellas + "," + o->Fecha + "," + o->Precio);
+            writer->WriteLine(o->Id + "," + o->Distrito + "," + o->CalificacionEstrellas + "," + o->Fecha + "," + o->Precio);
         }
     }
     if (persistObject->GetType() == List<Pasajero^>::typeid) {
@@ -86,6 +87,7 @@ Object^ STPUCPPersistance::Persistance::LoadTextFile(String^ fileName)
                 usuario->Nombre = record[1];
                 usuario->ApellidoPaterno = record[2];
                 usuario->ApellidoMaterno = record[3];
+                usuario->Rol = record[4];
                 
                 ((List<Usuario^>^)result)->Add(usuario);
             }
@@ -97,13 +99,12 @@ Object^ STPUCPPersistance::Persistance::LoadTextFile(String^ fileName)
                 if (line == nullptr) break;
                 array<String^>^ record = line->Split(',');
                 Viaje^ viaje = gcnew Viaje();
-                viaje->Id_Viaje = Convert::ToInt32(record[0]);
-                viaje->Id = Convert::ToInt32(record[1]);
-                viaje->HoraSalida = Convert::ToInt32(record[2]);
-                viaje->FechaViaje = record[3];
-                viaje->DescripcionViaje = record[4];
-                viaje->UltimoParadero = record[5];
-                viaje->PrecioViaje = Convert::ToInt32(record[6]);
+                viaje->Id = Convert::ToInt32(record[0]);
+                viaje->HoraSalida = Convert::ToInt32(record[1]);
+                viaje->FechaViaje = record[2];
+                viaje->Distrito = record[3];
+                viaje->UltimoParadero = record[4];
+                viaje->PrecioViaje = Convert::ToInt32(record[5]);
                 ((List<Viaje^>^)result)->Add(viaje);
             }
         }
@@ -115,9 +116,8 @@ Object^ STPUCPPersistance::Persistance::LoadTextFile(String^ fileName)
                 array<String^>^ record = line->Split(',');
                 Promocion^ promocion = gcnew Promocion();
                 promocion->Id = Convert::ToInt32(record[0]);
-                promocion->Id_promo = Convert::ToInt32(record[1]);
-                promocion->Porcentaje = Convert::ToInt32(record[2]);
-                promocion->NombrePromo = record[3];
+                promocion->Porcentaje = Convert::ToInt32(record[1]);
+                promocion->NombrePromo = record[2];
                 ((List<Promocion^>^)result)->Add(promocion);
             }
         }
@@ -312,7 +312,7 @@ int STPUCPPersistance::Persistance::AddJourney(Viaje^ Viaje)
 void STPUCPPersistance::Persistance::UpdateJourney(Viaje^ Viaje)
 {
     for (int i = 0; i < ViajesListDB->Count; i++) {
-        if (ViajesListDB[i]->Id_Viaje == Viaje->Id_Viaje) {
+        if (ViajesListDB[i]->Id == Viaje->Id) {
             ViajesListDB[i] = Viaje;
             PersistTextFile(VIAJE_FILE_NAME, ViajesListDB);
             return;
@@ -323,7 +323,7 @@ void STPUCPPersistance::Persistance::UpdateJourney(Viaje^ Viaje)
 void STPUCPPersistance::Persistance::DeleteJourney(int ViajeID)
 {
     for (int i = 0; i < ViajesListDB->Count; i++) {
-        if (ViajesListDB[i]->Id_Viaje == ViajeID) {
+        if (ViajesListDB[i]->Id == ViajeID) {
             ViajesListDB->RemoveAt(i);
             PersistTextFile(VIAJE_FILE_NAME, ViajesListDB);
             return;
@@ -336,7 +336,7 @@ Viaje^ STPUCPPersistance::Persistance::QueryJourneysById(int ViajeID)
     ViajesListDB = (List<Viaje^>^) LoadTextFile(VIAJE_FILE_NAME);
     Viaje^ viaje = nullptr;
     for (int i = 0; i < ViajesListDB->Count; i++) {
-        if (ViajesListDB[i]->Id_Viaje == ViajeID) {
+        if (ViajesListDB[i]->Id == ViajeID) {
             viaje = ViajesListDB[i];
             return viaje;
         }
@@ -362,7 +362,7 @@ int STPUCPPersistance::Persistance::AddPromotion(Promocion^ Promocion)
 void STPUCPPersistance::Persistance::UpdatePromotion(Promocion^ Promocion)
 {
     for (int i = 0; i < PromocionesListDB->Count; i++) {
-        if (PromocionesListDB[i]->Id_promo == Promocion->Id_promo) {
+        if (PromocionesListDB[i]->Id == Promocion->Id) {
             PromocionesListDB[i] = Promocion;
             PersistTextFile(PROMOCION_FILE_NAME, PromocionesListDB);
             return;
@@ -373,7 +373,7 @@ void STPUCPPersistance::Persistance::UpdatePromotion(Promocion^ Promocion)
 void STPUCPPersistance::Persistance::DeletePromotion(int PromocionID)
 {
     for (int i = 0; i < PromocionesListDB->Count; i++) {
-        if (PromocionesListDB[i]->Id_promo == PromocionID) {
+        if (PromocionesListDB[i]->Id == PromocionID) {
             PromocionesListDB->RemoveAt(i);
             PersistTextFile(PROMOCION_FILE_NAME, PromocionesListDB);
             return;
@@ -386,7 +386,7 @@ Promocion^ STPUCPPersistance::Persistance::QueryPromotionsById(int PromocionID)
     PromocionesListDB = (List<Promocion^>^) LoadTextFile(PROMOCION_FILE_NAME);
     Promocion^ promocion = nullptr;
     for (int i = 0; i < PromocionesListDB->Count; i++) {
-        if (PromocionesListDB[i]->Id_promo == PromocionID) {
+        if (PromocionesListDB[i]->Id == PromocionID) {
             promocion = PromocionesListDB[i];
             return promocion;
         }
@@ -412,7 +412,7 @@ int STPUCPPersistance::Persistance::AddOrder(Orden^ orden)
 void STPUCPPersistance::Persistance::UpdateOrder(Orden^ orden)
 {
     for (int i = 0; i < OrdenListDB->Count; i++) {
-        if (OrdenListDB[i]->Id_Orden == orden->Id_Orden) {
+        if (OrdenListDB[i]->Id == orden->Id) {
             OrdenListDB[i] = orden;
             PersistTextFile(ORDER_FILE_NAME, OrdenListDB);
             return;
@@ -423,7 +423,7 @@ void STPUCPPersistance::Persistance::UpdateOrder(Orden^ orden)
 void STPUCPPersistance::Persistance::DeleteOrder(int ordenID)
 {
     for (int i = 0; i < OrdenListDB->Count; i++) {
-        if (OrdenListDB[i]->Id_Orden == ordenID) {
+        if (OrdenListDB[i]->Id == ordenID) {
             OrdenListDB->RemoveAt(i);
             PersistTextFile(ORDER_FILE_NAME, OrdenListDB);
             return;
@@ -436,7 +436,7 @@ Orden^ STPUCPPersistance::Persistance::QueryOrderById(int ordenID)
     OrdenListDB = (List<Orden^>^) LoadTextFile(ORDER_FILE_NAME);
     Orden^ orden = nullptr;
     for (int i = 0; i < OrdenListDB->Count; i++) {
-        if (OrdenListDB[i]->Id_Orden == ordenID) {
+        if (OrdenListDB[i]->Id == ordenID) {
             orden = OrdenListDB[i];
             return orden;
         }

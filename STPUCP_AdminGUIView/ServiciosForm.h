@@ -87,6 +87,7 @@ namespace STPUCPAdminGUIView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Descripcion;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ UltimParadero;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Precio;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Distrito;
 
 
 	private:
@@ -113,6 +114,12 @@ namespace STPUCPAdminGUIView {
 			this->lblFechaViaje = (gcnew System::Windows::Forms::Label());
 			this->txtHoraSalida = (gcnew System::Windows::Forms::TextBox());
 			this->dgvServicios = (gcnew System::Windows::Forms::DataGridView());
+			this->UsuarioID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->HoraSalida = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->FechaViaje = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Distrito = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->UltimParadero = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Precio = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->btnEliminar = (gcnew System::Windows::Forms::Button());
 			this->btnModificar = (gcnew System::Windows::Forms::Button());
 			this->btnAgregar = (gcnew System::Windows::Forms::Button());
@@ -121,12 +128,6 @@ namespace STPUCPAdminGUIView {
 			this->lblId = (gcnew System::Windows::Forms::Label());
 			this->lblPrecio = (gcnew System::Windows::Forms::Label());
 			this->txtPrecio = (gcnew System::Windows::Forms::TextBox());
-			this->UsuarioID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->HoraSalida = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->FechaViaje = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Descripcion = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->UltimParadero = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Precio = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvServicios))->BeginInit();
 			this->SuspendLayout();
@@ -134,10 +135,12 @@ namespace STPUCPAdminGUIView {
 			// menuStrip1
 			// 
 			this->menuStrip1->AllowMerge = false;
+			this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->archivoToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(522, 24);
+			this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
+			this->menuStrip1->Size = System::Drawing::Size(608, 24);
 			this->menuStrip1->TabIndex = 0;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -189,9 +192,9 @@ namespace STPUCPAdminGUIView {
 			this->lblDescripcion->AutoSize = true;
 			this->lblDescripcion->Location = System::Drawing::Point(25, 120);
 			this->lblDescripcion->Name = L"lblDescripcion";
-			this->lblDescripcion->Size = System::Drawing::Size(66, 13);
+			this->lblDescripcion->Size = System::Drawing::Size(42, 13);
 			this->lblDescripcion->TabIndex = 27;
-			this->lblDescripcion->Text = L"Descripción:";
+			this->lblDescripcion->Text = L"Distrito:";
 			// 
 			// lblFechaViaje
 			// 
@@ -214,13 +217,56 @@ namespace STPUCPAdminGUIView {
 			this->dgvServicios->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvServicios->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 				this->UsuarioID,
-					this->HoraSalida, this->FechaViaje, this->Descripcion, this->UltimParadero, this->Precio
+					this->HoraSalida, this->FechaViaje, this->Distrito, this->UltimParadero, this->Precio
 			});
 			this->dgvServicios->Location = System::Drawing::Point(20, 265);
 			this->dgvServicios->Name = L"dgvServicios";
-			this->dgvServicios->Size = System::Drawing::Size(482, 253);
+			this->dgvServicios->RowHeadersWidth = 51;
+			this->dgvServicios->Size = System::Drawing::Size(580, 253);
 			this->dgvServicios->TabIndex = 24;
 			this->dgvServicios->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ServiciosForm::dgvServicios_CellClick);
+			// 
+			// UsuarioID
+			// 
+			this->UsuarioID->HeaderText = L"ID";
+			this->UsuarioID->MinimumWidth = 6;
+			this->UsuarioID->Name = L"UsuarioID";
+			this->UsuarioID->Width = 50;
+			// 
+			// HoraSalida
+			// 
+			this->HoraSalida->HeaderText = L"Hora de Salida";
+			this->HoraSalida->MinimumWidth = 6;
+			this->HoraSalida->Name = L"HoraSalida";
+			this->HoraSalida->Width = 125;
+			// 
+			// FechaViaje
+			// 
+			this->FechaViaje->HeaderText = L"Fecha de Viaje";
+			this->FechaViaje->MinimumWidth = 6;
+			this->FechaViaje->Name = L"FechaViaje";
+			this->FechaViaje->Width = 125;
+			// 
+			// Distrito
+			// 
+			this->Distrito->HeaderText = L"Distrito";
+			this->Distrito->MinimumWidth = 6;
+			this->Distrito->Name = L"Distrito";
+			this->Distrito->Width = 125;
+			// 
+			// UltimParadero
+			// 
+			this->UltimParadero->HeaderText = L"Ultimo Paradero";
+			this->UltimParadero->MinimumWidth = 6;
+			this->UltimParadero->Name = L"UltimParadero";
+			this->UltimParadero->Width = 125;
+			// 
+			// Precio
+			// 
+			this->Precio->HeaderText = L"Precio";
+			this->Precio->MinimumWidth = 6;
+			this->Precio->Name = L"Precio";
+			this->Precio->Width = 50;
 			// 
 			// btnEliminar
 			// 
@@ -293,43 +339,11 @@ namespace STPUCPAdminGUIView {
 			this->txtPrecio->Size = System::Drawing::Size(140, 20);
 			this->txtPrecio->TabIndex = 33;
 			// 
-			// UsuarioID
-			// 
-			this->UsuarioID->HeaderText = L"ID";
-			this->UsuarioID->Name = L"UsuarioID";
-			this->UsuarioID->Width = 50;
-			// 
-			// HoraSalida
-			// 
-			this->HoraSalida->HeaderText = L"Hora de Salida";
-			this->HoraSalida->Name = L"HoraSalida";
-			// 
-			// FechaViaje
-			// 
-			this->FechaViaje->HeaderText = L"Fecha de Viaje";
-			this->FechaViaje->Name = L"FechaViaje";
-			// 
-			// Descripcion
-			// 
-			this->Descripcion->HeaderText = L"Descripción";
-			this->Descripcion->Name = L"Descripcion";
-			// 
-			// UltimParadero
-			// 
-			this->UltimParadero->HeaderText = L"Ultimo Paradero";
-			this->UltimParadero->Name = L"UltimParadero";
-			// 
-			// Precio
-			// 
-			this->Precio->HeaderText = L"Precio";
-			this->Precio->Name = L"Precio";
-			this->Precio->Width = 50;
-			// 
 			// ServiciosForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(522, 549);
+			this->ClientSize = System::Drawing::Size(608, 549);
 			this->Controls->Add(this->txtPrecio);
 			this->Controls->Add(this->lblPrecio);
 			this->Controls->Add(this->txtUltimoParadero);
@@ -364,7 +378,7 @@ namespace STPUCPAdminGUIView {
 		viaje->Id = Int32::Parse(txtId->Text);
 		viaje->HoraSalida = Int32::Parse(txtHoraSalida->Text);
 		viaje->FechaViaje = txtFechaViaje->Text;
-		viaje->DescripcionViaje = txtDescripcion->Text;
+		viaje->Distrito = txtDescripcion->Text;
 		viaje->UltimoParadero = txtUltimoParadero->Text;
 		viaje->PrecioViaje = Int32::Parse(txtPrecio->Text);
 
@@ -377,16 +391,15 @@ namespace STPUCPAdminGUIView {
 			   dgvServicios->Rows->Clear();
 			   for (int i = 0; i < viajeList->Count; i++) {
 				   Viaje^ viaje = viajeList[i];
-				   dgvServicios->Rows->Add(gcnew array<String^> {"" + viaje->Id, "" + viaje->HoraSalida, viaje->FechaViaje, viaje->DescripcionViaje ,viaje->UltimoParadero, "" + viaje->PrecioViaje});
+				   dgvServicios->Rows->Add(gcnew array<String^> {"" + viaje->Id, "" + viaje->HoraSalida, "" + viaje->FechaViaje, viaje->Distrito, viaje->UltimoParadero, "" + viaje->PrecioViaje});
 			   }
 		   }
 private: System::Void btnModificar_Click(System::Object^ sender, System::EventArgs^ e) {
 	Viaje^ viaje = gcnew STPUCP_Model::Viaje();
 	viaje->Id = Int32::Parse(txtId->Text);
-
 	viaje->HoraSalida = Int32::Parse(txtHoraSalida->Text);
 	viaje->FechaViaje = txtFechaViaje->Text;
-	viaje->DescripcionViaje = txtDescripcion->Text;
+	viaje->Distrito = txtDescripcion->Text;
 	viaje->UltimoParadero = txtUltimoParadero->Text;
 	viaje->PrecioViaje = Int32::Parse(txtPrecio->Text);
 
@@ -405,7 +418,7 @@ private: System::Void dgvServicios_CellClick(System::Object^ sender, System::Win
 	txtId->Text = "" + viaje->Id;
 	txtHoraSalida->Text = "" + viaje->HoraSalida;
 	txtFechaViaje->Text = viaje->FechaViaje;
-	txtDescripcion->Text = viaje->DescripcionViaje;
+	txtDescripcion->Text = viaje->Distrito;
 	txtUltimoParadero->Text = viaje->UltimoParadero;
 	txtPrecio->Text = "" + viaje->PrecioViaje;
 }

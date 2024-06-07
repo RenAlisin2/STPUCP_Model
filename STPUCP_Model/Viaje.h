@@ -9,18 +9,20 @@
 using namespace System;
 
 namespace STPUCP_Model {
-    public ref class Viaje : public Conductor {
+    [Serializable]
+    public ref class Viaje{
     private:
 
     public:
-        property int Id_Viaje;
+        property int Id;
         property int HoraSalida;
         property String^ FechaViaje;
-        property String^ DescripcionViaje;
+        property String^ Lugar;
         property String^ UltimoParadero;
         property double PrecioViaje;
+        property String^ Distrito;
         //property int ConductorId;
-
+        //property List<String^> viajes;
 
     };
 }

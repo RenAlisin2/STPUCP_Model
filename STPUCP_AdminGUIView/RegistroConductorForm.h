@@ -1,7 +1,8 @@
 #pragma once
 #include "ServicioDriverForm.h"
-#include "RegistroForm.h"
-#include "Contexto.h"
+//#include "RegistroForm.h"
+//#include "RegistroForm.h"
+//#include "Contexto.h"
 namespace STPUCPAdminGUIView {
 
     using namespace System;
@@ -11,6 +12,7 @@ namespace STPUCPAdminGUIView {
     using namespace System::Data;
     using namespace System::Drawing;
     using namespace STPUCP_Model;
+    using namespace STPUCPAdminController;
 
     public ref class RegistroConductorForm : public System::Windows::Forms::Form
     {
@@ -256,12 +258,14 @@ namespace STPUCPAdminGUIView {
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBHuellaDactilar))->EndInit();
             this->ResumeLayout(false);
             this->PerformLayout();
+
         }
 #pragma endregion
         //.
 
     public: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
         // Verificar si hay un usuario registrado y cambiar su rol
+        STPUCP_Model::Usuario^ usuario_registrado = gcnew STPUCP_Model::Usuario();
         if (usuario_registrado != nullptr) {
             Conductor^ conductor = gcnew Conductor();
 
@@ -274,6 +278,7 @@ namespace STPUCPAdminGUIView {
             conductor->Contraseña = usuario_registrado->Contraseña;
             conductor->Nombre = usuario_registrado->Nombre;
             conductor->DNI = usuario_registrado->DNI;
+            conductor->Rol = usuario_registrado->Rol;
 
             // Datos específicos del conductor
             conductor->ModeloCarro = txtModeloCarro->Text;
@@ -321,5 +326,6 @@ private: System::Void btnCarro_Click(System::Object^ sender, System::EventArgs^ 
         pBCarro->Image = gcnew Bitmap(ofd->FileName);
     }
 }
+
 };
 }

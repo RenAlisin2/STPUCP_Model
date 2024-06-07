@@ -3,6 +3,7 @@
 using namespace System;
 
 namespace STPUCP_Model {
+    [Serializable]
     ref class Usuario;
 
     public ref class Contexto

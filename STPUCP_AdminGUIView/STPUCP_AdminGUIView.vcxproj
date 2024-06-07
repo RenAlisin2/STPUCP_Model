@@ -136,7 +136,13 @@
     <ClInclude Include="BL_PasajerosForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="BuscarViajesForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="ConductorForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ESPERANDOPAGO.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="HuellaForm.h">
@@ -192,7 +198,9 @@
     <ClCompile Include="AdminMainForm.cpp" />
     <ClCompile Include="BL_ConductoresForm.cpp" />
     <ClCompile Include="BL_PasajerosForm.cpp" />
+    <ClCompile Include="BuscarViajesForm.cpp" />
     <ClCompile Include="ConductorForm.cpp" />
+    <ClCompile Include="ESPERANDOPAGO.cpp" />
     <ClCompile Include="HuellaForm.cpp" />
     <ClCompile Include="BoletaInterfazForm.cpp" />
     <ClCompile Include="LoginForm.cpp" />
@@ -236,9 +244,15 @@
     <EmbeddedResource Include="BL_PasajerosForm.resx">
       <DependentUpon>BL_PasajerosForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BuscarViajesForm.resx">
+      <DependentUpon>BuscarViajesForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConductorForm.resx">
       <DependentUpon>ConductorForm.h</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ESPERANDOPAGO.resx">
+      <DependentUpon>ESPERANDOPAGO.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HuellaForm.resx">
       <DependentUpon>HuellaForm.h</DependentUpon>

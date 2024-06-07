@@ -3,6 +3,7 @@
 
 #pragma once
 using namespace System;
+using namespace System::Collections::Generic;
 
 #ifndef _CONDUCTOR_H
 #define _CONDUCTOR_H
@@ -26,6 +27,7 @@ namespace STPUCP_Model {
         property int TiempoPenalizacion;
         property String^ MotivoBan;
         property bool ListaNegra;
+        property List <String^>^ Conductores;
         Conductor() {}
         Conductor(int id, String^ apellidoPaterno, String^ apellidoMaterno, int codigoPUCP, int numeroTelefono, String^ correo, String^ contraseña, String^ nombre, String^ rol, int dni,
             String^ modeloCarro, String^ placaCarro, String^ colorCarro, int cantAsientos, array<Byte>^ fotoConductor, 

@@ -37,12 +37,5 @@ System::Void STPUCPAdminGUIView::LoginForm::btnIngresar_Click(System::Object^ se
 	}
 
 }
-/*
-System::Void STPUCPAdminGUIView::LoginForm::LoginForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e)
-{
-	if (AdminMainForm::user == nullptr) {
-		Application::Exit();
-	}
-}
-*/
+
 

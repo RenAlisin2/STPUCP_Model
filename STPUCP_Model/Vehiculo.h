@@ -9,11 +9,12 @@
 using namespace System;
 
 namespace STPUCP_Model {
+    [Serializable]
     public ref class Vehiculo {
     public:
         property int CantAsientos;
         property int AsientosOcupados;
-       
+        
     };
 }
 

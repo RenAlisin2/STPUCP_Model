@@ -55,7 +55,7 @@ namespace STPUCPPersistance {
 		static Orden^ QueryOrderById(int ordenID);
 		static List<Orden^>^ QueryAllOrders();
 
-		//Métodos para pasajeros
+		//Métodos para Black List pasajeros
 		static String^ BL_PASAJEROS_FILE_NAME = "BL_PasajerosDB.txt";
 		static int AddBL_Pasajero(Pasajero^ BL_Pasajero);
 		static void UpdateBL_Pasajero(Pasajero^ BL_Pasajero);
@@ -63,7 +63,7 @@ namespace STPUCPPersistance {
 		static Pasajero^ QueryBL_PasajeroById(int BL_PasajeroID);
 		static List<Pasajero^>^ QueryAllBL_Pasajeros();
 
-		//Métodos para conductores
+		//Métodos para Black List conductores
 		static String^ BL_CONDUCTORES_FILE_NAME = "BL_ConductoresDB.txt";
 		static int AddBL_Conductor(Conductor^ BL_Conductor);
 		static void UpdateBL_Conductor(Conductor^ BL_Conductor);

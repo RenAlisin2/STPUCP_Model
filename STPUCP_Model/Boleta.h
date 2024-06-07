@@ -10,9 +10,10 @@
 using namespace System;
 
 namespace STPUCP_Model {
+    [Serializable]
     public ref class Boleta {
     public:
-        property int id;
+        property int Id;
         property double Precio;
     };
 }

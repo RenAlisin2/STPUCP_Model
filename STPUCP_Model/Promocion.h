@@ -7,14 +7,17 @@
 #ifndef _PROMOCION_H
 #define _PROMOCION_H
 using namespace System;
+using namespace System::Collections::Generic;
 
 namespace STPUCP_Model {
-    public ref class Promocion : public Usuario {
+    [Serializable]
+    public ref class Promocion{
     public:
         // Aparte de las Ids , se crea una id individual para verificar el numero de promos , pero estas estan ajustadas al ID general del usuario
-        property int Id_promo;
+        property int Id;
         property int Porcentaje;
         property String^ NombrePromo;
+        property List <String^>^ Promociones;
     };
 }
 

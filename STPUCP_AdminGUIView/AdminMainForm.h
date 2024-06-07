@@ -277,30 +277,30 @@ private: System::Void salirToolStripMenuItem_Click(System::Object^ sender, Syste
 }
 private: System::Void conductoresToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	UsuariosForm^ usuariosForm = gcnew UsuariosForm();
-	usuariosForm->MdiParent = this;
-	usuariosForm->Show();
+	//usuariosForm->MdiParent = this;
+	usuariosForm->ShowDialog();
 
 }
 
 private: System::Void serviciosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	ServiciosForm^ serviciosForm = gcnew ServiciosForm();
-	serviciosForm->MdiParent = this;
-	serviciosForm->Show();
+	//serviciosForm->MdiParent = this;
+	serviciosForm->ShowDialog();
 }
 private: System::Void verToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	MetricasForm^ metricasForm = gcnew MetricasForm();
-	metricasForm->MdiParent = this;
-	metricasForm->Show();
+	//metricasForm->MdiParent = this;
+	metricasForm->ShowDialog();
 }
 private: System::Void verTodasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	PromocionesForm^ promocionesForm = gcnew PromocionesForm();
-	promocionesForm->MdiParent = this;
-	promocionesForm->Show();
+	//promocionesForm->MdiParent = this;
+	promocionesForm->ShowDialog();
 }
 private: System::Void verToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
 	BL_ConductoresForm^ bl_ConductoresForm = gcnew BL_ConductoresForm();
-	bl_ConductoresForm->MdiParent = this;
-	bl_ConductoresForm->Show();
+	//bl_ConductoresForm->MdiParent = this;
+	bl_ConductoresForm->ShowDialog();
 }
 
 private: System::Void AdminMainForm_Load(System::Object^ sender, System::EventArgs^ e) {
@@ -309,13 +309,13 @@ private: System::Void AdminMainForm_Load(System::Object^ sender, System::EventAr
 }
 private: System::Void ordenesToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	OrdenForm^ ordenForm = gcnew OrdenForm();
-	ordenForm->MdiParent = this;
-	ordenForm->Show();
+	//ordenForm->MdiParent = this;
+	ordenForm->ShowDialog();
 }
 private: System::Void pasajerosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	BL_PasajerosForm^ bl_PasajerosForm = gcnew BL_PasajerosForm();
-	bl_PasajerosForm->MdiParent = this;
-	bl_PasajerosForm->Show();
+	//bl_PasajerosForm->MdiParent = this;
+	bl_PasajerosForm->ShowDialog();
 }
 	   public:
 		   void EnablePermisoAdministrador() {
