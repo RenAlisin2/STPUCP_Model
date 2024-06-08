@@ -95,24 +95,27 @@ namespace STPUCPAdminGUIView {
             // label1
             // 
             this->label1->AutoSize = true;
-            this->label1->Location = System::Drawing::Point(23, 41);
+            this->label1->Location = System::Drawing::Point(31, 50);
+            this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
             this->label1->Name = L"label1";
-            this->label1->Size = System::Drawing::Size(111, 13);
+            this->label1->Size = System::Drawing::Size(139, 16);
             this->label1->TabIndex = 0;
             this->label1->Text = L"Distrito al que quiere ir";
             // 
             // txtId
             // 
-            this->txtId->Location = System::Drawing::Point(140, 38);
+            this->txtId->Location = System::Drawing::Point(187, 47);
+            this->txtId->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->txtId->Name = L"txtId";
-            this->txtId->Size = System::Drawing::Size(425, 20);
+            this->txtId->Size = System::Drawing::Size(565, 22);
             this->txtId->TabIndex = 1;
             // 
             // btnBuscar
             // 
-            this->btnBuscar->Location = System::Drawing::Point(26, 74);
+            this->btnBuscar->Location = System::Drawing::Point(35, 91);
+            this->btnBuscar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->btnBuscar->Name = L"btnBuscar";
-            this->btnBuscar->Size = System::Drawing::Size(258, 35);
+            this->btnBuscar->Size = System::Drawing::Size(344, 43);
             this->btnBuscar->TabIndex = 2;
             this->btnBuscar->Text = L"Buscar";
             this->btnBuscar->UseVisualStyleBackColor = true;
@@ -120,9 +123,10 @@ namespace STPUCPAdminGUIView {
             // 
             // btnCancelar
             // 
-            this->btnCancelar->Location = System::Drawing::Point(290, 74);
+            this->btnCancelar->Location = System::Drawing::Point(387, 91);
+            this->btnCancelar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->btnCancelar->Name = L"btnCancelar";
-            this->btnCancelar->Size = System::Drawing::Size(275, 35);
+            this->btnCancelar->Size = System::Drawing::Size(367, 43);
             this->btnCancelar->TabIndex = 3;
             this->btnCancelar->Text = L"Cancelar";
             this->btnCancelar->UseVisualStyleBackColor = true;
@@ -137,11 +141,12 @@ namespace STPUCPAdminGUIView {
                 this->Id, this->HoraSalida,
                     this->FechaViaje, this->UltimoParadero, this->PrecioViaje, this->Distrito
             });
-            this->DGVBuscar->Location = System::Drawing::Point(26, 125);
+            this->DGVBuscar->Location = System::Drawing::Point(35, 154);
+            this->DGVBuscar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->DGVBuscar->Name = L"DGVBuscar";
             this->DGVBuscar->RowHeadersVisible = false;
             this->DGVBuscar->RowHeadersWidth = 51;
-            this->DGVBuscar->Size = System::Drawing::Size(539, 184);
+            this->DGVBuscar->Size = System::Drawing::Size(719, 226);
             this->DGVBuscar->TabIndex = 4;
             // 
             // Id
@@ -194,16 +199,18 @@ namespace STPUCPAdminGUIView {
             // 
             // BuscarViajesForm
             // 
-            this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+            this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-            this->ClientSize = System::Drawing::Size(597, 357);
+            this->ClientSize = System::Drawing::Size(796, 439);
             this->Controls->Add(this->DGVBuscar);
             this->Controls->Add(this->btnCancelar);
             this->Controls->Add(this->btnBuscar);
             this->Controls->Add(this->txtId);
             this->Controls->Add(this->label1);
+            this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->Name = L"BuscarViajesForm";
             this->Text = L"BuscarViajesForm";
+            this->Load += gcnew System::EventHandler(this, &BuscarViajesForm::BuscarViajesForm_Load);
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DGVBuscar))->EndInit();
             this->ResumeLayout(false);
             this->PerformLayout();
@@ -228,20 +235,25 @@ namespace STPUCPAdminGUIView {
 
     private: System::Void btnBuscar_Click(System::Object^ sender, System::EventArgs^ e) {
         try {
-            int ViajeID = Int32::Parse(txtId->Text);
+            
             DGVBuscar->Rows->Clear();
-            Viaje^ viaje = controller::QueryJourneysById(ViajeID);
-            if (viaje != nullptr) {
-                AddJourneyToGrid(viaje);
+            List<Viaje^>^ viajelist = controller::QueryJourneysByDistrito(txtId->Text->Trim());
+
+            if (viajelist->Count == 0) {
+                MessageBox::Show("Ningún viaje disponible con este distrito", "Resultados de búsqueda", MessageBoxButtons::OK, MessageBoxIcon::Information);
             }
             else {
-                MessageBox::Show("No se encontró ningún viaje con ese ID.");
+                for (int i = 0; i < viajelist->Count; i++) {
+                    AddJourneyToGrid(viajelist[i]);
+                }
             }
         }
         catch (FormatException^ ex) {
             MessageBox::Show("Por favor ingrese un ID válido.");
         }
     }
-    };
+    private: System::Void BuscarViajesForm_Load(System::Object^ sender, System::EventArgs^ e) {
+    }
+};
 }
 

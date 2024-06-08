@@ -35,6 +35,7 @@ namespace STPUCPAdminController {
 		static void DeleteJourney(int ViajeID);
 		static Viaje^ QueryJourneysById(int ViajeID);
 		static List<Viaje^>^ QueryAllJourneys();
+		static List<Viaje^>^ QueryJourneysByDistrito(String ^distrito );
 
 		static int AddPromotion(Promocion^ Promocion);
 		static void UpdatePromotion(Promocion^ Promocion);

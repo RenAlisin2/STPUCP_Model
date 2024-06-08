@@ -53,6 +53,17 @@ List<Viaje^>^ STPUCPAdminController::controller::QueryAllJourneys()
 	return Persistance::QueryAllJourneys();
 }
 
+List<Viaje^>^ STPUCPAdminController::controller::QueryJourneysByDistrito(String^ distrito)
+{
+	List<Viaje^>^ viajelist = Persistance::QueryAllJourneys();
+	List<Viaje^>^ listToReturn = gcnew List<Viaje^>();
+	for (int i = 0; i < viajelist->Count; i++) {
+		if (viajelist[i]->Distrito->Contains(distrito))
+			listToReturn->Add(viajelist[i]);
+	}
+	return listToReturn;
+}
+
 int STPUCPAdminController::controller::AddPromotion(Promocion^ promocion)
 {
 	return Persistance::AddPromotion(promocion);
