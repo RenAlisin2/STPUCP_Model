@@ -89,6 +89,9 @@
     <ClInclude Include="BuscarViajesForm.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="RecepcionForm.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="STPUCP_AdminGUIView.cpp">
@@ -161,6 +164,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
     <ClCompile Include="BuscarViajesForm.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="RecepcionForm.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

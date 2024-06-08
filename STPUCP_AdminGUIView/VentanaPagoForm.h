@@ -34,7 +34,10 @@ namespace STPUCPAdminGUIView {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::ProgressBar^ progressBar1;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	protected:
+	private: System::Windows::Forms::Button^ button1;
+
 	protected:
 
 	private:
@@ -50,24 +53,41 @@ namespace STPUCPAdminGUIView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->progressBar1 = (gcnew System::Windows::Forms::ProgressBar());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// progressBar1
+			// pictureBox1
 			// 
-			this->progressBar1->Location = System::Drawing::Point(91, 22);
-			this->progressBar1->Name = L"progressBar1";
-			this->progressBar1->Size = System::Drawing::Size(365, 22);
-			this->progressBar1->TabIndex = 0;
+			this->pictureBox1->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->pictureBox1->Location = System::Drawing::Point(23, 23);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(340, 242);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox1->TabIndex = 0;
+			this->pictureBox1->TabStop = false;
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(23, 292);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(337, 51);
+			this->button1->TabIndex = 1;
+			this->button1->Text = L"Pago realizado";
+			this->button1->UseVisualStyleBackColor = true;
 			// 
 			// VentanaPagoForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(524, 240);
-			this->Controls->Add(this->progressBar1);
+			this->ClientSize = System::Drawing::Size(393, 372);
+			this->Controls->Add(this->button1);
+			this->Controls->Add(this->pictureBox1);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"VentanaPagoForm";
-			this->Text = L"VENTANA DE PAGO";
+			this->Text = L"Ventana de pago";
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 
 		}

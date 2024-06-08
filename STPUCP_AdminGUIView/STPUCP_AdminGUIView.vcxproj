@@ -172,6 +172,9 @@
     <ClInclude Include="QuesoyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="RecepcionForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="RegistroConductorForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -210,6 +213,7 @@
     <ClCompile Include="PasajeroRutaForm.cpp" />
     <ClCompile Include="PromocionesForm.cpp" />
     <ClCompile Include="QuesoyForm.cpp" />
+    <ClCompile Include="RecepcionForm.cpp" />
     <ClCompile Include="RegistroConductorForm.cpp" />
     <ClCompile Include="RegistroForm.cpp" />
     <ClCompile Include="ServicioDriverForm.cpp" />
@@ -281,6 +285,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuesoyForm.resx">
       <DependentUpon>QuesoyForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecepcionForm.resx">
+      <DependentUpon>RecepcionForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegistroConductorForm.resx">
       <DependentUpon>RegistroConductorForm.h</DependentUpon>
