@@ -108,8 +108,9 @@ namespace STPUCPAdminGUIView {
 
 	private: System::Windows::Forms::PictureBox^ pBConductor;
 	private: System::Windows::Forms::PictureBox^ pBCarro;
+	private: System::Windows::Forms::PictureBox^ pBQR;
 
-	private: System::Windows::Forms::PictureBox^ pictureBox2;
+
 	private: System::Windows::Forms::TextBox^ txtAsientos;
 
 	private: System::Windows::Forms::Label^ label3;
@@ -229,7 +230,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			this->txtTipoUsuario = (gcnew System::Windows::Forms::TextBox());
 			this->pBConductor = (gcnew System::Windows::Forms::PictureBox());
 			this->pBCarro = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
+			this->pBQR = (gcnew System::Windows::Forms::PictureBox());
 			this->txtAsientos = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->txtColor = (gcnew System::Windows::Forms::TextBox());
@@ -253,7 +254,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvUsuarios))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBConductor))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBCarro))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBQR))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
@@ -529,15 +530,15 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			this->pBCarro->TabIndex = 43;
 			this->pBCarro->TabStop = false;
 			// 
-			// pictureBox2
+			// pBQR
 			// 
-			this->pictureBox2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->pictureBox2->Location = System::Drawing::Point(1015, 47);
-			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(138, 147);
-			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			this->pictureBox2->TabIndex = 44;
-			this->pictureBox2->TabStop = false;
+			this->pBQR->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->pBQR->Location = System::Drawing::Point(1015, 47);
+			this->pBQR->Name = L"pBQR";
+			this->pBQR->Size = System::Drawing::Size(138, 147);
+			this->pBQR->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pBQR->TabIndex = 44;
+			this->pBQR->TabStop = false;
 			// 
 			// txtAsientos
 			// 
@@ -718,7 +719,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->txtTelefono);
 			this->Controls->Add(this->label8);
-			this->Controls->Add(this->pictureBox2);
+			this->Controls->Add(this->pBQR);
 			this->Controls->Add(this->pBCarro);
 			this->Controls->Add(this->pBConductor);
 			this->Controls->Add(this->txtTipoUsuario);
@@ -747,7 +748,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvUsuarios))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBConductor))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBCarro))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBQR))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -848,23 +849,19 @@ private: System::Void dgvUsuarios_CellClick(System::Object^ sender, System::Wind
 				pBCarro->Image = nullptr;
 			}
 
-			/*Cargar la imagen del QR
-			if (conductor->FotoQR != nullptr) {
-				System::IO::MemoryStream^ msQR = gcnew System::IO::MemoryStream(conductor->FotoQR);
-				pBVerQR->Image = Image::FromStream(msQR);
+			//Cargar la imagen del QR
+			if (conductor->FotoYape != nullptr) {
+				System::IO::MemoryStream^ msQR = gcnew System::IO::MemoryStream(conductor->FotoYape);
+				pBQR->Image = Image::FromStream(msQR);
 			}
 			else {
-				pBVerQR->Image = nullptr;
-			}else {
-				pBVerConductor->Image = nullptr;
-				pBVerCarro->Image = nullptr;
-				pBVerQR->Image = nullptr;
-			}*/
+				pBQR->Image = nullptr;
+			}
 		}
 		else {
 			pBConductor->Image = nullptr;
 			pBCarro->Image = nullptr;
-			//pBVerQR->Image = nullptr;
+			pBQR->Image = nullptr;
 		}
 	}
 }

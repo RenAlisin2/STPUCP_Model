@@ -26,11 +26,12 @@ namespace STPUCP_Model {
             property int TiempoPenalizacion;
             property String^ MotivoBan;
             property bool ListaNegra;
+            property array<Byte>^ FotoYape;
             Conductor() {}
             Conductor(int id, String^ apellidoPaterno, String^ apellidoMaterno, int codigoPUCP, int numeroTelefono, String^ correo, String^ contraseña, String^ nombre, String^ rol, int dni,
                 String^ modeloCarro, String^ placaCarro, String^ colorCarro, int cantAsientos, array<Byte>^ fotoConductor,
                 array<Byte>^ fotoCarro, bool breveteConfirmacion, String^ huellaDactilar, double calificacion,
-                int cantServiciosRealizados, int tiempoPenalizacion, String^ motivoBan, bool listaNegra) :
+                int cantServiciosRealizados, int tiempoPenalizacion, String^ motivoBan, bool listaNegra, array<Byte>^ fotoYape) :
                 Usuario(id, apellidoPaterno, apellidoMaterno, codigoPUCP, numeroTelefono, correo, contraseña, nombre, rol, dni) {
                 this->ModeloCarro = modeloCarro;
                 this->PlacaCarro = placaCarro;
@@ -44,6 +45,7 @@ namespace STPUCP_Model {
                 this->TiempoPenalizacion = tiempoPenalizacion;
                 this->MotivoBan = motivoBan;
                 this->ListaNegra = listaNegra;
+                this->FotoYape = fotoYape;
 
             }
 

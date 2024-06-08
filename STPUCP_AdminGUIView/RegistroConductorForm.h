@@ -46,7 +46,9 @@ namespace STPUCPAdminGUIView {
     private: System::Windows::Forms::Button^ btnCarro;
     private: System::Windows::Forms::Button^ btnConductor;
     private: System::Windows::Forms::Button^ btnHuella;
-    private: System::Windows::Forms::PictureBox^ pBHuellaDactilar;
+    private: System::Windows::Forms::PictureBox^ pBYape;
+    private: System::Windows::Forms::Button^ btnQR;
+
 
     private:
         System::ComponentModel::Container^ components;
@@ -70,15 +72,16 @@ namespace STPUCPAdminGUIView {
             this->btnCarro = (gcnew System::Windows::Forms::Button());
             this->btnConductor = (gcnew System::Windows::Forms::Button());
             this->btnHuella = (gcnew System::Windows::Forms::Button());
-            this->pBHuellaDactilar = (gcnew System::Windows::Forms::PictureBox());
+            this->pBYape = (gcnew System::Windows::Forms::PictureBox());
+            this->btnQR = (gcnew System::Windows::Forms::Button());
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBConductor))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBCarro))->BeginInit();
-            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBHuellaDactilar))->BeginInit();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBYape))->BeginInit();
             this->SuspendLayout();
             // 
             // button1
             // 
-            this->button1->Location = System::Drawing::Point(76, 411);
+            this->button1->Location = System::Drawing::Point(77, 434);
             this->button1->Name = L"button1";
             this->button1->Size = System::Drawing::Size(356, 57);
             this->button1->TabIndex = 37;
@@ -89,7 +92,7 @@ namespace STPUCPAdminGUIView {
             // label8
             // 
             this->label8->AutoSize = true;
-            this->label8->Location = System::Drawing::Point(204, 383);
+            this->label8->Location = System::Drawing::Point(205, 406);
             this->label8->Name = L"label8";
             this->label8->Size = System::Drawing::Size(97, 13);
             this->label8->TabIndex = 33;
@@ -210,28 +213,41 @@ namespace STPUCPAdminGUIView {
             // 
             // btnHuella
             // 
-            this->btnHuella->Location = System::Drawing::Point(362, 328);
+            this->btnHuella->Location = System::Drawing::Point(197, 371);
             this->btnHuella->Name = L"btnHuella";
             this->btnHuella->Size = System::Drawing::Size(110, 23);
             this->btnHuella->TabIndex = 46;
             this->btnHuella->Text = L"Huella dactilar";
             this->btnHuella->UseVisualStyleBackColor = true;
             // 
-            // pBHuellaDactilar
+            // pBYape
             // 
-            this->pBHuellaDactilar->Location = System::Drawing::Point(362, 195);
-            this->pBHuellaDactilar->Name = L"pBHuellaDactilar";
-            this->pBHuellaDactilar->Size = System::Drawing::Size(110, 114);
-            this->pBHuellaDactilar->TabIndex = 45;
-            this->pBHuellaDactilar->TabStop = false;
+            this->pBYape->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+            this->pBYape->Location = System::Drawing::Point(362, 195);
+            this->pBYape->Name = L"pBYape";
+            this->pBYape->Size = System::Drawing::Size(110, 114);
+            this->pBYape->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+            this->pBYape->TabIndex = 45;
+            this->pBYape->TabStop = false;
+            // 
+            // btnQR
+            // 
+            this->btnQR->Location = System::Drawing::Point(362, 328);
+            this->btnQR->Name = L"btnQR";
+            this->btnQR->Size = System::Drawing::Size(110, 23);
+            this->btnQR->TabIndex = 47;
+            this->btnQR->Text = L"Foto del QR";
+            this->btnQR->UseVisualStyleBackColor = true;
+            this->btnQR->Click += gcnew System::EventHandler(this, &RegistroConductorForm::btnQR_Click);
             // 
             // RegistroConductorForm
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->ClientSize = System::Drawing::Size(512, 503);
+            this->Controls->Add(this->btnQR);
             this->Controls->Add(this->btnHuella);
-            this->Controls->Add(this->pBHuellaDactilar);
+            this->Controls->Add(this->pBYape);
             this->Controls->Add(this->btnConductor);
             this->Controls->Add(this->btnCarro);
             this->Controls->Add(this->pBCarro);
@@ -249,9 +265,10 @@ namespace STPUCPAdminGUIView {
             this->Controls->Add(this->label1);
             this->Name = L"RegistroConductorForm";
             this->Text = L"RegistroConductorForm";
+            this->Load += gcnew System::EventHandler(this, &RegistroConductorForm::RegistroConductorForm_Load);
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBConductor))->EndInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBCarro))->EndInit();
-            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBHuellaDactilar))->EndInit();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBYape))->EndInit();
             this->ResumeLayout(false);
             this->PerformLayout();
 
@@ -292,11 +309,11 @@ namespace STPUCPAdminGUIView {
                 pBCarro->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
                 conductor->FotoCarro = ms->ToArray();
             }
-            /*if (pBYape != nullptr && pBYape->Image != nullptr) {
+            if (pBYape != nullptr && pBYape->Image != nullptr) {
                 System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
                 pBYape->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
-                conductor->FotoQR = ms->ToArray();
-            }*/
+                conductor->FotoYape = ms->ToArray();
+            }
 
             if ((txtModeloCarro->Text != "") && (txtPlacaCarro->Text != "") && (txtColorCarro->Text != "")) {
                 STPUCPAdminController::controller::AddUser(conductor);
@@ -327,5 +344,14 @@ namespace STPUCPAdminGUIView {
         }
     }
 
-    };
+    private: System::Void RegistroConductorForm_Load(System::Object^ sender, System::EventArgs^ e) {
+    }
+    private: System::Void btnQR_Click(System::Object^ sender, System::EventArgs^ e) {
+        OpenFileDialog^ ofd = gcnew OpenFileDialog();
+        ofd->Filter = "Image Files (*.jpg;*.jpeg;)|*.jpg;*.jpeg;";
+        if (ofd->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+            pBYape->Image = gcnew Bitmap(ofd->FileName);
+        }
+    }
+};
     }

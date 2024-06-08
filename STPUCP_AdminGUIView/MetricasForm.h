@@ -50,6 +50,8 @@ namespace STPUCPAdminGUIView {
 	private: System::Windows::Forms::ToolStripMenuItem^ salirToolStripMenuItem;
 	private: System::Windows::Forms::TextBox^ textBox1;
 	private: System::Windows::Forms::TextBox^ textBox2;
+	private: System::Windows::Forms::DataVisualization::Charting::Chart^ M_Estrelllas;
+
 
 	private:
 		/// <summary>
@@ -64,6 +66,9 @@ namespace STPUCPAdminGUIView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -79,11 +84,13 @@ namespace STPUCPAdminGUIView {
 			this->salirToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->M_Estrelllas = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
 			this->menuStrip1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->M_Estrelllas))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// pictureBox1
@@ -125,18 +132,18 @@ namespace STPUCPAdminGUIView {
 			this->IDUsuario->AutoSize = true;
 			this->IDUsuario->Location = System::Drawing::Point(43, 310);
 			this->IDUsuario->Name = L"IDUsuario";
-			this->IDUsuario->Size = System::Drawing::Size(73, 13);
+			this->IDUsuario->Size = System::Drawing::Size(97, 13);
 			this->IDUsuario->TabIndex = 4;
-			this->IDUsuario->Text = L"Id de Usuario:";
+			this->IDUsuario->Text = L"Código de Usuario:";
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
 			this->label4->Location = System::Drawing::Point(497, 310);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(86, 13);
+			this->label4->Size = System::Drawing::Size(112, 13);
 			this->label4->TabIndex = 5;
-			this->label4->Text = L"Id de Conductor:";
+			this->label4->Text = L"Código del Conductor:";
 			// 
 			// label5
 			// 
@@ -192,28 +199,46 @@ namespace STPUCPAdminGUIView {
 			// salirToolStripMenuItem
 			// 
 			this->salirToolStripMenuItem->Name = L"salirToolStripMenuItem";
-			this->salirToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->salirToolStripMenuItem->Size = System::Drawing::Size(96, 22);
 			this->salirToolStripMenuItem->Text = L"Salir";
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(129, 310);
+			this->textBox1->Location = System::Drawing::Point(146, 307);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(100, 20);
 			this->textBox1->TabIndex = 11;
 			// 
 			// textBox2
 			// 
-			this->textBox2->Location = System::Drawing::Point(600, 310);
+			this->textBox2->Location = System::Drawing::Point(615, 307);
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(100, 20);
 			this->textBox2->TabIndex = 12;
+			// 
+			// M_Estrelllas
+			// 
+			this->M_Estrelllas->BackColor = System::Drawing::Color::WhiteSmoke;
+			chartArea1->Name = L"ChartArea1";
+			this->M_Estrelllas->ChartAreas->Add(chartArea1);
+			legend1->Name = L"Legend1";
+			this->M_Estrelllas->Legends->Add(legend1);
+			this->M_Estrelllas->Location = System::Drawing::Point(497, 64);
+			this->M_Estrelllas->Name = L"M_Estrelllas";
+			series1->ChartArea = L"ChartArea1";
+			series1->Legend = L"Legend1";
+			series1->Name = L"Series1";
+			this->M_Estrelllas->Series->Add(series1);
+			this->M_Estrelllas->Size = System::Drawing::Size(392, 202);
+			this->M_Estrelllas->TabIndex = 13;
+			this->M_Estrelllas->Text = L"chart1";
 			// 
 			// MetricasForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(933, 635);
+			this->Controls->Add(this->M_Estrelllas);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label6);
@@ -236,6 +261,7 @@ namespace STPUCPAdminGUIView {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->M_Estrelllas))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

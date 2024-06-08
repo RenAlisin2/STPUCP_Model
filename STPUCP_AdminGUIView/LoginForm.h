@@ -141,6 +141,7 @@ namespace STPUCPAdminGUIView {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(458, 259);
+			this->ControlBox = false;
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->btnRegistrarse);
 			this->Controls->Add(this->btnIngresar);
@@ -177,7 +178,7 @@ private: System::Void txtContraseña_KeyDown(System::Object^ sender, System::Wind
 private: System::Void LoginForm_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
 	String^ password = txtContraseña->Text;
 	int codigoPUCP;
-	if (String::IsNullOrWhiteSpace(password) || codigoPUCP == 0) {
+	if (String::IsNullOrWhiteSpace(password)) {
 		Application::Exit();
 	}
 }
