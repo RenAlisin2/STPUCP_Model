@@ -40,7 +40,8 @@ namespace STPUCPAdminGUIView {
             }
         }
     private: System::Windows::Forms::Label^ label1;
-    private: System::Windows::Forms::TextBox^ txtId;
+    private: System::Windows::Forms::TextBox^ txtDistrito;
+
     private: System::Windows::Forms::Button^ btnBuscar;
     private: System::Windows::Forms::Button^ btnCancelar;
     private: System::Windows::Forms::DataGridView^ DGVBuscar;
@@ -79,7 +80,7 @@ namespace STPUCPAdminGUIView {
         void InitializeComponent(void)
         {
             this->label1 = (gcnew System::Windows::Forms::Label());
-            this->txtId = (gcnew System::Windows::Forms::TextBox());
+            this->txtDistrito = (gcnew System::Windows::Forms::TextBox());
             this->btnBuscar = (gcnew System::Windows::Forms::Button());
             this->btnCancelar = (gcnew System::Windows::Forms::Button());
             this->DGVBuscar = (gcnew System::Windows::Forms::DataGridView());
@@ -101,12 +102,12 @@ namespace STPUCPAdminGUIView {
             this->label1->TabIndex = 0;
             this->label1->Text = L"Distrito al que quiere ir";
             // 
-            // txtId
+            // txtDistrito
             // 
-            this->txtId->Location = System::Drawing::Point(140, 38);
-            this->txtId->Name = L"txtId";
-            this->txtId->Size = System::Drawing::Size(425, 20);
-            this->txtId->TabIndex = 1;
+            this->txtDistrito->Location = System::Drawing::Point(140, 38);
+            this->txtDistrito->Name = L"txtDistrito";
+            this->txtDistrito->Size = System::Drawing::Size(425, 20);
+            this->txtDistrito->TabIndex = 1;
             // 
             // btnBuscar
             // 
@@ -200,7 +201,7 @@ namespace STPUCPAdminGUIView {
             this->Controls->Add(this->DGVBuscar);
             this->Controls->Add(this->btnCancelar);
             this->Controls->Add(this->btnBuscar);
-            this->Controls->Add(this->txtId);
+            this->Controls->Add(this->txtDistrito);
             this->Controls->Add(this->label1);
             this->Name = L"BuscarViajesForm";
             this->Text = L"BuscarViajesForm";
@@ -228,7 +229,7 @@ namespace STPUCPAdminGUIView {
 
     private: System::Void btnBuscar_Click(System::Object^ sender, System::EventArgs^ e) {
         try {
-            int ViajeID = Int32::Parse(txtId->Text);
+            /*int Distrito = Int32::Parse(txtDistrito->Text);
             DGVBuscar->Rows->Clear();
             Viaje^ viaje = controller::QueryJourneysById(ViajeID);
             if (viaje != nullptr) {
@@ -237,6 +238,12 @@ namespace STPUCPAdminGUIView {
             else {
                 MessageBox::Show("No se encontró ningún viaje con ese ID.");
             }
+            */
+            String^ Distrito = txtDistrito->Text;
+            DGVBuscar->Rows->Clear();
+            List<Viaje^>^ viajeList = controller::QueryViajesByName(Distrito);
+            for (int i = 0; i < viajeList->Count; i++)
+                AddJourneyToGrid(viajeList[i]);
         }
         catch (FormatException^ ex) {
             MessageBox::Show("Por favor ingrese un ID válido.");

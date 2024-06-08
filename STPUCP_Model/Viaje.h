@@ -21,7 +21,7 @@ namespace STPUCP_Model {
         property String^ UltimoParadero;
         property double PrecioViaje;
         property String^ Distrito;
-        //property int ConductorId;
+        property int ConductorId;
         //property List<String^> viajes;
 
     };

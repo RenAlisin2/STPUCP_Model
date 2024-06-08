@@ -35,6 +35,7 @@ namespace STPUCPAdminController {
 		static void DeleteJourney(int ViajeID);
 		static Viaje^ QueryJourneysById(int ViajeID);
 		static List<Viaje^>^ QueryAllJourneys();
+		static List<Viaje^>^ QueryViajesByName(String^ name);
 
 		static int AddPromotion(Promocion^ Promocion);
 		static void UpdatePromotion(Promocion^ Promocion);
@@ -66,6 +67,7 @@ namespace STPUCPAdminController {
 		//PARA ARDUINO//
 		static void OpenPort();
 		static void ClosePort();
-		//static array<Byte>^ GuardarHuella();
+
+		//static bool GuardarHuella();
 	};
 }

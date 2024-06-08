@@ -320,8 +320,8 @@ namespace STPUCPAdminGUIView {
 
     private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
         BuscarViajesForm^ buscarViajes = gcnew BuscarViajesForm();
-        this->Close();
-        buscarViajes->TopMost = true;
+        //this->Close();
+        //buscarViajes->TopMost = true;
         buscarViajes->ShowDialog();
     }
 

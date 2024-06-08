@@ -53,6 +53,18 @@ List<Viaje^>^ STPUCPAdminController::controller::QueryAllJourneys()
 	return Persistance::QueryAllJourneys();
 }
 
+List<Viaje^>^ STPUCPAdminController::controller::QueryViajesByName(String^ name)
+{
+	List<Viaje^>^ viajesList = Persistance::QueryAllJourneys();
+	List<Viaje^>^ listToReturn = gcnew List<Viaje^>();
+	for (int i = 0; i < viajesList->Count; i++) {
+		if (viajesList[i]->Distrito->Contains(name))
+			listToReturn->Add(viajesList[i]);
+	}
+	return listToReturn;
+	
+}
+
 int STPUCPAdminController::controller::AddPromotion(Promocion^ promocion)
 {
 	return Persistance::AddPromotion(promocion);
@@ -162,7 +174,7 @@ void STPUCPAdminController::controller::OpenPort()
 {
 	try {
 		ArduinoPort = gcnew SerialPort();
-		ArduinoPort->PortName = "COM3";
+		ArduinoPort->PortName = "COM3"; //COMPLETAR CON EL PUERTO
 		ArduinoPort->BaudRate = 9600;
 		ArduinoPort->Open();
 
@@ -184,15 +196,20 @@ void STPUCPAdminController::controller::ClosePort()
 }
 
 /*
-array<Byte>^ STPUCPAdminController::controller::GuardarHuella()
+bool^ STPUCPAdminController::controller::GuardarHuella()
 {
+	bool Result;
 	try {
 		OpenPort();
-
-		ClosePort();
+		ArduinoPort->Write(Convert::ToInt32(huella));
+		Result = ArduinoPort->ReadLine();
 	}
-	catch(Exception^ ex){
+	catch(Exception^ ex) {
 		throw ex;
 	}
+	finally {
+		ClosePort();
+	}
+	return Result;
 }
 */
