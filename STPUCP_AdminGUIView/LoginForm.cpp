@@ -33,7 +33,7 @@ System::Void STPUCPAdminGUIView::LoginForm::btnIngresar_Click(System::Object^ se
 		}
 		else if (dynamic_cast<Conductor^>(usuarios) != nullptr) {
 			ConductorForm^ adminmainform = gcnew ConductorForm();
-			adminmainform->txtConductor->Text = txtUsuario->Text;
+			adminmainform->txtConductorID->Text = txtUsuario->Text;
 			adminmainform->Show();
 			((AdminMainForm^)this->RefAdminMainForm)->EnablePermisoConductor();
 
