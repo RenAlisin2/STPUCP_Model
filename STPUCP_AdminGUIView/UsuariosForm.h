@@ -337,6 +337,8 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// dgvUsuarios
 			// 
+			this->dgvUsuarios->AllowUserToAddRows = false;
+			this->dgvUsuarios->BackgroundColor = System::Drawing::SystemColors::ActiveCaption;
 			this->dgvUsuarios->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvUsuarios->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(13) {
 				this->CodigoPUCP,
@@ -345,6 +347,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			});
 			this->dgvUsuarios->Location = System::Drawing::Point(12, 289);
 			this->dgvUsuarios->Name = L"dgvUsuarios";
+			this->dgvUsuarios->RowHeadersVisible = false;
 			this->dgvUsuarios->Size = System::Drawing::Size(1174, 230);
 			this->dgvUsuarios->TabIndex = 10;
 			this->dgvUsuarios->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &UsuariosForm::dgvUsuarios_CellClick);
@@ -418,7 +421,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// txtNombre
 			// 
-			this->txtNombre->Location = System::Drawing::Point(111, 53);
+			this->txtNombre->Location = System::Drawing::Point(111, 52);
 			this->txtNombre->Name = L"txtNombre";
 			this->txtNombre->Size = System::Drawing::Size(140, 20);
 			this->txtNombre->TabIndex = 11;
@@ -446,7 +449,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// txtApellidoPaterno
 			// 
-			this->txtApellidoPaterno->Location = System::Drawing::Point(111, 82);
+			this->txtApellidoPaterno->Location = System::Drawing::Point(111, 81);
 			this->txtApellidoPaterno->Name = L"txtApellidoPaterno";
 			this->txtApellidoPaterno->Size = System::Drawing::Size(140, 20);
 			this->txtApellidoPaterno->TabIndex = 14;
@@ -463,7 +466,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// lblCodigoPUCP
 			// 
 			this->lblCodigoPUCP->AutoSize = true;
-			this->lblCodigoPUCP->Location = System::Drawing::Point(12, 25);
+			this->lblCodigoPUCP->Location = System::Drawing::Point(12, 28);
 			this->lblCodigoPUCP->Name = L"lblCodigoPUCP";
 			this->lblCodigoPUCP->Size = System::Drawing::Size(72, 13);
 			this->lblCodigoPUCP->TabIndex = 16;
@@ -472,7 +475,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// txtCodigoPUCP
 			// 
-			this->txtCodigoPUCP->Location = System::Drawing::Point(111, 25);
+			this->txtCodigoPUCP->Location = System::Drawing::Point(111, 27);
 			this->txtCodigoPUCP->Name = L"txtCodigoPUCP";
 			this->txtCodigoPUCP->Size = System::Drawing::Size(140, 20);
 			this->txtCodigoPUCP->TabIndex = 17;
@@ -480,7 +483,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// txtContraseña
 			// 
-			this->txtContraseña->Location = System::Drawing::Point(111, 142);
+			this->txtContraseña->Location = System::Drawing::Point(111, 135);
 			this->txtContraseña->Name = L"txtContraseña";
 			this->txtContraseña->Size = System::Drawing::Size(140, 20);
 			this->txtContraseña->TabIndex = 19;
@@ -497,7 +500,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(12, 171);
+			this->label2->Location = System::Drawing::Point(12, 166);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(83, 13);
 			this->label2->TabIndex = 20;
@@ -505,7 +508,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// txtTipoUsuario
 			// 
-			this->txtTipoUsuario->Location = System::Drawing::Point(111, 171);
+			this->txtTipoUsuario->Location = System::Drawing::Point(111, 162);
 			this->txtTipoUsuario->Name = L"txtTipoUsuario";
 			this->txtTipoUsuario->Size = System::Drawing::Size(140, 20);
 			this->txtTipoUsuario->TabIndex = 21;
@@ -542,15 +545,15 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// txtAsientos
 			// 
-			this->txtAsientos->Location = System::Drawing::Point(375, 174);
+			this->txtAsientos->Location = System::Drawing::Point(364, 168);
 			this->txtAsientos->Name = L"txtAsientos";
-			this->txtAsientos->Size = System::Drawing::Size(140, 20);
+			this->txtAsientos->Size = System::Drawing::Size(151, 20);
 			this->txtAsientos->TabIndex = 56;
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(276, 174);
+			this->label3->Location = System::Drawing::Point(274, 171);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(84, 13);
 			this->label3->TabIndex = 55;
@@ -558,15 +561,15 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// txtColor
 			// 
-			this->txtColor->Location = System::Drawing::Point(375, 145);
+			this->txtColor->Location = System::Drawing::Point(364, 140);
 			this->txtColor->Name = L"txtColor";
-			this->txtColor->Size = System::Drawing::Size(140, 20);
+			this->txtColor->Size = System::Drawing::Size(151, 20);
 			this->txtColor->TabIndex = 54;
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(276, 141);
+			this->label4->Location = System::Drawing::Point(274, 145);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(34, 13);
 			this->label4->TabIndex = 53;
@@ -574,15 +577,15 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// txtDNI
 			// 
-			this->txtDNI->Location = System::Drawing::Point(375, 28);
+			this->txtDNI->Location = System::Drawing::Point(364, 30);
 			this->txtDNI->Name = L"txtDNI";
-			this->txtDNI->Size = System::Drawing::Size(140, 20);
+			this->txtDNI->Size = System::Drawing::Size(151, 20);
 			this->txtDNI->TabIndex = 52;
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(276, 28);
+			this->label5->Location = System::Drawing::Point(274, 35);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(29, 13);
 			this->label5->TabIndex = 51;
@@ -590,22 +593,22 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// txtPlaca
 			// 
-			this->txtPlaca->Location = System::Drawing::Point(375, 112);
+			this->txtPlaca->Location = System::Drawing::Point(364, 112);
 			this->txtPlaca->Name = L"txtPlaca";
-			this->txtPlaca->Size = System::Drawing::Size(140, 20);
+			this->txtPlaca->Size = System::Drawing::Size(151, 20);
 			this->txtPlaca->TabIndex = 50;
 			// 
 			// txtModelo
 			// 
-			this->txtModelo->Location = System::Drawing::Point(375, 85);
+			this->txtModelo->Location = System::Drawing::Point(364, 84);
 			this->txtModelo->Name = L"txtModelo";
-			this->txtModelo->Size = System::Drawing::Size(140, 20);
+			this->txtModelo->Size = System::Drawing::Size(151, 20);
 			this->txtModelo->TabIndex = 49;
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(276, 115);
+			this->label6->Location = System::Drawing::Point(274, 117);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(37, 13);
 			this->label6->TabIndex = 48;
@@ -614,7 +617,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(276, 88);
+			this->label7->Location = System::Drawing::Point(274, 89);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(45, 13);
 			this->label7->TabIndex = 47;
@@ -622,15 +625,15 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// txtTelefono
 			// 
-			this->txtTelefono->Location = System::Drawing::Point(375, 56);
+			this->txtTelefono->Location = System::Drawing::Point(364, 56);
 			this->txtTelefono->Name = L"txtTelefono";
-			this->txtTelefono->Size = System::Drawing::Size(140, 20);
+			this->txtTelefono->Size = System::Drawing::Size(151, 20);
 			this->txtTelefono->TabIndex = 46;
 			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(276, 59);
+			this->label8->Location = System::Drawing::Point(274, 61);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(52, 13);
 			this->label8->TabIndex = 45;
@@ -638,15 +641,15 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// txtBreveteEnRegla
 			// 
-			this->txtBreveteEnRegla->Location = System::Drawing::Point(375, 205);
+			this->txtBreveteEnRegla->Location = System::Drawing::Point(364, 194);
 			this->txtBreveteEnRegla->Name = L"txtBreveteEnRegla";
-			this->txtBreveteEnRegla->Size = System::Drawing::Size(140, 20);
+			this->txtBreveteEnRegla->Size = System::Drawing::Size(151, 20);
 			this->txtBreveteEnRegla->TabIndex = 60;
 			// 
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(276, 205);
+			this->label9->Location = System::Drawing::Point(270, 197);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(88, 13);
 			this->label9->TabIndex = 59;
@@ -654,7 +657,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// txtcorreo
 			// 
-			this->txtcorreo->Location = System::Drawing::Point(111, 202);
+			this->txtcorreo->Location = System::Drawing::Point(111, 188);
 			this->txtcorreo->Name = L"txtcorreo";
 			this->txtcorreo->Size = System::Drawing::Size(140, 20);
 			this->txtcorreo->TabIndex = 58;
@@ -662,7 +665,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// label10
 			// 
 			this->label10->AutoSize = true;
-			this->label10->Location = System::Drawing::Point(12, 202);
+			this->label10->Location = System::Drawing::Point(12, 191);
 			this->label10->Name = L"label10";
 			this->label10->Size = System::Drawing::Size(97, 13);
 			this->label10->TabIndex = 57;

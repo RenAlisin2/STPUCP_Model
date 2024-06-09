@@ -247,7 +247,7 @@ namespace STPUCPAdminGUIView {
 			// viajeToolStripMenuItem
 			// 
 			this->viajeToolStripMenuItem->Name = L"viajeToolStripMenuItem";
-			this->viajeToolStripMenuItem->Size = System::Drawing::Size(99, 22);
+			this->viajeToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->viajeToolStripMenuItem->Text = L"Viaje";
 			this->viajeToolStripMenuItem->Click += gcnew System::EventHandler(this, &AdminMainForm::viajeToolStripMenuItem_Click);
 			// 
@@ -270,7 +270,7 @@ namespace STPUCPAdminGUIView {
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
 			this->pictureBox1->Location = System::Drawing::Point(1, 25);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(239, 109);
+			this->pictureBox1->Size = System::Drawing::Size(239, 135);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox1->TabIndex = 3;
 			this->pictureBox1->TabStop = false;
