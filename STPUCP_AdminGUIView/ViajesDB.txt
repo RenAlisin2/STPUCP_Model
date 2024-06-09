@@ -1,8 +1,2 @@
-1,3,23,,23,23
-12,9,6,Chaclacayo,SDA,12
-123,12,15 de Marzo,Chorrillos,Jauja,20
-1245,2,18 de Julio,Ate,Los Olmos,50
-23,23,25 DE aGOSTO,Chorrillos,puerta de PUCP,45
-43,12,Lunes,Barranco,Olmos ,1231
-1,2,2,Carabayllo,2,2
-1,11,1,Jesús María,1,1
+1011,5,5 de mayo,Chorrillos,Tinkuy,4
+1,5,2 de diciembre,Ate,CIA,5

@@ -19,9 +19,12 @@ namespace STPUCPAdminGUIView {
     /// </summary>
     public ref class BuscarViajesForm : public System::Windows::Forms::Form
     {
+    private:
+        Form^ refForm;
     public:
-        BuscarViajesForm(void)
+        BuscarViajesForm(Form^ refForm)
         {
+            this->refForm = refForm;
             InitializeComponent();
             //
             //TODO: agregar código de constructor aquí
@@ -40,7 +43,7 @@ namespace STPUCPAdminGUIView {
             }
         }
     private: System::Windows::Forms::Label^ label1;
-    private: System::Windows::Forms::TextBox^ txtDistrito;
+
 
     private: System::Windows::Forms::Button^ btnBuscar;
     private: System::Windows::Forms::Button^ btnCancelar;
@@ -51,6 +54,7 @@ namespace STPUCPAdminGUIView {
     private: System::Windows::Forms::DataGridViewTextBoxColumn^ UltimoParadero;
     private: System::Windows::Forms::DataGridViewTextBoxColumn^ PrecioViaje;
     private: System::Windows::Forms::DataGridViewTextBoxColumn^ Distrito;
+    private: System::Windows::Forms::ComboBox^ comboBox1;
 
 
 
@@ -80,7 +84,6 @@ namespace STPUCPAdminGUIView {
         void InitializeComponent(void)
         {
             this->label1 = (gcnew System::Windows::Forms::Label());
-            this->txtDistrito = (gcnew System::Windows::Forms::TextBox());
             this->btnBuscar = (gcnew System::Windows::Forms::Button());
             this->btnCancelar = (gcnew System::Windows::Forms::Button());
             this->DGVBuscar = (gcnew System::Windows::Forms::DataGridView());
@@ -90,30 +93,26 @@ namespace STPUCPAdminGUIView {
             this->UltimoParadero = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
             this->PrecioViaje = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
             this->Distrito = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+            this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DGVBuscar))->BeginInit();
             this->SuspendLayout();
             // 
             // label1
             // 
             this->label1->AutoSize = true;
-            this->label1->Location = System::Drawing::Point(23, 41);
+            this->label1->Location = System::Drawing::Point(31, 50);
+            this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
             this->label1->Name = L"label1";
-            this->label1->Size = System::Drawing::Size(111, 13);
+            this->label1->Size = System::Drawing::Size(139, 16);
             this->label1->TabIndex = 0;
             this->label1->Text = L"Distrito al que quiere ir";
             // 
-            // txtDistrito
-            // 
-            this->txtDistrito->Location = System::Drawing::Point(140, 38);
-            this->txtDistrito->Name = L"txtDistrito";
-            this->txtDistrito->Size = System::Drawing::Size(425, 20);
-            this->txtDistrito->TabIndex = 1;
-            // 
             // btnBuscar
             // 
-            this->btnBuscar->Location = System::Drawing::Point(26, 74);
+            this->btnBuscar->Location = System::Drawing::Point(35, 91);
+            this->btnBuscar->Margin = System::Windows::Forms::Padding(4);
             this->btnBuscar->Name = L"btnBuscar";
-            this->btnBuscar->Size = System::Drawing::Size(258, 35);
+            this->btnBuscar->Size = System::Drawing::Size(344, 43);
             this->btnBuscar->TabIndex = 2;
             this->btnBuscar->Text = L"Buscar";
             this->btnBuscar->UseVisualStyleBackColor = true;
@@ -121,9 +120,10 @@ namespace STPUCPAdminGUIView {
             // 
             // btnCancelar
             // 
-            this->btnCancelar->Location = System::Drawing::Point(290, 74);
+            this->btnCancelar->Location = System::Drawing::Point(387, 91);
+            this->btnCancelar->Margin = System::Windows::Forms::Padding(4);
             this->btnCancelar->Name = L"btnCancelar";
-            this->btnCancelar->Size = System::Drawing::Size(275, 35);
+            this->btnCancelar->Size = System::Drawing::Size(367, 43);
             this->btnCancelar->TabIndex = 3;
             this->btnCancelar->Text = L"Cancelar";
             this->btnCancelar->UseVisualStyleBackColor = true;
@@ -138,12 +138,15 @@ namespace STPUCPAdminGUIView {
                 this->Id, this->HoraSalida,
                     this->FechaViaje, this->UltimoParadero, this->PrecioViaje, this->Distrito
             });
-            this->DGVBuscar->Location = System::Drawing::Point(26, 125);
+            this->DGVBuscar->Location = System::Drawing::Point(35, 154);
+            this->DGVBuscar->Margin = System::Windows::Forms::Padding(4);
             this->DGVBuscar->Name = L"DGVBuscar";
             this->DGVBuscar->RowHeadersVisible = false;
             this->DGVBuscar->RowHeadersWidth = 51;
-            this->DGVBuscar->Size = System::Drawing::Size(539, 184);
+            this->DGVBuscar->Size = System::Drawing::Size(719, 226);
             this->DGVBuscar->TabIndex = 4;
+            this->DGVBuscar->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &BuscarViajesForm::DGVBuscar_CellClick);
+            this->DGVBuscar->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &BuscarViajesForm::DGVBuscar_CellContentClick);
             // 
             // Id
             // 
@@ -193,18 +196,36 @@ namespace STPUCPAdminGUIView {
             this->Distrito->ReadOnly = true;
             this->Distrito->Width = 125;
             // 
+            // comboBox1
+            // 
+            this->comboBox1->FormattingEnabled = true;
+            this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(43) {
+                L"Ancón", L"Ate", L"Barranco", L"Breña", L"Carabayllo",
+                    L"Chaclacayo", L"Chorrillos", L"Cieneguilla", L"Comas", L"El Agustino", L"Independencia", L"Jesús María", L"La Molina", L"La Victoria",
+                    L"Lima\rLince", L"Los Olivos", L"Lurigancho", L"Chosica", L"Lurín", L"Magdalena del Mar", L"Miraflores", L"Pachacámac", L"Pucusana",
+                    L"Pueblo Libre", L"Puente Piedra", L"Punta Hermosa", L"Punta Negra", L"Rímac", L"San Bartolo", L"San Borja", L"San Isidro", L"an Juan de Lurigancho",
+                    L"San Juan de Miraflores", L"San Luis", L"San Martín de Porres", L"San Miguel", L"Santa Anita", L"Santa María del Mar", L"Santa Rosa",
+                    L"Santiago de Surco", L"Surquillo", L"Villa El Salvador", L"Villa María del Triunfo"
+            });
+            this->comboBox1->Location = System::Drawing::Point(261, 50);
+            this->comboBox1->Name = L"comboBox1";
+            this->comboBox1->Size = System::Drawing::Size(363, 24);
+            this->comboBox1->TabIndex = 5;
+            // 
             // BuscarViajesForm
             // 
-            this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+            this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-            this->ClientSize = System::Drawing::Size(597, 357);
+            this->ClientSize = System::Drawing::Size(796, 439);
+            this->Controls->Add(this->comboBox1);
             this->Controls->Add(this->DGVBuscar);
             this->Controls->Add(this->btnCancelar);
             this->Controls->Add(this->btnBuscar);
-            this->Controls->Add(this->txtDistrito);
             this->Controls->Add(this->label1);
+            this->Margin = System::Windows::Forms::Padding(4);
             this->Name = L"BuscarViajesForm";
             this->Text = L"BuscarViajesForm";
+            this->Load += gcnew System::EventHandler(this, &BuscarViajesForm::BuscarViajesForm_Load);
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DGVBuscar))->EndInit();
             this->ResumeLayout(false);
             this->PerformLayout();
@@ -229,26 +250,29 @@ namespace STPUCPAdminGUIView {
 
     private: System::Void btnBuscar_Click(System::Object^ sender, System::EventArgs^ e) {
         try {
-            /*int Distrito = Int32::Parse(txtDistrito->Text);
-            DGVBuscar->Rows->Clear();
-            Viaje^ viaje = controller::QueryJourneysById(ViajeID);
-            if (viaje != nullptr) {
-                AddJourneyToGrid(viaje);
-            }
-            else {
-                MessageBox::Show("No se encontró ningún viaje con ese ID.");
-            }
-            */
-            String^ Distrito = txtDistrito->Text;
+            String^ Distrito = comboBox1->SelectedItem->ToString();
             DGVBuscar->Rows->Clear();
             List<Viaje^>^ viajeList = controller::QueryViajesByName(Distrito);
-            for (int i = 0; i < viajeList->Count; i++)
-                AddJourneyToGrid(viajeList[i]);
+            if (viajeList->Count == 0) {
+                MessageBox::Show("No se encontraron viajes en el distrito seleccionado.");
+            }
+            else {
+                for (int i = 0; i < viajeList->Count; i++) {
+                    AddJourneyToGrid(viajeList[i]);
+                }
+            }
         }
-        catch (FormatException^ ex) {
-            MessageBox::Show("Por favor ingrese un ID válido.");
+        catch (Exception^ ex) {
+            MessageBox::Show("Ocurrió un error al buscar los viajes: " + ex->Message);
         }
+        
+        
     }
-    };
+    private: System::Void DGVBuscar_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+    }
+private: System::Void DGVBuscar_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
+private: System::Void BuscarViajesForm_Load(System::Object^ sender, System::EventArgs^ e) {
+}
+};
 }
 

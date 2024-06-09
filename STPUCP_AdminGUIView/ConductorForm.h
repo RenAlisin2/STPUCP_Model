@@ -388,6 +388,7 @@ namespace STPUCPAdminGUIView {
 
 
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	btn_add->Enabled = false;
 	int id = Convert::ToInt32(txtID->Text);
 	int horaSalida = Convert::ToInt32(txtHoraPartida->Text);
 	String^ ultimoParadero = txtLugar->Text;
@@ -442,10 +443,11 @@ void ShowViaje() {
 	 }
 }
 private: System::Void btn_eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
+	btn_add->Enabled = true;
 	int id = Convert::ToInt32(txtID->Text);
 	controller::DeleteJourney(id);
 	ShowViaje();
-	VerificarServicios();
+	//VerificarServicios();
 }
 private: System::Void btn_modificar_Click(System::Object^ sender, System::EventArgs^ e) {
 	int id = Convert::ToInt32(txtID->Text);
@@ -466,11 +468,11 @@ private: System::Void btn_modificar_Click(System::Object^ sender, System::EventA
 
 	controller::UpdateJourney(viajecito);
 	ShowViaje();
-	VerificarServicios();
+	//VerificarServicios();
 }
 
 private: System::Void ConductorForm_Load(System::Object^ sender, System::EventArgs^ e) {
-	VerificarServicios();
+	//VerificarServicios();
 }
 
 private: System::Void dgv_VIAJE_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
