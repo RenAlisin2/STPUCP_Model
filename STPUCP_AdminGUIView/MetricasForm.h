@@ -8,7 +8,9 @@ namespace STPUCPAdminGUIView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-
+	using namespace STPUCP_Model;
+	using namespace STPUCPAdminController;
+	using namespace System::Collections::Generic;
 	/// <summary>
 	/// Resumen de MetricasForm
 	/// </summary>
@@ -48,9 +50,19 @@ namespace STPUCPAdminGUIView {
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
 	private: System::Windows::Forms::ToolStripMenuItem^ archivoToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ salirToolStripMenuItem;
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::TextBox^ textBox2;
-	private: System::Windows::Forms::DataVisualization::Charting::Chart^ M_Estrelllas;
+	private: System::Windows::Forms::TextBox^ txtCodigoPasajero;
+	private: System::Windows::Forms::TextBox^ txtCodigoConductor;
+	private: System::Windows::Forms::DataVisualization::Charting::Chart^ M_EstrellasP;
+
+
+
+
+	private: System::Windows::Forms::DataVisualization::Charting::Chart^ M_ServiciosTP;
+	private: System::Windows::Forms::DataVisualization::Charting::Chart^ M_ServiciosT;
+
+
+	private: System::Windows::Forms::DataVisualization::Charting::Chart^ M_Estrellas;
+
 
 
 	private:
@@ -69,6 +81,15 @@ namespace STPUCPAdminGUIView {
 			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
 			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea3 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea4 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -82,15 +103,21 @@ namespace STPUCPAdminGUIView {
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->archivoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->salirToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->M_Estrelllas = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
+			this->txtCodigoPasajero = (gcnew System::Windows::Forms::TextBox());
+			this->txtCodigoConductor = (gcnew System::Windows::Forms::TextBox());
+			this->M_EstrellasP = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
+			this->M_ServiciosTP = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
+			this->M_ServiciosT = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
+			this->M_Estrellas = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
 			this->menuStrip1->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->M_Estrelllas))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->M_EstrellasP))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->M_ServiciosTP))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->M_ServiciosT))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->M_Estrellas))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// pictureBox1
@@ -202,45 +229,99 @@ namespace STPUCPAdminGUIView {
 			this->salirToolStripMenuItem->Size = System::Drawing::Size(96, 22);
 			this->salirToolStripMenuItem->Text = L"Salir";
 			// 
-			// textBox1
+			// txtCodigoPasajero
 			// 
-			this->textBox1->Location = System::Drawing::Point(146, 307);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(100, 20);
-			this->textBox1->TabIndex = 11;
+			this->txtCodigoPasajero->Location = System::Drawing::Point(146, 307);
+			this->txtCodigoPasajero->Name = L"txtCodigoPasajero";
+			this->txtCodigoPasajero->Size = System::Drawing::Size(100, 20);
+			this->txtCodigoPasajero->TabIndex = 11;
 			// 
-			// textBox2
+			// txtCodigoConductor
 			// 
-			this->textBox2->Location = System::Drawing::Point(615, 307);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(100, 20);
-			this->textBox2->TabIndex = 12;
+			this->txtCodigoConductor->Location = System::Drawing::Point(615, 307);
+			this->txtCodigoConductor->Name = L"txtCodigoConductor";
+			this->txtCodigoConductor->Size = System::Drawing::Size(100, 20);
+			this->txtCodigoConductor->TabIndex = 12;
 			// 
-			// M_Estrelllas
+			// M_EstrellasP
 			// 
-			this->M_Estrelllas->BackColor = System::Drawing::Color::WhiteSmoke;
+			this->M_EstrellasP->BackColor = System::Drawing::Color::WhiteSmoke;
 			chartArea1->Name = L"ChartArea1";
-			this->M_Estrelllas->ChartAreas->Add(chartArea1);
+			this->M_EstrellasP->ChartAreas->Add(chartArea1);
 			legend1->Name = L"Legend1";
-			this->M_Estrelllas->Legends->Add(legend1);
-			this->M_Estrelllas->Location = System::Drawing::Point(497, 64);
-			this->M_Estrelllas->Name = L"M_Estrelllas";
+			this->M_EstrellasP->Legends->Add(legend1);
+			this->M_EstrellasP->Location = System::Drawing::Point(497, 64);
+			this->M_EstrellasP->Name = L"M_EstrellasP";
 			series1->ChartArea = L"ChartArea1";
 			series1->Legend = L"Legend1";
-			series1->Name = L"Series1";
-			this->M_Estrelllas->Series->Add(series1);
-			this->M_Estrelllas->Size = System::Drawing::Size(392, 202);
-			this->M_Estrelllas->TabIndex = 13;
-			this->M_Estrelllas->Text = L"chart1";
+			series1->Name = L"Estrellas";
+			this->M_EstrellasP->Series->Add(series1);
+			this->M_EstrellasP->Size = System::Drawing::Size(392, 202);
+			this->M_EstrellasP->TabIndex = 13;
+			this->M_EstrellasP->Text = L"chart1";
+			// 
+			// M_ServiciosTP
+			// 
+			this->M_ServiciosTP->BackColor = System::Drawing::Color::WhiteSmoke;
+			chartArea2->Name = L"ChartArea1";
+			this->M_ServiciosTP->ChartAreas->Add(chartArea2);
+			legend2->Name = L"Legend1";
+			this->M_ServiciosTP->Legends->Add(legend2);
+			this->M_ServiciosTP->Location = System::Drawing::Point(43, 64);
+			this->M_ServiciosTP->Name = L"M_ServiciosTP";
+			series2->ChartArea = L"ChartArea1";
+			series2->Legend = L"Legend1";
+			series2->Name = L"Servicios";
+			this->M_ServiciosTP->Series->Add(series2);
+			this->M_ServiciosTP->Size = System::Drawing::Size(392, 202);
+			this->M_ServiciosTP->TabIndex = 14;
+			this->M_ServiciosTP->Text = L"chart1";
+			// 
+			// M_ServiciosT
+			// 
+			this->M_ServiciosT->BackColor = System::Drawing::Color::WhiteSmoke;
+			chartArea3->Name = L"ChartArea1";
+			this->M_ServiciosT->ChartAreas->Add(chartArea3);
+			legend3->Name = L"Legend1";
+			this->M_ServiciosT->Legends->Add(legend3);
+			this->M_ServiciosT->Location = System::Drawing::Point(46, 369);
+			this->M_ServiciosT->Name = L"M_ServiciosT";
+			series3->ChartArea = L"ChartArea1";
+			series3->Legend = L"Legend1";
+			series3->Name = L"Servicios";
+			this->M_ServiciosT->Series->Add(series3);
+			this->M_ServiciosT->Size = System::Drawing::Size(392, 202);
+			this->M_ServiciosT->TabIndex = 15;
+			this->M_ServiciosT->Text = L"chart1";
+			// 
+			// M_Estrellas
+			// 
+			this->M_Estrellas->BackColor = System::Drawing::Color::WhiteSmoke;
+			chartArea4->Name = L"ChartArea1";
+			this->M_Estrellas->ChartAreas->Add(chartArea4);
+			legend4->Name = L"Legend1";
+			this->M_Estrellas->Legends->Add(legend4);
+			this->M_Estrellas->Location = System::Drawing::Point(500, 382);
+			this->M_Estrellas->Name = L"M_Estrellas";
+			series4->ChartArea = L"ChartArea1";
+			series4->Legend = L"Legend1";
+			series4->Name = L"Estrellas";
+			this->M_Estrellas->Series->Add(series4);
+			this->M_Estrellas->Size = System::Drawing::Size(392, 202);
+			this->M_Estrellas->TabIndex = 16;
+			this->M_Estrellas->Text = L"chart1";
 			// 
 			// MetricasForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(933, 635);
-			this->Controls->Add(this->M_Estrelllas);
-			this->Controls->Add(this->textBox2);
-			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->M_Estrellas);
+			this->Controls->Add(this->M_ServiciosT);
+			this->Controls->Add(this->M_ServiciosTP);
+			this->Controls->Add(this->M_EstrellasP);
+			this->Controls->Add(this->txtCodigoConductor);
+			this->Controls->Add(this->txtCodigoPasajero);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->pictureBox4);
 			this->Controls->Add(this->label5);
@@ -255,17 +336,113 @@ namespace STPUCPAdminGUIView {
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"MetricasForm";
 			this->Text = L"MetricasForm";
+			this->Load += gcnew System::EventHandler(this, &MetricasForm::MetricasForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->M_Estrelllas))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->M_EstrellasP))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->M_ServiciosTP))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->M_ServiciosT))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->M_Estrellas))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	};
+	private: System::Void MetricasForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		List<Orden^>^ ordenesList = controller::QueryAllOrders();
+		Dictionary<String^, double>^ estrellasPorMes = gcnew Dictionary<String^, double>();
+
+		// Dividir el gráfico de estrellas por mes
+		for (int i = 0; i < ordenesList->Count; i++) {
+			String^ mes = ordenesList[i]->Fecha->Substring(3, 2); // DD/MM/YYYY
+			if (!estrellasPorMes->ContainsKey(mes)) {
+				estrellasPorMes[mes] = 0;
+			}
+			estrellasPorMes[mes] += ordenesList[i]->CalificacionEstrellas;
+		}
+
+		int j = 0;
+		for each (String ^ mes in estrellasPorMes->Keys) {
+			M_EstrellasP->Series["Estrellas"]->Points->Add(estrellasPorMes[mes]);
+			M_EstrellasP->Series["Estrellas"]->Points[j]->AxisLabel = mes;
+			M_EstrellasP->Series["Estrellas"]->Points[j]->Label = "" + estrellasPorMes[mes];
+			j++;
+		}
+
+		// Acceder a CantServiciosTomados en Pasajero
+		List<Usuario^>^ serviciosTList = controller::QueryAllUsers();
+		List<Pasajero^>^ pasajerosList = gcnew List<Pasajero^>();
+
+		for each (Usuario ^ usuario in serviciosTList) {
+			Pasajero^ pasajero = dynamic_cast<Pasajero^>(usuario);
+			if (pasajero != nullptr) {
+				pasajerosList->Add(pasajero);
+			}
+		}
+
+		for (int i = 0; i < pasajerosList->Count; i++) {
+			M_ServiciosTP->Series["Servicios"]->Points->Add(pasajerosList[i]->CantServiciosTomados);
+			//M_ServiciosTP->Series["Servicios"]->Points[i]->AxisLabel = "" + pasajerosList[i]->FechaUltimoServicio; //Yo creo que deberíamos crear una fecha de último servicio para usarla en métricas
+			M_ServiciosTP->Series["Servicios"]->Points[i]->Label = "" + pasajerosList[i]->CantServiciosTomados;
+		}
+
+		// Agregar eventos de tecla presionada
+		txtCodigoConductor->KeyDown += gcnew KeyEventHandler(this, &MetricasForm::txtCodigoConductor_KeyDown);
+		txtCodigoPasajero->KeyDown += gcnew KeyEventHandler(this, &MetricasForm::txtCodigoPasajero_KeyDown);
+	}
+
+	private: System::Void txtCodigoConductor_KeyDown(System::Object^ sender, KeyEventArgs^ e) {
+		if (e->KeyCode == Keys::Enter) {
+			int codigoPUCP = Convert::ToInt32(txtCodigoConductor->Text);
+			MostrarGraficoConductor(codigoPUCP);
+		}
+	}
+
+	private: System::Void txtCodigoPasajero_KeyDown(System::Object^ sender, KeyEventArgs^ e) {
+		if (e->KeyCode == Keys::Enter) {
+			int codigoPUCP = Convert::ToInt32(txtCodigoPasajero->Text);
+			MostrarGraficoPasajero(codigoPUCP);
+		}
+	}
+
+	private: void MostrarGraficoConductor(int codigoPUCP) {
+		List<Orden^>^ ordenesList = controller::QueryAllOrders();
+		M_Estrellas->Series["Estrellas"]->Points->Clear();
+
+		for (int i = 0; i < ordenesList->Count; i++) {
+			if (ordenesList[i]->Id == codigoPUCP) { //Renato aquí es lo que te decía de relacionar el ID de orden con el código de pasajero :,v
+				M_Estrellas->Series["Estrellas"]->Points->Add(ordenesList[i]->CalificacionEstrellas);
+				M_Estrellas->Series["Estrellas"]->Points[i]->AxisLabel = "" + ordenesList[i]->Fecha;
+				M_Estrellas->Series["Estrellas"]->Points[i]->Label = "" + ordenesList[i]->CalificacionEstrellas;
+			}
+		}
+	}
+
+	private: void MostrarGraficoPasajero(int codigoPUCP) {
+		List<Usuario^>^ serviciosTList = controller::QueryAllUsers();
+		List<Pasajero^>^ pasajerosList = gcnew List<Pasajero^>();
+
+		for each (Usuario ^ usuario in serviciosTList) {
+			Pasajero^ pasajero = dynamic_cast<Pasajero^>(usuario);
+			if (pasajero != nullptr) {
+				pasajerosList->Add(pasajero);
+			}
+		}
+
+		M_ServiciosT->Series["Servicios"]->Points->Clear();
+		int i = 0;
+		for each (Pasajero ^ pasajero in pasajerosList) {
+			if (pasajero->CodigoPUCP == codigoPUCP) {
+				M_ServiciosT->Series["Servicios"]->Points->Add(pasajero->CantServiciosTomados);
+				//M_ServiciosT->Series["Servicios"]->Points[i]->AxisLabel = "" + pasajero->FechaUltimoServicio;
+				M_ServiciosT->Series["Servicios"]->Points[i]->Label = "" + pasajero->CantServiciosTomados;
+			}
+		}
+	}
+};
 }
+
