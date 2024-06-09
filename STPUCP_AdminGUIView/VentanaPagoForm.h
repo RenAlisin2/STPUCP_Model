@@ -1,4 +1,5 @@
 #pragma once
+#include "RecepcionForm.h";
 
 namespace STPUCPAdminGUIView {
 
@@ -76,6 +77,7 @@ namespace STPUCPAdminGUIView {
 			this->button1->TabIndex = 1;
 			this->button1->Text = L"Pago realizado";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &VentanaPagoForm::button1_Click);
 			// 
 			// VentanaPagoForm
 			// 
@@ -84,7 +86,7 @@ namespace STPUCPAdminGUIView {
 			this->ClientSize = System::Drawing::Size(393, 372);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->pictureBox1);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"VentanaPagoForm";
 			this->Text = L"Ventana de pago";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
@@ -92,5 +94,9 @@ namespace STPUCPAdminGUIView {
 
 		}
 #pragma endregion
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		RecepcionForm^ recepcionform = gcnew RecepcionForm();
+		recepcionform->ShowDialog();
+	}
 	};
 }

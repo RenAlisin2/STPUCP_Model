@@ -2,9 +2,11 @@
 #include "LoginForm.h"
 #include "AdminMainForm.h"
 #include "QuesoyForm.h"
+#include "ConductorForm.h"
 
 System::Void STPUCPAdminGUIView::LoginForm::btnIngresar_Click(System::Object^ sender, System::EventArgs^ e)
 {
+
 	String^ password = txtContraseña->Text;
 	int codigoPUCP;
 	if (String::IsNullOrWhiteSpace(txtUsuario->Text)){
@@ -21,14 +23,20 @@ System::Void STPUCPAdminGUIView::LoginForm::btnIngresar_Click(System::Object^ se
 	if (usuarios != nullptr) {
 		MessageBox::Show("Bienvenido " + usuarios->Nombre + " " + usuarios->ApellidoPaterno);
 		AdminMainForm::user = usuarios;
+		
 		if (dynamic_cast<Administrador^>(usuarios) != nullptr) {
 			((AdminMainForm^)this->RefAdminMainForm)->EnablePermisoAdministrador();
+			
 		}
 		else if (dynamic_cast<Pasajero^>(usuarios) != nullptr) {
 			((AdminMainForm^)this->RefAdminMainForm)->EnablePermisoPasajero();
 		}
 		else if (dynamic_cast<Conductor^>(usuarios) != nullptr) {
+			ConductorForm^ adminmainform = gcnew ConductorForm();
+			adminmainform->txtConductor->Text = txtUsuario->Text;
+			adminmainform->Show();
 			((AdminMainForm^)this->RefAdminMainForm)->EnablePermisoConductor();
+
 		}
 		this->Close();
 	}

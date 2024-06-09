@@ -45,6 +45,10 @@ namespace STPUCPAdminGUIView {
     private: System::Windows::Forms::ComboBox^ comboBox2;
     private: System::Windows::Forms::ComboBox^ comboBox3;
     private: System::Windows::Forms::ComboBox^ comboBox4;
+    private: System::Windows::Forms::Label^ label6;
+    private: System::Windows::Forms::TextBox^ txtID;
+    private: System::Windows::Forms::Button^ button4;
+
 
     private:
         System::ComponentModel::Container^ components;
@@ -64,6 +68,9 @@ namespace STPUCPAdminGUIView {
             this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
             this->comboBox3 = (gcnew System::Windows::Forms::ComboBox());
             this->comboBox4 = (gcnew System::Windows::Forms::ComboBox());
+            this->label6 = (gcnew System::Windows::Forms::Label());
+            this->txtID = (gcnew System::Windows::Forms::TextBox());
+            this->button4 = (gcnew System::Windows::Forms::Button());
             this->SuspendLayout();
             // 
             // label1
@@ -120,7 +127,7 @@ namespace STPUCPAdminGUIView {
             // button1
             // 
             this->button1->Location = System::Drawing::Point(160, 82);
-            this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+            this->button1->Margin = System::Windows::Forms::Padding(2);
             this->button1->Name = L"button1";
             this->button1->Size = System::Drawing::Size(142, 19);
             this->button1->TabIndex = 5;
@@ -131,7 +138,7 @@ namespace STPUCPAdminGUIView {
             // button2
             // 
             this->button2->Location = System::Drawing::Point(306, 82);
-            this->button2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+            this->button2->Margin = System::Windows::Forms::Padding(2);
             this->button2->Name = L"button2";
             this->button2->Size = System::Drawing::Size(149, 19);
             this->button2->TabIndex = 6;
@@ -142,11 +149,11 @@ namespace STPUCPAdminGUIView {
             // button3
             // 
             this->button3->Location = System::Drawing::Point(63, 216);
-            this->button3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+            this->button3->Margin = System::Windows::Forms::Padding(2);
             this->button3->Name = L"button3";
-            this->button3->Size = System::Drawing::Size(392, 32);
+            this->button3->Size = System::Drawing::Size(190, 32);
             this->button3->TabIndex = 7;
-            this->button3->Text = L"CONTINUAR";
+            this->button3->Text = L"Continuar";
             this->button3->UseVisualStyleBackColor = true;
             this->button3->Click += gcnew System::EventHandler(this, &BoletaInterfazForm::btn_Continuar_Click);
             // 
@@ -154,7 +161,7 @@ namespace STPUCPAdminGUIView {
             // 
             this->comboBox1->FormattingEnabled = true;
             this->comboBox1->Location = System::Drawing::Point(160, 48);
-            this->comboBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+            this->comboBox1->Margin = System::Windows::Forms::Padding(2);
             this->comboBox1->Name = L"comboBox1";
             this->comboBox1->Size = System::Drawing::Size(295, 21);
             this->comboBox1->TabIndex = 8;
@@ -163,7 +170,7 @@ namespace STPUCPAdminGUIView {
             // 
             this->comboBox2->FormattingEnabled = true;
             this->comboBox2->Location = System::Drawing::Point(160, 112);
-            this->comboBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+            this->comboBox2->Margin = System::Windows::Forms::Padding(2);
             this->comboBox2->Name = L"comboBox2";
             this->comboBox2->Size = System::Drawing::Size(295, 21);
             this->comboBox2->TabIndex = 9;
@@ -172,7 +179,7 @@ namespace STPUCPAdminGUIView {
             // 
             this->comboBox3->FormattingEnabled = true;
             this->comboBox3->Location = System::Drawing::Point(160, 148);
-            this->comboBox3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+            this->comboBox3->Margin = System::Windows::Forms::Padding(2);
             this->comboBox3->Name = L"comboBox3";
             this->comboBox3->Size = System::Drawing::Size(295, 21);
             this->comboBox3->TabIndex = 10;
@@ -181,16 +188,45 @@ namespace STPUCPAdminGUIView {
             // 
             this->comboBox4->FormattingEnabled = true;
             this->comboBox4->Location = System::Drawing::Point(160, 183);
-            this->comboBox4->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+            this->comboBox4->Margin = System::Windows::Forms::Padding(2);
             this->comboBox4->Name = L"comboBox4";
             this->comboBox4->Size = System::Drawing::Size(295, 21);
             this->comboBox4->TabIndex = 11;
+            // 
+            // label6
+            // 
+            this->label6->AutoSize = true;
+            this->label6->Location = System::Drawing::Point(62, 20);
+            this->label6->Name = L"label6";
+            this->label6->Size = System::Drawing::Size(74, 13);
+            this->label6->TabIndex = 12;
+            this->label6->Text = L"Id de la Orden";
+            // 
+            // txtID
+            // 
+            this->txtID->Location = System::Drawing::Point(161, 16);
+            this->txtID->Name = L"txtID";
+            this->txtID->Size = System::Drawing::Size(56, 20);
+            this->txtID->TabIndex = 13;
+            // 
+            // button4
+            // 
+            this->button4->Location = System::Drawing::Point(266, 217);
+            this->button4->Name = L"button4";
+            this->button4->Size = System::Drawing::Size(188, 30);
+            this->button4->TabIndex = 14;
+            this->button4->Text = L"Cancelar";
+            this->button4->UseVisualStyleBackColor = true;
+            this->button4->Click += gcnew System::EventHandler(this, &BoletaInterfazForm::button4_Click);
             // 
             // BoletaInterfazForm
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->ClientSize = System::Drawing::Size(513, 267);
+            this->Controls->Add(this->button4);
+            this->Controls->Add(this->txtID);
+            this->Controls->Add(this->label6);
             this->Controls->Add(this->comboBox4);
             this->Controls->Add(this->comboBox3);
             this->Controls->Add(this->comboBox2);
@@ -203,9 +239,10 @@ namespace STPUCPAdminGUIView {
             this->Controls->Add(this->label3);
             this->Controls->Add(this->label2);
             this->Controls->Add(this->label1);
-            this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+            this->Margin = System::Windows::Forms::Padding(2);
             this->Name = L"BoletaInterfazForm";
             this->Text = L"BoletaInterfazForm";
+            this->Load += gcnew System::EventHandler(this, &BoletaInterfazForm::BoletaInterfazForm_Load);
             this->ResumeLayout(false);
             this->PerformLayout();
 
@@ -258,5 +295,14 @@ namespace STPUCPAdminGUIView {
         // Mostrar el precio final en comboBox3
         comboBox3->Text = precioFinal.ToString();
     }
-    };
+    private: System::Void BoletaInterfazForm_Load(System::Object^ sender, System::EventArgs^ e) {
+        txtID->Text = "" + (1 + controller::QueryAllOrders()->Count);
+        txtID->ReadOnly = true;
+
+    }
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+    this->Close();
+
+}
+};
 }

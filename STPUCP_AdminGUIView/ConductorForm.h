@@ -75,6 +75,8 @@ namespace STPUCPAdminGUIView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ FECHA;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ LUGAR;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ASIENTOS;
+	public: System::Windows::Forms::TextBox^ txtConductor;
+	private:
 
 
 	private:
@@ -115,11 +117,13 @@ namespace STPUCPAdminGUIView {
 			this->txtLugar = (gcnew System::Windows::Forms::TextBox());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->txtConductor = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_VIAJE))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// dgv_VIAJE
 			// 
+			this->dgv_VIAJE->BackgroundColor = System::Drawing::SystemColors::ActiveCaption;
 			this->dgv_VIAJE->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgv_VIAJE->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 				this->ID, this->HORA,
@@ -352,11 +356,20 @@ namespace STPUCPAdminGUIView {
 			this->label7->TabIndex = 42;
 			this->label7->Text = L"Ingrese distrito meta:";
 			// 
+			// txtConductor
+			// 
+			this->txtConductor->Location = System::Drawing::Point(582, 179);
+			this->txtConductor->Name = L"txtConductor";
+			this->txtConductor->ReadOnly = true;
+			this->txtConductor->Size = System::Drawing::Size(130, 20);
+			this->txtConductor->TabIndex = 43;
+			// 
 			// ConductorForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(773, 379);
+			this->Controls->Add(this->txtConductor);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->txtAsientos);
@@ -472,7 +485,7 @@ private: System::Void btn_modificar_Click(System::Object^ sender, System::EventA
 }
 
 private: System::Void ConductorForm_Load(System::Object^ sender, System::EventArgs^ e) {
-	txtID->Text = "" + controller::QueryAllJourneys()->Count;
+	txtID->Text = "" + (1 + controller::QueryAllJourneys()->Count);
 	txtID->ReadOnly = true;
 	
 	

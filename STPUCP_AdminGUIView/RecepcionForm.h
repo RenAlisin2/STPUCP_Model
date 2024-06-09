@@ -163,7 +163,7 @@ namespace STPUCPAdminGUIView {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(556, 53);
 			this->button1->TabIndex = 10;
-			this->button1->Text = L"Finalizar ";
+			this->button1->Text = L"Ya llegue";
 			this->button1->UseVisualStyleBackColor = true;
 			// 
 			// RecepcionForm

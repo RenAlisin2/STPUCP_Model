@@ -53,7 +53,8 @@ namespace STPUCPAdminGUIView {
     private: System::Windows::Forms::DataGridViewTextBoxColumn^ Lugar;
     private: System::Windows::Forms::DataGridViewTextBoxColumn^ Precio;
     private: System::Windows::Forms::Button^ button2;
-    private: System::Windows::Forms::Button^ button1;
+    private: System::Windows::Forms::Button^ btnAceptar;
+
     private: System::Windows::Forms::Label^ label1;
     private: System::Windows::Forms::Button^ btnRetroceder;
     private: System::Windows::Forms::PictureBox^ pBConductor;
@@ -88,7 +89,7 @@ namespace STPUCPAdminGUIView {
             this->Lugar = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
             this->Precio = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
             this->button2 = (gcnew System::Windows::Forms::Button());
-            this->button1 = (gcnew System::Windows::Forms::Button());
+            this->btnAceptar = (gcnew System::Windows::Forms::Button());
             this->label1 = (gcnew System::Windows::Forms::Label());
             this->btnRetroceder = (gcnew System::Windows::Forms::Button());
             this->pBConductor = (gcnew System::Windows::Forms::PictureBox());
@@ -112,13 +113,13 @@ namespace STPUCPAdminGUIView {
                 this->Column1,
                     this->Column2, this->Column3, this->Column4, this->Hora, this->Lugar, this->Precio
             });
-            this->dataGridView1->Location = System::Drawing::Point(15, 217);
-            this->dataGridView1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->dataGridView1->Location = System::Drawing::Point(11, 176);
+            this->dataGridView1->Margin = System::Windows::Forms::Padding(2);
             this->dataGridView1->Name = L"dataGridView1";
             this->dataGridView1->RowHeadersVisible = false;
             this->dataGridView1->RowHeadersWidth = 51;
             this->dataGridView1->RowTemplate->Height = 24;
-            this->dataGridView1->Size = System::Drawing::Size(1112, 218);
+            this->dataGridView1->Size = System::Drawing::Size(834, 177);
             this->dataGridView1->TabIndex = 2;
             this->dataGridView1->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &PasajeroRutaForm::dgvConductor_CellClick);
             this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &PasajeroRutaForm::dgvConductor_CellContentClick);
@@ -174,106 +175,103 @@ namespace STPUCPAdminGUIView {
             // 
             // button2
             // 
-            this->button2->Location = System::Drawing::Point(240, 73);
-            this->button2->Margin = System::Windows::Forms::Padding(4);
+            this->button2->Location = System::Drawing::Point(180, 59);
             this->button2->Name = L"button2";
-            this->button2->Size = System::Drawing::Size(225, 27);
+            this->button2->Size = System::Drawing::Size(169, 22);
             this->button2->TabIndex = 6;
             this->button2->Text = L"Viajes Disponible";
             this->button2->UseVisualStyleBackColor = true;
             this->button2->Click += gcnew System::EventHandler(this, &PasajeroRutaForm::button2_Click);
             // 
-            // button1
+            // btnAceptar
             // 
-            this->button1->Location = System::Drawing::Point(56, 132);
-            this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-            this->button1->Name = L"button1";
-            this->button1->Size = System::Drawing::Size(171, 39);
-            this->button1->TabIndex = 3;
-            this->button1->Text = L"Aceptar";
-            this->button1->UseVisualStyleBackColor = true;
-            this->button1->Click += gcnew System::EventHandler(this, &PasajeroRutaForm::btnBoleta_Click);
+            this->btnAceptar->Location = System::Drawing::Point(42, 107);
+            this->btnAceptar->Margin = System::Windows::Forms::Padding(2);
+            this->btnAceptar->Name = L"btnAceptar";
+            this->btnAceptar->Size = System::Drawing::Size(128, 32);
+            this->btnAceptar->TabIndex = 3;
+            this->btnAceptar->Text = L"Aceptar";
+            this->btnAceptar->UseVisualStyleBackColor = true;
+            this->btnAceptar->Click += gcnew System::EventHandler(this, &PasajeroRutaForm::btnBoleta_Click);
             // 
             // label1
             // 
             this->label1->AutoSize = true;
-            this->label1->Location = System::Drawing::Point(52, 79);
-            this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->label1->Location = System::Drawing::Point(39, 64);
             this->label1->Name = L"label1";
-            this->label1->Size = System::Drawing::Size(170, 16);
+            this->label1->Size = System::Drawing::Size(135, 13);
             this->label1->TabIndex = 7;
             this->label1->Text = L"Consultar viajes por distrito:";
             // 
             // btnRetroceder
             // 
-            this->btnRetroceder->Location = System::Drawing::Point(248, 132);
-            this->btnRetroceder->Margin = System::Windows::Forms::Padding(4);
+            this->btnRetroceder->Location = System::Drawing::Point(186, 107);
             this->btnRetroceder->Name = L"btnRetroceder";
-            this->btnRetroceder->Size = System::Drawing::Size(217, 39);
+            this->btnRetroceder->Size = System::Drawing::Size(163, 32);
             this->btnRetroceder->TabIndex = 8;
             this->btnRetroceder->Text = L"Retroceder";
             this->btnRetroceder->UseVisualStyleBackColor = true;
+            this->btnRetroceder->Click += gcnew System::EventHandler(this, &PasajeroRutaForm::btnRetroceder_Click);
             // 
             // pBConductor
             // 
-            this->pBConductor->Location = System::Drawing::Point(549, 15);
-            this->pBConductor->Margin = System::Windows::Forms::Padding(4);
+            this->pBConductor->Location = System::Drawing::Point(412, 12);
             this->pBConductor->Name = L"pBConductor";
-            this->pBConductor->Size = System::Drawing::Size(219, 158);
+            this->pBConductor->Size = System::Drawing::Size(164, 128);
             this->pBConductor->TabIndex = 9;
             this->pBConductor->TabStop = false;
             // 
             // pBVehículo
             // 
-            this->pBVehículo->Location = System::Drawing::Point(817, 14);
-            this->pBVehículo->Margin = System::Windows::Forms::Padding(4);
+            this->pBVehículo->Location = System::Drawing::Point(613, 11);
             this->pBVehículo->Name = L"pBVehículo";
-            this->pBVehículo->Size = System::Drawing::Size(236, 158);
+            this->pBVehículo->Size = System::Drawing::Size(177, 128);
             this->pBVehículo->TabIndex = 10;
             this->pBVehículo->TabStop = false;
             // 
             // label2
             // 
             this->label2->AutoSize = true;
-            this->label2->Location = System::Drawing::Point(604, 183);
-            this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->label2->Location = System::Drawing::Point(453, 149);
             this->label2->Name = L"label2";
-            this->label2->Size = System::Drawing::Size(118, 16);
+            this->label2->Size = System::Drawing::Size(96, 13);
             this->label2->TabIndex = 11;
             this->label2->Text = L"Foto del conductor";
             // 
             // label3
             // 
             this->label3->AutoSize = true;
-            this->label3->Location = System::Drawing::Point(908, 183);
-            this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->label3->Location = System::Drawing::Point(681, 149);
             this->label3->Name = L"label3";
-            this->label3->Size = System::Drawing::Size(85, 16);
+            this->label3->Size = System::Drawing::Size(69, 13);
             this->label3->TabIndex = 12;
             this->label3->Text = L"Foto del auto";
             // 
             // label4
             // 
             this->label4->AutoSize = true;
-            this->label4->Location = System::Drawing::Point(55, 24);
+            this->label4->Location = System::Drawing::Point(41, 20);
+            this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->label4->Name = L"label4";
-            this->label4->Size = System::Drawing::Size(91, 16);
+            this->label4->Size = System::Drawing::Size(74, 13);
             this->label4->TabIndex = 13;
             this->label4->Text = L"Id de la Orden";
             // 
             // textId
             // 
-            this->textId->Location = System::Drawing::Point(240, 24);
+            this->textId->Location = System::Drawing::Point(180, 20);
+            this->textId->Margin = System::Windows::Forms::Padding(2);
             this->textId->Name = L"textId";
             this->textId->ScrollBars = System::Windows::Forms::ScrollBars::Horizontal;
-            this->textId->Size = System::Drawing::Size(185, 22);
+            this->textId->Size = System::Drawing::Size(140, 20);
             this->textId->TabIndex = 14;
             // 
             // PasajeroRutaForm
             // 
-            this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+            this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-            this->ClientSize = System::Drawing::Size(1139, 489);
+            this->ClientSize = System::Drawing::Size(854, 397);
+            this->ControlBox = false;
             this->Controls->Add(this->textId);
             this->Controls->Add(this->label4);
             this->Controls->Add(this->label3);
@@ -283,9 +281,9 @@ namespace STPUCPAdminGUIView {
             this->Controls->Add(this->btnRetroceder);
             this->Controls->Add(this->label1);
             this->Controls->Add(this->button2);
-            this->Controls->Add(this->button1);
+            this->Controls->Add(this->btnAceptar);
             this->Controls->Add(this->dataGridView1);
-            this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->Margin = System::Windows::Forms::Padding(2);
             this->Name = L"PasajeroRutaForm";
             this->Text = L"Servicios Disponibles";
             this->Load += gcnew System::EventHandler(this, &PasajeroRutaForm::PasajeroRutaForm_Load);
@@ -326,8 +324,8 @@ namespace STPUCPAdminGUIView {
 
     private: System::Void btnBoleta_Click(System::Object^ sender, System::EventArgs^ e) {
         STPUCPAdminGUIView::BoletaInterfazForm^ boletaForm = gcnew STPUCPAdminGUIView::BoletaInterfazForm();
-        this->Close();
-        boletaForm->TopMost = true;
+        //this->Close();
+        //boletaForm->TopMost = true;
         boletaForm->ShowDialog();
     }
 
@@ -335,6 +333,7 @@ namespace STPUCPAdminGUIView {
     }
 
     private: System::Void dgvConductor_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+        btnAceptar->Enabled = true;
         if (e->RowIndex >= 0 && e->ColumnIndex >= 0) {
             int rowIndex = e->RowIndex;
             String^ nombre = dataGridView1->Rows[rowIndex]->Cells["Column1"]->Value->ToString();
@@ -381,6 +380,10 @@ namespace STPUCPAdminGUIView {
            void SetUserData(String^ nombre, String^ apellidoPaterno, String^ apellidoMaterno);
 
 private: System::Void PasajeroRutaForm_Load(System::Object^ sender, System::EventArgs^ e) {
+    btnAceptar->Enabled = false;
+}
+private: System::Void btnRetroceder_Click(System::Object^ sender, System::EventArgs^ e) {
+    this->Close();
 }
 };
 }

@@ -75,6 +75,10 @@ namespace STPUCPAdminGUIView {
 	private: System::Windows::Forms::ToolStripMenuItem^ escogerServicioToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ transporteToolStripMenuItem;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::PictureBox^ pictureBox2;
+	public: System::Windows::Forms::TextBox^ txtUser;
+	private:
 
 
 	protected:
@@ -113,8 +117,12 @@ namespace STPUCPAdminGUIView {
 			this->escogerServicioToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->transporteToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
+			this->txtUser = (gcnew System::Windows::Forms::TextBox());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
@@ -128,7 +136,7 @@ namespace STPUCPAdminGUIView {
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
-			this->menuStrip1->Size = System::Drawing::Size(954, 24);
+			this->menuStrip1->Size = System::Drawing::Size(636, 24);
 			this->menuStrip1->TabIndex = 1;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -239,7 +247,7 @@ namespace STPUCPAdminGUIView {
 			// viajeToolStripMenuItem
 			// 
 			this->viajeToolStripMenuItem->Name = L"viajeToolStripMenuItem";
-			this->viajeToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->viajeToolStripMenuItem->Size = System::Drawing::Size(99, 22);
 			this->viajeToolStripMenuItem->Text = L"Viaje";
 			this->viajeToolStripMenuItem->Click += gcnew System::EventHandler(this, &AdminMainForm::viajeToolStripMenuItem_Click);
 			// 
@@ -260,19 +268,52 @@ namespace STPUCPAdminGUIView {
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(12, 38);
+			this->pictureBox1->Location = System::Drawing::Point(1, 25);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(517, 265);
+			this->pictureBox1->Size = System::Drawing::Size(239, 109);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox1->TabIndex = 3;
 			this->pictureBox1->TabStop = false;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(260, 40);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(43, 13);
+			this->label1->TabIndex = 5;
+			this->label1->Text = L"Usuario";
+			// 
+			// pictureBox2
+			// 
+			this->pictureBox2->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->pictureBox2->Location = System::Drawing::Point(238, 25);
+			this->pictureBox2->Name = L"pictureBox2";
+			this->pictureBox2->Size = System::Drawing::Size(396, 48);
+			this->pictureBox2->TabIndex = 6;
+			this->pictureBox2->TabStop = false;
+			// 
+			// txtUser
+			// 
+			this->txtUser->BackColor = System::Drawing::SystemColors::ControlLightLight;
+			this->txtUser->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->txtUser->CharacterCasing = System::Windows::Forms::CharacterCasing::Upper;
+			this->txtUser->ForeColor = System::Drawing::SystemColors::Info;
+			this->txtUser->Location = System::Drawing::Point(314, 37);
+			this->txtUser->Name = L"txtUser";
+			this->txtUser->ReadOnly = true;
+			this->txtUser->Size = System::Drawing::Size(301, 20);
+			this->txtUser->TabIndex = 7;
 			// 
 			// AdminMainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(954, 609);
+			this->ClientSize = System::Drawing::Size(636, 609);
 			this->ControlBox = false;
+			this->Controls->Add(this->txtUser);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->pictureBox2);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->menuStrip1);
 			this->IsMdiContainer = true;
@@ -283,6 +324,7 @@ namespace STPUCPAdminGUIView {
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
