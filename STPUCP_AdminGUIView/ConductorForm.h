@@ -76,6 +76,8 @@ namespace STPUCPAdminGUIView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ LUGAR;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ASIENTOS;
 	public: System::Windows::Forms::TextBox^ txtConductor;
+	private: System::Windows::Forms::Label^ label8;
+	public:
 	private:
 
 
@@ -118,6 +120,7 @@ namespace STPUCPAdminGUIView {
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->txtConductor = (gcnew System::Windows::Forms::TextBox());
+			this->label8 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_VIAJE))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -129,12 +132,12 @@ namespace STPUCPAdminGUIView {
 				this->ID, this->HORA,
 					this->COSTO, this->FECHA, this->LUGAR, this->ASIENTOS
 			});
-			this->dgv_VIAJE->Location = System::Drawing::Point(11, 227);
-			this->dgv_VIAJE->Margin = System::Windows::Forms::Padding(2);
+			this->dgv_VIAJE->Location = System::Drawing::Point(15, 279);
+			this->dgv_VIAJE->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dgv_VIAJE->Name = L"dgv_VIAJE";
 			this->dgv_VIAJE->RowHeadersWidth = 51;
 			this->dgv_VIAJE->RowTemplate->Height = 24;
-			this->dgv_VIAJE->Size = System::Drawing::Size(751, 115);
+			this->dgv_VIAJE->Size = System::Drawing::Size(1001, 142);
 			this->dgv_VIAJE->TabIndex = 33;
 			this->dgv_VIAJE->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ConductorForm::dgv_VIAJE_CellContentClick);
 			// 
@@ -183,10 +186,10 @@ namespace STPUCPAdminGUIView {
 			// 
 			// btn_add
 			// 
-			this->btn_add->Location = System::Drawing::Point(405, 25);
-			this->btn_add->Margin = System::Windows::Forms::Padding(2);
+			this->btn_add->Location = System::Drawing::Point(540, 31);
+			this->btn_add->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btn_add->Name = L"btn_add";
-			this->btn_add->Size = System::Drawing::Size(125, 41);
+			this->btn_add->Size = System::Drawing::Size(167, 50);
 			this->btn_add->TabIndex = 32;
 			this->btn_add->Text = L"AÑADIR";
 			this->btn_add->UseVisualStyleBackColor = true;
@@ -194,10 +197,10 @@ namespace STPUCPAdminGUIView {
 			// 
 			// btn_modificar
 			// 
-			this->btn_modificar->Location = System::Drawing::Point(405, 93);
-			this->btn_modificar->Margin = System::Windows::Forms::Padding(2);
+			this->btn_modificar->Location = System::Drawing::Point(540, 114);
+			this->btn_modificar->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btn_modificar->Name = L"btn_modificar";
-			this->btn_modificar->Size = System::Drawing::Size(125, 39);
+			this->btn_modificar->Size = System::Drawing::Size(167, 48);
 			this->btn_modificar->TabIndex = 31;
 			this->btn_modificar->Text = L"MODIFICAR";
 			this->btn_modificar->UseVisualStyleBackColor = true;
@@ -205,10 +208,10 @@ namespace STPUCPAdminGUIView {
 			// 
 			// btn_eliminar
 			// 
-			this->btn_eliminar->Location = System::Drawing::Point(405, 157);
-			this->btn_eliminar->Margin = System::Windows::Forms::Padding(2);
+			this->btn_eliminar->Location = System::Drawing::Point(540, 193);
+			this->btn_eliminar->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btn_eliminar->Name = L"btn_eliminar";
-			this->btn_eliminar->Size = System::Drawing::Size(125, 42);
+			this->btn_eliminar->Size = System::Drawing::Size(167, 52);
 			this->btn_eliminar->TabIndex = 30;
 			this->btn_eliminar->Text = L"ELIMINAR";
 			this->btn_eliminar->UseVisualStyleBackColor = true;
@@ -217,40 +220,36 @@ namespace STPUCPAdminGUIView {
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(52, 23);
-			this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label6->Location = System::Drawing::Point(69, 28);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(56, 13);
+			this->label6->Size = System::Drawing::Size(68, 16);
 			this->label6->TabIndex = 28;
 			this->label6->Text = L"Ingrese ID";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(52, 106);
-			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label5->Location = System::Drawing::Point(69, 130);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(122, 13);
+			this->label5->Size = System::Drawing::Size(152, 16);
 			this->label5->TabIndex = 26;
 			this->label5->Text = L"Ingrese fecha de partida";
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(52, 161);
-			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label4->Location = System::Drawing::Point(69, 198);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(137, 13);
+			this->label4->Size = System::Drawing::Size(173, 16);
 			this->label4->TabIndex = 21;
 			this->label4->Text = L"Ingrese asientos ocupados:";
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(52, 133);
-			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label3->Location = System::Drawing::Point(69, 164);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(121, 13);
+			this->label3->Size = System::Drawing::Size(152, 16);
 			this->label3->TabIndex = 20;
 			this->label3->Text = L"Ingrese lugar de partida:";
 			this->label3->Click += gcnew System::EventHandler(this, &ConductorForm::label3_Click);
@@ -258,29 +257,27 @@ namespace STPUCPAdminGUIView {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(52, 78);
-			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label2->Location = System::Drawing::Point(69, 96);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(74, 13);
+			this->label2->Size = System::Drawing::Size(91, 16);
 			this->label2->TabIndex = 19;
 			this->label2->Text = L"Ingrese costo:";
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(52, 52);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label1->Location = System::Drawing::Point(69, 64);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(119, 13);
+			this->label1->Size = System::Drawing::Size(149, 16);
 			this->label1->TabIndex = 18;
 			this->label1->Text = L"Ingrese hora de partida:";
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(582, 80);
-			this->button1->Margin = System::Windows::Forms::Padding(2);
+			this->button1->Location = System::Drawing::Point(776, 98);
+			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(125, 64);
+			this->button1->Size = System::Drawing::Size(167, 79);
 			this->button1->TabIndex = 17;
 			this->button1->Text = L"Confirmar Viaje";
 			this->button1->UseVisualStyleBackColor = true;
@@ -288,44 +285,50 @@ namespace STPUCPAdminGUIView {
 			// 
 			// txtID
 			// 
-			this->txtID->Location = System::Drawing::Point(194, 20);
+			this->txtID->Location = System::Drawing::Point(259, 25);
+			this->txtID->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtID->Name = L"txtID";
-			this->txtID->Size = System::Drawing::Size(168, 20);
+			this->txtID->Size = System::Drawing::Size(223, 22);
 			this->txtID->TabIndex = 34;
 			// 
 			// txtHoraPartida
 			// 
-			this->txtHoraPartida->Location = System::Drawing::Point(194, 46);
+			this->txtHoraPartida->Location = System::Drawing::Point(259, 57);
+			this->txtHoraPartida->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtHoraPartida->Name = L"txtHoraPartida";
-			this->txtHoraPartida->Size = System::Drawing::Size(168, 20);
+			this->txtHoraPartida->Size = System::Drawing::Size(223, 22);
 			this->txtHoraPartida->TabIndex = 35;
 			// 
 			// txtCosto
 			// 
-			this->txtCosto->Location = System::Drawing::Point(194, 75);
+			this->txtCosto->Location = System::Drawing::Point(259, 92);
+			this->txtCosto->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtCosto->Name = L"txtCosto";
-			this->txtCosto->Size = System::Drawing::Size(168, 20);
+			this->txtCosto->Size = System::Drawing::Size(223, 22);
 			this->txtCosto->TabIndex = 36;
 			// 
 			// txtFecha
 			// 
-			this->txtFecha->Location = System::Drawing::Point(194, 103);
+			this->txtFecha->Location = System::Drawing::Point(259, 127);
+			this->txtFecha->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtFecha->Name = L"txtFecha";
-			this->txtFecha->Size = System::Drawing::Size(168, 20);
+			this->txtFecha->Size = System::Drawing::Size(223, 22);
 			this->txtFecha->TabIndex = 37;
 			// 
 			// txtAsientos
 			// 
-			this->txtAsientos->Location = System::Drawing::Point(194, 159);
+			this->txtAsientos->Location = System::Drawing::Point(259, 196);
+			this->txtAsientos->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtAsientos->Name = L"txtAsientos";
-			this->txtAsientos->Size = System::Drawing::Size(168, 20);
+			this->txtAsientos->Size = System::Drawing::Size(223, 22);
 			this->txtAsientos->TabIndex = 39;
 			// 
 			// txtLugar
 			// 
-			this->txtLugar->Location = System::Drawing::Point(194, 130);
+			this->txtLugar->Location = System::Drawing::Point(259, 160);
+			this->txtLugar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtLugar->Name = L"txtLugar";
-			this->txtLugar->Size = System::Drawing::Size(168, 20);
+			this->txtLugar->Size = System::Drawing::Size(223, 22);
 			this->txtLugar->TabIndex = 38;
 			// 
 			// comboBox1
@@ -340,35 +343,47 @@ namespace STPUCPAdminGUIView {
 					L"", L"San Juan de Miraflores", L"", L"San Luis", L"", L"San Martín de Porres", L"", L"San Miguel", L"", L"Santa Anita", L"",
 					L"Santa María del Mar", L"", L"Santa Rosa", L"", L"Santiago de Surco", L"", L"Surquillo", L"", L"Villa El Salvador", L"", L"Villa María del Triunfo"
 			});
-			this->comboBox1->Location = System::Drawing::Point(194, 186);
-			this->comboBox1->Margin = System::Windows::Forms::Padding(2);
+			this->comboBox1->Location = System::Drawing::Point(259, 229);
+			this->comboBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(168, 21);
+			this->comboBox1->Size = System::Drawing::Size(223, 24);
 			this->comboBox1->TabIndex = 40;
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(52, 186);
-			this->label7->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label7->Location = System::Drawing::Point(69, 229);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(104, 13);
+			this->label7->Size = System::Drawing::Size(130, 16);
 			this->label7->TabIndex = 42;
 			this->label7->Text = L"Ingrese distrito meta:";
 			// 
 			// txtConductor
 			// 
-			this->txtConductor->Location = System::Drawing::Point(582, 179);
+			this->txtConductor->BackColor = System::Drawing::SystemColors::MenuHighlight;
+			this->txtConductor->ForeColor = System::Drawing::SystemColors::HotTrack;
+			this->txtConductor->Location = System::Drawing::Point(771, 57);
+			this->txtConductor->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtConductor->Name = L"txtConductor";
 			this->txtConductor->ReadOnly = true;
-			this->txtConductor->Size = System::Drawing::Size(130, 20);
+			this->txtConductor->Size = System::Drawing::Size(172, 22);
 			this->txtConductor->TabIndex = 43;
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->Location = System::Drawing::Point(771, 31);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(71, 16);
+			this->label8->TabIndex = 44;
+			this->label8->Text = L"USUARIO:";
 			// 
 			// ConductorForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(773, 379);
+			this->ClientSize = System::Drawing::Size(1031, 466);
+			this->Controls->Add(this->label8);
 			this->Controls->Add(this->txtConductor);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->comboBox1);
@@ -389,6 +404,7 @@ namespace STPUCPAdminGUIView {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->button1);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"ConductorForm";
 			this->Text = L"ConductorForm";
 			this->Load += gcnew System::EventHandler(this, &ConductorForm::ConductorForm_Load);
@@ -407,8 +423,10 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 	String^ ultimoParadero = txtLugar->Text;
 	String^ fechaViaje = txtFecha->Text;
 	String^ distrito = comboBox1->Items[comboBox1->SelectedIndex]->ToString(); // Obtener el rol seleccionado
+	MessageBox::Show ("codigo del conductor" + txtConductor->Text);
 
 	double precioViaje = Convert::ToDouble(txtCosto->Text);
+	int idConductor = Convert::ToInt32(txtConductor->Text);
 
 
 	Viaje^ viajecito = gcnew Viaje();
@@ -418,6 +436,7 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 	viajecito->UltimoParadero = ultimoParadero;
 	viajecito->FechaViaje = fechaViaje;
 	viajecito->PrecioViaje = precioViaje;
+	viajecito->ConductorId = idConductor;
 
 	controller::AddJourney(viajecito);
 	ShowViaje();

@@ -29,7 +29,7 @@ void STPUCPPersistance::Persistance::PersistTextFile(String^ fileName, Object^ p
         List<Viaje^>^ viaje = (List<Viaje^>^) persistObject;
         for (int i = 0; i < viaje->Count; i++) {
             Viaje^ v = viaje[i];
-            writer->WriteLine(v ->Id + ","  + v->HoraSalida + "," + v->FechaViaje + "," + v->Distrito + ","+v -> Lugar + v->UltimoParadero + "," + v->PrecioViaje);
+            writer->WriteLine(v ->Id + ","  + v->HoraSalida + "," + v->FechaViaje + "," + v->Distrito + ","+v -> Lugar + v->UltimoParadero + "," + v->PrecioViaje +","+v->ConductorId);
         }
     }
     if (persistObject->GetType() == List<Promocion^>::typeid) {
@@ -105,6 +105,7 @@ Object^ STPUCPPersistance::Persistance::LoadTextFile(String^ fileName)
                 viaje->Distrito = record[3];
                 viaje->UltimoParadero = record[4];
                 viaje->PrecioViaje = Convert::ToInt32(record[5]);
+                viaje->ConductorId = Convert::ToInt32(record[6]);
                 ((List<Viaje^>^)result)->Add(viaje);
             }
         }
