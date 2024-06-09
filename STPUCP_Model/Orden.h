@@ -13,9 +13,10 @@ namespace STPUCP_Model {
         // Id propia que enumera los numeros de orden , pero asimismo tiene un ID que lo relaciona con la persona
         property int Id;
         property String^ Distrito;
-        property double CalificacionEstrellas;
+        property int CalificacionEstrellas;
         property double Precio;
         property String^ Fecha;
+        property int Id_viaje;
     };
 }
 

@@ -96,7 +96,7 @@ namespace STPUCPAdminGUIView {
 			// txtUsuario
 			// 
 			this->txtUsuario->Location = System::Drawing::Point(205, 42);
-			this->txtUsuario->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtUsuario->Margin = System::Windows::Forms::Padding(4);
 			this->txtUsuario->Name = L"txtUsuario";
 			this->txtUsuario->Size = System::Drawing::Size(272, 22);
 			this->txtUsuario->TabIndex = 2;
@@ -105,7 +105,7 @@ namespace STPUCPAdminGUIView {
 			// txtContraseña
 			// 
 			this->txtContraseña->Location = System::Drawing::Point(205, 82);
-			this->txtContraseña->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtContraseña->Margin = System::Windows::Forms::Padding(4);
 			this->txtContraseña->Name = L"txtContraseña";
 			this->txtContraseña->Size = System::Drawing::Size(272, 22);
 			this->txtContraseña->TabIndex = 3;
@@ -115,7 +115,7 @@ namespace STPUCPAdminGUIView {
 			// btnIngresar
 			// 
 			this->btnIngresar->Location = System::Drawing::Point(208, 162);
-			this->btnIngresar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnIngresar->Margin = System::Windows::Forms::Padding(4);
 			this->btnIngresar->Name = L"btnIngresar";
 			this->btnIngresar->Size = System::Drawing::Size(211, 38);
 			this->btnIngresar->TabIndex = 4;
@@ -126,7 +126,7 @@ namespace STPUCPAdminGUIView {
 			// btnRegistrarse
 			// 
 			this->btnRegistrarse->Location = System::Drawing::Point(205, 257);
-			this->btnRegistrarse->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnRegistrarse->Margin = System::Windows::Forms::Padding(4);
 			this->btnRegistrarse->Name = L"btnRegistrarse";
 			this->btnRegistrarse->Size = System::Drawing::Size(213, 31);
 			this->btnRegistrarse->TabIndex = 5;
@@ -157,10 +157,11 @@ namespace STPUCPAdminGUIView {
 			this->Controls->Add(this->txtUsuario);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"LoginForm";
 			this->Text = L"LoginForm";
 			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &LoginForm::LoginForm_FormClosed);
+			this->Load += gcnew System::EventHandler(this, &LoginForm::LoginForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -192,7 +193,9 @@ private: System::Void LoginForm_FormClosed(System::Object^ sender, System::Windo
 	}
 }
 private: System::Void txtUsuario_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	int çodigo_alumno = Int32::Parse(txtUsuario->Text);
+	
+}
+private: System::Void LoginForm_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

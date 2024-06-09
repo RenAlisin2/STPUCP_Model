@@ -48,6 +48,10 @@ namespace STPUCPAdminGUIView {
     private: System::Windows::Forms::Label^ label6;
     private: System::Windows::Forms::TextBox^ txtID;
     private: System::Windows::Forms::Button^ button4;
+    private: System::Windows::Forms::Label^ label7;
+    public: System::Windows::Forms::TextBox^ text_viajeid;
+    private:
+
 
 
     private:
@@ -71,25 +75,25 @@ namespace STPUCPAdminGUIView {
             this->label6 = (gcnew System::Windows::Forms::Label());
             this->txtID = (gcnew System::Windows::Forms::TextBox());
             this->button4 = (gcnew System::Windows::Forms::Button());
+            this->label7 = (gcnew System::Windows::Forms::Label());
+            this->text_viajeid = (gcnew System::Windows::Forms::TextBox());
             this->SuspendLayout();
             // 
             // label1
             // 
             this->label1->AutoSize = true;
-            this->label1->Location = System::Drawing::Point(62, 51);
-            this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+            this->label1->Location = System::Drawing::Point(83, 63);
             this->label1->Name = L"label1";
-            this->label1->Size = System::Drawing::Size(94, 13);
+            this->label1->Size = System::Drawing::Size(118, 16);
             this->label1->TabIndex = 0;
             this->label1->Text = L"Precio de servicio:";
             // 
             // label2
             // 
             this->label2->AutoSize = true;
-            this->label2->Location = System::Drawing::Point(60, 82);
-            this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+            this->label2->Location = System::Drawing::Point(80, 101);
             this->label2->Name = L"label2";
-            this->label2->Size = System::Drawing::Size(94, 13);
+            this->label2->Size = System::Drawing::Size(118, 16);
             this->label2->TabIndex = 1;
             this->label2->Text = L"¿Usar Promoción\?";
             this->label2->Click += gcnew System::EventHandler(this, &BoletaInterfazForm::label2_Click);
@@ -97,39 +101,36 @@ namespace STPUCPAdminGUIView {
             // label3
             // 
             this->label3->AutoSize = true;
-            this->label3->Location = System::Drawing::Point(60, 115);
-            this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+            this->label3->Location = System::Drawing::Point(80, 142);
             this->label3->Name = L"label3";
-            this->label3->Size = System::Drawing::Size(59, 13);
+            this->label3->Size = System::Drawing::Size(72, 16);
             this->label3->TabIndex = 2;
             this->label3->Text = L"Descuento";
             // 
             // label4
             // 
             this->label4->AutoSize = true;
-            this->label4->Location = System::Drawing::Point(60, 151);
-            this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+            this->label4->Location = System::Drawing::Point(80, 186);
             this->label4->Name = L"label4";
-            this->label4->Size = System::Drawing::Size(65, 13);
+            this->label4->Size = System::Drawing::Size(81, 16);
             this->label4->TabIndex = 3;
             this->label4->Text = L"Precio Final:";
             // 
             // label5
             // 
             this->label5->AutoSize = true;
-            this->label5->Location = System::Drawing::Point(60, 186);
-            this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+            this->label5->Location = System::Drawing::Point(80, 229);
             this->label5->Name = L"label5";
-            this->label5->Size = System::Drawing::Size(89, 13);
+            this->label5->Size = System::Drawing::Size(111, 16);
             this->label5->TabIndex = 4;
             this->label5->Text = L"Hora de la orden:";
             // 
             // button1
             // 
-            this->button1->Location = System::Drawing::Point(160, 82);
-            this->button1->Margin = System::Windows::Forms::Padding(2);
+            this->button1->Location = System::Drawing::Point(213, 101);
+            this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->button1->Name = L"button1";
-            this->button1->Size = System::Drawing::Size(142, 19);
+            this->button1->Size = System::Drawing::Size(189, 23);
             this->button1->TabIndex = 5;
             this->button1->Text = L"SI";
             this->button1->UseVisualStyleBackColor = true;
@@ -137,10 +138,10 @@ namespace STPUCPAdminGUIView {
             // 
             // button2
             // 
-            this->button2->Location = System::Drawing::Point(306, 82);
-            this->button2->Margin = System::Windows::Forms::Padding(2);
+            this->button2->Location = System::Drawing::Point(408, 101);
+            this->button2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->button2->Name = L"button2";
-            this->button2->Size = System::Drawing::Size(149, 19);
+            this->button2->Size = System::Drawing::Size(199, 23);
             this->button2->TabIndex = 6;
             this->button2->Text = L"NO";
             this->button2->UseVisualStyleBackColor = true;
@@ -148,10 +149,10 @@ namespace STPUCPAdminGUIView {
             // 
             // button3
             // 
-            this->button3->Location = System::Drawing::Point(63, 216);
-            this->button3->Margin = System::Windows::Forms::Padding(2);
+            this->button3->Location = System::Drawing::Point(84, 266);
+            this->button3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->button3->Name = L"button3";
-            this->button3->Size = System::Drawing::Size(190, 32);
+            this->button3->Size = System::Drawing::Size(253, 39);
             this->button3->TabIndex = 7;
             this->button3->Text = L"Continuar";
             this->button3->UseVisualStyleBackColor = true;
@@ -160,70 +161,93 @@ namespace STPUCPAdminGUIView {
             // comboBox1
             // 
             this->comboBox1->FormattingEnabled = true;
-            this->comboBox1->Location = System::Drawing::Point(160, 48);
-            this->comboBox1->Margin = System::Windows::Forms::Padding(2);
+            this->comboBox1->Location = System::Drawing::Point(213, 59);
+            this->comboBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->comboBox1->Name = L"comboBox1";
-            this->comboBox1->Size = System::Drawing::Size(295, 21);
+            this->comboBox1->Size = System::Drawing::Size(392, 24);
             this->comboBox1->TabIndex = 8;
             // 
             // comboBox2
             // 
             this->comboBox2->FormattingEnabled = true;
-            this->comboBox2->Location = System::Drawing::Point(160, 112);
-            this->comboBox2->Margin = System::Windows::Forms::Padding(2);
+            this->comboBox2->Location = System::Drawing::Point(213, 138);
+            this->comboBox2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->comboBox2->Name = L"comboBox2";
-            this->comboBox2->Size = System::Drawing::Size(295, 21);
+            this->comboBox2->Size = System::Drawing::Size(392, 24);
             this->comboBox2->TabIndex = 9;
             // 
             // comboBox3
             // 
             this->comboBox3->FormattingEnabled = true;
-            this->comboBox3->Location = System::Drawing::Point(160, 148);
-            this->comboBox3->Margin = System::Windows::Forms::Padding(2);
+            this->comboBox3->Location = System::Drawing::Point(213, 182);
+            this->comboBox3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->comboBox3->Name = L"comboBox3";
-            this->comboBox3->Size = System::Drawing::Size(295, 21);
+            this->comboBox3->Size = System::Drawing::Size(392, 24);
             this->comboBox3->TabIndex = 10;
             // 
             // comboBox4
             // 
             this->comboBox4->FormattingEnabled = true;
-            this->comboBox4->Location = System::Drawing::Point(160, 183);
-            this->comboBox4->Margin = System::Windows::Forms::Padding(2);
+            this->comboBox4->Location = System::Drawing::Point(213, 225);
+            this->comboBox4->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->comboBox4->Name = L"comboBox4";
-            this->comboBox4->Size = System::Drawing::Size(295, 21);
+            this->comboBox4->Size = System::Drawing::Size(392, 24);
             this->comboBox4->TabIndex = 11;
             // 
             // label6
             // 
             this->label6->AutoSize = true;
-            this->label6->Location = System::Drawing::Point(62, 20);
+            this->label6->Location = System::Drawing::Point(83, 25);
+            this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
             this->label6->Name = L"label6";
-            this->label6->Size = System::Drawing::Size(74, 13);
+            this->label6->Size = System::Drawing::Size(91, 16);
             this->label6->TabIndex = 12;
             this->label6->Text = L"Id de la Orden";
             // 
             // txtID
             // 
-            this->txtID->Location = System::Drawing::Point(161, 16);
+            this->txtID->Location = System::Drawing::Point(215, 20);
+            this->txtID->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->txtID->Name = L"txtID";
-            this->txtID->Size = System::Drawing::Size(56, 20);
+            this->txtID->ReadOnly = true;
+            this->txtID->Size = System::Drawing::Size(73, 22);
             this->txtID->TabIndex = 13;
             // 
             // button4
             // 
-            this->button4->Location = System::Drawing::Point(266, 217);
+            this->button4->Location = System::Drawing::Point(355, 267);
+            this->button4->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->button4->Name = L"button4";
-            this->button4->Size = System::Drawing::Size(188, 30);
+            this->button4->Size = System::Drawing::Size(251, 37);
             this->button4->TabIndex = 14;
             this->button4->Text = L"Cancelar";
             this->button4->UseVisualStyleBackColor = true;
             this->button4->Click += gcnew System::EventHandler(this, &BoletaInterfazForm::button4_Click);
             // 
+            // label7
+            // 
+            this->label7->AutoSize = true;
+            this->label7->Location = System::Drawing::Point(331, 24);
+            this->label7->Name = L"label7";
+            this->label7->Size = System::Drawing::Size(54, 16);
+            this->label7->TabIndex = 15;
+            this->label7->Text = L"Id_viaje";
+            // 
+            // text_viajeid
+            // 
+            this->text_viajeid->Location = System::Drawing::Point(392, 19);
+            this->text_viajeid->Name = L"text_viajeid";
+            this->text_viajeid->ReadOnly = true;
+            this->text_viajeid->Size = System::Drawing::Size(100, 22);
+            this->text_viajeid->TabIndex = 16;
+            // 
             // BoletaInterfazForm
             // 
-            this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+            this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-            this->ClientSize = System::Drawing::Size(513, 267);
+            this->ClientSize = System::Drawing::Size(896, 422);
+            this->Controls->Add(this->text_viajeid);
+            this->Controls->Add(this->label7);
             this->Controls->Add(this->button4);
             this->Controls->Add(this->txtID);
             this->Controls->Add(this->label6);
@@ -239,7 +263,7 @@ namespace STPUCPAdminGUIView {
             this->Controls->Add(this->label3);
             this->Controls->Add(this->label2);
             this->Controls->Add(this->label1);
-            this->Margin = System::Windows::Forms::Padding(2);
+            this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->Name = L"BoletaInterfazForm";
             this->Text = L"BoletaInterfazForm";
             this->Load += gcnew System::EventHandler(this, &BoletaInterfazForm::BoletaInterfazForm_Load);
@@ -253,9 +277,12 @@ namespace STPUCPAdminGUIView {
     }
 
     private: System::Void btn_Continuar_Click(System::Object^ sender, System::EventArgs^ e) {
-        STPUCPAdminGUIView::VentanaPagoForm^ ventana = gcnew STPUCPAdminGUIView::VentanaPagoForm();
+        VentanaPagoForm^ ventana = gcnew VentanaPagoForm();
         this->Close();
         ventana->TopMost = true;
+       
+        ventana->text_orden->Text = txtID->Text;
+        ventana->text_viaje->Text = text_viajeid->Text;
         ventana->ShowDialog();
     }
 
