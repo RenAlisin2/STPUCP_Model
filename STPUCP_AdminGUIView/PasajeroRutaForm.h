@@ -62,6 +62,8 @@ namespace STPUCPAdminGUIView {
 
     private: System::Windows::Forms::Label^ label2;
     private: System::Windows::Forms::Label^ label3;
+    private: System::Windows::Forms::Label^ label4;
+    private: System::Windows::Forms::TextBox^ textId;
            // New button for searching
 
     private:
@@ -93,6 +95,8 @@ namespace STPUCPAdminGUIView {
             this->pBVehículo = (gcnew System::Windows::Forms::PictureBox());
             this->label2 = (gcnew System::Windows::Forms::Label());
             this->label3 = (gcnew System::Windows::Forms::Label());
+            this->label4 = (gcnew System::Windows::Forms::Label());
+            this->textId = (gcnew System::Windows::Forms::TextBox());
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBConductor))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBVehículo))->BeginInit();
@@ -171,7 +175,7 @@ namespace STPUCPAdminGUIView {
             // button2
             // 
             this->button2->Location = System::Drawing::Point(240, 73);
-            this->button2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->button2->Margin = System::Windows::Forms::Padding(4);
             this->button2->Name = L"button2";
             this->button2->Size = System::Drawing::Size(225, 27);
             this->button2->TabIndex = 6;
@@ -203,7 +207,7 @@ namespace STPUCPAdminGUIView {
             // btnRetroceder
             // 
             this->btnRetroceder->Location = System::Drawing::Point(248, 132);
-            this->btnRetroceder->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->btnRetroceder->Margin = System::Windows::Forms::Padding(4);
             this->btnRetroceder->Name = L"btnRetroceder";
             this->btnRetroceder->Size = System::Drawing::Size(217, 39);
             this->btnRetroceder->TabIndex = 8;
@@ -213,7 +217,7 @@ namespace STPUCPAdminGUIView {
             // pBConductor
             // 
             this->pBConductor->Location = System::Drawing::Point(549, 15);
-            this->pBConductor->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->pBConductor->Margin = System::Windows::Forms::Padding(4);
             this->pBConductor->Name = L"pBConductor";
             this->pBConductor->Size = System::Drawing::Size(219, 158);
             this->pBConductor->TabIndex = 9;
@@ -222,7 +226,7 @@ namespace STPUCPAdminGUIView {
             // pBVehículo
             // 
             this->pBVehículo->Location = System::Drawing::Point(817, 14);
-            this->pBVehículo->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->pBVehículo->Margin = System::Windows::Forms::Padding(4);
             this->pBVehículo->Name = L"pBVehículo";
             this->pBVehículo->Size = System::Drawing::Size(236, 158);
             this->pBVehículo->TabIndex = 10;
@@ -248,11 +252,30 @@ namespace STPUCPAdminGUIView {
             this->label3->TabIndex = 12;
             this->label3->Text = L"Foto del auto";
             // 
+            // label4
+            // 
+            this->label4->AutoSize = true;
+            this->label4->Location = System::Drawing::Point(55, 24);
+            this->label4->Name = L"label4";
+            this->label4->Size = System::Drawing::Size(91, 16);
+            this->label4->TabIndex = 13;
+            this->label4->Text = L"Id de la Orden";
+            // 
+            // textId
+            // 
+            this->textId->Location = System::Drawing::Point(240, 24);
+            this->textId->Name = L"textId";
+            this->textId->ScrollBars = System::Windows::Forms::ScrollBars::Horizontal;
+            this->textId->Size = System::Drawing::Size(185, 22);
+            this->textId->TabIndex = 14;
+            // 
             // PasajeroRutaForm
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->ClientSize = System::Drawing::Size(1139, 489);
+            this->Controls->Add(this->textId);
+            this->Controls->Add(this->label4);
             this->Controls->Add(this->label3);
             this->Controls->Add(this->label2);
             this->Controls->Add(this->pBVehículo);
@@ -327,12 +350,14 @@ namespace STPUCPAdminGUIView {
     }
         public:   void AddJourneyToGrid(Viaje^ viaje) {
                dataGridView1->Rows->Add(gcnew array<String^> {
-                    "" + viaje->Id,
-                    "" + viaje->HoraSalida,
-                    viaje->FechaViaje,
-                    viaje->UltimoParadero,
-                    "" + viaje->PrecioViaje,
-                    viaje->Distrito
+                    "" , //columana1
+                        "", //columana2
+                        "", //columana3
+                        "", //columana4
+                        "" + viaje->UltimoParadero, //columana5
+                        "" + viaje->HoraSalida, //columana6
+                        "" + viaje->PrecioViaje, //columana7
+
             });
         }
 

@@ -113,152 +113,171 @@ namespace STPUCPAdminGUIView {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(36, 36);
+			this->label1->Location = System::Drawing::Point(48, 44);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(97, 13);
+			this->label1->Size = System::Drawing::Size(121, 16);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Ingrese su nombre:";
 			// 
 			// textNOMBRE
 			// 
-			this->textNOMBRE->Location = System::Drawing::Point(208, 33);
+			this->textNOMBRE->Location = System::Drawing::Point(277, 41);
+			this->textNOMBRE->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textNOMBRE->Name = L"textNOMBRE";
-			this->textNOMBRE->Size = System::Drawing::Size(188, 20);
+			this->textNOMBRE->Size = System::Drawing::Size(249, 22);
 			this->textNOMBRE->TabIndex = 1;
 			// 
 			// textAP_MATERNO
 			// 
-			this->textAP_MATERNO->Location = System::Drawing::Point(208, 85);
+			this->textAP_MATERNO->Location = System::Drawing::Point(277, 105);
+			this->textAP_MATERNO->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textAP_MATERNO->Name = L"textAP_MATERNO";
-			this->textAP_MATERNO->Size = System::Drawing::Size(188, 20);
+			this->textAP_MATERNO->Size = System::Drawing::Size(249, 22);
 			this->textAP_MATERNO->TabIndex = 3;
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(36, 88);
+			this->label2->Location = System::Drawing::Point(48, 108);
+			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(141, 13);
+			this->label2->Size = System::Drawing::Size(177, 16);
 			this->label2->TabIndex = 2;
 			this->label2->Text = L"Ingrese su Apellido Materno:";
 			// 
 			// textAP_PATERNO
 			// 
-			this->textAP_PATERNO->Location = System::Drawing::Point(208, 59);
+			this->textAP_PATERNO->Location = System::Drawing::Point(277, 73);
+			this->textAP_PATERNO->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textAP_PATERNO->Name = L"textAP_PATERNO";
-			this->textAP_PATERNO->Size = System::Drawing::Size(188, 20);
+			this->textAP_PATERNO->Size = System::Drawing::Size(249, 22);
 			this->textAP_PATERNO->TabIndex = 5;
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(36, 62);
+			this->label3->Location = System::Drawing::Point(48, 76);
+			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(139, 13);
+			this->label3->Size = System::Drawing::Size(175, 16);
 			this->label3->TabIndex = 4;
 			this->label3->Text = L"Ingrese su Apellido Paterno:";
 			// 
 			// textDNI
 			// 
-			this->textDNI->Location = System::Drawing::Point(208, 137);
+			this->textDNI->Location = System::Drawing::Point(277, 169);
+			this->textDNI->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textDNI->Name = L"textDNI";
-			this->textDNI->Size = System::Drawing::Size(188, 20);
+			this->textDNI->Size = System::Drawing::Size(249, 22);
 			this->textDNI->TabIndex = 11;
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(36, 140);
+			this->label4->Location = System::Drawing::Point(48, 172);
+			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(81, 13);
+			this->label4->Size = System::Drawing::Size(98, 16);
 			this->label4->TabIndex = 10;
 			this->label4->Text = L"Ingrese su DNI:";
 			// 
 			// text_telefono
 			// 
-			this->text_telefono->Location = System::Drawing::Point(208, 163);
+			this->text_telefono->Location = System::Drawing::Point(277, 201);
+			this->text_telefono->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->text_telefono->Name = L"text_telefono";
-			this->text_telefono->Size = System::Drawing::Size(188, 20);
+			this->text_telefono->Size = System::Drawing::Size(249, 22);
 			this->text_telefono->TabIndex = 9;
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(36, 166);
+			this->label5->Location = System::Drawing::Point(48, 204);
+			this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(146, 13);
+			this->label5->Size = System::Drawing::Size(181, 16);
 			this->label5->TabIndex = 8;
 			this->label5->Text = L"Ingrese su número telefónico:";
 			// 
 			// textCodigo
 			// 
-			this->textCodigo->Location = System::Drawing::Point(208, 111);
+			this->textCodigo->Location = System::Drawing::Point(277, 137);
+			this->textCodigo->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textCodigo->Name = L"textCodigo";
-			this->textCodigo->Size = System::Drawing::Size(188, 20);
+			this->textCodigo->Size = System::Drawing::Size(249, 22);
 			this->textCodigo->TabIndex = 7;
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(36, 114);
+			this->label6->Location = System::Drawing::Point(48, 140);
+			this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(126, 13);
+			this->label6->Size = System::Drawing::Size(157, 16);
 			this->label6->TabIndex = 6;
 			this->label6->Text = L"Ingrese su código PUCP:";
 			// 
 			// text_contraseña
 			// 
-			this->text_contraseña->Location = System::Drawing::Point(208, 215);
+			this->text_contraseña->Location = System::Drawing::Point(277, 265);
+			this->text_contraseña->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->text_contraseña->Name = L"text_contraseña";
-			this->text_contraseña->Size = System::Drawing::Size(188, 20);
+			this->text_contraseña->Size = System::Drawing::Size(249, 22);
 			this->text_contraseña->TabIndex = 17;
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(36, 218);
+			this->label7->Location = System::Drawing::Point(48, 268);
+			this->label7->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(122, 13);
+			this->label7->Size = System::Drawing::Size(150, 16);
 			this->label7->TabIndex = 16;
 			this->label7->Text = L"Ingrese una contraseña:";
 			// 
 			// textrepeat_contraseña
 			// 
-			this->textrepeat_contraseña->Location = System::Drawing::Point(208, 241);
+			this->textrepeat_contraseña->Location = System::Drawing::Point(277, 297);
+			this->textrepeat_contraseña->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textrepeat_contraseña->Name = L"textrepeat_contraseña";
-			this->textrepeat_contraseña->Size = System::Drawing::Size(188, 20);
+			this->textrepeat_contraseña->Size = System::Drawing::Size(249, 22);
 			this->textrepeat_contraseña->TabIndex = 15;
 			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(36, 244);
+			this->label8->Location = System::Drawing::Point(48, 300);
+			this->label8->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(117, 13);
+			this->label8->Size = System::Drawing::Size(146, 16);
 			this->label8->TabIndex = 14;
 			this->label8->Text = L"Repita esa contraseña:";
 			// 
 			// text_correo
 			// 
-			this->text_correo->Location = System::Drawing::Point(208, 189);
+			this->text_correo->Location = System::Drawing::Point(277, 233);
+			this->text_correo->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->text_correo->Name = L"text_correo";
-			this->text_correo->Size = System::Drawing::Size(188, 20);
+			this->text_correo->Size = System::Drawing::Size(249, 22);
 			this->text_correo->TabIndex = 13;
 			// 
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(36, 192);
+			this->label9->Location = System::Drawing::Point(48, 236);
+			this->label9->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(147, 13);
+			this->label9->Size = System::Drawing::Size(183, 16);
 			this->label9->TabIndex = 12;
 			this->label9->Text = L"Ingrese su correo electrónico:";
 			// 
 			// btnCreate
 			// 
-			this->btnCreate->Location = System::Drawing::Point(39, 283);
+			this->btnCreate->Location = System::Drawing::Point(52, 348);
+			this->btnCreate->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btnCreate->Name = L"btnCreate";
-			this->btnCreate->Size = System::Drawing::Size(356, 57);
+			this->btnCreate->Size = System::Drawing::Size(475, 70);
 			this->btnCreate->TabIndex = 18;
 			this->btnCreate->Text = L"Crear cuenta";
 			this->btnCreate->UseVisualStyleBackColor = true;
@@ -266,9 +285,9 @@ namespace STPUCPAdminGUIView {
 			// 
 			// RegistroForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(448, 353);
+			this->ClientSize = System::Drawing::Size(597, 434);
 			this->Controls->Add(this->btnCreate);
 			this->Controls->Add(this->text_contraseña);
 			this->Controls->Add(this->label7);
@@ -288,8 +307,10 @@ namespace STPUCPAdminGUIView {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->textNOMBRE);
 			this->Controls->Add(this->label1);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"RegistroForm";
 			this->Text = L"Nueva Cuenta";
+			this->Load += gcnew System::EventHandler(this, &RegistroForm::RegistroForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -378,6 +399,8 @@ namespace STPUCPAdminGUIView {
 	}
 
 
-	};
+	private: System::Void RegistroForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 
 }

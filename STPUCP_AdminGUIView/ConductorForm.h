@@ -437,10 +437,10 @@ void ClearControls() {
 void ShowViaje() {
 	List<Viaje^>^ Viajelista = controller::QueryAllJourneys();
 	dgv_VIAJE->Rows->Clear();
-	for (int i = 0; i < Viajelista->Count; i++) {
+	int i = controller::QueryAllJourneys()->Count - 1;
 	dgv_VIAJE->Rows->Add(gcnew array<String^> {"" + Viajelista[i]->Id, "" + Viajelista[i]->HoraSalida,
 	Viajelista[i]->UltimoParadero, Viajelista[i]->FechaViaje, "" + Viajelista[i]->PrecioViaje,"" + Viajelista[i]->Distrito});
-	 }
+	 
 }
 private: System::Void btn_eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
 	btn_add->Enabled = true;
@@ -472,6 +472,10 @@ private: System::Void btn_modificar_Click(System::Object^ sender, System::EventA
 }
 
 private: System::Void ConductorForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	txtID->Text = "" + controller::QueryAllJourneys()->Count;
+	txtID->ReadOnly = true;
+	
+	
 	//VerificarServicios();
 }
 

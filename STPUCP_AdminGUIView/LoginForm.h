@@ -76,42 +76,48 @@ namespace STPUCPAdminGUIView {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(65, 37);
+			this->label1->Location = System::Drawing::Point(87, 46);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(75, 13);
+			this->label1->Size = System::Drawing::Size(94, 16);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Código PUCP:";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(65, 70);
+			this->label2->Location = System::Drawing::Point(87, 86);
+			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(61, 13);
+			this->label2->Size = System::Drawing::Size(76, 16);
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"Contraseña";
 			// 
 			// txtUsuario
 			// 
-			this->txtUsuario->Location = System::Drawing::Point(154, 34);
+			this->txtUsuario->Location = System::Drawing::Point(205, 42);
+			this->txtUsuario->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtUsuario->Name = L"txtUsuario";
-			this->txtUsuario->Size = System::Drawing::Size(205, 20);
+			this->txtUsuario->Size = System::Drawing::Size(272, 22);
 			this->txtUsuario->TabIndex = 2;
+			this->txtUsuario->TextChanged += gcnew System::EventHandler(this, &LoginForm::txtUsuario_TextChanged);
 			// 
 			// txtContraseña
 			// 
-			this->txtContraseña->Location = System::Drawing::Point(154, 67);
+			this->txtContraseña->Location = System::Drawing::Point(205, 82);
+			this->txtContraseña->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtContraseña->Name = L"txtContraseña";
-			this->txtContraseña->Size = System::Drawing::Size(205, 20);
+			this->txtContraseña->Size = System::Drawing::Size(272, 22);
 			this->txtContraseña->TabIndex = 3;
 			this->txtContraseña->UseSystemPasswordChar = true;
 			this->txtContraseña->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &LoginForm::txtContraseña_KeyDown);
 			// 
 			// btnIngresar
 			// 
-			this->btnIngresar->Location = System::Drawing::Point(156, 132);
+			this->btnIngresar->Location = System::Drawing::Point(208, 162);
+			this->btnIngresar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btnIngresar->Name = L"btnIngresar";
-			this->btnIngresar->Size = System::Drawing::Size(158, 31);
+			this->btnIngresar->Size = System::Drawing::Size(211, 38);
 			this->btnIngresar->TabIndex = 4;
 			this->btnIngresar->Text = L"Ingresar";
 			this->btnIngresar->UseVisualStyleBackColor = true;
@@ -119,9 +125,10 @@ namespace STPUCPAdminGUIView {
 			// 
 			// btnRegistrarse
 			// 
-			this->btnRegistrarse->Location = System::Drawing::Point(154, 209);
+			this->btnRegistrarse->Location = System::Drawing::Point(205, 257);
+			this->btnRegistrarse->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btnRegistrarse->Name = L"btnRegistrarse";
-			this->btnRegistrarse->Size = System::Drawing::Size(160, 25);
+			this->btnRegistrarse->Size = System::Drawing::Size(213, 31);
 			this->btnRegistrarse->TabIndex = 5;
 			this->btnRegistrarse->Text = L"Registrarse";
 			this->btnRegistrarse->UseVisualStyleBackColor = true;
@@ -130,17 +137,18 @@ namespace STPUCPAdminGUIView {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(167, 181);
+			this->label3->Location = System::Drawing::Point(223, 223);
+			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(135, 13);
+			this->label3->Size = System::Drawing::Size(165, 16);
 			this->label3->TabIndex = 6;
 			this->label3->Text = L"¿No tienes alguna cuenta\?";
 			// 
 			// LoginForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(458, 259);
+			this->ClientSize = System::Drawing::Size(611, 319);
 			this->ControlBox = false;
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->btnRegistrarse);
@@ -149,6 +157,7 @@ namespace STPUCPAdminGUIView {
 			this->Controls->Add(this->txtUsuario);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"LoginForm";
 			this->Text = L"LoginForm";
 			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &LoginForm::LoginForm_FormClosed);
@@ -181,6 +190,9 @@ private: System::Void LoginForm_FormClosed(System::Object^ sender, System::Windo
 	if (String::IsNullOrWhiteSpace(password)) {
 		Application::Exit();
 	}
+}
+private: System::Void txtUsuario_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	int çodigo_alumno = Int32::Parse(txtUsuario->Text);
 }
 };
 }
