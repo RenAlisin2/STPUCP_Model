@@ -68,6 +68,12 @@ namespace STPUCPAdminGUIView {
     private: System::Windows::Forms::DataGridViewTextBoxColumn^ ID_viaje;
     private: System::Windows::Forms::TextBox^ text_idViaje;
     private: System::Windows::Forms::Label^ label5;
+    internal: System::Windows::Forms::TextBox^ TxtPrecio;
+    private:
+
+    private:
+    private: System::Windows::Forms::Label^ label6;
+    internal:
 
 
 
@@ -107,6 +113,8 @@ namespace STPUCPAdminGUIView {
             this->textId = (gcnew System::Windows::Forms::TextBox());
             this->text_idViaje = (gcnew System::Windows::Forms::TextBox());
             this->label5 = (gcnew System::Windows::Forms::Label());
+            this->TxtPrecio = (gcnew System::Windows::Forms::TextBox());
+            this->label6 = (gcnew System::Windows::Forms::Label());
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBConductor))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBVehículo))->BeginInit();
@@ -122,7 +130,7 @@ namespace STPUCPAdminGUIView {
                 this->Column1,
                     this->Column2, this->Column3, this->Column4, this->Hora, this->Lugar, this->Precio, this->ID_viaje
             });
-            this->dataGridView1->Location = System::Drawing::Point(15, 217);
+            this->dataGridView1->Location = System::Drawing::Point(12, 260);
             this->dataGridView1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->dataGridView1->Name = L"dataGridView1";
             this->dataGridView1->RowHeadersVisible = false;
@@ -294,6 +302,7 @@ namespace STPUCPAdminGUIView {
             // 
             // text_idViaje
             // 
+            this->text_idViaje->ImeMode = System::Windows::Forms::ImeMode::On;
             this->text_idViaje->Location = System::Drawing::Point(248, 165);
             this->text_idViaje->Name = L"text_idViaje";
             this->text_idViaje->ReadOnly = true;
@@ -309,12 +318,32 @@ namespace STPUCPAdminGUIView {
             this->label5->TabIndex = 16;
             this->label5->Text = L"Id del viaje seleccionado";
             // 
+            // TxtPrecio
+            // 
+            this->TxtPrecio->BackColor = System::Drawing::SystemColors::Menu;
+            this->TxtPrecio->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+            this->TxtPrecio->Location = System::Drawing::Point(248, 209);
+            this->TxtPrecio->Name = L"TxtPrecio";
+            this->TxtPrecio->Size = System::Drawing::Size(174, 22);
+            this->TxtPrecio->TabIndex = 17;
+            // 
+            // label6
+            // 
+            this->label6->AutoSize = true;
+            this->label6->Location = System::Drawing::Point(53, 212);
+            this->label6->Name = L"label6";
+            this->label6->Size = System::Drawing::Size(49, 16);
+            this->label6->TabIndex = 18;
+            this->label6->Text = L"Precio:";
+            // 
             // PasajeroRutaForm
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->ClientSize = System::Drawing::Size(1139, 489);
             this->ControlBox = false;
+            this->Controls->Add(this->label6);
+            this->Controls->Add(this->TxtPrecio);
             this->Controls->Add(this->label5);
             this->Controls->Add(this->text_idViaje);
             this->Controls->Add(this->textId);
@@ -373,6 +402,7 @@ namespace STPUCPAdminGUIView {
         //boletaForm->TopMost = true;
 
         boletaForm->text_viajeid->Text = text_idViaje->Text;
+        boletaForm->txtPrecio_1->Text = TxtPrecio->Text;
         boletaForm->ShowDialog();
         
 
@@ -420,6 +450,7 @@ namespace STPUCPAdminGUIView {
         public:   void AddJourneyToGrid(Viaje^ viaje) {
             textId->Text = "" + viaje->ConductorId;
             text_idViaje->Text = "" + viaje->Id;
+            TxtPrecio->Text = " " + viaje->PrecioViaje;
             Usuario^ usuario = controller::QueryUsersById(viaje->ConductorId);
                dataGridView1->Rows->Add(gcnew array<String^> {
                     "" +usuario ->Nombre, //columana1
