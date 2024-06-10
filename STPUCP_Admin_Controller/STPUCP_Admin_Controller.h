@@ -50,6 +50,7 @@ namespace STPUCPAdminController {
 		static Orden^ QueryOrderById(int ordenID);
 		static List<Orden^>^ QueryAllOrders();
 		static List<Orden^>^ QueryOrdenesByIdViajes(int IdViaje);
+		static List<Orden^>^ QueryOrdersbyDate(String^ month);
 
 		static int AddBL_Pasajero(Pasajero^ BL_Pasajero);
 		static void UpdateBL_Pasajero(Pasajero^ BL_Pasajero);
