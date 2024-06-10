@@ -72,11 +72,18 @@ namespace STPUCPAdminGUIView {
 			this->text_orden = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->text_viaje = (gcnew System::Windows::Forms::TextBox());
+
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbYape))->BeginInit();
+
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->textPrecioF = (gcnew System::Windows::Forms::TextBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+ 
 			this->SuspendLayout();
 			// 
 			// pbYape
 			// 
+
 			this->pbYape->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->pbYape->Location = System::Drawing::Point(31, 28);
 			this->pbYape->Margin = System::Windows::Forms::Padding(4);
@@ -85,6 +92,16 @@ namespace STPUCPAdminGUIView {
 			this->pbYape->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pbYape->TabIndex = 0;
 			this->pbYape->TabStop = false;
+
+			this->pictureBox1->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->pictureBox1->Location = System::Drawing::Point(31, 28);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(453, 298);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox1->TabIndex = 0;
+			this->pictureBox1->TabStop = false;
+
 			// 
 			// button1
 			// 
