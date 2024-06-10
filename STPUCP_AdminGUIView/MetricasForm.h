@@ -381,6 +381,8 @@ namespace STPUCPAdminGUIView {
 		// Acceder a CantServiciosTomados en Pasajero
 		List<Usuario^>^ serviciosTList = controller::QueryAllUsers();
 		List<Pasajero^>^ pasajerosList = gcnew List<Pasajero^>();
+		List<Orden^>^ ordenes = gcnew List<Orden^>();
+		List<Orden^>^ ordenes_1 = controller::QueryAllOrders();
 
 		for each (Usuario ^ usuario in serviciosTList) {
 			Pasajero^ pasajero = dynamic_cast<Pasajero^>(usuario);
@@ -389,10 +391,14 @@ namespace STPUCPAdminGUIView {
 			}
 		}
 
-		for (int i = 0; i < pasajerosList->Count; i++) {
-			M_ServiciosTP->Series["Servicios"]->Points->Add(pasajerosList[i]->CantServiciosTomados);
-			//M_ServiciosTP->Series["Servicios"]->Points[i]->AxisLabel = "" + pasajerosList[i]->FechaUltimoServicio; //Yo creo que deberíamos crear una fecha de último servicio para usarla en métricas
-			M_ServiciosTP->Series["Servicios"]->Points[i]->Label = "" + pasajerosList[i]->CantServiciosTomados;
+
+		for (int i = 0; i < 12; i++) {
+			ordenes = controller::QueryOrdersbyDate(""+i);
+			String^ mes = ordenes_1[i]->Fecha->Substring(3, 2); // DD/MM/YYYY
+
+			M_ServiciosTP->Series["Servicios"]->Points->Add((ordenes)->Count);
+			M_ServiciosTP->Series["Servicios"]->Points[i]->AxisLabel = "0"+(i+1); //Yo creo que deberíamos crear una fecha de último servicio para usarla en métricas
+			M_ServiciosTP->Series["Servicios"]->Points[i]->Label = "" + (ordenes)->Count;
 		}
 
 		// Agregar eventos de tecla presionada
