@@ -48,12 +48,6 @@ namespace STPUCPAdminGUIView {
 
 	private: System::Windows::Forms::Label^ label2;
 	public: System::Windows::Forms::TextBox^ text_viaje;
-	private: System::Windows::Forms::Label^ label3;
-	public: System::Windows::Forms::TextBox^ textPrecioF;
-	private:
-	public:
-
-	private:
 	private:
 
 
@@ -78,18 +72,11 @@ namespace STPUCPAdminGUIView {
 			this->text_orden = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->text_viaje = (gcnew System::Windows::Forms::TextBox());
-<<<<<<< HEAD
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbYape))->BeginInit();
-=======
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->textPrecioF = (gcnew System::Windows::Forms::TextBox());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
->>>>>>> new
 			this->SuspendLayout();
 			// 
 			// pbYape
 			// 
-<<<<<<< HEAD
 			this->pbYape->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->pbYape->Location = System::Drawing::Point(31, 28);
 			this->pbYape->Margin = System::Windows::Forms::Padding(4);
@@ -98,16 +85,6 @@ namespace STPUCPAdminGUIView {
 			this->pbYape->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pbYape->TabIndex = 0;
 			this->pbYape->TabStop = false;
-=======
-			this->pictureBox1->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->pictureBox1->Location = System::Drawing::Point(31, 28);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(453, 298);
-			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			this->pictureBox1->TabIndex = 0;
-			this->pictureBox1->TabStop = false;
->>>>>>> new
 			// 
 			// button1
 			// 
@@ -131,7 +108,7 @@ namespace STPUCPAdminGUIView {
 			// 
 			// text_orden
 			// 
-			this->text_orden->Location = System::Drawing::Point(95, 364);
+			this->text_orden->Location = System::Drawing::Point(114, 364);
 			this->text_orden->Name = L"text_orden";
 			this->text_orden->Size = System::Drawing::Size(100, 22);
 			this->text_orden->TabIndex = 3;
@@ -139,7 +116,7 @@ namespace STPUCPAdminGUIView {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(228, 364);
+			this->label2->Location = System::Drawing::Point(322, 364);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(52, 16);
 			this->label2->TabIndex = 4;
@@ -147,34 +124,16 @@ namespace STPUCPAdminGUIView {
 			// 
 			// text_viaje
 			// 
-			this->text_viaje->Location = System::Drawing::Point(286, 364);
+			this->text_viaje->Location = System::Drawing::Point(410, 363);
 			this->text_viaje->Name = L"text_viaje";
 			this->text_viaje->Size = System::Drawing::Size(100, 22);
 			this->text_viaje->TabIndex = 5;
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(424, 364);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(49, 16);
-			this->label3->TabIndex = 6;
-			this->label3->Text = L"Precio:";
-			// 
-			// textPrecioF
-			// 
-			this->textPrecioF->Location = System::Drawing::Point(474, 361);
-			this->textPrecioF->Name = L"textPrecioF";
-			this->textPrecioF->Size = System::Drawing::Size(100, 22);
-			this->textPrecioF->TabIndex = 7;
 			// 
 			// VentanaPagoForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(669, 496);
-			this->Controls->Add(this->textPrecioF);
-			this->Controls->Add(this->label3);
 			this->Controls->Add(this->text_viaje);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->text_orden);
