@@ -238,6 +238,7 @@ namespace STPUCPAdminGUIView {
             this->pBConductor->Margin = System::Windows::Forms::Padding(4);
             this->pBConductor->Name = L"pBConductor";
             this->pBConductor->Size = System::Drawing::Size(219, 158);
+            this->pBConductor->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
             this->pBConductor->TabIndex = 9;
             this->pBConductor->TabStop = false;
             // 
@@ -247,6 +248,7 @@ namespace STPUCPAdminGUIView {
             this->pBVehículo->Margin = System::Windows::Forms::Padding(4);
             this->pBVehículo->Name = L"pBVehículo";
             this->pBVehículo->Size = System::Drawing::Size(236, 158);
+            this->pBVehículo->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
             this->pBVehículo->TabIndex = 10;
             this->pBVehículo->TabStop = false;
             // 
@@ -391,6 +393,26 @@ namespace STPUCPAdminGUIView {
             String^ lugar = dataGridView1->Rows[rowIndex]->Cells["Hora"]->Value->ToString();
             String^ hora = dataGridView1->Rows[rowIndex]->Cells["Lugar"]->Value->ToString();
             String^ precio = dataGridView1->Rows[rowIndex]->Cells["Precio"]->Value->ToString();
+            int UsuarioID = Int32::Parse(codigoPUCP);
+            Usuario^ Usuario = controller::QueryUsersById(UsuarioID);
+            Conductor^ conductor = dynamic_cast<Conductor^>(Usuario);
+            // Cargar la imagen del conductor
+            if (conductor->FotoConductor != nullptr) {
+                System::IO::MemoryStream^ msConductor = gcnew System::IO::MemoryStream(conductor->FotoConductor);
+                pBConductor->Image = Image::FromStream(msConductor);
+            }
+            else {
+                pBConductor->Image = nullptr;
+            }
+
+            // Cargar la imagen del carro
+            if (conductor->FotoCarro != nullptr) {
+                System::IO::MemoryStream^ msCarro = gcnew System::IO::MemoryStream(conductor->FotoCarro);
+                pBVehículo->Image = Image::FromStream(msCarro);
+            }
+            else {
+                pBVehículo->Image = nullptr;
+            }
 
             //textBox1->Text = codigoPUCP;
         }

@@ -1,11 +1,7 @@
-5,Breña,3,2 DE JUNIO,10
-6,Breña,0,2 DE JUNIO,10
-7,Breña,0,2 DE JUNIO,10
-8,Breña,2,2 DE JUNIO,10
-5,Ate,0,12/05/24,10
-6,Breña,0,2 DE JUNIO,10
-7,Breña,0,2 DE JUNIO,10
-8,Ancón,0,4,3
-9,Ancón,4,123,14
+5,Ate,3,12/05/24,10
 10,Ate,0,12/05/24,10
-11,Ate,4,4 deabril,12
+7,Jesús María,3,10/11/24,11
+4,Breña,3,10/06/2024,5
+5,Ate,0,4 deabril,12
+6,Ancón,0,123,14
+7,Barranco,0,09/06/2024,12

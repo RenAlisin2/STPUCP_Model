@@ -65,6 +65,19 @@ List<Viaje^>^ STPUCPAdminController::controller::QueryViajesByName(String^ name)
 	
 }
 
+List<Viaje^>^ STPUCPAdminController::controller::QueryViajesByIdConductor(int codigo)
+{
+
+	List<Viaje^>^ viajesList = Persistance::QueryAllJourneys();
+	List<Viaje^>^ listToReturn = gcnew List<Viaje^>();
+	for (int i = 0; i < viajesList->Count; i++) {
+		if (viajesList[i]->ConductorId==codigo)
+			listToReturn->Add(viajesList[i]);
+	}
+	return listToReturn;
+}
+
+
 int STPUCPAdminController::controller::AddPromotion(Promocion^ promocion)
 {
 	return Persistance::AddPromotion(promocion);
@@ -113,6 +126,17 @@ Orden^ STPUCPAdminController::controller::QueryOrderById(int ordenID)
 List<Orden^>^ STPUCPAdminController::controller::QueryAllOrders()
 {
 	return Persistance::QueryAllOrders();
+}
+
+List<Orden^>^ STPUCPAdminController::controller::QueryOrdenesByIdViajes(int IdViaje)
+{
+	List<Orden^>^ ordenlist = Persistance::QueryAllOrders();
+	List<Orden^>^ listToReturn = gcnew List<Orden^>();
+	for (int i = 0; i < ordenlist->Count; i++) {
+		if (ordenlist[i]->Id_viaje == IdViaje)
+			listToReturn->Add(ordenlist[i]);
+	}
+	return listToReturn;
 }
 
 int STPUCPAdminController::controller::AddBL_Pasajero(Pasajero^ BL_Pasajero)

@@ -36,6 +36,7 @@ namespace STPUCPAdminController {
 		static Viaje^ QueryJourneysById(int ViajeID);
 		static List<Viaje^>^ QueryAllJourneys();
 		static List<Viaje^>^ QueryViajesByName(String^ name);
+		static List<Viaje^>^ QueryViajesByIdConductor(int codigo);
 
 		static int AddPromotion(Promocion^ Promocion);
 		static void UpdatePromotion(Promocion^ Promocion);
@@ -48,6 +49,7 @@ namespace STPUCPAdminController {
 		static void DeleteOrder(int ordenID);
 		static Orden^ QueryOrderById(int ordenID);
 		static List<Orden^>^ QueryAllOrders();
+		static List<Orden^>^ QueryOrdenesByIdViajes(int IdViaje);
 
 		static int AddBL_Pasajero(Pasajero^ BL_Pasajero);
 		static void UpdateBL_Pasajero(Pasajero^ BL_Pasajero);

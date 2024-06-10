@@ -357,12 +357,17 @@ namespace STPUCPAdminGUIView {
 		Dictionary<String^, double>^ estrellasPorMes = gcnew Dictionary<String^, double>();
 
 		// Dividir el gráfico de estrellas por mes
+		
 		for (int i = 0; i < ordenesList->Count; i++) {
-			String^ mes = ordenesList[i]->Fecha->Substring(3, 2); // DD/MM/YYYY
-			if (!estrellasPorMes->ContainsKey(mes)) {
-				estrellasPorMes[mes] = 0;
+			String^ fecha = ordenesList[i]->Fecha;
+			
+			if (!String::IsNullOrEmpty(fecha) && fecha->Length >= 5) {
+				String^ mes = ordenesList[i]->Fecha->Substring(3, 2); // DD/MM/YYYY
+				if (!estrellasPorMes->ContainsKey(mes)) {
+					estrellasPorMes[mes] = 0;
+				}
+				estrellasPorMes[mes] += ordenesList[i]->CalificacionEstrellas;
 			}
-			estrellasPorMes[mes] += ordenesList[i]->CalificacionEstrellas;
 		}
 
 		int j = 0;
@@ -409,12 +414,34 @@ namespace STPUCPAdminGUIView {
 		}
 	}
 
+		
+
+		  
+
 	private: void MostrarGraficoConductor(int codigoPUCP) {
 		List<Orden^>^ ordenesList = controller::QueryAllOrders();
 		M_Estrellas->Series["Estrellas"]->Points->Clear();
+		List<Orden^>^ ordenesrelacionadas = controller::QueryAllOrders();
+
+		List<Viaje^>^ viajeList = controller::QueryViajesByIdConductor(codigoPUCP);
+		for each(Viaje ^ viaje in viajeList) {
+			List<Orden^>^ ordensita = controller::QueryOrdenesByIdViajes(viaje->Id);
+			// Paso 3: Acumular todas las órdenes encontradas
+			for each (Orden ^ orden in ordensita) {
+				ordenesrelacionadas->Add(orden);
+			}
+		}
+
+
+		
+
+		
+		
+
+
 
 		for (int i = 0; i < ordenesList->Count; i++) {
-			if (ordenesList[i]->Id == codigoPUCP) { //Renato aquí es lo que te decía de relacionar el ID de orden con el código de pasajero :,v
+			if (ordenesList[i] == ordenesrelacionadas[i]) { //Renato aquí es lo que te decía de relacionar el ID de orden con el código de pasajero :,v
 				M_Estrellas->Series["Estrellas"]->Points->Add(ordenesList[i]->CalificacionEstrellas);
 				M_Estrellas->Series["Estrellas"]->Points[i]->AxisLabel = "" + ordenesList[i]->Fecha;
 				M_Estrellas->Series["Estrellas"]->Points[i]->Label = "" + ordenesList[i]->CalificacionEstrellas;
