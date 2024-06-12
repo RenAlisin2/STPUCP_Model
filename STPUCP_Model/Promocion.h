@@ -17,7 +17,9 @@ namespace STPUCP_Model {
         property int Id;
         property int Porcentaje;
         property String^ NombrePromo;
+        property int IdUsuario;
         property List <String^>^ Promociones;
+       
     };
 }
 

@@ -29,6 +29,9 @@ System::Void STPUCPAdminGUIView::LoginForm::btnIngresar_Click(System::Object^ se
 			
 		}
 		else if (dynamic_cast<Pasajero^>(usuarios) != nullptr) {
+			PasajeroRutaForm^ adminmainform = gcnew PasajeroRutaForm();
+			adminmainform->textPasajeroId->Text = txtUsuario->Text;
+			adminmainform->Show();
 			((AdminMainForm^)this->RefAdminMainForm)->EnablePermisoPasajero();
 		}
 		else if (dynamic_cast<Conductor^>(usuarios) != nullptr) {

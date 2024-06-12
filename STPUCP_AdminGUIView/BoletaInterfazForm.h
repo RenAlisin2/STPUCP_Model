@@ -21,7 +21,7 @@ namespace STPUCPAdminGUIView {
         BoletaInterfazForm(void)
         {
             InitializeComponent();
-            LoadPromociones();
+            //LoadPromociones();
         }
 
     protected:
@@ -37,19 +37,31 @@ namespace STPUCPAdminGUIView {
     private: System::Windows::Forms::Label^ label2;
     private: System::Windows::Forms::Label^ label3;
     private: System::Windows::Forms::Label^ label4;
-    private: System::Windows::Forms::Label^ label5;
+
     private: System::Windows::Forms::Button^ button1;
     private: System::Windows::Forms::Button^ button2;
     private: System::Windows::Forms::Button^ button3;
-    private: System::Windows::Forms::ComboBox^ comboBox1;
-    private: System::Windows::Forms::ComboBox^ comboBox2;
-    private: System::Windows::Forms::ComboBox^ comboBox3;
-    private: System::Windows::Forms::ComboBox^ comboBox4;
+
+
+
+
     private: System::Windows::Forms::Label^ label6;
     private: System::Windows::Forms::TextBox^ txtID;
     private: System::Windows::Forms::Button^ button4;
     private: System::Windows::Forms::Label^ label7;
     public: System::Windows::Forms::TextBox^ text_viajeid;
+    private: System::Windows::Forms::TextBox^ textPrecio;
+    private: System::Windows::Forms::Label^ label5;
+    public: System::Windows::Forms::TextBox^ textPasajero;
+    private: System::Windows::Forms::TextBox^ textdescuento;
+    public:
+    private: System::Windows::Forms::TextBox^ textPrecioActual;
+    private:
+
+
+    public:
+
+    public:
     private:
 
 
@@ -64,19 +76,19 @@ namespace STPUCPAdminGUIView {
             this->label2 = (gcnew System::Windows::Forms::Label());
             this->label3 = (gcnew System::Windows::Forms::Label());
             this->label4 = (gcnew System::Windows::Forms::Label());
-            this->label5 = (gcnew System::Windows::Forms::Label());
             this->button1 = (gcnew System::Windows::Forms::Button());
             this->button2 = (gcnew System::Windows::Forms::Button());
             this->button3 = (gcnew System::Windows::Forms::Button());
-            this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
-            this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
-            this->comboBox3 = (gcnew System::Windows::Forms::ComboBox());
-            this->comboBox4 = (gcnew System::Windows::Forms::ComboBox());
             this->label6 = (gcnew System::Windows::Forms::Label());
             this->txtID = (gcnew System::Windows::Forms::TextBox());
             this->button4 = (gcnew System::Windows::Forms::Button());
             this->label7 = (gcnew System::Windows::Forms::Label());
             this->text_viajeid = (gcnew System::Windows::Forms::TextBox());
+            this->textPrecio = (gcnew System::Windows::Forms::TextBox());
+            this->label5 = (gcnew System::Windows::Forms::Label());
+            this->textPasajero = (gcnew System::Windows::Forms::TextBox());
+            this->textdescuento = (gcnew System::Windows::Forms::TextBox());
+            this->textPrecioActual = (gcnew System::Windows::Forms::TextBox());
             this->SuspendLayout();
             // 
             // label1
@@ -116,15 +128,6 @@ namespace STPUCPAdminGUIView {
             this->label4->TabIndex = 3;
             this->label4->Text = L"Precio Final:";
             // 
-            // label5
-            // 
-            this->label5->AutoSize = true;
-            this->label5->Location = System::Drawing::Point(80, 229);
-            this->label5->Name = L"label5";
-            this->label5->Size = System::Drawing::Size(111, 16);
-            this->label5->TabIndex = 4;
-            this->label5->Text = L"Hora de la orden:";
-            // 
             // button1
             // 
             this->button1->Location = System::Drawing::Point(213, 101);
@@ -158,42 +161,6 @@ namespace STPUCPAdminGUIView {
             this->button3->UseVisualStyleBackColor = true;
             this->button3->Click += gcnew System::EventHandler(this, &BoletaInterfazForm::btn_Continuar_Click);
             // 
-            // comboBox1
-            // 
-            this->comboBox1->FormattingEnabled = true;
-            this->comboBox1->Location = System::Drawing::Point(213, 59);
-            this->comboBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-            this->comboBox1->Name = L"comboBox1";
-            this->comboBox1->Size = System::Drawing::Size(392, 24);
-            this->comboBox1->TabIndex = 8;
-            // 
-            // comboBox2
-            // 
-            this->comboBox2->FormattingEnabled = true;
-            this->comboBox2->Location = System::Drawing::Point(213, 138);
-            this->comboBox2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-            this->comboBox2->Name = L"comboBox2";
-            this->comboBox2->Size = System::Drawing::Size(392, 24);
-            this->comboBox2->TabIndex = 9;
-            // 
-            // comboBox3
-            // 
-            this->comboBox3->FormattingEnabled = true;
-            this->comboBox3->Location = System::Drawing::Point(213, 182);
-            this->comboBox3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-            this->comboBox3->Name = L"comboBox3";
-            this->comboBox3->Size = System::Drawing::Size(392, 24);
-            this->comboBox3->TabIndex = 10;
-            // 
-            // comboBox4
-            // 
-            this->comboBox4->FormattingEnabled = true;
-            this->comboBox4->Location = System::Drawing::Point(213, 225);
-            this->comboBox4->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-            this->comboBox4->Name = L"comboBox4";
-            this->comboBox4->Size = System::Drawing::Size(392, 24);
-            this->comboBox4->TabIndex = 11;
-            // 
             // label6
             // 
             this->label6->AutoSize = true;
@@ -207,7 +174,7 @@ namespace STPUCPAdminGUIView {
             // txtID
             // 
             this->txtID->Location = System::Drawing::Point(215, 20);
-            this->txtID->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->txtID->Margin = System::Windows::Forms::Padding(4);
             this->txtID->Name = L"txtID";
             this->txtID->ReadOnly = true;
             this->txtID->Size = System::Drawing::Size(73, 22);
@@ -216,7 +183,7 @@ namespace STPUCPAdminGUIView {
             // button4
             // 
             this->button4->Location = System::Drawing::Point(355, 267);
-            this->button4->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->button4->Margin = System::Windows::Forms::Padding(4);
             this->button4->Name = L"button4";
             this->button4->Size = System::Drawing::Size(251, 37);
             this->button4->TabIndex = 14;
@@ -241,24 +208,65 @@ namespace STPUCPAdminGUIView {
             this->text_viajeid->Size = System::Drawing::Size(100, 22);
             this->text_viajeid->TabIndex = 16;
             // 
+            // textPrecio
+            // 
+            this->textPrecio->Location = System::Drawing::Point(215, 63);
+            this->textPrecio->Name = L"textPrecio";
+            this->textPrecio->ReadOnly = true;
+            this->textPrecio->Size = System::Drawing::Size(392, 22);
+            this->textPrecio->TabIndex = 17;
+            // 
+            // label5
+            // 
+            this->label5->AutoSize = true;
+            this->label5->Location = System::Drawing::Point(515, 25);
+            this->label5->Name = L"label5";
+            this->label5->Size = System::Drawing::Size(98, 16);
+            this->label5->TabIndex = 18;
+            this->label5->Text = L"Id del Pasajero";
+            // 
+            // textPasajero
+            // 
+            this->textPasajero->Location = System::Drawing::Point(643, 19);
+            this->textPasajero->Name = L"textPasajero";
+            this->textPasajero->ReadOnly = true;
+            this->textPasajero->Size = System::Drawing::Size(100, 22);
+            this->textPasajero->TabIndex = 19;
+            // 
+            // textdescuento
+            // 
+            this->textdescuento->Location = System::Drawing::Point(215, 142);
+            this->textdescuento->Name = L"textdescuento";
+            this->textdescuento->ReadOnly = true;
+            this->textdescuento->Size = System::Drawing::Size(391, 22);
+            this->textdescuento->TabIndex = 20;
+            // 
+            // textPrecioActual
+            // 
+            this->textPrecioActual->Location = System::Drawing::Point(213, 186);
+            this->textPrecioActual->Name = L"textPrecioActual";
+            this->textPrecioActual->ReadOnly = true;
+            this->textPrecioActual->Size = System::Drawing::Size(394, 22);
+            this->textPrecioActual->TabIndex = 21;
+            // 
             // BoletaInterfazForm
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->ClientSize = System::Drawing::Size(896, 422);
+            this->Controls->Add(this->textPrecioActual);
+            this->Controls->Add(this->textdescuento);
+            this->Controls->Add(this->textPasajero);
+            this->Controls->Add(this->label5);
+            this->Controls->Add(this->textPrecio);
             this->Controls->Add(this->text_viajeid);
             this->Controls->Add(this->label7);
             this->Controls->Add(this->button4);
             this->Controls->Add(this->txtID);
             this->Controls->Add(this->label6);
-            this->Controls->Add(this->comboBox4);
-            this->Controls->Add(this->comboBox3);
-            this->Controls->Add(this->comboBox2);
-            this->Controls->Add(this->comboBox1);
             this->Controls->Add(this->button3);
             this->Controls->Add(this->button2);
             this->Controls->Add(this->button1);
-            this->Controls->Add(this->label5);
             this->Controls->Add(this->label4);
             this->Controls->Add(this->label3);
             this->Controls->Add(this->label2);
@@ -283,25 +291,46 @@ namespace STPUCPAdminGUIView {
        
         ventana->text_orden->Text = txtID->Text;
         ventana->text_viaje->Text = text_viajeid->Text;
+        ventana->textPrecio->Text = textPrecioActual->Text;
         ventana->ShowDialog();
     }
 
     private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+        Promocion^ promocion = controller::QueryPromotionsByUsuarioId(Convert::ToInt32(textPasajero->Text));
+
+
+        Viaje^ viajecito = controller::QueryJourneysById(Convert::ToInt32(text_viajeid->Text));
+        textPrecio->Text = "" + viajecito->PrecioViaje;
+        if (promocion != nullptr) {
+            double porcentaje_descuento = promocion->Porcentaje;
+            double descuento = porcentaje_descuento * (viajecito->PrecioViaje) / 100;
+
+            textdescuento->Text = "" + descuento;
+            textPrecioActual->Text = "" + (viajecito->PrecioViaje - descuento);
+
+        }
         // Maneja la lógica cuando el botón "SI" es presionado
-        comboBox2->Enabled = true;
-        comboBox3->Enabled = true;
-        LoadPromociones();
+        //comboBox2->Enabled = true;
+        //comboBox3->Enabled = true;
+       // LoadPromociones();
     }
 
     private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+        Viaje^ viajecito = controller::QueryJourneysById(Convert::ToInt32(text_viajeid->Text));
+        textPrecio->Text = "" + viajecito->PrecioViaje;
+        textdescuento->Text = "" + 0;
+        textPrecioActual->Text = "" + (viajecito->PrecioViaje);
+
+
+
         // Maneja la lógica cuando el botón "NO" es presionado
-        comboBox2->Items->Clear();
-        comboBox3->Items->Clear();
-        comboBox2->Enabled = false;
-        comboBox3->Enabled = false;
+        //comboBox2->Items->Clear();
+        //comboBox3->Items->Clear();
+        //comboBox2->Enabled = false;
+        //comboBox3->Enabled = false;
     }
 
-    private: void LoadPromociones() {
+    /*private: void LoadPromociones() {
 
         List<Promocion^>^ promociones = STPUCPAdminController::controller::QueryAllPromotions();
 
@@ -314,18 +343,44 @@ namespace STPUCPAdminGUIView {
         double porcentajeDescuento = Convert::ToDouble(comboBox2->SelectedItem);
 
         // Obtener el precio de servicio 
-        double precioServicio = Convert::ToDouble(comboBox1->SelectedItem);
+
+        
+
+        double precioServicio = Convert::ToDouble(textPrecio->Text);
 
         // Calcular el precio final después del descuento
         double precioFinal = precioServicio * (1 - (porcentajeDescuento / 100));
 
         // Mostrar el precio final en comboBox3
         comboBox3->Text = precioFinal.ToString();
-    }
+    }*/
     private: System::Void BoletaInterfazForm_Load(System::Object^ sender, System::EventArgs^ e) {
+
+        Promocion^ promocion = controller::QueryPromotionsByUsuarioId(Convert::ToInt32(textPasajero->Text));
+        
+
+        Viaje^ viajecito = controller::QueryJourneysById(Convert::ToInt32(text_viajeid->Text));
+        textPrecio->Text = "" + viajecito->PrecioViaje;
+        if (promocion != nullptr) {
+            double porcentaje_descuento = promocion->Porcentaje;
+            double descuento = porcentaje_descuento * (viajecito->PrecioViaje) / 100;
+
+            textdescuento->Text = "" + descuento;
+            textPrecioActual->Text = "" + (viajecito->PrecioViaje - descuento);
+
+        }
+        else {
+            textdescuento->Text = "" + 0;
+            textPrecioActual->Text = "" + (viajecito->PrecioViaje);
+        }
+     
+
+        
         txtID->Text = "" + (1 + controller::QueryAllOrders()->Count);
         txtID->ReadOnly = true;
 
+
+       
     }
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
     this->Close();
