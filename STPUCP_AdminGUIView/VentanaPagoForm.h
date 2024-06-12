@@ -189,7 +189,7 @@ namespace STPUCPAdminGUIView {
 		nueva_orden->Id = idorden;
 		nueva_orden->Id_viaje = idviaje;
 		nueva_orden->Distrito = viaje->Distrito;
-		nueva_orden->Precio = Convert::ToInt32(textPrecio->Text);
+		nueva_orden->Precio = Convert::ToDouble(textPrecio->Text);
 		nueva_orden->Fecha = viaje->FechaViaje;
 
 		controller::AddOrder(nueva_orden);
