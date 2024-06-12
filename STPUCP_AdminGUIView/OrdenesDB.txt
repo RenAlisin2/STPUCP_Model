@@ -19,3 +19,4 @@
 19,Breña,4,2 DE JUNIO,10
 20,Barranco,1,09/06/2024,12
 21,Breña,0,2 DE JUNIO,10
+22,Ate,1,12/05/24,6
