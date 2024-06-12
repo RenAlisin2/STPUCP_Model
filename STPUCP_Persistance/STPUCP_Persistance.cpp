@@ -137,7 +137,7 @@ Object^ STPUCPPersistance::Persistance::LoadTextFile(String^ fileName)
                 orden->Distrito = record[1];
                 orden->CalificacionEstrellas = Convert::ToInt32(record[2]);
                 orden->Fecha = record[3];
-                orden->Precio = Convert::ToInt32(record[4]);
+                orden->Precio = Convert::ToDouble(record[4]);
                 ((List<Orden^>^)result)->Add(orden);
             }
         }
