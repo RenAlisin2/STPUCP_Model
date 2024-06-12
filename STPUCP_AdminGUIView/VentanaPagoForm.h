@@ -1,3 +1,4 @@
+
 #pragma once
 #include "RecepcionForm.h";
 
@@ -75,9 +76,9 @@ namespace STPUCPAdminGUIView {
 
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbYape))->BeginInit();
 
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->textPrecioF = (gcnew System::Windows::Forms::TextBox());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			//this->label3 = (gcnew System::Windows::Forms::Label());
+			//this->textPrecioF = (gcnew System::Windows::Forms::TextBox());
+			//(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
  
 			this->SuspendLayout();
 			// 
@@ -92,7 +93,7 @@ namespace STPUCPAdminGUIView {
 			this->pbYape->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pbYape->TabIndex = 0;
 			this->pbYape->TabStop = false;
-
+/*
 			this->pictureBox1->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->pictureBox1->Location = System::Drawing::Point(31, 28);
 			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
@@ -101,7 +102,7 @@ namespace STPUCPAdminGUIView {
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox1->TabIndex = 0;
 			this->pictureBox1->TabStop = false;
-
+*/
 			// 
 			// button1
 			// 
@@ -168,28 +169,27 @@ namespace STPUCPAdminGUIView {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-
-
-		int idorden = Convert::ToInt32(text_orden->Text);
-		int idviaje = Convert::ToInt32(text_viaje ->Text);
-		Viaje^ viaje= controller::QueryJourneysById(idviaje);
-
-
-		Orden^ nueva_orden = gcnew Orden();
-		nueva_orden->Id = idorden;
-		nueva_orden->Id_viaje = idviaje;
-		nueva_orden->Distrito = viaje->Distrito;
-		nueva_orden->Precio = viaje->PrecioViaje;
-		nueva_orden->Fecha = viaje->FechaViaje;
-
-		controller::AddOrder(nueva_orden);
-		
-
-
-		RecepcionForm^ recepcionform = gcnew RecepcionForm();
-		recepcionform->text_ordenId->Text = text_orden->Text;
-		recepcionform->text_viajeId->Text = text_viaje->Text;
-		recepcionform->ShowDialog();
+		try {
+			int idorden = Convert::ToInt32(text_orden->Text);
+			int idviaje = Convert::ToInt32(text_viaje->Text);
+			Viaje^ viaje = controller::QueryJourneysById(idviaje);
+			Orden^ nueva_orden = gcnew Orden();
+			nueva_orden->Id = idorden;
+			nueva_orden->Id_viaje = idviaje;
+			nueva_orden->Distrito = viaje->Distrito;
+			nueva_orden->Precio = viaje->PrecioViaje;
+			nueva_orden->Fecha = viaje->FechaViaje;
+			controller::AddOrder(nueva_orden);
+			RecepcionForm^ recepcionform = gcnew RecepcionForm();
+			recepcionform->text_ordenId->Text = text_orden->Text;
+			recepcionform->text_viajeId->Text = text_viaje->Text;
+			this->Hide();
+			recepcionform->ShowDialog();
+			this->Close(); 
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Gracias por elegir la aplicación");
+		}
 		this->Close();
 	}
 	private: System::Void VentanaPagoForm_Load(System::Object^ sender, System::EventArgs^ e) {

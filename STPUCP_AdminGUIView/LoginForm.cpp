@@ -3,6 +3,7 @@
 #include "AdminMainForm.h"
 #include "QuesoyForm.h"
 #include "ConductorForm.h"
+#include "PasajeroRutaForm.h"
 
 System::Void STPUCPAdminGUIView::LoginForm::btnIngresar_Click(System::Object^ sender, System::EventArgs^ e)
 {
@@ -23,7 +24,6 @@ System::Void STPUCPAdminGUIView::LoginForm::btnIngresar_Click(System::Object^ se
 	if (usuarios != nullptr) {
 		MessageBox::Show("Bienvenido " + usuarios->Nombre + " " + usuarios->ApellidoPaterno);
 		AdminMainForm::user = usuarios;
-		
 		if (dynamic_cast<Administrador^>(usuarios) != nullptr) {
 			((AdminMainForm^)this->RefAdminMainForm)->EnablePermisoAdministrador();
 			

@@ -98,6 +98,17 @@ Promocion^ STPUCPAdminController::controller::QueryPromotionsById(int PromocionI
 	return Persistance::QueryPromotionsById(PromocionID);
 }
 
+List<Promocion^>^ STPUCPAdminController::controller::QueryPromotionsByUser(int PromocionIDUser)
+{
+	List<Promocion^>^ promolist = Persistance::QueryAllPromotions();
+	List<Promocion^>^ listToReturn = gcnew List<Promocion^>();
+	for (int i = 0; i < promolist->Count; i++) {
+		if (promolist[i]->IdUser == PromocionIDUser)
+			listToReturn->Add(promolist[i]);
+	}
+	return listToReturn;
+}
+
 List<Promocion^>^ STPUCPAdminController::controller::QueryAllPromotions()
 {
 	return Persistance::QueryAllPromotions();

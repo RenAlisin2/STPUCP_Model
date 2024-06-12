@@ -11,13 +11,14 @@ using namespace System::Collections::Generic;
 
 namespace STPUCP_Model {
     [Serializable]
-    public ref class Promocion{
+        public ref class Promocion : public Usuario{
     public:
-        // Aparte de las Ids , se crea una id individual para verificar el numero de promos , pero estas estan ajustadas al ID general del usuario
+        
         property int Id;
         property int Porcentaje;
         property String^ NombrePromo;
         property List <String^>^ Promociones;
+        property int IdUser;
     };
 }
 

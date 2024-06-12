@@ -172,9 +172,7 @@ namespace STPUCPAdminGUIView {
 private: System::Void btnRegistrarse_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	RegistroForm^ registroform = gcnew RegistroForm();
-
 	registroform->ShowDialog();
-
 
 }
 	private: System::Void btnIngresar_Click(System::Object^ sender, System::EventArgs^ e);

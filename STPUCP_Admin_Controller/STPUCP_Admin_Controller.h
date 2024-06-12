@@ -42,6 +42,7 @@ namespace STPUCPAdminController {
 		static void UpdatePromotion(Promocion^ Promocion);
 		static void DeletePromotion(int PromocionID);
 		static Promocion^ QueryPromotionsById(int PromocionID);
+		static List<Promocion^>^ QueryPromotionsByUser(int PromocionID);
 		static List<Promocion^>^ QueryAllPromotions();
 
 		static int AddOrder(Orden^ orden);
