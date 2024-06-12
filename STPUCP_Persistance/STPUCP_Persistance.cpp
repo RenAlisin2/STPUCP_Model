@@ -36,7 +36,7 @@ void STPUCPPersistance::Persistance::PersistTextFile(String^ fileName, Object^ p
         List<Promocion^>^ promocion = (List<Promocion^>^) persistObject;
         for (int i = 0; i < promocion->Count; i++) {
             Promocion^ p = promocion[i];
-            writer->WriteLine(p->Id + "," + p->Porcentaje + "," + p->NombrePromo);
+            writer->WriteLine(p->Id + "," + p->Porcentaje + "," + p->NombrePromo+ "," + p->IdUsuario + ",");
         }
     }
     if (persistObject->GetType() == List<Orden^>::typeid) {
@@ -115,12 +115,15 @@ Object^ STPUCPPersistance::Persistance::LoadTextFile(String^ fileName)
             while (true) {
                 String^ line = reader->ReadLine();
                 if (line == nullptr) break;
+                
                 array<String^>^ record = line->Split(',');
                 Promocion^ promocion = gcnew Promocion();
                 promocion->Id = Convert::ToInt32(record[0]);
                 promocion->Porcentaje = Convert::ToInt32(record[1]);
                 promocion->NombrePromo = record[2];
+                promocion->IdUsuario= Convert::ToInt32(record[3]);
                 ((List<Promocion^>^)result)->Add(promocion);
+               
             }
         }
         if (fileName->Equals(ORDER_FILE_NAME)) {

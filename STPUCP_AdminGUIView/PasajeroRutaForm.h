@@ -68,6 +68,10 @@ namespace STPUCPAdminGUIView {
     private: System::Windows::Forms::DataGridViewTextBoxColumn^ ID_viaje;
     private: System::Windows::Forms::TextBox^ text_idViaje;
     private: System::Windows::Forms::Label^ label5;
+    private: System::Windows::Forms::Label^ IdPasajero;
+    public: System::Windows::Forms::TextBox^ textPasajeroId;
+    private:
+
 
 
 
@@ -107,6 +111,8 @@ namespace STPUCPAdminGUIView {
             this->textId = (gcnew System::Windows::Forms::TextBox());
             this->text_idViaje = (gcnew System::Windows::Forms::TextBox());
             this->label5 = (gcnew System::Windows::Forms::Label());
+            this->IdPasajero = (gcnew System::Windows::Forms::Label());
+            this->textPasajeroId = (gcnew System::Windows::Forms::TextBox());
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBConductor))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBVehículo))->BeginInit();
@@ -275,7 +281,7 @@ namespace STPUCPAdminGUIView {
             // label4
             // 
             this->label4->AutoSize = true;
-            this->label4->Location = System::Drawing::Point(53, 125);
+            this->label4->Location = System::Drawing::Point(49, 119);
             this->label4->Name = L"label4";
             this->label4->Size = System::Drawing::Size(113, 16);
             this->label4->TabIndex = 13;
@@ -283,7 +289,7 @@ namespace STPUCPAdminGUIView {
             // 
             // textId
             // 
-            this->textId->Location = System::Drawing::Point(248, 119);
+            this->textId->Location = System::Drawing::Point(226, 116);
             this->textId->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->textId->Name = L"textId";
             this->textId->ReadOnly = true;
@@ -294,7 +300,7 @@ namespace STPUCPAdminGUIView {
             // 
             // text_idViaje
             // 
-            this->text_idViaje->Location = System::Drawing::Point(248, 165);
+            this->text_idViaje->Location = System::Drawing::Point(226, 150);
             this->text_idViaje->Name = L"text_idViaje";
             this->text_idViaje->ReadOnly = true;
             this->text_idViaje->Size = System::Drawing::Size(185, 22);
@@ -303,11 +309,28 @@ namespace STPUCPAdminGUIView {
             // label5
             // 
             this->label5->AutoSize = true;
-            this->label5->Location = System::Drawing::Point(52, 165);
+            this->label5->Location = System::Drawing::Point(49, 146);
             this->label5->Name = L"label5";
             this->label5->Size = System::Drawing::Size(157, 16);
             this->label5->TabIndex = 16;
             this->label5->Text = L"Id del viaje seleccionado";
+            // 
+            // IdPasajero
+            // 
+            this->IdPasajero->AutoSize = true;
+            this->IdPasajero->Location = System::Drawing::Point(52, 183);
+            this->IdPasajero->Name = L"IdPasajero";
+            this->IdPasajero->Size = System::Drawing::Size(98, 16);
+            this->IdPasajero->TabIndex = 17;
+            this->IdPasajero->Text = L"Id del Pasajero";
+            // 
+            // textPasajeroId
+            // 
+            this->textPasajeroId->Location = System::Drawing::Point(226, 176);
+            this->textPasajeroId->Name = L"textPasajeroId";
+            this->textPasajeroId->ReadOnly = true;
+            this->textPasajeroId->Size = System::Drawing::Size(185, 22);
+            this->textPasajeroId->TabIndex = 18;
             // 
             // PasajeroRutaForm
             // 
@@ -315,6 +338,8 @@ namespace STPUCPAdminGUIView {
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->ClientSize = System::Drawing::Size(1139, 489);
             this->ControlBox = false;
+            this->Controls->Add(this->textPasajeroId);
+            this->Controls->Add(this->IdPasajero);
             this->Controls->Add(this->label5);
             this->Controls->Add(this->text_idViaje);
             this->Controls->Add(this->textId);
@@ -371,6 +396,7 @@ namespace STPUCPAdminGUIView {
      BoletaInterfazForm^ boletaForm = gcnew BoletaInterfazForm();
         //this->Close();
         //boletaForm->TopMost = true;
+     boletaForm->textPasajero->Text = textPasajeroId->Text;
 
         boletaForm->text_viajeid->Text = text_idViaje->Text;
         boletaForm->ShowDialog();

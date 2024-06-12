@@ -103,6 +103,19 @@ List<Promocion^>^ STPUCPAdminController::controller::QueryAllPromotions()
 	return Persistance::QueryAllPromotions();
 }
 
+Promocion^ STPUCPAdminController::controller::QueryPromotionsByUsuarioId(int UsuarioID)
+{
+	List<Promocion^>^ promocionList = Persistance::QueryAllPromotions();
+	Promocion^ promocion = nullptr;
+	for (int i = 0; i < promocionList->Count; i++) {
+		if (promocionList[i]->IdUsuario == UsuarioID) {
+			promocion = promocionList[i];
+			return promocion;
+		}
+	}
+	return promocion;
+}
+
 int STPUCPAdminController::controller::AddOrder(Orden^ orden)
 {
 	return Persistance::AddOrder(orden);
