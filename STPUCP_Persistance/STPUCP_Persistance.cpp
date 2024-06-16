@@ -29,14 +29,14 @@ void STPUCPPersistance::Persistance::PersistTextFile(String^ fileName, Object^ p
         List<Viaje^>^ viaje = (List<Viaje^>^) persistObject;
         for (int i = 0; i < viaje->Count; i++) {
             Viaje^ v = viaje[i];
-            writer->WriteLine(v ->Id + ","  + v->HoraSalida + "," + v->FechaViaje + "," +v -> Lugar +","+ v->UltimoParadero + "," + v->PrecioViaje + "," + v->Distrito + "," + v->ConductorId);
+            writer->WriteLine(v->Id + "," + v->HoraSalida + "," + v->FechaViaje + "," + v->Lugar + "," + v->UltimoParadero + "," + v->PrecioViaje + "," + v->Distrito + "," + v->ConductorId);
         }
     }
     if (persistObject->GetType() == List<Promocion^>::typeid) {
         List<Promocion^>^ promocion = (List<Promocion^>^) persistObject;
         for (int i = 0; i < promocion->Count; i++) {
             Promocion^ p = promocion[i];
-            writer->WriteLine(p->Id + "," + p->Porcentaje + "," + p->NombrePromo+ "," + p->IdUsuario + ",");
+            writer->WriteLine(p->Id + "," + p->Porcentaje + "," + p->NombrePromo + "," + p->IdUsuario + ",");
         }
     }
     if (persistObject->GetType() == List<Orden^>::typeid) {
@@ -88,7 +88,7 @@ Object^ STPUCPPersistance::Persistance::LoadTextFile(String^ fileName)
                 usuario->ApellidoPaterno = record[2];
                 usuario->ApellidoMaterno = record[3];
                 usuario->Rol = record[4];
-                
+
                 ((List<Usuario^>^)result)->Add(usuario);
             }
         }
@@ -115,15 +115,15 @@ Object^ STPUCPPersistance::Persistance::LoadTextFile(String^ fileName)
             while (true) {
                 String^ line = reader->ReadLine();
                 if (line == nullptr) break;
-                
+
                 array<String^>^ record = line->Split(',');
                 Promocion^ promocion = gcnew Promocion();
                 promocion->Id = Convert::ToInt32(record[0]);
                 promocion->Porcentaje = Convert::ToInt32(record[1]);
                 promocion->NombrePromo = record[2];
-                promocion->IdUsuario= Convert::ToInt32(record[3]);
+                promocion->IdUsuario = Convert::ToInt32(record[3]);
                 ((List<Promocion^>^)result)->Add(promocion);
-               
+
             }
         }
         if (fileName->Equals(ORDER_FILE_NAME)) {
@@ -237,19 +237,65 @@ List<Object^>^ STPUCPPersistance::Persistance::LoadBinaryFile(String^ fileName)
     }
     return results;
 }
+SqlConnection^ STPUCPPersistance::Persistance::GetConnection()
+{
+    SqlConnection^ conn = gcnew SqlConnection();
+    String^ password = "lpoostpucp";
+    conn->ConnectionString = "Server=a20213166.c70qyic6wm2b.us-east-1.rds.amazonaws.com;" +
+        "Database = a20213166;" +
+        "User ID = a20213166; " +
+        "Password = " + password + ";";
+    conn->Open();
+    return conn;
+}
 //PERSISTENCIAS//
 
 int STPUCPPersistance::Persistance::AddUser(Usuario^ usuario)
 {
-    List<Object^>^ usuarios = LoadBinaryFile(BIN_USUARIO_FILE_NAME);
+    /*List<Object^>^ usuarios = LoadBinaryFile(BIN_USUARIO_FILE_NAME);
     usuarios->Add(usuario);
     PersistBinaryFile(BIN_USUARIO_FILE_NAME, usuarios);
+    return 1;
+    */
+    SqlConnection^ conn;
+    SqlCommand^ cmd;
+
+    try {
+        //Paso 1: Obtener la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Preparar la sentencia SQL
+        String^ sqlStr = "INSERT INTO Usuario (Id, ApellidoPaterno, ApellidoMaterno, CodigoPUCP, NumeroTelefono, Correo, Contrasena, Nombre, Rol, DNI) " +
+            "VALUES (@Id, @ApellidoPaterno, @ApellidoMaterno, @CodigoPUCP, @NumeroTelefono, @Correo, @Contrasena, @Nombre, @Rol, @DNI)";
+        cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->Parameters->AddWithValue("@Id", usuario->Id);
+        cmd->Parameters->AddWithValue("@ApellidoPaterno", usuario->ApellidoPaterno);
+        cmd->Parameters->AddWithValue("@ApellidoMaterno", usuario->ApellidoMaterno);
+        cmd->Parameters->AddWithValue("@CodigoPUCP", usuario->CodigoPUCP);
+        cmd->Parameters->AddWithValue("@NumeroTelefono", usuario->NumeroTelefono);
+        cmd->Parameters->AddWithValue("@Correo", usuario->Correo);
+        cmd->Parameters->AddWithValue("@Contrasena", usuario->Contraseña);
+        cmd->Parameters->AddWithValue("@Nombre", usuario->Nombre);
+        cmd->Parameters->AddWithValue("@Rol", usuario->Rol);
+        cmd->Parameters->AddWithValue("@DNI", usuario->DNI);
+        cmd->Prepare();
+
+        //Paso 3: Ejecutar la sentencia SQL
+        cmd->ExecuteNonQuery();
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 4: Importante! Cerrar la conexión a la BD
+        if (conn != nullptr) conn->Close();
+    }
     return 1;
 }
 
 void STPUCPPersistance::Persistance::UpdateUser(Usuario^ usuario)
 {
-    List<Object^>^ usuarios = LoadBinaryFile(BIN_USUARIO_FILE_NAME);
+    /*List<Object^>^ usuarios = LoadBinaryFile(BIN_USUARIO_FILE_NAME);
     for (int i = 0; i < usuarios->Count; i++) {
         Usuario^ currentUser = dynamic_cast<Usuario^>(usuarios[i]);
         if (currentUser != nullptr && currentUser->CodigoPUCP == usuario->CodigoPUCP) {
@@ -257,13 +303,47 @@ void STPUCPPersistance::Persistance::UpdateUser(Usuario^ usuario)
             PersistBinaryFile(BIN_USUARIO_FILE_NAME, usuarios);
             return;
         }
+    }*/
+
+    SqlConnection^ conn;
+    SqlCommand^ cmd;
+
+    try {
+        //Paso 1: Obtener la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Preparar la sentencia SQL
+        String^ sqlStr = "UPDATE Usuario SET ApellidoPaterno=@ApellidoPaterno, ApellidoMaterno=@ApellidoMaterno, CodigoPUCP=@CodigoPUCP, NumeroTelefono=@NumeroTelefono, " +
+            "Correo=@Correo, Contrasena=@Contrasena, Nombre=@Nombre, Rol=@Rol, DNI=@DNI WHERE Id=@Id";
+        cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->Parameters->AddWithValue("@Id", usuario->Id);
+        cmd->Parameters->AddWithValue("@ApellidoPaterno", usuario->ApellidoPaterno);
+        cmd->Parameters->AddWithValue("@ApellidoMaterno", usuario->ApellidoMaterno);
+        cmd->Parameters->AddWithValue("@CodigoPUCP", usuario->CodigoPUCP);
+        cmd->Parameters->AddWithValue("@NumeroTelefono", usuario->NumeroTelefono);
+        cmd->Parameters->AddWithValue("@Correo", usuario->Correo);
+        cmd->Parameters->AddWithValue("@Contrasena", usuario->Contraseña);
+        cmd->Parameters->AddWithValue("@Nombre", usuario->Nombre);
+        cmd->Parameters->AddWithValue("@Rol", usuario->Rol);
+        cmd->Parameters->AddWithValue("@DNI", usuario->DNI);
+        cmd->Prepare();
+
+        //Paso 3: Ejecutar la sentencia SQL
+        cmd->ExecuteNonQuery();
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 4: Importante! Cerrar la conexión a la BD
+        if (conn != nullptr) conn->Close();
     }
 }
 
 void STPUCPPersistance::Persistance::DeleteUser(int UsuarioID)
 {
     // Eliminar el archivo binario del usuario
-    String^ fileName = "Usuario_" + UsuarioID + ".bin";
+    /*String^ fileName = "Usuario_" + UsuarioID + ".bin";
     if (File::Exists(fileName)) {
         File::Delete(fileName);
     }
@@ -280,29 +360,136 @@ void STPUCPPersistance::Persistance::DeleteUser(int UsuarioID)
 
     // Guardar la lista actualizada de usuarios
     PersistBinaryFile(BIN_USUARIO_FILE_NAME, usuarios);
+    */
+    SqlConnection^ conn;
+    SqlCommand^ cmd;
+
+    try {
+        //Paso 1: Obtener la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Preparar la sentencia SQL
+        String^ sqlStr = "DELETE FROM Usuario WHERE Id=@Id";
+        cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->Parameters->AddWithValue("@Id", UsuarioID);
+        cmd->Prepare();
+
+        //Paso 3: Ejecutar la sentencia SQL
+        cmd->ExecuteNonQuery();
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 4: Importante! Cerrar la conexión a la BD
+        if (conn != nullptr) conn->Close();
+    }
 }
 
 Usuario^ STPUCPPersistance::Persistance::QueryUsersById(int UsuarioID)
 {
-    List<Object^>^ usuarios = LoadBinaryFile(BIN_USUARIO_FILE_NAME);
+    /*List<Object^>^ usuarios = LoadBinaryFile(BIN_USUARIO_FILE_NAME);
     for (int i = 0; i < usuarios->Count; i++) {
         Usuario^ currentUser = dynamic_cast<Usuario^>(usuarios[i]);
         if (currentUser != nullptr && currentUser->CodigoPUCP == UsuarioID) {
             return currentUser;
         }
     }
-    return nullptr;
+    return nullptr;*/
+
+    Usuario^ usuario = nullptr;
+    SqlConnection^ conn;
+    SqlDataReader^ reader;
+
+    try {
+        //Paso 1: Obtener la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Preparar la sentencia SQL
+        String^ sqlStr = "SELECT * FROM Usuario WHERE Id=" + UsuarioID;
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->Prepare();
+
+        //Paso 3: Ejecutar la sentencia SQL
+        reader = cmd->ExecuteReader();
+
+        //Paso 4: Procesar los resultados
+        if (reader->Read()) {
+            usuario = gcnew Usuario();
+            usuario->Id = Convert::ToInt32(reader["Id"]->ToString());
+            usuario->ApellidoPaterno = reader["ApellidoPaterno"]->ToString();
+            usuario->ApellidoMaterno = reader["ApellidoMaterno"]->ToString();
+            usuario->CodigoPUCP = Convert::ToInt32(reader["CodigoPUCP"]->ToString());
+            usuario->NumeroTelefono = Convert::ToInt32(reader["NumeroTelefono"]->ToString());
+            usuario->Correo = reader["Correo"]->ToString();
+            usuario->Contraseña = reader["Contrasena"]->ToString();
+            usuario->Nombre = reader["Nombre"]->ToString();
+            usuario->Rol = reader["Rol"]->ToString();
+            usuario->DNI = Convert::ToInt32(reader["DNI"]->ToString());
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Importante! Cerrar los objetos de conexión a la BD
+        if (reader != nullptr) reader->Close();
+        if (conn != nullptr) conn->Close();
+    }
+    return usuario;
 }
 
 List<Usuario^>^ STPUCPPersistance::Persistance::QueryAllUsers()
 {
-    List<Object^>^ objects = LoadBinaryFile(BIN_USUARIO_FILE_NAME);
+    /*List<Object^>^ objects = LoadBinaryFile(BIN_USUARIO_FILE_NAME);
     List<Usuario^>^ usuarios = gcnew List<Usuario^>();
     for each (Object ^ obj in objects) {
         Usuario^ usuario = dynamic_cast<Usuario^>(obj);
         if (usuario != nullptr) {
             usuarios->Add(usuario);
         }
+    }
+    return usuarios;*/
+
+    List<Usuario^>^ usuarios = gcnew List<Usuario^>();
+    SqlConnection^ conn;
+    SqlDataReader^ reader;
+
+    try {
+        //Paso 1: Obtener la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Preparar la sentencia SQL
+        String^ sqlStr = "SELECT * FROM Usuario";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->Prepare();
+
+        //Paso 3: Ejecutar la sentencia SQL
+        reader = cmd->ExecuteReader();
+
+        //Paso 4: Procesar los resultados
+        while (reader->Read()) {
+            Usuario^ usuario = gcnew Usuario();
+            usuario->Id = Convert::ToInt32(reader["Id"]->ToString());
+            usuario->ApellidoPaterno = reader["ApellidoPaterno"]->ToString();
+            usuario->ApellidoMaterno = reader["ApellidoMaterno"]->ToString();
+            usuario->CodigoPUCP = Convert::ToInt32(reader["CodigoPUCP"]->ToString());
+            usuario->NumeroTelefono = Convert::ToInt32(reader["NumeroTelefono"]->ToString());
+            usuario->Correo = reader["Correo"]->ToString();
+            usuario->Contraseña = reader["Contrasena"]->ToString();
+            usuario->Nombre = reader["Nombre"]->ToString();
+            usuario->Rol = reader["Rol"]->ToString();
+            usuario->DNI = Convert::ToInt32(reader["DNI"]->ToString());
+            usuarios->Add(usuario);
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Importante! Cerrar los objetos de conexión a la BD
+        if (reader != nullptr) reader->Close();
+        if (conn != nullptr) conn->Close();
     }
     return usuarios;
 }
@@ -465,7 +652,7 @@ int STPUCPPersistance::Persistance::AddBL_Pasajero(Pasajero^ BL_Pasajero)
         return 1;
     }
     return 0;
-}   
+}
 
 void STPUCPPersistance::Persistance::UpdateBL_Pasajero(Pasajero^ BL_Pasajero)
 {
@@ -568,10 +755,8 @@ Usuario^ STPUCPPersistance::Persistance::ValidarUsuario(int codigoPucp, String^ 
 {
     List<Usuario^>^ UsersList = QueryAllUsers();
     for (int i = 0; i < UsersList->Count; i++) {
-        if (UsersList[i]->CodigoPUCP==codigoPucp && UsersList[i]->Contraseña->Equals(password)) {
+        if (UsersList[i]->CodigoPUCP == codigoPucp && UsersList[i]->Contraseña->Equals(password)) {
             return UsersList[i];
         }
     }
 }
-
-

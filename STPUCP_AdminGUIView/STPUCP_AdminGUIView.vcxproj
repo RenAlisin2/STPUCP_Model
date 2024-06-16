@@ -192,6 +192,9 @@
     </ClInclude>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="VentanaCargaForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="VentanaPagoForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -226,6 +229,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="STPUCP_AdminGUIView.cpp" />
+    <ClCompile Include="VentanaCargaForm.cpp" />
     <ClCompile Include="VentanaPagoForm.cpp" />
   </ItemGroup>
   <ItemGroup>
