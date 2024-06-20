@@ -17,6 +17,7 @@ namespace STPUCP_Model {
         property double Precio;
         property String^ Fecha;
         property int Id_viaje;
+        property int PasajeroId;
     };
 }
 

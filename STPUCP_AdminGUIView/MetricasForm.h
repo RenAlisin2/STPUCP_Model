@@ -352,145 +352,145 @@ namespace STPUCPAdminGUIView {
 
 		}
 #pragma endregion
-		private: System::Void MetricasForm_Load(System::Object^ sender, System::EventArgs^ e) {
-			List<Orden^>^ ordenesList = controller::QueryAllOrders();
-			Dictionary<String^, List<int>^>^ estrellasPorMes = gcnew Dictionary<String^, List<int>^>();
+	private: System::Void MetricasForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		List<Orden^>^ ordenesList = controller::QueryAllOrders();
+		Dictionary<String^, List<int>^>^ estrellasPorMes = gcnew Dictionary<String^, List<int>^>();
 
-			// Agrupar estrellas por mes
-			for (int i = 0; i < ordenesList->Count; i++) {
-				String^ fecha = ordenesList[i]->Fecha;
-				if (!String::IsNullOrEmpty(fecha) && fecha->Length >= 5) {
-					String^ mes = ordenesList[i]->Fecha->Substring(3, 2); // DD/MM/YYYY
-					if (!estrellasPorMes->ContainsKey(mes)) {
-						estrellasPorMes[mes] = gcnew List<int>();
-					}
-					estrellasPorMes[mes]->Add(ordenesList[i]->CalificacionEstrellas);
+		// Agrupar estrellas por mes
+		for (int i = 0; i < ordenesList->Count; i++) {
+			String^ fecha = ordenesList[i]->Fecha;
+			if (!String::IsNullOrEmpty(fecha) && fecha->Length >= 5) {
+				String^ mes = ordenesList[i]->Fecha->Substring(3, 2); // DD/MM/YYYY
+				if (!estrellasPorMes->ContainsKey(mes)) {
+					estrellasPorMes[mes] = gcnew List<int>();
 				}
-			}
-
-			// Calcular el promedio de estrellas por mes
-			Dictionary<String^, double>^ estrellasPromedioPorMes = gcnew Dictionary<String^, double>();
-			for each (String ^ mes in estrellasPorMes->Keys) {
-				double sumaEstrellas = 0;
-				for each (int estrellas in estrellasPorMes[mes]) {
-					sumaEstrellas += estrellas;
-				}
-				double promedioEstrellas = sumaEstrellas / estrellasPorMes[mes]->Count;
-				estrellasPromedioPorMes[mes] = promedioEstrellas;
-			}
-
-			// Graficar el promedio de estrellas por mes
-			array<String^>^ meses = gcnew array<String^> { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
-			int j = 0;
-			for each (String ^ mes in meses) {
-				if (estrellasPromedioPorMes->ContainsKey(mes)) {
-					M_EstrellasP->Series["Estrellas"]->Points->Add(estrellasPromedioPorMes[mes]);
-					M_EstrellasP->Series["Estrellas"]->Points[j]->AxisLabel = mes;
-					M_EstrellasP->Series["Estrellas"]->Points[j]->Label = "" + estrellasPromedioPorMes[mes];
-					j++;
-				}
-			}
-
-			// Acceder a CantServiciosTomados en Pasajero
-			List<Usuario^>^ serviciosTList = controller::QueryAllUsers();
-			List<Pasajero^>^ pasajerosList = gcnew List<Pasajero^>();
-			List<Orden^>^ ordenes_1 = controller::QueryAllOrders();
-
-			for each (Usuario ^ usuario in serviciosTList) {
-				Pasajero^ pasajero = dynamic_cast<Pasajero^>(usuario);
-				if (pasajero != nullptr) {
-					pasajerosList->Add(pasajero);
-				}
-			}
-
-			// Agrupar órdenes por mes para contar servicios
-			Dictionary<String^, int>^ serviciosPorMes = gcnew Dictionary<String^, int>();
-			for (int i = 0; i < ordenes_1->Count; i++) {
-				String^ mes = ordenes_1[i]->Fecha->Substring(3, 2); // DD/MM/YYYY
-				if (!serviciosPorMes->ContainsKey(mes)) {
-					serviciosPorMes[mes] = 0;
-				}
-				serviciosPorMes[mes]++;
-			}
-
-			// Graficar la cantidad de servicios por mes
-			int i = 0;
-			for each (String ^ mes in meses) {
-				if (serviciosPorMes->ContainsKey(mes)) {
-					M_ServiciosTP->Series["Servicios"]->Points->Add(serviciosPorMes[mes]);
-					M_ServiciosTP->Series["Servicios"]->Points[i]->AxisLabel = mes;
-					M_ServiciosTP->Series["Servicios"]->Points[i]->Label = "" + serviciosPorMes[mes];
-					i++;
-				}
-			}
-
-			// Agregar eventos de tecla presionada
-			txtCodigoConductor->KeyDown += gcnew KeyEventHandler(this, &MetricasForm::txtCodigoConductor_KeyDown);
-			txtCodigoPasajero->KeyDown += gcnew KeyEventHandler(this, &MetricasForm::txtCodigoPasajero_KeyDown);
-		}
-
-		private: System::Void txtCodigoConductor_KeyDown(System::Object^ sender, KeyEventArgs^ e) {
-			if (e->KeyCode == Keys::Enter) {
-				int codigoPUCP = Convert::ToInt32(txtCodigoConductor->Text);
-				MostrarGraficoConductor(codigoPUCP);
+				estrellasPorMes[mes]->Add(ordenesList[i]->CalificacionEstrellas);
 			}
 		}
 
-		private: System::Void txtCodigoPasajero_KeyDown(System::Object^ sender, KeyEventArgs^ e) {
-			if (e->KeyCode == Keys::Enter) {
-				int codigoPUCP = Convert::ToInt32(txtCodigoPasajero->Text);
-				MostrarGraficoPasajero(codigoPUCP);
+		// Calcular el promedio de estrellas por mes
+		Dictionary<String^, double>^ estrellasPromedioPorMes = gcnew Dictionary<String^, double>();
+		for each (String ^ mes in estrellasPorMes->Keys) {
+			double sumaEstrellas = 0;
+			for each (int estrellas in estrellasPorMes[mes]) {
+				sumaEstrellas += estrellas;
+			}
+			double promedioEstrellas = sumaEstrellas / estrellasPorMes[mes]->Count;
+			estrellasPromedioPorMes[mes] = Math::Round(promedioEstrellas, 2);
+		}
+
+		// Graficar el promedio de estrellas por mes
+		array<String^>^ meses = gcnew array<String^> { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
+		int j = 0;
+		for each (String ^ mes in meses) {
+			if (estrellasPromedioPorMes->ContainsKey(mes)) {
+				M_EstrellasP->Series["Estrellas"]->Points->Add(estrellasPromedioPorMes[mes]);
+				M_EstrellasP->Series["Estrellas"]->Points[j]->AxisLabel = mes;
+				M_EstrellasP->Series["Estrellas"]->Points[j]->Label = "" + estrellasPromedioPorMes[mes];
+				j++;
 			}
 		}
 
-		private: void MostrarGraficoConductor(int codigoPUCP) {
-			List<Orden^>^ ordenesList = controller::QueryAllOrders();
-			M_Estrellas->Series["Estrellas"]->Points->Clear();
-			List<Orden^>^ ordenesrelacionadas = gcnew List<Orden^>();
+		// Acceder a CantServiciosTomados en Pasajero
+		List<Usuario^>^ serviciosTList = controller::QueryAllUsers();
+		List<Pasajero^>^ pasajerosList = gcnew List<Pasajero^>();
+		List<Orden^>^ ordenes_1 = controller::QueryAllOrders();
 
-			List<Viaje^>^ viajeList = controller::QueryViajesByIdConductor(codigoPUCP);
-			for each (Viaje ^ viaje in viajeList) {
-				List<Orden^>^ ordensita = controller::QueryOrdenesByIdViajes(viaje->Id);
-				// Acumular todas las órdenes encontradas
-				for each (Orden ^ orden in ordensita) {
-					ordenesrelacionadas->Add(orden);
-				}
-			}
-
-			// Mostrar gráfico de estrellas del conductor
-			int i = 0;
-			for each (Orden ^ orden in ordenesList) {
-				if (ordenesrelacionadas->Contains(orden)) {
-					M_Estrellas->Series["Estrellas"]->Points->Add(orden->CalificacionEstrellas);
-					M_Estrellas->Series["Estrellas"]->Points[i]->AxisLabel = orden->Fecha->Substring(3, 2); // Solo mes
-					M_Estrellas->Series["Estrellas"]->Points[i]->Label = "" + orden->CalificacionEstrellas;
-					i++;
-				}
+		for each (Usuario ^ usuario in serviciosTList) {
+			Pasajero^ pasajero = dynamic_cast<Pasajero^>(usuario);
+			if (pasajero != nullptr) {
+				pasajerosList->Add(pasajero);
 			}
 		}
 
-		private: void MostrarGraficoPasajero(int codigoPUCP) {
-			List<Usuario^>^ serviciosTList = controller::QueryAllUsers();
-			List<Pasajero^>^ pasajerosList = gcnew List<Pasajero^>();
-
-			for each (Usuario ^ usuario in serviciosTList) {
-				Pasajero^ pasajero = dynamic_cast<Pasajero^>(usuario);
-				if (pasajero != nullptr) {
-					pasajerosList->Add(pasajero);
-				}
+		// Agrupar órdenes por mes para contar servicios
+		Dictionary<String^, int>^ serviciosPorMes = gcnew Dictionary<String^, int>();
+		for (int i = 0; i < ordenes_1->Count; i++) {
+			String^ mes = ordenes_1[i]->Fecha->Substring(3, 2); // DD/MM/YYYY
+			if (!serviciosPorMes->ContainsKey(mes)) {
+				serviciosPorMes[mes] = 0;
 			}
+			serviciosPorMes[mes]++;
+		}
 
-			M_ServiciosT->Series["Servicios"]->Points->Clear();
-			int i = 0;
-			for each (Pasajero ^ pasajero in pasajerosList) {
-				if (pasajero->CodigoPUCP == codigoPUCP) {
-					M_ServiciosT->Series["Servicios"]->Points->Add(pasajero->CantServiciosTomados);
-					// M_ServiciosT->Series["Servicios"]->Points[i]->AxisLabel = "" + pasajero->FechaUltimoServicio;
-					M_ServiciosT->Series["Servicios"]->Points[i]->Label = "" + pasajero->CantServiciosTomados;
-					i++;
-				}
+		// Graficar la cantidad de servicios por mes
+		int i = 0;
+		for each (String ^ mes in meses) {
+			if (serviciosPorMes->ContainsKey(mes)) {
+				M_ServiciosTP->Series["Servicios"]->Points->Add(serviciosPorMes[mes]);
+				M_ServiciosTP->Series["Servicios"]->Points[i]->AxisLabel = mes;
+				M_ServiciosTP->Series["Servicios"]->Points[i]->Label = "" + serviciosPorMes[mes];
+				i++;
 			}
 		}
+
+		// Agregar eventos de tecla presionada
+		txtCodigoConductor->KeyDown += gcnew KeyEventHandler(this, &MetricasForm::txtCodigoConductor_KeyDown);
+		txtCodigoPasajero->KeyDown += gcnew KeyEventHandler(this, &MetricasForm::txtCodigoPasajero_KeyDown);
+	}
+
+	private: System::Void txtCodigoConductor_KeyDown(System::Object^ sender, KeyEventArgs^ e) {
+		if (e->KeyCode == Keys::Enter) {
+			int codigoPUCP = Convert::ToInt32(txtCodigoConductor->Text);
+			MostrarGraficoConductor(codigoPUCP);
+		}
+	}
+
+	private: System::Void txtCodigoPasajero_KeyDown(System::Object^ sender, KeyEventArgs^ e) {
+		if (e->KeyCode == Keys::Enter) {
+			int codigoPUCP = Convert::ToInt32(txtCodigoPasajero->Text);
+			MostrarGraficoPasajero(codigoPUCP);
+		}
+	}
+
+	private: void MostrarGraficoConductor(int codigoPUCP) {
+		List<Orden^>^ ordenesList = controller::QueryAllOrders();
+		M_Estrellas->Series["Estrellas"]->Points->Clear();
+		List<Orden^>^ ordenesrelacionadas = gcnew List<Orden^>();
+
+		List<Viaje^>^ viajeList = controller::QueryViajesByIdConductor(codigoPUCP);
+		for each (Viaje ^ viaje in viajeList) {
+			List<Orden^>^ ordensita = controller::QueryOrdenesByIdViajes(viaje->Id);
+			// Acumular todas las órdenes encontradas
+			for each (Orden ^ orden in ordensita) {
+				ordenesrelacionadas->Add(orden);
+			}
+		}
+
+		// Mostrar gráfico de estrellas del conductor
+		int i = 0;
+		for each (Orden ^ orden in ordenesList) {
+			if (ordenesrelacionadas->Contains(orden)) {
+				M_Estrellas->Series["Estrellas"]->Points->Add(orden->CalificacionEstrellas);
+				M_Estrellas->Series["Estrellas"]->Points[i]->AxisLabel = orden->Fecha->Substring(3, 2); // Solo mes
+				M_Estrellas->Series["Estrellas"]->Points[i]->Label = "" + orden->CalificacionEstrellas;
+				i++;
+			}
+		}
+	}
+
+	private: void MostrarGraficoPasajero(int codigoPUCP) {
+		List<Usuario^>^ serviciosTList = controller::QueryAllUsers();
+		List<Pasajero^>^ pasajerosList = gcnew List<Pasajero^>();
+
+		for each (Usuario ^ usuario in serviciosTList) {
+			Pasajero^ pasajero = dynamic_cast<Pasajero^>(usuario);
+			if (pasajero != nullptr) {
+				pasajerosList->Add(pasajero);
+			}
+		}
+
+		M_ServiciosT->Series["Servicios"]->Points->Clear();
+		int i = 0;
+		for each (Pasajero ^ pasajero in pasajerosList) {
+			if (pasajero->CodigoPUCP == codigoPUCP) {
+				M_ServiciosT->Series["Servicios"]->Points->Add(pasajero->CantServiciosTomados);
+				M_ServiciosT->Series["Servicios"]->Points[i]->Label = "" + pasajero->CantServiciosTomados;
+				i++;
+			}
+		}
+	}
+
 };
 
 }

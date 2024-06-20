@@ -178,29 +178,31 @@ namespace STPUCPAdminGUIView {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		Usuario^ usuario_registrado = STPUCP_Model::Contexto::Instancia->Usuario_registrado;
+		if (usuario_registrado != nullptr && usuario_registrado->Rol == "Pasajero") {
+			int idorden = Convert::ToInt32(text_orden->Text);
+			int idviaje = Convert::ToInt32(text_viaje->Text);
+			Viaje^ viaje = controller::QueryJourneysById(idviaje);
 
+			Orden^ nueva_orden = gcnew Orden();
+			nueva_orden->Id = idorden;
+			nueva_orden->Id_viaje = idviaje;
+			nueva_orden->Distrito = viaje->Distrito;
+			nueva_orden->Precio = Convert::ToDouble(textPrecio->Text);
+			nueva_orden->Fecha = viaje->FechaViaje;
+			nueva_orden->PasajeroId = usuario_registrado->CodigoPUCP; // Asigna el CodigoPUCP del pasajero registrado
 
-		int idorden = Convert::ToInt32(text_orden->Text);
-		int idviaje = Convert::ToInt32(text_viaje ->Text);
-		Viaje^ viaje= controller::QueryJourneysById(idviaje);
+			controller::AddOrder(nueva_orden);
 
-
-		Orden^ nueva_orden = gcnew Orden();
-		nueva_orden->Id = idorden;
-		nueva_orden->Id_viaje = idviaje;
-		nueva_orden->Distrito = viaje->Distrito;
-		nueva_orden->Precio = Convert::ToDouble(textPrecio->Text);
-		nueva_orden->Fecha = viaje->FechaViaje;
-
-		controller::AddOrder(nueva_orden);
-		
-
-
-		RecepcionForm^ recepcionform = gcnew RecepcionForm();
-		recepcionform->text_ordenId->Text = text_orden->Text;
-		recepcionform->text_viajeId->Text = text_viaje->Text;
-		recepcionform->ShowDialog();
-		this->Close();
+			RecepcionForm^ recepcionform = gcnew RecepcionForm();
+			recepcionform->text_ordenId->Text = text_orden->Text;
+			recepcionform->text_viajeId->Text = text_viaje->Text;
+			recepcionform->ShowDialog();
+			this->Close();
+		}
+		else {
+			MessageBox::Show("No hay pasajero registrado para asignar a la orden", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
 	}
 	private: System::Void VentanaPagoForm_Load(System::Object^ sender, System::EventArgs^ e) {
 

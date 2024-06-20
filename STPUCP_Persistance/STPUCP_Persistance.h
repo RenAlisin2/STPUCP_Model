@@ -3,6 +3,7 @@
 using namespace System;
 using namespace System::Collections::Generic;
 using namespace STPUCP_Model;
+using namespace System::Data::SqlClient;
 namespace STPUCPPersistance {
 	public ref class Persistance
 	{
@@ -21,6 +22,7 @@ namespace STPUCPPersistance {
 		static Object^ LoadTextFile(String^ fileName);
 		static List<Object^>^ LoadBinaryFile(String^ fileName);
 
+		static SqlConnection^ GetConnection();
 
 	public:
 		static String^ BIN_USUARIO_FILE_NAME = "UsuariosDB.bin";
