@@ -2,28 +2,50 @@
 
 using namespace System;
 
+#ifndef _CONTEXTO_H
+#define _CONTEXTO_H
+
+#include "Usuario.h"
+
 namespace STPUCP_Model {
+
+
     [Serializable]
-    ref class Usuario;
 
-    public ref class Contexto
-    {
+    public ref class Contexto {
     public:
-        static initonly Contexto^ instancia = gcnew Contexto();
-        Usuario^ usuario_registrado;
+        property int IdUsuario;
+        property int IdViaje;
+        property int IdOrden;
 
+        // Instancia única 
+        static Contexto^ instancia = nullptr;
+        // Constructor privado para evitar instanciación directa
         Contexto() {}
-
-    public:
-        static property Contexto^ Instancia {
-            Contexto^ get() {
-                return instancia;
+        static Contexto^ ObtenerInstancia() {
+            if (instancia == nullptr) { 
+                instancia = gcnew Contexto(); 
             }
+            return instancia; 
         }
 
-        property Usuario^ Usuario_registrado {
-            Usuario^ get() { return usuario_registrado; }
-            void set(Usuario^ value) { usuario_registrado = value; }
-        }
+        int ObtenerIdUsuario();
+        int ObtenerIdViaje();
+        int ObtenerIdOrden();
+        void GuardarUsuario(int IdUsuario);
+        void GuardarViaje(int IdViaje);
+        void GuardarOrden(int IdOrden);
+
+
+       
+
+       
+        
+
     };
+
+
+   
+    
 }
+#endif

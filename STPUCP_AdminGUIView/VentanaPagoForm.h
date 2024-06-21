@@ -178,8 +178,8 @@ namespace STPUCPAdminGUIView {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		Usuario^ usuario_registrado = STPUCP_Model::Contexto::Instancia->Usuario_registrado;
-		if (usuario_registrado != nullptr && usuario_registrado->Rol == "Pasajero") {
+		Contexto^ contexto = STPUCP_Model::Contexto::ObtenerInstancia();
+		if (contexto->ObtenerIdUsuario() != 0 && controller::QueryUsersById(contexto->ObtenerIdUsuario())->Rol == "Pasajero") {
 			int idorden = Convert::ToInt32(text_orden->Text);
 			int idviaje = Convert::ToInt32(text_viaje->Text);
 			Viaje^ viaje = controller::QueryJourneysById(idviaje);
@@ -190,7 +190,7 @@ namespace STPUCPAdminGUIView {
 			nueva_orden->Distrito = viaje->Distrito;
 			nueva_orden->Precio = Convert::ToDouble(textPrecio->Text);
 			nueva_orden->Fecha = viaje->FechaViaje;
-			nueva_orden->PasajeroId = usuario_registrado->CodigoPUCP; // Asigna el CodigoPUCP del pasajero registrado
+			nueva_orden->PasajeroId = controller::QueryUsersById(contexto->ObtenerIdUsuario())->CodigoPUCP; // Asigna el CodigoPUCP del pasajero registrado
 
 			controller::AddOrder(nueva_orden);
 
@@ -203,6 +203,8 @@ namespace STPUCPAdminGUIView {
 		else {
 			MessageBox::Show("No hay pasajero registrado para asignar a la orden", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
+	
+		
 	}
 	private: System::Void VentanaPagoForm_Load(System::Object^ sender, System::EventArgs^ e) {
 

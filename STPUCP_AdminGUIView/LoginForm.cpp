@@ -6,7 +6,7 @@
 
 System::Void STPUCPAdminGUIView::LoginForm::btnIngresar_Click(System::Object^ sender, System::EventArgs^ e)
 {
-
+	
 	String^ password = txtContraseña->Text;
 	int codigoPUCP;
 	if (String::IsNullOrWhiteSpace(txtUsuario->Text)){
@@ -19,8 +19,14 @@ System::Void STPUCPAdminGUIView::LoginForm::btnIngresar_Click(System::Object^ se
 		MessageBox::Show("Falta completar el usuario o la contraseña", "Advertencia", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 		return;
 	}
+	
 
 	if (usuarios != nullptr) {
+		
+		Contexto^ contexto = STPUCP_Model::Contexto::ObtenerInstancia();
+		contexto->GuardarUsuario(usuarios->CodigoPUCP);
+		
+
 		MessageBox::Show("Bienvenido " + usuarios->Nombre + " " + usuarios->ApellidoPaterno);
 		AdminMainForm::user = usuarios;
 		

@@ -359,7 +359,7 @@ namespace STPUCPAdminGUIView {
 
 
 				// Guardar el usuario registrado
-				Contexto::Instancia->usuario_registrado = nuevo_usuario;
+				
 
 				// Agregar usuario al sistema
 				controller::AddUser(nuevo_usuario);

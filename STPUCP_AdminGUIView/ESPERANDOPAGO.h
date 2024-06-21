@@ -73,19 +73,20 @@ namespace STPUCPAdminGUIView {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(11, 194);
-			this->button1->Margin = System::Windows::Forms::Padding(2);
+			this->button1->Location = System::Drawing::Point(15, 239);
+			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(285, 57);
+			this->button1->Size = System::Drawing::Size(380, 70);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Terminar viaje";
 			this->button1->UseVisualStyleBackColor = true;
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(301, 194);
+			this->button2->Location = System::Drawing::Point(401, 239);
+			this->button2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(315, 57);
+			this->button2->Size = System::Drawing::Size(420, 70);
 			this->button2->TabIndex = 1;
 			this->button2->Text = L"Actualizar Lista";
 			this->button2->UseVisualStyleBackColor = true;
@@ -101,53 +102,68 @@ namespace STPUCPAdminGUIView {
 					this->Nombre, this->MainApellido, this->Precio, this->Promocion, this->Pago
 			});
 			this->dgvRecepcionPago->GridColor = System::Drawing::SystemColors::ControlText;
-			this->dgvRecepcionPago->Location = System::Drawing::Point(12, 43);
+			this->dgvRecepcionPago->Location = System::Drawing::Point(16, 53);
+			this->dgvRecepcionPago->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->dgvRecepcionPago->Name = L"dgvRecepcionPago";
 			this->dgvRecepcionPago->RowHeadersVisible = false;
-			this->dgvRecepcionPago->Size = System::Drawing::Size(604, 134);
+			this->dgvRecepcionPago->RowHeadersWidth = 51;
+			this->dgvRecepcionPago->Size = System::Drawing::Size(805, 165);
 			this->dgvRecepcionPago->TabIndex = 2;
 			// 
 			// PasajeroID
 			// 
 			this->PasajeroID->HeaderText = L"Código de Alumno";
+			this->PasajeroID->MinimumWidth = 6;
 			this->PasajeroID->Name = L"PasajeroID";
+			this->PasajeroID->Width = 125;
 			// 
 			// Nombre
 			// 
 			this->Nombre->HeaderText = L"Nombre";
+			this->Nombre->MinimumWidth = 6;
 			this->Nombre->Name = L"Nombre";
+			this->Nombre->Width = 125;
 			// 
 			// MainApellido
 			// 
 			this->MainApellido->HeaderText = L"Primer Apellido";
+			this->MainApellido->MinimumWidth = 6;
 			this->MainApellido->Name = L"MainApellido";
+			this->MainApellido->Width = 125;
 			// 
 			// Precio
 			// 
 			this->Precio->HeaderText = L"Precio pagado";
+			this->Precio->MinimumWidth = 6;
 			this->Precio->Name = L"Precio";
+			this->Precio->Width = 125;
 			// 
 			// Promocion
 			// 
 			this->Promocion->HeaderText = L"Hubo Promoción";
+			this->Promocion->MinimumWidth = 6;
 			this->Promocion->Name = L"Promocion";
+			this->Promocion->Width = 125;
 			// 
 			// Pago
 			// 
 			this->Pago->HeaderText = L"¿Pagó\?";
+			this->Pago->MinimumWidth = 6;
 			this->Pago->Name = L"Pago";
+			this->Pago->Width = 125;
 			// 
 			// ESPERANDOPAGO
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(640, 270);
+			this->ClientSize = System::Drawing::Size(853, 332);
 			this->Controls->Add(this->dgvRecepcionPago);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"ESPERANDOPAGO";
 			this->Text = L"Recepcion de Pago";
+			this->Load += gcnew System::EventHandler(this, &ESPERANDOPAGO::ESPERANDOPAGO_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvRecepcionPago))->EndInit();
 			this->ResumeLayout(false);
 
@@ -156,5 +172,7 @@ namespace STPUCPAdminGUIView {
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		
 	}
+private: System::Void ESPERANDOPAGO_Load(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

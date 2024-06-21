@@ -302,15 +302,15 @@ namespace STPUCPAdminGUIView {
 		}
 #pragma endregion
 private: System::Void btnAgregar_Click(System::Object^ sender, System::EventArgs^ e) {
-	Usuario^ usuario_registrado = STPUCP_Model::Contexto::Instancia->Usuario_registrado;
-	if (usuario_registrado != nullptr) {
+	Contexto^ contexto = STPUCP_Model::Contexto::ObtenerInstancia();
+	if (contexto->ObtenerIdUsuario() !=0) {
 		STPUCP_Model::Orden^ orden = gcnew STPUCP_Model::Orden();
 		orden->Id = Int32::Parse(txtId->Text);
 		orden->Precio = Convert::ToDouble(txtPrecioOrden->Text); // Usa ToDouble para consistencia
 		orden->CalificacionEstrellas = Int32::Parse(txtCalifacionEstrellas->Text);
 		orden->Distrito = txtDistrito->Text;
 		orden->Fecha = txtFechaOrden->Text;
-		orden->PasajeroId = usuario_registrado->CodigoPUCP; // Asigna el CodigoPUCP del pasajero registrado
+		orden->PasajeroId = contexto->ObtenerIdUsuario(); // Asigna el CodigoPUCP del pasajero registrado
 
 		STPUCPAdminController::controller::AddOrder(orden);
 		RefreshGrid();
@@ -329,15 +329,15 @@ private: System::Void btnAgregar_Click(System::Object^ sender, System::EventArgs
 		   }
 }
 private: System::Void btnModificar_Click(System::Object^ sender, System::EventArgs^ e) {
-	Usuario^ usuario_registrado = STPUCP_Model::Contexto::Instancia->Usuario_registrado;
-	if (usuario_registrado != nullptr) {
+	Contexto^ contexto = STPUCP_Model::Contexto::ObtenerInstancia();
+	if (contexto->ObtenerIdUsuario() !=0) {
 		Orden^ orden = gcnew STPUCP_Model::Orden();
 		orden->Id = Int32::Parse(txtId->Text);
 		orden->Precio = Convert::ToDouble(txtPrecioOrden->Text); // Usa ToDouble para consistencia
 		orden->CalificacionEstrellas = Int32::Parse(txtCalifacionEstrellas->Text);
 		orden->Distrito = txtDistrito->Text;
 		orden->Fecha = txtFechaOrden->Text;
-		orden->PasajeroId = usuario_registrado->CodigoPUCP; // Asigna el CodigoPUCP del pasajero registrado
+		orden->PasajeroId = contexto->ObtenerIdUsuario(); // Asigna el CodigoPUCP del pasajero registrado
 
 		controller::UpdateOrder(orden);
 		RefreshGrid();
