@@ -163,6 +163,17 @@ List<Orden^>^ STPUCPAdminController::controller::QueryOrdersbyDate(String^ month
 	return listToReturn;
 }
 
+List<Orden^>^ STPUCPAdminController::controller::QueryOrdenesByIdPasajero(int IdPasajero)
+{
+	List<Orden^>^ ordenlist = Persistance::QueryAllOrders();
+	List<Orden^>^ listToReturn = gcnew List<Orden^>();
+	for (int i = 0; i < ordenlist->Count; i++) {
+		if (ordenlist[i]->PasajeroId == IdPasajero)
+			listToReturn->Add(ordenlist[i]);
+	}
+	return listToReturn;
+}
+
 int STPUCPAdminController::controller::AddBL_Pasajero(Pasajero^ BL_Pasajero)
 {
 	return Persistance::AddBL_Pasajero(BL_Pasajero);

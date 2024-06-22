@@ -70,6 +70,8 @@ namespace STPUCPAdminGUIView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ CalifiicacionEstrellas;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Fecha;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Precio;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ IdCondcutor;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ IdViaje;
 
 
 
@@ -110,116 +112,136 @@ namespace STPUCPAdminGUIView {
 			this->txtId = (gcnew System::Windows::Forms::TextBox());
 			this->lblHSalida = (gcnew System::Windows::Forms::Label());
 			this->lblId = (gcnew System::Windows::Forms::Label());
+			this->IdCondcutor = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->IdViaje = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvOrden))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// txtPrecioOrden
 			// 
-			this->txtPrecioOrden->Location = System::Drawing::Point(192, 159);
+			this->txtPrecioOrden->Location = System::Drawing::Point(256, 196);
+			this->txtPrecioOrden->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtPrecioOrden->Name = L"txtPrecioOrden";
-			this->txtPrecioOrden->Size = System::Drawing::Size(140, 20);
+			this->txtPrecioOrden->Size = System::Drawing::Size(185, 22);
 			this->txtPrecioOrden->TabIndex = 49;
 			this->txtPrecioOrden->TextChanged += gcnew System::EventHandler(this, &OrdenForm::txtPrecioOrden_TextChanged);
 			// 
 			// lblPrecio
 			// 
 			this->lblPrecio->AutoSize = true;
-			this->lblPrecio->Location = System::Drawing::Point(50, 159);
+			this->lblPrecio->Location = System::Drawing::Point(67, 196);
+			this->lblPrecio->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblPrecio->Name = L"lblPrecio";
-			this->lblPrecio->Size = System::Drawing::Size(98, 26);
+			this->lblPrecio->Size = System::Drawing::Size(122, 32);
 			this->lblPrecio->TabIndex = 48;
 			this->lblPrecio->Text = L"Precio de la Orden:\r\n(Soles)";
 			this->lblPrecio->Click += gcnew System::EventHandler(this, &OrdenForm::lblPrecio_Click);
 			// 
 			// txtFechaOrden
 			// 
-			this->txtFechaOrden->Location = System::Drawing::Point(192, 130);
+			this->txtFechaOrden->Location = System::Drawing::Point(256, 160);
+			this->txtFechaOrden->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtFechaOrden->Name = L"txtFechaOrden";
-			this->txtFechaOrden->Size = System::Drawing::Size(140, 20);
+			this->txtFechaOrden->Size = System::Drawing::Size(185, 22);
 			this->txtFechaOrden->TabIndex = 47;
 			this->txtFechaOrden->TextChanged += gcnew System::EventHandler(this, &OrdenForm::txtFechaOrden_TextChanged);
 			// 
 			// lblUltimoParadero
 			// 
 			this->lblUltimoParadero->AutoSize = true;
-			this->lblUltimoParadero->Location = System::Drawing::Point(50, 130);
+			this->lblUltimoParadero->Location = System::Drawing::Point(67, 160);
+			this->lblUltimoParadero->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblUltimoParadero->Name = L"lblUltimoParadero";
-			this->lblUltimoParadero->Size = System::Drawing::Size(98, 13);
+			this->lblUltimoParadero->Size = System::Drawing::Size(121, 16);
 			this->lblUltimoParadero->TabIndex = 46;
 			this->lblUltimoParadero->Text = L"Fecha de la Orden:";
 			this->lblUltimoParadero->Click += gcnew System::EventHandler(this, &OrdenForm::lblUltimoParadero_Click);
 			// 
 			// txtCalifacionEstrellas
 			// 
-			this->txtCalifacionEstrellas->Location = System::Drawing::Point(192, 100);
+			this->txtCalifacionEstrellas->Location = System::Drawing::Point(256, 123);
+			this->txtCalifacionEstrellas->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtCalifacionEstrellas->Name = L"txtCalifacionEstrellas";
-			this->txtCalifacionEstrellas->Size = System::Drawing::Size(140, 20);
+			this->txtCalifacionEstrellas->Size = System::Drawing::Size(185, 22);
 			this->txtCalifacionEstrellas->TabIndex = 44;
 			this->txtCalifacionEstrellas->TextChanged += gcnew System::EventHandler(this, &OrdenForm::txtCalifacionEstrellas_TextChanged);
 			// 
 			// lblFechaViaje
 			// 
 			this->lblFechaViaje->AutoSize = true;
-			this->lblFechaViaje->Location = System::Drawing::Point(50, 103);
+			this->lblFechaViaje->Location = System::Drawing::Point(67, 127);
+			this->lblFechaViaje->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblFechaViaje->Name = L"lblFechaViaje";
-			this->lblFechaViaje->Size = System::Drawing::Size(121, 13);
+			this->lblFechaViaje->Size = System::Drawing::Size(153, 16);
 			this->lblFechaViaje->TabIndex = 42;
 			this->lblFechaViaje->Text = L"Calificación de Estrellas:";
 			this->lblFechaViaje->Click += gcnew System::EventHandler(this, &OrdenForm::lblFechaViaje_Click);
 			// 
 			// txtDistrito
 			// 
-			this->txtDistrito->Location = System::Drawing::Point(192, 71);
+			this->txtDistrito->Location = System::Drawing::Point(256, 87);
+			this->txtDistrito->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtDistrito->Name = L"txtDistrito";
-			this->txtDistrito->Size = System::Drawing::Size(140, 20);
+			this->txtDistrito->Size = System::Drawing::Size(185, 22);
 			this->txtDistrito->TabIndex = 41;
 			this->txtDistrito->TextChanged += gcnew System::EventHandler(this, &OrdenForm::txtDistrito_TextChanged);
 			// 
 			// dgvOrden
 			// 
 			this->dgvOrden->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dgvOrden->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
+			this->dgvOrden->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
 				this->UsuarioID, this->Distrito,
-					this->CalifiicacionEstrellas, this->Fecha, this->Precio
+					this->CalifiicacionEstrellas, this->Fecha, this->Precio, this->IdCondcutor, this->IdViaje
 			});
-			this->dgvOrden->Location = System::Drawing::Point(53, 257);
+			this->dgvOrden->Location = System::Drawing::Point(71, 316);
+			this->dgvOrden->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->dgvOrden->Name = L"dgvOrden";
-			this->dgvOrden->Size = System::Drawing::Size(440, 253);
+			this->dgvOrden->RowHeadersWidth = 51;
+			this->dgvOrden->Size = System::Drawing::Size(764, 311);
 			this->dgvOrden->TabIndex = 40;
 			this->dgvOrden->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &OrdenForm::dgvOrden_CellContentClick);
 			// 
 			// UsuarioID
 			// 
 			this->UsuarioID->HeaderText = L"ID";
+			this->UsuarioID->MinimumWidth = 6;
 			this->UsuarioID->Name = L"UsuarioID";
 			this->UsuarioID->Width = 50;
 			// 
 			// Distrito
 			// 
 			this->Distrito->HeaderText = L"Distrito";
+			this->Distrito->MinimumWidth = 6;
 			this->Distrito->Name = L"Distrito";
+			this->Distrito->Width = 125;
 			// 
 			// CalifiicacionEstrellas
 			// 
 			this->CalifiicacionEstrellas->HeaderText = L"Calificación de Estrellas";
+			this->CalifiicacionEstrellas->MinimumWidth = 6;
 			this->CalifiicacionEstrellas->Name = L"CalifiicacionEstrellas";
+			this->CalifiicacionEstrellas->Width = 125;
 			// 
 			// Fecha
 			// 
 			this->Fecha->HeaderText = L"Fecha";
+			this->Fecha->MinimumWidth = 6;
 			this->Fecha->Name = L"Fecha";
+			this->Fecha->Width = 125;
 			// 
 			// Precio
 			// 
 			this->Precio->HeaderText = L"Precio";
+			this->Precio->MinimumWidth = 6;
 			this->Precio->Name = L"Precio";
 			this->Precio->Width = 50;
 			// 
 			// btnEliminar
 			// 
-			this->btnEliminar->Location = System::Drawing::Point(369, 208);
+			this->btnEliminar->Location = System::Drawing::Point(492, 256);
+			this->btnEliminar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btnEliminar->Name = L"btnEliminar";
-			this->btnEliminar->Size = System::Drawing::Size(75, 23);
+			this->btnEliminar->Size = System::Drawing::Size(100, 28);
 			this->btnEliminar->TabIndex = 39;
 			this->btnEliminar->Text = L"Eliminar";
 			this->btnEliminar->UseVisualStyleBackColor = true;
@@ -227,9 +249,10 @@ namespace STPUCPAdminGUIView {
 			// 
 			// btnModificar
 			// 
-			this->btnModificar->Location = System::Drawing::Point(253, 208);
+			this->btnModificar->Location = System::Drawing::Point(337, 256);
+			this->btnModificar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btnModificar->Name = L"btnModificar";
-			this->btnModificar->Size = System::Drawing::Size(75, 23);
+			this->btnModificar->Size = System::Drawing::Size(100, 28);
 			this->btnModificar->TabIndex = 38;
 			this->btnModificar->Text = L"Modificar";
 			this->btnModificar->UseVisualStyleBackColor = true;
@@ -237,9 +260,10 @@ namespace STPUCPAdminGUIView {
 			// 
 			// btnAgregar
 			// 
-			this->btnAgregar->Location = System::Drawing::Point(136, 208);
+			this->btnAgregar->Location = System::Drawing::Point(181, 256);
+			this->btnAgregar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btnAgregar->Name = L"btnAgregar";
-			this->btnAgregar->Size = System::Drawing::Size(75, 23);
+			this->btnAgregar->Size = System::Drawing::Size(100, 28);
 			this->btnAgregar->TabIndex = 37;
 			this->btnAgregar->Text = L"Agregar";
 			this->btnAgregar->UseVisualStyleBackColor = true;
@@ -247,18 +271,20 @@ namespace STPUCPAdminGUIView {
 			// 
 			// txtId
 			// 
-			this->txtId->Location = System::Drawing::Point(192, 41);
+			this->txtId->Location = System::Drawing::Point(256, 50);
+			this->txtId->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtId->Name = L"txtId";
-			this->txtId->Size = System::Drawing::Size(64, 20);
+			this->txtId->Size = System::Drawing::Size(84, 22);
 			this->txtId->TabIndex = 36;
 			this->txtId->TextChanged += gcnew System::EventHandler(this, &OrdenForm::txtId_TextChanged);
 			// 
 			// lblHSalida
 			// 
 			this->lblHSalida->AutoSize = true;
-			this->lblHSalida->Location = System::Drawing::Point(50, 74);
+			this->lblHSalida->Location = System::Drawing::Point(67, 91);
+			this->lblHSalida->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblHSalida->Name = L"lblHSalida";
-			this->lblHSalida->Size = System::Drawing::Size(44, 13);
+			this->lblHSalida->Size = System::Drawing::Size(54, 16);
 			this->lblHSalida->TabIndex = 35;
 			this->lblHSalida->Text = L"Distriito:";
 			this->lblHSalida->Click += gcnew System::EventHandler(this, &OrdenForm::lblHSalida_Click);
@@ -266,18 +292,33 @@ namespace STPUCPAdminGUIView {
 			// lblId
 			// 
 			this->lblId->AutoSize = true;
-			this->lblId->Location = System::Drawing::Point(50, 48);
+			this->lblId->Location = System::Drawing::Point(67, 59);
+			this->lblId->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblId->Name = L"lblId";
-			this->lblId->Size = System::Drawing::Size(19, 13);
+			this->lblId->Size = System::Drawing::Size(21, 16);
 			this->lblId->TabIndex = 34;
 			this->lblId->Text = L"Id:";
 			this->lblId->Click += gcnew System::EventHandler(this, &OrdenForm::lblId_Click);
 			// 
+			// IdCondcutor
+			// 
+			this->IdCondcutor->HeaderText = L"IdCondcutor";
+			this->IdCondcutor->MinimumWidth = 6;
+			this->IdCondcutor->Name = L"IdCondcutor";
+			this->IdCondcutor->Width = 125;
+			// 
+			// IdViaje
+			// 
+			this->IdViaje->HeaderText = L"IdViaje";
+			this->IdViaje->MinimumWidth = 6;
+			this->IdViaje->Name = L"IdViaje";
+			this->IdViaje->Width = 125;
+			// 
 			// OrdenForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(545, 534);
+			this->ClientSize = System::Drawing::Size(913, 657);
 			this->Controls->Add(this->txtPrecioOrden);
 			this->Controls->Add(this->lblPrecio);
 			this->Controls->Add(this->txtFechaOrden);
@@ -292,6 +333,7 @@ namespace STPUCPAdminGUIView {
 			this->Controls->Add(this->txtId);
 			this->Controls->Add(this->lblHSalida);
 			this->Controls->Add(this->lblId);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"OrdenForm";
 			this->Text = L"OrdenForm";
 			this->Load += gcnew System::EventHandler(this, &OrdenForm::OrdenForm_Load);
@@ -325,7 +367,9 @@ private: System::Void btnAgregar_Click(System::Object^ sender, System::EventArgs
 		   dgvOrden->Rows->Clear();
 		   for (int i = 0; i < OrdenList->Count; i++) {
 			   Orden^ orden = OrdenList[i];
-			   dgvOrden->Rows->Add(gcnew array<String^> {"" + orden->Id, orden->Distrito, "" + orden->CalificacionEstrellas, orden->Fecha, "" + orden->Precio});
+			   Viaje^ viajecito = controller::QueryJourneysById(orden->Id_viaje);
+
+			   dgvOrden->Rows->Add(gcnew array<String^> {"" + orden->Id, orden->Distrito, "" + orden->CalificacionEstrellas, orden->Fecha, "" + orden->Precio,""+viajecito->ConductorId,""+orden->Id_viaje});
 		   }
 }
 private: System::Void btnModificar_Click(System::Object^ sender, System::EventArgs^ e) {

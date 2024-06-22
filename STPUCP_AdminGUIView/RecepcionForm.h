@@ -311,12 +311,14 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	int idorden = Convert::ToInt32(text_ordenId->Text);
 	int estrellas = Convert::ToInt32(text_estrellas->Text);
 	Orden^ orden = controller::QueryOrderById(idorden);
+	MessageBox::Show("La lista Orden es : " + orden);
 
 	orden->Id = orden->Id;
 	orden->Id_viaje = orden->Id_viaje;
 	orden->Distrito = orden->Distrito;
 	orden->Precio = orden->Precio;
 	orden->Fecha = orden->Fecha;
+	MessageBox::Show("El número de estrellas es : " + estrellas);
 	orden->CalificacionEstrellas = estrellas;
 	controller::UpdateOrder(orden);
 

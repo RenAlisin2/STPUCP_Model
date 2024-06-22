@@ -189,7 +189,9 @@ namespace STPUCPAdminGUIView {
 			nueva_orden->Id_viaje = idviaje;
 			nueva_orden->Distrito = viaje->Distrito;
 			nueva_orden->Precio = Convert::ToDouble(textPrecio->Text);
-			nueva_orden->Fecha = viaje->FechaViaje;
+			DateTime fechaViaje = DateTime::Parse(viaje->FechaViaje);
+			nueva_orden->Fecha = fechaViaje.ToString("dd/MM/yyyy");
+
 			nueva_orden->PasajeroId = controller::QueryUsersById(contexto->ObtenerIdUsuario())->CodigoPUCP; // Asigna el CodigoPUCP del pasajero registrado
 
 			controller::AddOrder(nueva_orden);
