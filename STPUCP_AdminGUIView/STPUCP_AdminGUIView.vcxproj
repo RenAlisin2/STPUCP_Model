@@ -154,7 +154,13 @@
     <ClInclude Include="LoginForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="MetricasConductorh.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="MetricasForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="MetricasPasajero.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="OrdenForm.h">
@@ -207,7 +213,9 @@
     <ClCompile Include="HuellaForm.cpp" />
     <ClCompile Include="BoletaInterfazForm.cpp" />
     <ClCompile Include="LoginForm.cpp" />
+    <ClCompile Include="MetricasConductorh.cpp" />
     <ClCompile Include="MetricasForm.cpp" />
+    <ClCompile Include="MetricasPasajero.cpp" />
     <ClCompile Include="OrdenForm.cpp" />
     <ClCompile Include="PasajeroForm.cpp" />
     <ClCompile Include="PasajeroRutaForm.cpp" />
@@ -268,8 +276,14 @@
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MetricasConductorh.resx">
+      <DependentUpon>MetricasConductorh.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MetricasForm.resx">
       <DependentUpon>MetricasForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MetricasPasajero.resx">
+      <DependentUpon>MetricasPasajero.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrdenForm.resx">
       <DependentUpon>OrdenForm.h</DependentUpon>

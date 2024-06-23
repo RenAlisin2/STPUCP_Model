@@ -49,6 +49,7 @@ namespace STPUCPAdminController {
 		static void UpdateOrder(Orden^ orden);
 		static void DeleteOrder(int ordenID);
 		static Orden^ QueryOrderById(int ordenID);
+		static Orden^ QueryOrdenById(int ordenID);
 		static List<Orden^>^ QueryAllOrders();
 		static List<Orden^>^ QueryOrdenesByIdViajes(int IdViaje);
 		static List<Orden^>^ QueryOrdersbyDate(String^ month);

@@ -310,7 +310,7 @@ private: System::Void text_estrellas_TextChanged(System::Object^ sender, System:
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	int idorden = Convert::ToInt32(text_ordenId->Text);
 	int estrellas = Convert::ToInt32(text_estrellas->Text);
-	Orden^ orden = controller::QueryOrderById(idorden);
+	Orden^ orden = controller::QueryOrdenById(idorden);
 	MessageBox::Show("La lista Orden es : " + orden);
 
 	orden->Id = orden->Id;

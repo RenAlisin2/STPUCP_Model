@@ -8,7 +8,9 @@ namespace STPUCPAdminGUIView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-
+	using namespace STPUCP_Model;
+	using namespace STPUCPAdminController;
+	using namespace System::Collections::Generic;
 	/// <summary>
 	/// Resumen de ESPERANDOPAGO
 	/// </summary>
@@ -44,6 +46,11 @@ namespace STPUCPAdminGUIView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Precio;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Promocion;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Pago;
+	public: System::Windows::Forms::TextBox^ textViaje;
+	private:
+
+	private: System::Windows::Forms::Label^ label1;
+
 	protected:
 
 	private:
@@ -68,6 +75,8 @@ namespace STPUCPAdminGUIView {
 			this->Precio = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Promocion = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Pago = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->textViaje = (gcnew System::Windows::Forms::TextBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvRecepcionPago))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -84,7 +93,7 @@ namespace STPUCPAdminGUIView {
 			// button2
 			// 
 			this->button2->Location = System::Drawing::Point(401, 239);
-			this->button2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button2->Margin = System::Windows::Forms::Padding(4);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(420, 70);
 			this->button2->TabIndex = 1;
@@ -103,7 +112,7 @@ namespace STPUCPAdminGUIView {
 			});
 			this->dgvRecepcionPago->GridColor = System::Drawing::SystemColors::ControlText;
 			this->dgvRecepcionPago->Location = System::Drawing::Point(16, 53);
-			this->dgvRecepcionPago->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->dgvRecepcionPago->Margin = System::Windows::Forms::Padding(4);
 			this->dgvRecepcionPago->Name = L"dgvRecepcionPago";
 			this->dgvRecepcionPago->RowHeadersVisible = false;
 			this->dgvRecepcionPago->RowHeadersWidth = 51;
@@ -152,11 +161,29 @@ namespace STPUCPAdminGUIView {
 			this->Pago->Name = L"Pago";
 			this->Pago->Width = 125;
 			// 
+			// textViaje
+			// 
+			this->textViaje->Location = System::Drawing::Point(176, 13);
+			this->textViaje->Name = L"textViaje";
+			this->textViaje->Size = System::Drawing::Size(100, 22);
+			this->textViaje->TabIndex = 3;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(91, 18);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(52, 16);
+			this->label1->TabIndex = 4;
+			this->label1->Text = L"Id Viaje";
+			// 
 			// ESPERANDOPAGO
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(853, 332);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->textViaje);
 			this->Controls->Add(this->dgvRecepcionPago);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
@@ -166,10 +193,28 @@ namespace STPUCPAdminGUIView {
 			this->Load += gcnew System::EventHandler(this, &ESPERANDOPAGO::ESPERANDOPAGO_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvRecepcionPago))->EndInit();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		Contexto^ contexto = STPUCP_Model::Contexto::ObtenerInstancia();
+
+		// Obtener la lista de viajes del conductor
+		List<Viaje^>^ viajecitoList = controller::QueryViajesByIdConductor(contexto->ObtenerIdUsuario());
+
+		// Inicializar una lista para almacenar todas las órdenes del conductor
+		List<Orden^>^ todasOrdenes = controller::QueryOrdenesByIdViajes(Int32::Parse( textViaje->Text));
+
+
+		if (todasOrdenes != nullptr && todasOrdenes->Count > 0) {
+			dgvRecepcionPago->Rows->Clear();
+
+			for each (Orden ^ orden in todasOrdenes) {
+				Usuario^ usuari = controller::QueryUsersById(orden->PasajeroId);
+				dgvRecepcionPago->Rows->Add(orden->PasajeroId, usuari->Nombre, usuari->ApellidoPaterno, orden->Precio );
+			}
+		}
 		
 	}
 private: System::Void ESPERANDOPAGO_Load(System::Object^ sender, System::EventArgs^ e) {

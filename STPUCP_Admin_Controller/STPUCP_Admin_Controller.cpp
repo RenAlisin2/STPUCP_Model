@@ -136,6 +136,19 @@ Orden^ STPUCPAdminController::controller::QueryOrderById(int ordenID)
 	return Persistance::QueryOrderById(ordenID);
 }
 
+Orden^ STPUCPAdminController::controller::QueryOrdenById(int ordenID)
+{
+	List<Orden^>^ ordenList = Persistance::QueryAllOrders();
+	Orden^ ordencita = nullptr;
+	for (int i = 0; i < ordenList->Count; i++) {
+		if (ordenList[i]->Id == ordenID) {
+			ordencita = ordenList[i];
+			return ordencita;
+		}
+	}
+	return ordencita;
+}
+
 List<Orden^>^ STPUCPAdminController::controller::QueryAllOrders()
 {
 	return Persistance::QueryAllOrders();

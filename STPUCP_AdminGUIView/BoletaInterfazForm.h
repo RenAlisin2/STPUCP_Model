@@ -355,8 +355,9 @@ namespace STPUCPAdminGUIView {
         comboBox3->Text = precioFinal.ToString();
     }*/
     private: System::Void BoletaInterfazForm_Load(System::Object^ sender, System::EventArgs^ e) {
+        Contexto^ contexto = STPUCP_Model::Contexto::ObtenerInstancia();
 
-        Promocion^ promocion = controller::QueryPromotionsByUsuarioId(Convert::ToInt32(textPasajero->Text));
+        Promocion^ promocion = controller::QueryPromotionsByUsuarioId(contexto->ObtenerIdUsuario());
         
 
         Viaje^ viajecito = controller::QueryJourneysById(Convert::ToInt32(text_viajeid->Text));
@@ -375,8 +376,19 @@ namespace STPUCPAdminGUIView {
         }
      
 
+
+
+        List<Orden^>^ ordenlist = controller::QueryAllOrders();
+        int mayor = 0;
+        for (int i = 0; i < ordenlist->Count; i++) {
+            if (ordenlist[i]->Id > mayor) {
+                mayor = ordenlist[i]->Id;
+            }
+
+        }
+       
         
-        txtID->Text = "" + (1 + controller::QueryAllOrders()->Count);
+        txtID->Text = "" + (1 + mayor);
         txtID->ReadOnly = true;
 
 
