@@ -277,12 +277,13 @@ namespace STPUCPAdminGUIView {
         //.
 
     public: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-        Contexto^ contexto = STPUCP_Model::Contexto::ObtenerInstancia();
-        if (contexto->ObtenerIdUsuario() != 0) {
+        Contexto^ contexto = Contexto::ObtenerInstancia();
+        Usuario^ usuario_registrado = contexto->ObtenerUsuarioRegistrado();
+        if (usuario_registrado != nullptr ) {
             Conductor^ conductor = gcnew Conductor();
 
             // Copiar datos del usuario registrado al conductor
-            Usuario^ usuario_registrado = controller::QueryUsersById(contexto->ObtenerIdUsuario());
+           
             conductor->ApellidoMaterno = usuario_registrado->ApellidoMaterno;
             conductor->ApellidoPaterno = usuario_registrado->ApellidoPaterno;
             conductor->CodigoPUCP = usuario_registrado->CodigoPUCP;
