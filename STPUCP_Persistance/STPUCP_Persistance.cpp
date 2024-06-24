@@ -1007,7 +1007,7 @@ int STPUCPPersistance::Persistance::AddOrder(Orden^ orden)
         cmd->Parameters->Add("@Fecha", System::Data::SqlDbType::DateTime)->Value = orden->Fecha;
         cmd->Parameters->Add("@Id_viaje", System::Data::SqlDbType::Int)->Value = orden->Id_viaje;
         cmd->Parameters->Add("@PasajeroId", System::Data::SqlDbType::Int)->Value = orden->PasajeroId;
-
+        //
         SqlParameter^ outIdParam = gcnew SqlParameter("@Id", System::Data::SqlDbType::Int);
         outIdParam->Direction = System::Data::ParameterDirection::Output;
         cmd->Parameters->Add(outIdParam);
