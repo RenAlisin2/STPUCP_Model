@@ -40,16 +40,21 @@ namespace STPUCPAdminGUIView {
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::DataGridView^ dgvRecepcionPago;
 
+
+
+
+
+
+
+	public: System::Windows::Forms::TextBox^ textViaje;
+	private:
+
+	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ PasajeroID;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Nombre;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ MainApellido;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Precio;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Promocion;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Pago;
-	public: System::Windows::Forms::TextBox^ textViaje;
-	private:
-
-	private: System::Windows::Forms::Label^ label1;
 
 	protected:
 
@@ -69,14 +74,13 @@ namespace STPUCPAdminGUIView {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->dgvRecepcionPago = (gcnew System::Windows::Forms::DataGridView());
+			this->textViaje = (gcnew System::Windows::Forms::TextBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->PasajeroID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Nombre = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->MainApellido = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Precio = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Promocion = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Pago = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->textViaje = (gcnew System::Windows::Forms::TextBox());
-			this->label1 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvRecepcionPago))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -106,9 +110,9 @@ namespace STPUCPAdminGUIView {
 			this->dgvRecepcionPago->AllowUserToAddRows = false;
 			this->dgvRecepcionPago->BackgroundColor = System::Drawing::SystemColors::ActiveCaption;
 			this->dgvRecepcionPago->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dgvRecepcionPago->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
+			this->dgvRecepcionPago->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
 				this->PasajeroID,
-					this->Nombre, this->MainApellido, this->Precio, this->Promocion, this->Pago
+					this->Nombre, this->MainApellido, this->Precio, this->Promocion
 			});
 			this->dgvRecepcionPago->GridColor = System::Drawing::SystemColors::ControlText;
 			this->dgvRecepcionPago->Location = System::Drawing::Point(16, 53);
@@ -118,6 +122,22 @@ namespace STPUCPAdminGUIView {
 			this->dgvRecepcionPago->RowHeadersWidth = 51;
 			this->dgvRecepcionPago->Size = System::Drawing::Size(805, 165);
 			this->dgvRecepcionPago->TabIndex = 2;
+			// 
+			// textViaje
+			// 
+			this->textViaje->Location = System::Drawing::Point(176, 13);
+			this->textViaje->Name = L"textViaje";
+			this->textViaje->Size = System::Drawing::Size(100, 22);
+			this->textViaje->TabIndex = 3;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(91, 18);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(52, 16);
+			this->label1->TabIndex = 4;
+			this->label1->Text = L"Id Viaje";
 			// 
 			// PasajeroID
 			// 
@@ -154,29 +174,6 @@ namespace STPUCPAdminGUIView {
 			this->Promocion->Name = L"Promocion";
 			this->Promocion->Width = 125;
 			// 
-			// Pago
-			// 
-			this->Pago->HeaderText = L"¿Pagó\?";
-			this->Pago->MinimumWidth = 6;
-			this->Pago->Name = L"Pago";
-			this->Pago->Width = 125;
-			// 
-			// textViaje
-			// 
-			this->textViaje->Location = System::Drawing::Point(176, 13);
-			this->textViaje->Name = L"textViaje";
-			this->textViaje->Size = System::Drawing::Size(100, 22);
-			this->textViaje->TabIndex = 3;
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(91, 18);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(52, 16);
-			this->label1->TabIndex = 4;
-			this->label1->Text = L"Id Viaje";
-			// 
 			// ESPERANDOPAGO
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -205,14 +202,21 @@ namespace STPUCPAdminGUIView {
 
 		// Inicializar una lista para almacenar todas las órdenes del conductor
 		List<Orden^>^ todasOrdenes = controller::QueryOrdenesByIdViajes(Int32::Parse( textViaje->Text));
+		Viaje^ viajecito = controller::QueryJourneysById(Int32::Parse(textViaje->Text));
 
 
 		if (todasOrdenes != nullptr && todasOrdenes->Count > 0) {
 			dgvRecepcionPago->Rows->Clear();
 
 			for each (Orden ^ orden in todasOrdenes) {
-				Usuario^ usuari = controller::QueryUsersById(orden->PasajeroId);
-				dgvRecepcionPago->Rows->Add(orden->PasajeroId, usuari->Nombre, usuari->ApellidoPaterno, orden->Precio );
+				if (orden->Precio != viajecito->PrecioViaje) {
+					Usuario^ usuari = controller::QueryUsersById(orden->PasajeroId);
+					dgvRecepcionPago->Rows->Add(orden->PasajeroId, usuari->Nombre, usuari->ApellidoPaterno, orden->Precio, "si");
+				}
+				else {
+					Usuario^ usuari = controller::QueryUsersById(orden->PasajeroId);
+					dgvRecepcionPago->Rows->Add(orden->PasajeroId, usuari->Nombre, usuari->ApellidoPaterno, orden->Precio, "No");
+				}
 			}
 		}
 		
