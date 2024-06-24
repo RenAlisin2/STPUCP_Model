@@ -239,7 +239,7 @@ namespace STPUCPAdminGUIView {
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(48, 292);
+			this->label8->Location = System::Drawing::Point(41, 301);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(293, 16);
 			this->label8->TabIndex = 15;
@@ -247,7 +247,7 @@ namespace STPUCPAdminGUIView {
 			// 
 			// text_estrellas
 			// 
-			this->text_estrellas->Location = System::Drawing::Point(370, 295);
+			this->text_estrellas->Location = System::Drawing::Point(383, 298);
 			this->text_estrellas->Name = L"text_estrellas";
 			this->text_estrellas->Size = System::Drawing::Size(203, 22);
 			this->text_estrellas->TabIndex = 16;
@@ -287,6 +287,7 @@ namespace STPUCPAdminGUIView {
 #pragma endregion
 		
 	private: System::Void RecepcionForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		
 		int idorden_ = Convert::ToInt32(text_ordenId->Text);
 		Orden^ new_orden = controller::QueryOrderById(idorden_);
 		int idViaje = Convert::ToInt32(text_viajeId->Text);
@@ -311,7 +312,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	int idorden = Convert::ToInt32(text_ordenId->Text);
 	int estrellas = Convert::ToInt32(text_estrellas->Text);
 	Orden^ orden = controller::QueryOrdenById(idorden);
-	MessageBox::Show("La lista Orden es : " + orden);
+	MessageBox::Show("La lista Orden es : " + idorden);
 
 	orden->Id = orden->Id;
 	orden->Id_viaje = orden->Id_viaje;

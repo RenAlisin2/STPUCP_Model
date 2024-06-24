@@ -51,6 +51,10 @@ namespace STPUCPAdminGUIView {
 	private: System::Windows::Forms::Label^ label3;
 	public:
 	public: System::Windows::Forms::TextBox^ textPrecio;
+	private: System::Windows::Forms::DateTimePicker^ Fechita;
+	public:
+
+	public:
 	private:
 	private:
 
@@ -78,6 +82,7 @@ namespace STPUCPAdminGUIView {
 			this->text_viaje = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->textPrecio = (gcnew System::Windows::Forms::TextBox());
+			this->Fechita = (gcnew System::Windows::Forms::DateTimePicker());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbYape))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -87,7 +92,7 @@ namespace STPUCPAdminGUIView {
 			this->pbYape->Location = System::Drawing::Point(31, 28);
 			this->pbYape->Margin = System::Windows::Forms::Padding(4);
 			this->pbYape->Name = L"pbYape";
-			this->pbYape->Size = System::Drawing::Size(453, 298);
+			this->pbYape->Size = System::Drawing::Size(380, 272);
 			this->pbYape->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pbYape->TabIndex = 0;
 			this->pbYape->TabStop = false;
@@ -99,14 +104,14 @@ namespace STPUCPAdminGUIView {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(449, 63);
 			this->button1->TabIndex = 1;
-			this->button1->Text = L"Pago realizado";
+			this->button1->Text = L"Confirmar pago";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &VentanaPagoForm::button1_Click);
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(28, 376);
+			this->label1->Location = System::Drawing::Point(445, 127);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(58, 16);
 			this->label1->TabIndex = 2;
@@ -114,7 +119,7 @@ namespace STPUCPAdminGUIView {
 			// 
 			// text_orden
 			// 
-			this->text_orden->Location = System::Drawing::Point(108, 370);
+			this->text_orden->Location = System::Drawing::Point(525, 127);
 			this->text_orden->Name = L"text_orden";
 			this->text_orden->ReadOnly = true;
 			this->text_orden->Size = System::Drawing::Size(100, 22);
@@ -123,7 +128,7 @@ namespace STPUCPAdminGUIView {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(233, 370);
+			this->label2->Location = System::Drawing::Point(445, 70);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(52, 16);
 			this->label2->TabIndex = 4;
@@ -131,7 +136,7 @@ namespace STPUCPAdminGUIView {
 			// 
 			// text_viaje
 			// 
-			this->text_viaje->Location = System::Drawing::Point(291, 367);
+			this->text_viaje->Location = System::Drawing::Point(525, 64);
 			this->text_viaje->Name = L"text_viaje";
 			this->text_viaje->ReadOnly = true;
 			this->text_viaje->Size = System::Drawing::Size(100, 22);
@@ -140,7 +145,7 @@ namespace STPUCPAdminGUIView {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(418, 373);
+			this->label3->Location = System::Drawing::Point(28, 347);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(97, 16);
 			this->label3->TabIndex = 6;
@@ -148,17 +153,25 @@ namespace STPUCPAdminGUIView {
 			// 
 			// textPrecio
 			// 
-			this->textPrecio->Location = System::Drawing::Point(543, 363);
+			this->textPrecio->Location = System::Drawing::Point(162, 341);
 			this->textPrecio->Name = L"textPrecio";
 			this->textPrecio->ReadOnly = true;
 			this->textPrecio->Size = System::Drawing::Size(100, 22);
 			this->textPrecio->TabIndex = 7;
+			// 
+			// Fechita
+			// 
+			this->Fechita->Location = System::Drawing::Point(448, 196);
+			this->Fechita->Name = L"Fechita";
+			this->Fechita->Size = System::Drawing::Size(14, 22);
+			this->Fechita->TabIndex = 8;
 			// 
 			// VentanaPagoForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(669, 496);
+			this->Controls->Add(this->Fechita);
 			this->Controls->Add(this->textPrecio);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->text_viaje);
@@ -190,13 +203,11 @@ namespace STPUCPAdminGUIView {
 			nueva_orden->Id_viaje = idviaje;
 			nueva_orden->Distrito = viaje->Distrito;
 			nueva_orden->Precio = Convert::ToDouble(textPrecio->Text);
-			
-			nueva_orden->Fecha = viaje->FechaViaje;
+			nueva_orden->Fecha = Fechita->Value.ToString("yyyy-MM-dd");
 
 			nueva_orden->PasajeroId = controller::QueryUsersById(contexto->ObtenerIdUsuario())->CodigoPUCP; // Asigna el CodigoPUCP del pasajero registrado
-
+			
 			controller::AddOrder(nueva_orden);
-
 			RecepcionForm^ recepcionform = gcnew RecepcionForm();
 			recepcionform->text_ordenId->Text = text_orden->Text;
 			recepcionform->text_viajeId->Text = text_viaje->Text;
@@ -206,7 +217,7 @@ namespace STPUCPAdminGUIView {
 		else {
 			MessageBox::Show("No hay pasajero registrado para asignar a la orden", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
-	
+		this->Close();
 		
 	}
 	private: System::Void VentanaPagoForm_Load(System::Object^ sender, System::EventArgs^ e) {
@@ -214,7 +225,7 @@ namespace STPUCPAdminGUIView {
 		int IdViaje= Convert::ToInt32(text_viaje->Text);
 		Viaje^ viaje = controller::QueryJourneysById(IdViaje);
 		int codigoPucp = viaje->ConductorId;
-		
+		//int FechaEnData = (gcnew System::Windows::Forms::DateTimePicker());
 		int UsuarioID = codigoPucp;
 		Usuario^ Usuario = controller::QueryUsersById(UsuarioID);
 		Conductor^ conductor = dynamic_cast<Conductor^>(Usuario);
