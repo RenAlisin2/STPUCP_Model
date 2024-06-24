@@ -14,10 +14,11 @@ namespace STPUCP_Model {
 
     public ref class Contexto {
     public:
+
         property int IdUsuario;
         property int IdViaje;
         property int IdOrden;
-
+        property Usuario^ usuario_registrado;
         // Instancia única 
         static Contexto^ instancia = nullptr;
         // Constructor privado para evitar instanciación directa
@@ -28,7 +29,16 @@ namespace STPUCP_Model {
             }
             return instancia; 
         }
+        
+        Usuario^ ObtenerUsuarioRegistrado() {
+            return usuario_registrado;
+        }
 
+        void GuardarUsuarioRegistrado(Usuario^ usuario) {
+            usuario_registrado = usuario;
+        }
+
+        
         int ObtenerIdUsuario();
         int ObtenerIdViaje();
         int ObtenerIdOrden();
