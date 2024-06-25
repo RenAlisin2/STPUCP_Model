@@ -862,6 +862,11 @@ private: System::Void dgvUsuarios_CellClick(System::Object^ sender, System::Wind
 			}
 		}
 		else {
+			// Limpiar campos específicos para conductor
+			txtModelo->Text = "";
+			txtPlaca->Text = "";
+			txtColor->Text = "";
+			txtAsientos->Text = "";
 			pBConductor->Image = nullptr;
 			pBCarro->Image = nullptr;
 			pBQR->Image = nullptr;
