@@ -29,14 +29,14 @@ void STPUCPPersistance::Persistance::PersistTextFile(String^ fileName, Object^ p
         List<Viaje^>^ viaje = (List<Viaje^>^) persistObject;
         for (int i = 0; i < viaje->Count; i++) {
             Viaje^ v = viaje[i];
-            writer->WriteLine(v ->Id + ","  + v->HoraSalida + "," + v->FechaViaje + "," +v -> Lugar +","+ v->UltimoParadero + "," + v->PrecioViaje + "," + v->Distrito + "," + v->ConductorId);
+            writer->WriteLine(v->Id + "," + v->HoraSalida + "," + v->FechaViaje + "," + v->Lugar + "," + v->UltimoParadero + "," + v->PrecioViaje + "," + v->Distrito + "," + v->ConductorId);
         }
     }
     if (persistObject->GetType() == List<Promocion^>::typeid) {
         List<Promocion^>^ promocion = (List<Promocion^>^) persistObject;
         for (int i = 0; i < promocion->Count; i++) {
             Promocion^ p = promocion[i];
-            writer->WriteLine(p->Id + "," + p->Porcentaje + "," + p->NombrePromo+ "," + p->IdUsuario + ",");
+            writer->WriteLine(p->Id + "," + p->Porcentaje + "," + p->NombrePromo + "," + p->IdUsuario + ",");
         }
     }
     if (persistObject->GetType() == List<Orden^>::typeid) {
@@ -88,7 +88,7 @@ Object^ STPUCPPersistance::Persistance::LoadTextFile(String^ fileName)
                 usuario->ApellidoPaterno = record[2];
                 usuario->ApellidoMaterno = record[3];
                 usuario->Rol = record[4];
-                
+
                 ((List<Usuario^>^)result)->Add(usuario);
             }
         }
@@ -115,15 +115,15 @@ Object^ STPUCPPersistance::Persistance::LoadTextFile(String^ fileName)
             while (true) {
                 String^ line = reader->ReadLine();
                 if (line == nullptr) break;
-                
+
                 array<String^>^ record = line->Split(',');
                 Promocion^ promocion = gcnew Promocion();
                 promocion->Id = Convert::ToInt32(record[0]);
                 promocion->Porcentaje = Convert::ToInt32(record[1]);
                 promocion->NombrePromo = record[2];
-                promocion->IdUsuario= Convert::ToInt32(record[3]);
+                promocion->IdUsuario = Convert::ToInt32(record[3]);
                 ((List<Promocion^>^)result)->Add(promocion);
-               
+
             }
         }
         if (fileName->Equals(ORDER_FILE_NAME)) {
@@ -251,11 +251,6 @@ SqlConnection^ STPUCPPersistance::Persistance::GetConnection() {
 }
 
 int STPUCPPersistance::Persistance::AddUser(Usuario^ usuario) {
-    /*List<Object^>^ usuarios = LoadBinaryFile(BIN_USUARIO_FILE_NAME);
-    usuarios->Add(usuario);
-    PersistBinaryFile(BIN_USUARIO_FILE_NAME, usuarios);
-    return 1;
-    */
     SqlConnection^ conn;
     SqlCommand^ cmd;
 
@@ -274,18 +269,18 @@ int STPUCPPersistance::Persistance::AddUser(Usuario^ usuario) {
         cmd->Parameters->Add("@Nombre", System::Data::SqlDbType::VarChar, 100)->Value = usuario->Nombre;
         cmd->Parameters->Add("@Rol", System::Data::SqlDbType::VarChar, 50)->Value = usuario->Rol;
         cmd->Parameters->Add("@DNI", System::Data::SqlDbType::Int)->Value = usuario->DNI;
+        cmd->Parameters->Add("@IdUltimaOrden", System::Data::SqlDbType::Int)->Value = usuario->IdUltimaOrden;
+        cmd->Parameters->Add("@IdUltimoViaje", System::Data::SqlDbType::Int)->Value = usuario->IdUltimoViaje;
 
         if (dynamic_cast<Pasajero^>(usuario)) {
             Pasajero^ pasajero = (Pasajero^)usuario;
             cmd->Parameters->Add("@CantServiciosTomados", System::Data::SqlDbType::Int)->Value = pasajero->CantServiciosTomados;
             cmd->Parameters->Add("@ViajesId", System::Data::SqlDbType::Int)->Value = pasajero->ViajesId;
-            cmd->Parameters->Add("@Huella", System::Data::SqlDbType::VarChar, 100)->Value = pasajero->Huella;
+            cmd->Parameters->Add("@Huella", System::Data::SqlDbType::Int)->Value = pasajero->Huella;
         }
 
         if (dynamic_cast<Administrador^>(usuario)) {
             Administrador^ administrador = (Administrador^)usuario;
-            //cmd->Parameters->Add("@CantCuentasModificadas", System::Data::SqlDbType::Int)->Value = administrador->CantCuentasModificadas;
-            //cmd->Parameters->Add("@CantServiciosTransporteModificados", System::Data::SqlDbType::Int)->Value = administrador->CantServiciosTransporteModificados;
         }
 
         if (dynamic_cast<Conductor^>(usuario)) {
@@ -297,11 +292,10 @@ int STPUCPPersistance::Persistance::AddUser(Usuario^ usuario) {
             cmd->Parameters->Add("@FotoConductor", System::Data::SqlDbType::VarBinary)->Value = conductor->FotoConductor;
             cmd->Parameters->Add("@FotoCarro", System::Data::SqlDbType::VarBinary)->Value = conductor->FotoCarro;
             cmd->Parameters->Add("@BreveteConfirmacion", System::Data::SqlDbType::Bit)->Value = conductor->BreveteConfirmacion;
-            cmd->Parameters->Add("@HuellaDactilar", System::Data::SqlDbType::VarChar, 100)->Value = conductor->HuellaDactilar;
+            cmd->Parameters->Add("@HuellaDactilar", System::Data::SqlDbType::Int)->Value = conductor->HuellaDactilar;
             cmd->Parameters->Add("@Calificacion", System::Data::SqlDbType::Decimal)->Value = conductor->Calificacion;
             cmd->Parameters->Add("@CantServiciosRealizados", System::Data::SqlDbType::Int)->Value = conductor->CantServiciosRealizados;
             cmd->Parameters->Add("@FotoYape", System::Data::SqlDbType::VarBinary)->Value = conductor->FotoYape;
-            
         }
 
         cmd->Prepare();
@@ -316,16 +310,8 @@ int STPUCPPersistance::Persistance::AddUser(Usuario^ usuario) {
     return 1;
 }
 
+
 void STPUCPPersistance::Persistance::UpdateUser(Usuario^ usuario) {
-    /*List<Object^>^ usuarios = LoadBinaryFile(BIN_USUARIO_FILE_NAME);
-    for (int i = 0; i < usuarios->Count; i++) {
-        Usuario^ currentUser = dynamic_cast<Usuario^>(usuarios[i]);
-        if (currentUser != nullptr && currentUser->CodigoPUCP == usuario->CodigoPUCP) {
-            usuarios[i] = usuario;
-            PersistBinaryFile(BIN_USUARIO_FILE_NAME, usuarios);
-            return;
-        }
-    }*/
     SqlConnection^ conn;
     SqlCommand^ cmd;
 
@@ -344,18 +330,18 @@ void STPUCPPersistance::Persistance::UpdateUser(Usuario^ usuario) {
         cmd->Parameters->Add("@Nombre", System::Data::SqlDbType::VarChar, 100)->Value = usuario->Nombre;
         cmd->Parameters->Add("@Rol", System::Data::SqlDbType::VarChar, 50)->Value = usuario->Rol;
         cmd->Parameters->Add("@DNI", System::Data::SqlDbType::Int)->Value = usuario->DNI;
+        cmd->Parameters->Add("@IdUltimaOrden", System::Data::SqlDbType::Int)->Value = usuario->IdUltimaOrden;
+        cmd->Parameters->Add("@IdUltimoViaje", System::Data::SqlDbType::Int)->Value = usuario->IdUltimoViaje;
 
         if (dynamic_cast<Pasajero^>(usuario)) {
             Pasajero^ pasajero = (Pasajero^)usuario;
             cmd->Parameters->Add("@CantServiciosTomados", System::Data::SqlDbType::Int)->Value = pasajero->CantServiciosTomados;
             cmd->Parameters->Add("@ViajesId", System::Data::SqlDbType::Int)->Value = pasajero->ViajesId;
-            cmd->Parameters->Add("@Huella", System::Data::SqlDbType::VarChar, 100)->Value = pasajero->Huella;
+            cmd->Parameters->Add("@Huella", System::Data::SqlDbType::Int)->Value = pasajero->Huella;
         }
 
         if (dynamic_cast<Administrador^>(usuario)) {
             Administrador^ administrador = (Administrador^)usuario;
-            //cmd->Parameters->Add("@CantCuentasModificadas", System::Data::SqlDbType::Int)->Value = administrador->CantCuentasModificadas;
-            //cmd->Parameters->Add("@CantServiciosTransporteModificados", System::Data::SqlDbType::Int)->Value = administrador->CantServiciosTransporteModificados;
         }
 
         if (dynamic_cast<Conductor^>(usuario)) {
@@ -367,7 +353,7 @@ void STPUCPPersistance::Persistance::UpdateUser(Usuario^ usuario) {
             cmd->Parameters->Add("@FotoConductor", System::Data::SqlDbType::VarBinary)->Value = conductor->FotoConductor;
             cmd->Parameters->Add("@FotoCarro", System::Data::SqlDbType::VarBinary)->Value = conductor->FotoCarro;
             cmd->Parameters->Add("@BreveteConfirmacion", System::Data::SqlDbType::Bit)->Value = conductor->BreveteConfirmacion;
-            cmd->Parameters->Add("@HuellaDactilar", System::Data::SqlDbType::VarChar, 100)->Value = conductor->HuellaDactilar;
+            cmd->Parameters->Add("@HuellaDactilar", System::Data::SqlDbType::Int)->Value = conductor->HuellaDactilar;
             cmd->Parameters->Add("@Calificacion", System::Data::SqlDbType::Decimal)->Value = conductor->Calificacion;
             cmd->Parameters->Add("@CantServiciosRealizados", System::Data::SqlDbType::Int)->Value = conductor->CantServiciosRealizados;
             cmd->Parameters->Add("@FotoYape", System::Data::SqlDbType::VarBinary)->Value = conductor->FotoYape;
@@ -383,6 +369,7 @@ void STPUCPPersistance::Persistance::UpdateUser(Usuario^ usuario) {
         if (conn != nullptr) conn->Close();
     }
 }
+
 
 void STPUCPPersistance::Persistance::DeleteUser(int UsuarioID) {
     // Eliminar el archivo binario del usuario
@@ -424,15 +411,9 @@ void STPUCPPersistance::Persistance::DeleteUser(int UsuarioID) {
     }
 }
 
+
+
 Usuario^ STPUCPPersistance::Persistance::QueryUsersById(int UsuarioID) {
-    /*List<Object^>^ usuarios = LoadBinaryFile(BIN_USUARIO_FILE_NAME);
-    for (int i = 0; i < usuarios->Count; i++) {
-        Usuario^ currentUser = dynamic_cast<Usuario^>(usuarios[i]);
-        if (currentUser != nullptr && currentUser->CodigoPUCP == UsuarioID) {
-            return currentUser;
-        }
-    }
-    return nullptr;*/
     Usuario^ usuario = nullptr;
     SqlConnection^ conn;
     SqlDataReader^ reader;
@@ -471,38 +452,47 @@ Usuario^ STPUCPPersistance::Persistance::QueryUsersById(int UsuarioID) {
             }
             else if (rol == "Administrador") {
                 usuario = gcnew Administrador();
-                //(Administrador^)usuario)->CantCuentasModificadas = Convert::ToInt32(reader["CantCuentasModificadas"]->ToString());
-                //((Administrador^)usuario)->CantServiciosTransporteModificados = Convert::ToInt32(reader["CantServiciosTransporteModificados"]->ToString());
             }
             else if (rol == "Conductor") {
                 usuario = gcnew Conductor();
                 ((Conductor^)usuario)->ModeloCarro = reader["ModeloCarro"]->ToString();
                 ((Conductor^)usuario)->PlacaCarro = reader["PlacaCarro"]->ToString();
                 ((Conductor^)usuario)->ColorCarro = reader["ColorCarro"]->ToString();
-                ((Conductor^)usuario)->CantAsientos = Convert::ToInt32(reader["CantAsientos"]->ToString());
+                ((Conductor^)usuario)->CantAsientos = Convert::ToInt32(reader["CantAsientos"]);
                 ((Conductor^)usuario)->FotoConductor = (array<Byte>^)reader["FotoConductor"];
                 ((Conductor^)usuario)->FotoCarro = (array<Byte>^)reader["FotoCarro"];
-                ((Conductor^)usuario)->BreveteConfirmacion = Convert::ToBoolean(reader["BreveteConfirmacion"]->ToString());
+                ((Conductor^)usuario)->BreveteConfirmacion = Convert::ToBoolean(reader["BreveteConfirmacion"]);
                 ((Conductor^)usuario)->HuellaDactilar = reader["HuellaDactilar"]->ToString();
-                ((Conductor^)usuario)->Calificacion = Convert::ToDouble(reader["Calificacion"]->ToString());
-                ((Conductor^)usuario)->CantServiciosRealizados = Convert::ToInt32(reader["CantServiciosRealizados"]->ToString());
+                ((Conductor^)usuario)->Calificacion = Convert::ToDouble(reader["Calificacion"]);
+                ((Conductor^)usuario)->CantServiciosRealizados = Convert::ToInt32(reader["CantServiciosRealizados"]);
                 ((Conductor^)usuario)->FotoYape = (array<Byte>^)reader["FotoYape"];
-
             }
             else {
                 usuario = gcnew Usuario();
             }
 
-            usuario->Id = Convert::ToInt32(reader["CodigoPUCP"]->ToString());
+            usuario->Id = Convert::ToInt32(reader["CodigoPUCP"]);
             usuario->ApellidoPaterno = reader["ApellidoPaterno"]->ToString();
             usuario->ApellidoMaterno = reader["ApellidoMaterno"]->ToString();
-            usuario->CodigoPUCP = Convert::ToInt32(reader["CodigoPUCP"]->ToString());
-            usuario->NumeroTelefono = Convert::ToInt32(reader["NumeroTelefono"]->ToString());
+            usuario->CodigoPUCP = Convert::ToInt32(reader["CodigoPUCP"]);
+            usuario->NumeroTelefono = Convert::ToInt32(reader["NumeroTelefono"]);
             usuario->Correo = reader["Correo"]->ToString();
             usuario->Contraseña = reader["Contrasena"]->ToString();
             usuario->Nombre = reader["Nombre"]->ToString();
             usuario->Rol = reader["Rol"]->ToString();
-            usuario->DNI = Convert::ToInt32(reader["DNI"]->ToString());
+            usuario->DNI = Convert::ToInt32(reader["DNI"]);
+            if (reader["IdUltimaOrden"] == DBNull::Value) {
+                usuario->IdUltimaOrden = 0;
+            }
+            else {
+                usuario->IdUltimaOrden = Convert::ToInt32(reader["IdUltimaOrden"]->ToString());
+            }
+            if (reader["IdUltimoViaje"] == DBNull::Value) {
+                usuario->IdUltimoViaje = 0;
+            }
+            else {
+                usuario->IdUltimoViaje = Convert::ToInt32(reader["IdUltimoViaje"]->ToString());
+            }
         }
     }
     catch (Exception^ ex) {
@@ -594,6 +584,18 @@ List<Usuario^>^ STPUCPPersistance::Persistance::QueryAllUsers() {
             usuario->Nombre = reader["Nombre"]->ToString();
             usuario->Rol = reader["Rol"]->ToString();
             usuario->DNI = Convert::ToInt32(reader["DNI"]->ToString());
+            if (reader["IdUltimaOrden"] == DBNull::Value) {
+                usuario->IdUltimaOrden = 0;
+            }
+            else {
+                usuario->IdUltimaOrden = Convert::ToInt32(reader["IdUltimaOrden"]->ToString());
+            }
+            if (reader["IdUltimoViaje"] == DBNull::Value) {
+                usuario->IdUltimoViaje = 0;
+            }
+            else {
+                usuario->IdUltimoViaje = Convert::ToInt32(reader["IdUltimoViaje"]->ToString());
+            }
             usuarios->Add(usuario);
         }
     }
@@ -607,13 +609,8 @@ List<Usuario^>^ STPUCPPersistance::Persistance::QueryAllUsers() {
     return usuarios;
 }
 
-//Falta (Ya no :v) (Falta probar si funciona esta parte... fe no más)
-
 int STPUCPPersistance::Persistance::AddJourney(Viaje^ viaje)
 {
-    /*ViajesListDB->Add(Viaje);
-    PersistTextFile(VIAJE_FILE_NAME, ViajesListDB);
-    return 1;*/
     SqlConnection^ conn;
     SqlCommand^ cmd;
 
@@ -630,6 +627,7 @@ int STPUCPPersistance::Persistance::AddJourney(Viaje^ viaje)
         cmd->Parameters->Add("@PrecioViaje", System::Data::SqlDbType::Decimal)->Value = viaje->PrecioViaje;
         cmd->Parameters->Add("@Distrito", System::Data::SqlDbType::VarChar, 100)->Value = viaje->Distrito;
         cmd->Parameters->Add("@ConductorId", System::Data::SqlDbType::Int)->Value = viaje->ConductorId;
+        cmd->Parameters->Add("@ViajeTerminado", System::Data::SqlDbType::Int)->Value = viaje->ViajeTerminado;
 
         SqlParameter^ outIdParam = gcnew SqlParameter("@Id", System::Data::SqlDbType::Int);
         outIdParam->Direction = System::Data::ParameterDirection::Output;
@@ -652,13 +650,6 @@ int STPUCPPersistance::Persistance::AddJourney(Viaje^ viaje)
 
 void STPUCPPersistance::Persistance::UpdateJourney(Viaje^ viaje)
 {
-    /*for (int i = 0; i < ViajesListDB->Count; i++) {
-        if (ViajesListDB[i]->Id == Viaje->Id) {
-            ViajesListDB[i] = Viaje;
-            PersistTextFile(VIAJE_FILE_NAME, ViajesListDB);
-            return;
-        }
-    }*/
     SqlConnection^ conn;
     SqlCommand^ cmd;
 
@@ -676,6 +667,7 @@ void STPUCPPersistance::Persistance::UpdateJourney(Viaje^ viaje)
         cmd->Parameters->Add("@PrecioViaje", System::Data::SqlDbType::Decimal)->Value = viaje->PrecioViaje;
         cmd->Parameters->Add("@Distrito", System::Data::SqlDbType::VarChar, 100)->Value = viaje->Distrito;
         cmd->Parameters->Add("@ConductorId", System::Data::SqlDbType::Int)->Value = viaje->ConductorId;
+        cmd->Parameters->Add("@ViajeTerminado", System::Data::SqlDbType::Int)->Value = viaje->ViajeTerminado;
 
         cmd->Prepare();
         cmd->ExecuteNonQuery();
@@ -687,6 +679,9 @@ void STPUCPPersistance::Persistance::UpdateJourney(Viaje^ viaje)
         if (conn != nullptr) conn->Close();
     }
 }
+
+
+
 
 void STPUCPPersistance::Persistance::DeleteJourney(int viajeID)
 {
@@ -717,17 +712,7 @@ void STPUCPPersistance::Persistance::DeleteJourney(int viajeID)
     }
 }
 
-Viaje^ STPUCPPersistance::Persistance::QueryJourneysById(int viajeID)
-{
-    /*ViajesListDB = (List<Viaje^>^) LoadTextFile(VIAJE_FILE_NAME);
-    Viaje^ viaje = nullptr;
-    for (int i = 0; i < ViajesListDB->Count; i++) {
-        if (ViajesListDB[i]->Id == ViajeID) {
-            viaje = ViajesListDB[i];
-            return viaje;
-        }
-    }
-    return viaje;*/
+Viaje^ STPUCPPersistance::Persistance::QueryJourneysById(int viajeID) {
     Viaje^ viaje = nullptr;
     SqlConnection^ conn;
     SqlDataReader^ reader;
@@ -751,6 +736,7 @@ Viaje^ STPUCPPersistance::Persistance::QueryJourneysById(int viajeID)
             viaje->PrecioViaje = Convert::ToDouble(reader["PrecioViaje"]);
             viaje->Distrito = reader["Distrito"]->ToString();
             viaje->ConductorId = Convert::ToInt32(reader["ConductorId"]);
+            viaje->ViajeTerminado = Convert::ToInt32(reader["ViajeTerminado"]);
         }
     }
     catch (Exception^ ex) {
@@ -764,12 +750,7 @@ Viaje^ STPUCPPersistance::Persistance::QueryJourneysById(int viajeID)
     return viaje;
 }
 
-List<Viaje^>^ STPUCPPersistance::Persistance::QueryAllJourneys()
-{
-    /*ViajesListDB = (List<Viaje^>^) LoadTextFile(VIAJE_FILE_NAME);
-    if (ViajesListDB == nullptr)
-        ViajesListDB = gcnew List<Viaje^>();
-    return ViajesListDB;*/
+List<Viaje^>^ STPUCPPersistance::Persistance::QueryAllJourneys() {
     List<Viaje^>^ viajes = gcnew List<Viaje^>();
     SqlConnection^ conn;
     SqlDataReader^ reader;
@@ -792,6 +773,7 @@ List<Viaje^>^ STPUCPPersistance::Persistance::QueryAllJourneys()
             viaje->PrecioViaje = Convert::ToDouble(reader["PrecioViaje"]);
             viaje->Distrito = reader["Distrito"]->ToString();
             viaje->ConductorId = Convert::ToInt32(reader["ConductorId"]);
+            viaje->ViajeTerminado = Convert::ToInt32(reader["ViajeTerminado"]);
             viajes->Add(viaje);
         }
     }
@@ -805,6 +787,7 @@ List<Viaje^>^ STPUCPPersistance::Persistance::QueryAllJourneys()
 
     return viajes;
 }
+
 
 int STPUCPPersistance::Persistance::AddPromotion(Promocion^ promocion)
 {
@@ -989,9 +972,6 @@ List<Promocion^>^ STPUCPPersistance::Persistance::QueryAllPromotions()
 
 int STPUCPPersistance::Persistance::AddOrder(Orden^ orden)
 {
-    /*OrdenListDB->Add(orden);
-    PersistTextFile(ORDER_FILE_NAME, OrdenListDB);
-    return 1;*/
     SqlConnection^ conn;
     SqlCommand^ cmd;
 
@@ -1007,7 +987,10 @@ int STPUCPPersistance::Persistance::AddOrder(Orden^ orden)
         cmd->Parameters->Add("@Fecha", System::Data::SqlDbType::DateTime)->Value = orden->Fecha;
         cmd->Parameters->Add("@Id_viaje", System::Data::SqlDbType::Int)->Value = orden->Id_viaje;
         cmd->Parameters->Add("@PasajeroId", System::Data::SqlDbType::Int)->Value = orden->PasajeroId;
-        //
+        cmd->Parameters->Add("@OrdenTerminada", System::Data::SqlDbType::Int)->Value = orden->OrdenTerminada;
+        cmd->Parameters->Add("@OrdenPagada", System::Data::SqlDbType::Int)->Value = orden->OrdenPagada;
+        cmd->Parameters->Add("@Presente", System::Data::SqlDbType::Int)->Value = orden->Presente;
+
         SqlParameter^ outIdParam = gcnew SqlParameter("@Id", System::Data::SqlDbType::Int);
         outIdParam->Direction = System::Data::ParameterDirection::Output;
         cmd->Parameters->Add(outIdParam);
@@ -1029,13 +1012,6 @@ int STPUCPPersistance::Persistance::AddOrder(Orden^ orden)
 
 void STPUCPPersistance::Persistance::UpdateOrder(Orden^ orden)
 {
-    /*for (int i = 0; i < OrdenListDB->Count; i++) {
-        if (OrdenListDB[i]->Id == orden->Id) {
-            OrdenListDB[i] = orden;
-            PersistTextFile(ORDER_FILE_NAME, OrdenListDB);
-            return;
-        }
-    }*/
     SqlConnection^ conn;
     SqlCommand^ cmd;
 
@@ -1052,6 +1028,9 @@ void STPUCPPersistance::Persistance::UpdateOrder(Orden^ orden)
         cmd->Parameters->Add("@Fecha", System::Data::SqlDbType::DateTime)->Value = orden->Fecha;
         cmd->Parameters->Add("@Id_viaje", System::Data::SqlDbType::Int)->Value = orden->Id_viaje;
         cmd->Parameters->Add("@PasajeroId", System::Data::SqlDbType::Int)->Value = orden->PasajeroId;
+        cmd->Parameters->Add("@OrdenTerminada", System::Data::SqlDbType::Int)->Value = orden->OrdenTerminada;
+        cmd->Parameters->Add("@OrdenPagada", System::Data::SqlDbType::Int)->Value = orden->OrdenPagada;
+        cmd->Parameters->Add("@Presente", System::Data::SqlDbType::Int)->Value = orden->Presente;
 
         cmd->Prepare();
         cmd->ExecuteNonQuery();
@@ -1093,17 +1072,7 @@ void STPUCPPersistance::Persistance::DeleteOrder(int ordenID)
     }
 }
 
-Orden^ STPUCPPersistance::Persistance::QueryOrderById(int ordenID)
-{
-    /*OrdenListDB = (List<Orden^>^) LoadTextFile(ORDER_FILE_NAME);
-    Orden^ orden = nullptr;
-    for (int i = 0; i < OrdenListDB->Count; i++) {
-        if (OrdenListDB[i]->Id == ordenID) {
-            orden = OrdenListDB[i];
-            return orden;
-        }
-    }
-    return orden;*/
+Orden^ STPUCPPersistance::Persistance::QueryOrderById(int ordenID) {
     Orden^ orden = nullptr;
     SqlConnection^ conn;
     SqlDataReader^ reader;
@@ -1126,6 +1095,9 @@ Orden^ STPUCPPersistance::Persistance::QueryOrderById(int ordenID)
             orden->Fecha = Convert::ToDateTime(reader["Fecha"]).ToString();
             orden->Id_viaje = Convert::ToInt32(reader["Id_viaje"]);
             orden->PasajeroId = Convert::ToInt32(reader["PasajeroId"]);
+            orden->OrdenTerminada = Convert::ToInt32(reader["OrdenTerminada"]);
+            orden->OrdenPagada = Convert::ToInt32(reader["OrdenPagada"]);
+            orden->Presente = Convert::ToInt32(reader["Presente"]);
         }
     }
     catch (Exception^ ex) {
@@ -1139,12 +1111,7 @@ Orden^ STPUCPPersistance::Persistance::QueryOrderById(int ordenID)
     return orden;
 }
 
-List<Orden^>^ STPUCPPersistance::Persistance::QueryAllOrders()
-{
-    /*OrdenListDB = (List<Orden^>^) LoadTextFile(ORDER_FILE_NAME);
-    if (OrdenListDB == nullptr)
-        OrdenListDB = gcnew List<Orden^>();
-    return OrdenListDB;*/
+List<Orden^>^ STPUCPPersistance::Persistance::QueryAllOrders() {
     List<Orden^>^ ordenes = gcnew List<Orden^>();
     SqlConnection^ conn;
     SqlDataReader^ reader;
@@ -1166,6 +1133,9 @@ List<Orden^>^ STPUCPPersistance::Persistance::QueryAllOrders()
             orden->Fecha = Convert::ToDateTime(reader["Fecha"]).ToString();
             orden->Id_viaje = Convert::ToInt32(reader["Id_viaje"]);
             orden->PasajeroId = Convert::ToInt32(reader["PasajeroId"]);
+            orden->OrdenTerminada = Convert::ToInt32(reader["OrdenTerminada"]);
+            orden->OrdenPagada = Convert::ToInt32(reader["OrdenPagada"]);
+            orden->Presente = Convert::ToInt32(reader["Presente"]);
             ordenes->Add(orden);
         }
     }
@@ -1189,7 +1159,7 @@ int STPUCPPersistance::Persistance::AddBL_Pasajero(Pasajero^ BL_Pasajero)
         return 1;
     }
     return 0;
-}   
+}
 
 void STPUCPPersistance::Persistance::UpdateBL_Pasajero(Pasajero^ BL_Pasajero)
 {

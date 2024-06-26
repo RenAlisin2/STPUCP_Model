@@ -16,7 +16,9 @@ namespace STPUCP_Model {
             property String^ Contraseña;
             property String^ Nombre;
             property String^ Rol;
-            
+            property int IdUltimoViaje;
+            property int IdUltimaOrden;
+
             //Añadimos DNI para que verifique el brevete con este
             property int DNI;
             //Hacemos que el codigo PUCP sea el ID 
