@@ -29,14 +29,14 @@ void STPUCPPersistance::Persistance::PersistTextFile(String^ fileName, Object^ p
         List<Viaje^>^ viaje = (List<Viaje^>^) persistObject;
         for (int i = 0; i < viaje->Count; i++) {
             Viaje^ v = viaje[i];
-            writer->WriteLine(v->Id + "," + v->HoraSalida + "," + v->FechaViaje + "," + v->Lugar + "," + v->UltimoParadero + "," + v->PrecioViaje + "," + v->Distrito + "," + v->ConductorId);
+            writer->WriteLine(v ->Id + ","  + v->HoraSalida + "," + v->FechaViaje + "," +v -> Lugar +","+ v->UltimoParadero + "," + v->PrecioViaje + "," + v->Distrito + "," + v->ConductorId);
         }
     }
     if (persistObject->GetType() == List<Promocion^>::typeid) {
         List<Promocion^>^ promocion = (List<Promocion^>^) persistObject;
         for (int i = 0; i < promocion->Count; i++) {
             Promocion^ p = promocion[i];
-            writer->WriteLine(p->Id + "," + p->Porcentaje + "," + p->NombrePromo + "," + p->IdUsuario + ",");
+            writer->WriteLine(p->Id + "," + p->Porcentaje + "," + p->NombrePromo+ "," + p->IdUsuario + ",");
         }
     }
     if (persistObject->GetType() == List<Orden^>::typeid) {
@@ -88,7 +88,7 @@ Object^ STPUCPPersistance::Persistance::LoadTextFile(String^ fileName)
                 usuario->ApellidoPaterno = record[2];
                 usuario->ApellidoMaterno = record[3];
                 usuario->Rol = record[4];
-
+                
                 ((List<Usuario^>^)result)->Add(usuario);
             }
         }
@@ -115,15 +115,15 @@ Object^ STPUCPPersistance::Persistance::LoadTextFile(String^ fileName)
             while (true) {
                 String^ line = reader->ReadLine();
                 if (line == nullptr) break;
-
+                
                 array<String^>^ record = line->Split(',');
                 Promocion^ promocion = gcnew Promocion();
                 promocion->Id = Convert::ToInt32(record[0]);
                 promocion->Porcentaje = Convert::ToInt32(record[1]);
                 promocion->NombrePromo = record[2];
-                promocion->IdUsuario = Convert::ToInt32(record[3]);
+                promocion->IdUsuario= Convert::ToInt32(record[3]);
                 ((List<Promocion^>^)result)->Add(promocion);
-
+               
             }
         }
         if (fileName->Equals(ORDER_FILE_NAME)) {
@@ -1159,7 +1159,7 @@ int STPUCPPersistance::Persistance::AddBL_Pasajero(Pasajero^ BL_Pasajero)
         return 1;
     }
     return 0;
-}
+}   
 
 void STPUCPPersistance::Persistance::UpdateBL_Pasajero(Pasajero^ BL_Pasajero)
 {

@@ -1,5 +1,6 @@
 #pragma once
 #include "RecepcionForm.h";
+#include "VerificarPago.h"
 
 namespace STPUCPAdminGUIView {
 
@@ -208,10 +209,20 @@ namespace STPUCPAdminGUIView {
 			nueva_orden->PasajeroId = controller::QueryUsersById(contexto->ObtenerIdUsuario())->CodigoPUCP; // Asigna el CodigoPUCP del pasajero registrado
 			
 			controller::AddOrder(nueva_orden);
-			RecepcionForm^ recepcionform = gcnew RecepcionForm();
+
+
+			/*RecepcionForm^ recepcionform = gcnew RecepcionForm();
 			recepcionform->text_ordenId->Text = text_orden->Text;
 			recepcionform->text_viajeId->Text = text_viaje->Text;
-			recepcionform->ShowDialog();
+			recepcionform->ShowDialog();*/
+
+			VerificarPago^ pago = gcnew VerificarPago();
+			pago->textIdOrden->Text = text_orden->Text;
+			pago->TopMost = true;
+			pago->ShowDialog();
+
+
+
 			this->Close();
 		}
 		else {

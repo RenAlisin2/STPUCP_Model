@@ -55,6 +55,14 @@ namespace STPUCPAdminGUIView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ MainApellido;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Precio;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Promocion;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ID_ORDEN;
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::TextBox^ textId;
+
+	private: System::Windows::Forms::Button^ button3;
+	private: System::Windows::Forms::Button^ button4;
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::Button^ ELIMINAR;
 
 	protected:
 
@@ -74,13 +82,20 @@ namespace STPUCPAdminGUIView {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->dgvRecepcionPago = (gcnew System::Windows::Forms::DataGridView());
-			this->textViaje = (gcnew System::Windows::Forms::TextBox());
-			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->PasajeroID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Nombre = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->MainApellido = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Precio = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Promocion = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->ID_ORDEN = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->textViaje = (gcnew System::Windows::Forms::TextBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->textId = (gcnew System::Windows::Forms::TextBox());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->ELIMINAR = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvRecepcionPago))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -110,9 +125,9 @@ namespace STPUCPAdminGUIView {
 			this->dgvRecepcionPago->AllowUserToAddRows = false;
 			this->dgvRecepcionPago->BackgroundColor = System::Drawing::SystemColors::ActiveCaption;
 			this->dgvRecepcionPago->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dgvRecepcionPago->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
+			this->dgvRecepcionPago->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 				this->PasajeroID,
-					this->Nombre, this->MainApellido, this->Precio, this->Promocion
+					this->Nombre, this->MainApellido, this->Precio, this->Promocion, this->ID_ORDEN
 			});
 			this->dgvRecepcionPago->GridColor = System::Drawing::SystemColors::ControlText;
 			this->dgvRecepcionPago->Location = System::Drawing::Point(16, 53);
@@ -122,22 +137,7 @@ namespace STPUCPAdminGUIView {
 			this->dgvRecepcionPago->RowHeadersWidth = 51;
 			this->dgvRecepcionPago->Size = System::Drawing::Size(805, 165);
 			this->dgvRecepcionPago->TabIndex = 2;
-			// 
-			// textViaje
-			// 
-			this->textViaje->Location = System::Drawing::Point(176, 13);
-			this->textViaje->Name = L"textViaje";
-			this->textViaje->Size = System::Drawing::Size(100, 22);
-			this->textViaje->TabIndex = 3;
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(91, 18);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(52, 16);
-			this->label1->TabIndex = 4;
-			this->label1->Text = L"Id Viaje";
+			this->dgvRecepcionPago->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ESPERANDOPAGO::dgvRecepcionPago_CellContentClick);
 			// 
 			// PasajeroID
 			// 
@@ -174,11 +174,96 @@ namespace STPUCPAdminGUIView {
 			this->Promocion->Name = L"Promocion";
 			this->Promocion->Width = 125;
 			// 
+			// ID_ORDEN
+			// 
+			this->ID_ORDEN->HeaderText = L"ID_ORDEN";
+			this->ID_ORDEN->MinimumWidth = 6;
+			this->ID_ORDEN->Name = L"ID_ORDEN";
+			this->ID_ORDEN->Width = 125;
+			// 
+			// textViaje
+			// 
+			this->textViaje->Location = System::Drawing::Point(176, 13);
+			this->textViaje->Name = L"textViaje";
+			this->textViaje->Size = System::Drawing::Size(100, 22);
+			this->textViaje->TabIndex = 3;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(91, 18);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(52, 16);
+			this->label1->TabIndex = 4;
+			this->label1->Text = L"Id Viaje";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(941, 74);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(176, 16);
+			this->label2->TabIndex = 5;
+			this->label2->Text = L"INGRESE ID DE LA ORDEN";
+			// 
+			// textId
+			// 
+			this->textId->Location = System::Drawing::Point(944, 94);
+			this->textId->Name = L"textId";
+			this->textId->Size = System::Drawing::Size(100, 22);
+			this->textId->TabIndex = 6;
+			// 
+			// button3
+			// 
+			this->button3->Location = System::Drawing::Point(944, 122);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(75, 23);
+			this->button3->TabIndex = 7;
+			this->button3->Text = L"SI";
+			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &ESPERANDOPAGO::button3_Click);
+			// 
+			// button4
+			// 
+			this->button4->Location = System::Drawing::Point(1042, 122);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(75, 23);
+			this->button4->TabIndex = 8;
+			this->button4->Text = L"NO";
+			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &ESPERANDOPAGO::button4_Click);
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(941, 160);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(189, 16);
+			this->label3->TabIndex = 9;
+			this->label3->Text = L"DESEA ELIMINAR LA ORDEN";
+			this->label3->Click += gcnew System::EventHandler(this, &ESPERANDOPAGO::label3_Click);
+			// 
+			// ELIMINAR
+			// 
+			this->ELIMINAR->Location = System::Drawing::Point(944, 195);
+			this->ELIMINAR->Name = L"ELIMINAR";
+			this->ELIMINAR->Size = System::Drawing::Size(75, 23);
+			this->ELIMINAR->TabIndex = 10;
+			this->ELIMINAR->Text = L"ELIMINAR";
+			this->ELIMINAR->UseVisualStyleBackColor = true;
+			this->ELIMINAR->Click += gcnew System::EventHandler(this, &ESPERANDOPAGO::ELIMINAR_Click);
+			// 
 			// ESPERANDOPAGO
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(853, 332);
+			this->ClientSize = System::Drawing::Size(1297, 332);
+			this->Controls->Add(this->ELIMINAR);
+			this->Controls->Add(this->label3);
+			this->Controls->Add(this->button4);
+			this->Controls->Add(this->button3);
+			this->Controls->Add(this->textId);
+			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->textViaje);
 			this->Controls->Add(this->dgvRecepcionPago);
@@ -211,17 +296,49 @@ namespace STPUCPAdminGUIView {
 			for each (Orden ^ orden in todasOrdenes) {
 				if (orden->Precio != viajecito->PrecioViaje) {
 					Usuario^ usuari = controller::QueryUsersById(orden->PasajeroId);
-					dgvRecepcionPago->Rows->Add(orden->PasajeroId, usuari->Nombre, usuari->ApellidoPaterno, orden->Precio, "si");
+					dgvRecepcionPago->Rows->Add(orden->PasajeroId, usuari->Nombre, usuari->ApellidoPaterno, orden->Precio, "si", orden->Id);
 				}
 				else {
 					Usuario^ usuari = controller::QueryUsersById(orden->PasajeroId);
-					dgvRecepcionPago->Rows->Add(orden->PasajeroId, usuari->Nombre, usuari->ApellidoPaterno, orden->Precio, "No");
+					dgvRecepcionPago->Rows->Add(orden->PasajeroId, usuari->Nombre, usuari->ApellidoPaterno, orden->Precio, "No", orden->Id);
 				}
 			}
 		}
 		
 	}
 private: System::Void ESPERANDOPAGO_Load(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void dgvRecepcionPago_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+}
+	private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	Orden^ orden = controller::QueryOrdenById(Convert::ToInt32(textId->Text));
+	orden->Id = orden->Id;
+	orden->Distrito = orden->Distrito;
+	orden->Precio = orden->Precio;
+	orden->Fecha = orden->Fecha;
+	orden->Id_viaje = orden->Id_viaje;
+	orden->PasajeroId = orden->PasajeroId;
+	orden->OrdenPagada = 1;
+	controller::UpdateOrder(orden);
+}
+private: System::Void ELIMINAR_Click(System::Object^ sender, System::EventArgs^ e) {
+	int id = Int32::Parse(textId->Text);
+	controller::DeleteOrder(id);
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	Orden^ orden = controller::QueryOrdenById(Convert::ToInt32(textId->Text));
+	orden->Id = orden->Id;
+	orden->Distrito = orden->Distrito;
+	orden->Precio = orden->Precio;
+	orden->Fecha = orden->Fecha;
+	orden->Id_viaje = orden->Id_viaje;
+	orden->PasajeroId = orden->PasajeroId;
+	orden->OrdenPagada = 2;
+	controller::UpdateOrder(orden);
 }
 };
 }

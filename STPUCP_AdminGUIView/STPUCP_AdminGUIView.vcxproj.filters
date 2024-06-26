@@ -98,6 +98,9 @@
     <ClInclude Include="MetricasConductorh.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="VerificarPago.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="STPUCP_AdminGUIView.cpp">
@@ -179,6 +182,9 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="MetricasConductorh.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="VerificarPago.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
