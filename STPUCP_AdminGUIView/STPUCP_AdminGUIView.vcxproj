@@ -201,6 +201,9 @@
     <ClInclude Include="VentanaPagoForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="VerificarPago.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -235,6 +238,7 @@
     </ClCompile>
     <ClCompile Include="STPUCP_AdminGUIView.cpp" />
     <ClCompile Include="VentanaPagoForm.cpp" />
+    <ClCompile Include="VerificarPago.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="app.ico" />
@@ -320,6 +324,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VentanaPagoForm.resx">
       <DependentUpon>VentanaPagoForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerificarPago.resx">
+      <DependentUpon>VerificarPago.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -481,7 +481,40 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 	//MessageBox::Show ("codigo del conductor" + txtConductorID->Text);
 	Contexto^ contexto = STPUCP_Model::Contexto::ObtenerInstancia();
 	double precioViaje = Convert::ToDouble(txtCosto->Text);
-	int idConductor = Convert::ToInt32(contexto->ObtenerIdUsuario());
+	int idConductor = contexto->ObtenerIdUsuario();
+
+	Usuario^ manito = controller::QueryUsersById(idConductor);
+
+	MessageBox::Show(" Lista Usuario: " + manito);
+	
+	/*Conductor^ conductor = dynamic_cast<Conductor^>(manito);
+	conductor->ModeloCarro = conductor->ModeloCarro;
+	conductor->PlacaCarro = conductor->PlacaCarro;
+	conductor->ColorCarro = conductor->ColorCarro;
+	conductor->CantAsientos = conductor->CantAsientos;
+	
+
+	manito->CodigoPUCP = manito->CodigoPUCP;
+	manito->Nombre = manito->Nombre;
+	MessageBox::Show(" Apellido Paterno " + manito->ApellidoPaterno);
+	manito->ApellidoPaterno = manito->ApellidoPaterno;
+	manito->ApellidoMaterno = manito->ApellidoMaterno;
+	manito->Rol = manito->Rol;
+	manito->Correo = manito->Correo;
+	manito->DNI = manito->DNI;
+	manito->NumeroTelefono = manito->NumeroTelefono;
+
+	manito->IdUltimoViaje = id;
+	controller::UpdateUser(manito);*/
+	Conductor^ conductor = dynamic_cast<Conductor^>(manito);
+	if (conductor == nullptr) {
+		MessageBox::Show("El usuario no es un conductor válido.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		return;
+	}
+
+	// Actualización del IdUltimoViaje del conductor
+	conductor->IdUltimoViaje = id;
+	controller::UpdateUser(conductor);
 
 
 	Viaje^ viajecito = gcnew Viaje();

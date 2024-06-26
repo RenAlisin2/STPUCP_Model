@@ -411,8 +411,23 @@ private: System::Void transporteToolStripMenuItem_Click(System::Object^ sender, 
 	pasajeroRutaForm->ShowDialog();
 }
 private: System::Void viajeToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	ConductorForm^ conductorform = gcnew ConductorForm();
-	conductorform->ShowDialog();
+	Contexto^ contexto = STPUCP_Model::Contexto::ObtenerInstancia();
+
+	Usuario^ compa = controller::QueryUsersById(contexto->ObtenerIdUsuario());
+
+	MessageBox::Show("IdConductor " + contexto->ObtenerIdUsuario());
+	MessageBox::Show("IdultimoViaje " + compa->IdUltimoViaje);
+
+	if (compa->IdUltimoViaje > 0) {
+		ESPERANDOPAGO^ esperando = gcnew ESPERANDOPAGO();
+		esperando->ShowDialog();
+	}
+	else {
+		ConductorForm^ conductorform = gcnew ConductorForm();
+		conductorform->ShowDialog();
+
+	}
+	
 }
 private: System::Void metricasUsuarioToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	MetricasPasajero^ metricaform = gcnew MetricasPasajero();
