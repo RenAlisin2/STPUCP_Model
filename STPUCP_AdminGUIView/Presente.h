@@ -42,6 +42,8 @@ namespace STPUCPAdminGUIView {
 	private: System::Windows::Forms::Button^ button1;
 	public:
 	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private:
 
 
@@ -65,6 +67,8 @@ namespace STPUCPAdminGUIView {
 			this->textOrden = (gcnew System::Windows::Forms::TextBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -85,11 +89,11 @@ namespace STPUCPAdminGUIView {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(138, 120);
+			this->button1->Location = System::Drawing::Point(135, 152);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(143, 56);
 			this->button1->TabIndex = 2;
-			this->button1->Text = L"ESTOY PRESENTE";
+			this->button1->Text = L"VIAJE TERMINADO";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &Presente::button1_Click);
 			// 
@@ -97,23 +101,44 @@ namespace STPUCPAdminGUIView {
 			// 
 			this->label2->AutoSize = true;
 			this->label2->BackColor = System::Drawing::SystemColors::Info;
-			this->label2->Location = System::Drawing::Point(36, 81);
+			this->label2->Location = System::Drawing::Point(36, 75);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(401, 16);
 			this->label2->TabIndex = 3;
 			this->label2->Text = L"Presionar el botón cuando se encuentra ene el punto de encuentro";
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(36, 112);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(85, 16);
+			this->label3->TabIndex = 4;
+			this->label3->Text = L"ESTRELLAS";
+			// 
+			// comboBox1
+			// 
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(5) { L"1", L"2", L"3", L"4", L"5" });
+			this->comboBox1->Location = System::Drawing::Point(135, 112);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(121, 24);
+			this->comboBox1->TabIndex = 5;
 			// 
 			// Presente
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(503, 245);
+			this->Controls->Add(this->comboBox1);
+			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->textOrden);
 			this->Controls->Add(this->label1);
 			this->Name = L"Presente";
 			this->Text = L"Presente";
+			this->Load += gcnew System::EventHandler(this, &Presente::Presente_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -129,10 +154,13 @@ namespace STPUCPAdminGUIView {
 		orden->Id_viaje = orden->Id_viaje;
 		orden->PasajeroId = orden->PasajeroId;
 		orden->OrdenPagada = orden->OrdenPagada;
-		orden->Presente = 1;
+		orden->Presente = orden->Presente;
+		orden->CalificacionEstrellas = Convert::ToInt32(comboBox1->Items[comboBox1->SelectedIndex]->ToString());
 		controller::UpdateOrder(orden);
 
 
 	}
+private: System::Void Presente_Load(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

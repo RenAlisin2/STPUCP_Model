@@ -1,5 +1,5 @@
 #pragma once
-#include "Presente.h"
+#include "RecepcionForm.h"
 
 namespace STPUCPAdminGUIView {
 
@@ -49,7 +49,7 @@ namespace STPUCPAdminGUIView {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -127,12 +127,16 @@ namespace STPUCPAdminGUIView {
 			if (ordencita->OrdenPagada == 1) {
 				MessageBox::Show("EL CONDUCTOR HA RECIBIDO SU PAGO, PROCEDA A IR AL VEHICULO A LA HORA ACORDADA Y MARCAR SUS ASISTENCIA");
 
-				Presente^ presente = gcnew Presente();
+				RecepcionForm^ presente = gcnew RecepcionForm();
 				//this->Close();
 				//boletaForm->TopMost = true;
-				presente->textOrden->Text = textIdOrden->Text;
+				presente->text_ordenId->Text = textIdOrden->Text;
 
-				
+				presente->TopMost = true;
+
+
+
+
 				presente->ShowDialog();
 
 

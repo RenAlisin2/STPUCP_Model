@@ -79,7 +79,7 @@ namespace STPUCPAdminGUIView {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -172,7 +172,7 @@ namespace STPUCPAdminGUIView {
 			// 
 			// pictureBox2
 			// 
-			this->pictureBox2->Location = System::Drawing::Point(663, 79);
+			this->pictureBox2->Location = System::Drawing::Point(639, 376);
 			this->pictureBox2->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox2->Name = L"pictureBox2";
 			this->pictureBox2->Size = System::Drawing::Size(519, 249);
@@ -182,7 +182,7 @@ namespace STPUCPAdminGUIView {
 			// IDUsuario
 			// 
 			this->IDUsuario->AutoSize = true;
-			this->IDUsuario->Location = System::Drawing::Point(57, 382);
+			this->IDUsuario->Location = System::Drawing::Point(54, 684);
 			this->IDUsuario->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->IDUsuario->Name = L"IDUsuario";
 			this->IDUsuario->Size = System::Drawing::Size(123, 16);
@@ -192,7 +192,7 @@ namespace STPUCPAdminGUIView {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(663, 382);
+			this->label4->Location = System::Drawing::Point(706, 691);
 			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(140, 16);
@@ -211,7 +211,7 @@ namespace STPUCPAdminGUIView {
 			// 
 			// pictureBox3
 			// 
-			this->pictureBox3->Location = System::Drawing::Point(61, 470);
+			this->pictureBox3->Location = System::Drawing::Point(57, 376);
 			this->pictureBox3->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox3->Name = L"pictureBox3";
 			this->pictureBox3->Size = System::Drawing::Size(519, 249);
@@ -230,7 +230,7 @@ namespace STPUCPAdminGUIView {
 			// 
 			// pictureBox4
 			// 
-			this->pictureBox4->Location = System::Drawing::Point(667, 470);
+			this->pictureBox4->Location = System::Drawing::Point(666, 79);
 			this->pictureBox4->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox4->Name = L"pictureBox4";
 			this->pictureBox4->Size = System::Drawing::Size(519, 249);
@@ -244,7 +244,7 @@ namespace STPUCPAdminGUIView {
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->archivoToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(1727, 30);
+			this->menuStrip1->Size = System::Drawing::Size(1727, 28);
 			this->menuStrip1->TabIndex = 10;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -252,7 +252,7 @@ namespace STPUCPAdminGUIView {
 			// 
 			this->archivoToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->salirToolStripMenuItem });
 			this->archivoToolStripMenuItem->Name = L"archivoToolStripMenuItem";
-			this->archivoToolStripMenuItem->Size = System::Drawing::Size(73, 26);
+			this->archivoToolStripMenuItem->Size = System::Drawing::Size(73, 24);
 			this->archivoToolStripMenuItem->Text = L"Archivo";
 			// 
 			// salirToolStripMenuItem
@@ -263,7 +263,7 @@ namespace STPUCPAdminGUIView {
 			// 
 			// txtCodigoPasajero
 			// 
-			this->txtCodigoPasajero->Location = System::Drawing::Point(195, 378);
+			this->txtCodigoPasajero->Location = System::Drawing::Point(224, 678);
 			this->txtCodigoPasajero->Margin = System::Windows::Forms::Padding(4);
 			this->txtCodigoPasajero->Name = L"txtCodigoPasajero";
 			this->txtCodigoPasajero->Size = System::Drawing::Size(132, 22);
@@ -271,7 +271,7 @@ namespace STPUCPAdminGUIView {
 			// 
 			// txtCodigoConductor
 			// 
-			this->txtCodigoConductor->Location = System::Drawing::Point(820, 378);
+			this->txtCodigoConductor->Location = System::Drawing::Point(881, 685);
 			this->txtCodigoConductor->Margin = System::Windows::Forms::Padding(4);
 			this->txtCodigoConductor->Name = L"txtCodigoConductor";
 			this->txtCodigoConductor->Size = System::Drawing::Size(132, 22);
@@ -284,7 +284,7 @@ namespace STPUCPAdminGUIView {
 			this->M_EstrellasP->ChartAreas->Add(chartArea1);
 			legend1->Name = L"Legend1";
 			this->M_EstrellasP->Legends->Add(legend1);
-			this->M_EstrellasP->Location = System::Drawing::Point(663, 79);
+			this->M_EstrellasP->Location = System::Drawing::Point(635, 376);
 			this->M_EstrellasP->Margin = System::Windows::Forms::Padding(4);
 			this->M_EstrellasP->Name = L"M_EstrellasP";
 			series1->ChartArea = L"ChartArea1";
@@ -320,7 +320,7 @@ namespace STPUCPAdminGUIView {
 			this->M_ServiciosT->ChartAreas->Add(chartArea3);
 			legend3->Name = L"Legend1";
 			this->M_ServiciosT->Legends->Add(legend3);
-			this->M_ServiciosT->Location = System::Drawing::Point(61, 454);
+			this->M_ServiciosT->Location = System::Drawing::Point(53, 376);
 			this->M_ServiciosT->Margin = System::Windows::Forms::Padding(4);
 			this->M_ServiciosT->Name = L"M_ServiciosT";
 			series3->ChartArea = L"ChartArea1";
@@ -338,7 +338,7 @@ namespace STPUCPAdminGUIView {
 			this->M_Estrellas->ChartAreas->Add(chartArea4);
 			legend4->Name = L"Legend1";
 			this->M_Estrellas->Legends->Add(legend4);
-			this->M_Estrellas->Location = System::Drawing::Point(667, 470);
+			this->M_Estrellas->Location = System::Drawing::Point(666, 79);
 			this->M_Estrellas->Margin = System::Windows::Forms::Padding(4);
 			this->M_Estrellas->Name = L"M_Estrellas";
 			series4->ChartArea = L"ChartArea1";
@@ -376,7 +376,7 @@ namespace STPUCPAdminGUIView {
 			// 
 			// Metrica_Pasajero
 			// 
-			this->Metrica_Pasajero->Location = System::Drawing::Point(353, 382);
+			this->Metrica_Pasajero->Location = System::Drawing::Point(376, 678);
 			this->Metrica_Pasajero->Name = L"Metrica_Pasajero";
 			this->Metrica_Pasajero->Size = System::Drawing::Size(238, 23);
 			this->Metrica_Pasajero->TabIndex = 19;
@@ -386,7 +386,7 @@ namespace STPUCPAdminGUIView {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(984, 376);
+			this->button2->Location = System::Drawing::Point(1047, 684);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(226, 23);
 			this->button2->TabIndex = 20;
@@ -397,15 +397,15 @@ namespace STPUCPAdminGUIView {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(1262, 415);
+			this->label3->Location = System::Drawing::Point(1218, 563);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(256, 16);
+			this->label3->Size = System::Drawing::Size(360, 16);
 			this->label3->TabIndex = 21;
-			this->label3->Text = L"PROMEDIO DE ESTRELLLAS GENERAL";
+			this->label3->Text = L"PROMEDIO DE ESTRELLLAS GENERAL DEL PASAJERO";
 			// 
 			// textestrellas
 			// 
-			this->textestrellas->Location = System::Drawing::Point(1303, 434);
+			this->textestrellas->Location = System::Drawing::Point(1221, 603);
 			this->textestrellas->Name = L"textestrellas";
 			this->textestrellas->ReadOnly = true;
 			this->textestrellas->Size = System::Drawing::Size(126, 22);
@@ -523,6 +523,11 @@ namespace STPUCPAdminGUIView {
 		M_ServiciosTP->ChartAreas[0]->AxisY->Title = "Cantidad de Pasajeros por mes";
 		M_ServiciosTP->ChartAreas[0]->AxisX->Interval = 1;
 
+		M_ServiciosTP->ChartAreas[0]->AxisX->MajorGrid->Enabled = false;
+		M_ServiciosTP->ChartAreas[0]->AxisX->MinorGrid->Enabled = false;
+		M_ServiciosTP->ChartAreas[0]->AxisY->MajorGrid->Enabled = false;
+		M_ServiciosTP->ChartAreas[0]->AxisY->MinorGrid->Enabled = false;
+
 
 
 
@@ -570,6 +575,11 @@ namespace STPUCPAdminGUIView {
 		M_Estrellas->ChartAreas[0]->AxisX->Title = "Mes";
 		M_Estrellas->ChartAreas[0]->AxisY->Title = "Cantidad de Viajes por mes";
 		M_Estrellas->ChartAreas[0]->AxisX->Interval = 1;
+
+		M_Estrellas->ChartAreas[0]->AxisX->MajorGrid->Enabled = false;
+		M_Estrellas->ChartAreas[0]->AxisX->MinorGrid->Enabled = false;
+		M_Estrellas->ChartAreas[0]->AxisY->MajorGrid->Enabled = false;
+		M_Estrellas->ChartAreas[0]->AxisY->MinorGrid->Enabled = false;
 
 
 
@@ -746,178 +756,188 @@ namespace STPUCPAdminGUIView {
 		}
 	}
 
-private: System::Void Metrica_Pasajero_Click(System::Object^ sender, System::EventArgs^ e) {
-	// Obtener el ID del pasajero del cuadro de texto
-	int pasajeroId = Convert::ToInt32(txtCodigoPasajero->Text);
-	
-	// Obtener las órdenes del pasajero por ID
-	List<Orden^>^ ordenesList = controller::QueryOrdenesByIdPasajero(pasajeroId);
+	private: System::Void Metrica_Pasajero_Click(System::Object^ sender, System::EventArgs^ e) {
+		// Obtener el ID del pasajero del cuadro de texto
+		int pasajeroId = Convert::ToInt32(txtCodigoPasajero->Text);
 
-	// Contar las órdenes por mes
-	Dictionary<int, int>^ ordersByMonth = gcnew Dictionary<int, int>();
-	for (int i = 1; i <= 12; i++) {
-		ordersByMonth[i] = 0;
-	}
+		// Obtener las órdenes del pasajero por ID
+		List<Orden^>^ ordenesList = controller::QueryOrdenesByIdPasajero(pasajeroId);
 
-	// Contar las órdenes por mes
-	for each (Orden ^ orden in ordenesList) {
-		int month;
-		try {
-			month = Convert::ToInt32(orden->Fecha->Substring(3, 2));
+		// Contar las órdenes por mes
+		Dictionary<int, int>^ ordersByMonth = gcnew Dictionary<int, int>();
+		for (int i = 1; i <= 12; i++) {
+			ordersByMonth[i] = 0;
 		}
-		catch (...) {
-			// Si ocurre una excepción al intentar convertir a int, intentamos obtener el mes como "tostring2,2"
-			try {
-				month = Convert::ToInt32(orden->Fecha->Substring(2, 2)); // Tomar "tostring2,2"
-			}
-			catch (...) {
-				// Si también falla, manejar el caso de mes inválido
-				
-				continue; // Saltar esta orden y continuar con la siguiente si es un bucle
-			}
-		}
-		if (month >= 1 && month <= 12) {
-			ordersByMonth[month]++;
-		}
-		else {
-			// Manejar el caso de mes fuera de rango si es necesario
-			MessageBox::Show("Fecha inválida en la orden ID: " + orden->Id.ToString());
-		}
-	}
 
-	// Crear y llenar el gráfico
-	M_ServiciosT->Series->Clear();
-	Series^ series = gcnew Series("Servicios");
-	series->Color = Color::Gold;
-	series->ChartType = SeriesChartType::Column;
-	for (int i = 1; i <= 12; i++) {
-		series->Points->AddXY(i, ordersByMonth[i]);
-	}
-	M_ServiciosT->Series->Add(series);
-
-	// Configurar el gráfico para mostrar etiquetas de valores
-	series->IsValueShownAsLabel = true;
-	M_ServiciosT->ChartAreas[0]->AxisX->Title = "Mes";
-	M_ServiciosT->ChartAreas[0]->AxisY->Title = "Cantidad de Órdenes";
-	M_ServiciosT->ChartAreas[0]->AxisX->Interval = 1;
-}
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	int conductorId = Convert::ToInt32(txtCodigoConductor->Text);
-
-	List<List<Orden^>^>^ ordenList = gcnew List<List<Orden^>^>();
-
-	List<Viaje^>^ viajenesList = controller::QueryViajesByIdConductor(conductorId);
-
-	for (int i = 0; i < viajenesList->Count; i++) {
-		List<Orden^>^ ordenes = controller::QueryOrdenesByIdViajes(viajenesList[i]->Id);
-		ordenList->Add(ordenes);
-
-	}
-
-	
-
-	// Inicializar un diccionario para almacenar la suma de estrellas por mes y el conteo de órdenes por mes
-	Dictionary<int, double>^ sumEstrellasByMonth = gcnew Dictionary<int, double>();
-	Dictionary<int, int>^ countOrdersByMonth = gcnew Dictionary<int, int>();
-
-	// Inicializar los diccionarios para cada mes del año
-	for (int i = 1; i <= 12; i++) {
-		sumEstrellasByMonth[i] = 0.0;
-		countOrdersByMonth[i] = 0;
-	}
-
-	// Calcular la suma de estrellas y el conteo de órdenes por mes
-	for each (List<Orden^> ^ ordenesLista in ordenList) {
-		// Iterar sobre cada orden dentro de la lista actual
-		for each (Orden ^ orden in ordenesLista) {
+		// Contar las órdenes por mes
+		for each (Orden ^ orden in ordenesList) {
 			int month;
 			try {
 				month = Convert::ToInt32(orden->Fecha->Substring(3, 2));
 			}
 			catch (...) {
+				// Si ocurre una excepción al intentar convertir a int, intentamos obtener el mes como "tostring2,2"
 				try {
-					month = Convert::ToInt32(orden->Fecha->Substring(2, 2));
+					month = Convert::ToInt32(orden->Fecha->Substring(2, 2)); // Tomar "tostring2,2"
 				}
 				catch (...) {
-					continue; // Saltar esta orden si no se puede obtener el mes válido
+					// Si también falla, manejar el caso de mes inválido
+
+					continue; // Saltar esta orden y continuar con la siguiente si es un bucle
 				}
 			}
-
-			
 			if (month >= 1 && month <= 12) {
-				double estrellas = Convert::ToDouble(orden->CalificacionEstrellas);
-				sumEstrellasByMonth[month] += estrellas;
-				countOrdersByMonth[month]++;
+				ordersByMonth[month]++;
+			}
+			else {
+				// Manejar el caso de mes fuera de rango si es necesario
+				MessageBox::Show("Fecha inválida en la orden ID: " + orden->Id.ToString());
 			}
 		}
-	}
 
-	// Calcular el promedio de estrellas por mes
-	Dictionary<int, double>^ averageStarsByMonth = gcnew Dictionary<int, double>();
-	for (int i = 1; i <= 12; i++) {
-		if (countOrdersByMonth[i] > 0) {
-			averageStarsByMonth[i] = sumEstrellasByMonth[i] / countOrdersByMonth[i];
+		// Crear y llenar el gráfico
+		M_ServiciosT->Series->Clear();
+		Series^ series = gcnew Series("Servicios");
+		series->Color = Color::Gold;
+		series->ChartType = SeriesChartType::Column;
+		for (int i = 1; i <= 12; i++) {
+			series->Points->AddXY(i, ordersByMonth[i]);
 		}
-		else {
-			averageStarsByMonth[i] = 0.0; // o cualquier otro valor por defecto si no hay órdenes ese mes
+		M_ServiciosT->Series->Add(series);
+
+		// Configurar el gráfico para mostrar etiquetas de valores
+		series->IsValueShownAsLabel = true;
+		M_ServiciosT->ChartAreas[0]->AxisX->Title = "Mes";
+		M_ServiciosT->ChartAreas[0]->AxisY->Title = "Cantidad de Órdenes";
+		M_ServiciosT->ChartAreas[0]->AxisX->Interval = 1;
+
+		M_ServiciosT->ChartAreas[0]->AxisX->MajorGrid->Enabled = false;
+		M_ServiciosT->ChartAreas[0]->AxisX->MinorGrid->Enabled = false;
+		M_ServiciosT->ChartAreas[0]->AxisY->MajorGrid->Enabled = false;
+		M_ServiciosT->ChartAreas[0]->AxisY->MinorGrid->Enabled = false;
+
+
+	}
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		int conductorId = Convert::ToInt32(txtCodigoConductor->Text);
+
+		List<List<Orden^>^>^ ordenList = gcnew List<List<Orden^>^>();
+
+		List<Viaje^>^ viajenesList = controller::QueryViajesByIdConductor(conductorId);
+
+		for (int i = 0; i < viajenesList->Count; i++) {
+			List<Orden^>^ ordenes = controller::QueryOrdenesByIdViajes(viajenesList[i]->Id);
+			ordenList->Add(ordenes);
+
 		}
+
+
+
+		// Inicializar un diccionario para almacenar la suma de estrellas por mes y el conteo de órdenes por mes
+		Dictionary<int, double>^ sumEstrellasByMonth = gcnew Dictionary<int, double>();
+		Dictionary<int, int>^ countOrdersByMonth = gcnew Dictionary<int, int>();
+
+		// Inicializar los diccionarios para cada mes del año
+		for (int i = 1; i <= 12; i++) {
+			sumEstrellasByMonth[i] = 0.0;
+			countOrdersByMonth[i] = 0;
+		}
+
+		// Calcular la suma de estrellas y el conteo de órdenes por mes
+		for each (List<Orden^> ^ ordenesLista in ordenList) {
+			// Iterar sobre cada orden dentro de la lista actual
+			for each (Orden ^ orden in ordenesLista) {
+				int month;
+				try {
+					month = Convert::ToInt32(orden->Fecha->Substring(3, 2));
+				}
+				catch (...) {
+					try {
+						month = Convert::ToInt32(orden->Fecha->Substring(2, 2));
+					}
+					catch (...) {
+						continue; // Saltar esta orden si no se puede obtener el mes válido
+					}
+				}
+
+
+				if (month >= 1 && month <= 12) {
+					double estrellas = Convert::ToDouble(orden->CalificacionEstrellas);
+					sumEstrellasByMonth[month] += estrellas;
+					countOrdersByMonth[month]++;
+				}
+			}
+		}
+
+		// Calcular el promedio de estrellas por mes
+		Dictionary<int, double>^ averageStarsByMonth = gcnew Dictionary<int, double>();
+		for (int i = 1; i <= 12; i++) {
+			if (countOrdersByMonth[i] > 0) {
+				averageStarsByMonth[i] = sumEstrellasByMonth[i] / countOrdersByMonth[i];
+			}
+			else {
+				averageStarsByMonth[i] = 0.0; // o cualquier otro valor por defecto si no hay órdenes ese mes
+			}
+		}
+
+		// Crear y llenar el gráfico de promedio de estrellas por mes
+		M_EstrellasP->Series->Clear();
+		Series^ series = gcnew Series("Promedio de Estrellas");
+		series->ChartType = SeriesChartType::Column;
+		for (int i = 1; i <= 12; i++) {
+			series->Points->AddXY(i, averageStarsByMonth[i]);
+		}
+		M_EstrellasP->Series->Add(series);
+
+		// Configurar el gráfico para mostrar etiquetas de valores
+		series->IsValueShownAsLabel = true;
+		M_EstrellasP->ChartAreas[0]->AxisX->Title = "Mes";
+		M_EstrellasP->ChartAreas[0]->AxisY->Title = "Promedio de Estrellas";
+		M_EstrellasP->ChartAreas[0]->AxisX->Interval = 1;
+
+		M_EstrellasP->ChartAreas[0]->AxisX->MajorGrid->Enabled = false;
+		M_EstrellasP->ChartAreas[0]->AxisX->MinorGrid->Enabled = false;
+		M_EstrellasP->ChartAreas[0]->AxisY->MajorGrid->Enabled = false;
+		M_EstrellasP->ChartAreas[0]->AxisY->MinorGrid->Enabled = false;
+
+
+
+
+
+
+
+		// Obtener la lista de viajes del conductor
+		List<Viaje^>^ viajecitoList = controller::QueryViajesByIdConductor(conductorId);
+
+		// Inicializar una lista para almacenar todas las órdenes del conductor
+		List<Orden^>^ todasOrdenes = gcnew List<Orden^>();
+
+		// Iterar sobre la lista de viajes y obtener todas las órdenes del conductor
+		for (int i = 0; i < viajecitoList->Count; i++) {
+			List<Orden^>^ ordenes = controller::QueryOrdenesByIdViajes(viajecitoList[i]->Id);
+			todasOrdenes->AddRange(ordenes); // Agregar las órdenes del viaje actual a todasOrdenes
+		}
+
+		// Calcular el promedio de estrellas de todas las órdenes
+		double sumEstrellasTotal = 0.0;
+		int countOrdenesTotal = todasOrdenes->Count;
+
+		for each (Orden ^ orden in todasOrdenes) {
+			double estrellas = Convert::ToDouble(orden->CalificacionEstrellas);
+			sumEstrellasTotal += estrellas;
+		}
+
+		double promedioEstrellasTotal = 0.0;
+		if (countOrdenesTotal > 0) {
+			promedioEstrellasTotal = sumEstrellasTotal / countOrdenesTotal;
+		}
+
+		textestrellas->Text = "" + promedioEstrellasTotal;
+
 	}
-
-	// Crear y llenar el gráfico de promedio de estrellas por mes
-	M_EstrellasP->Series->Clear();
-	Series^ series = gcnew Series("Promedio de Estrellas");
-	series->ChartType = SeriesChartType::Column;
-	for (int i = 1; i <= 12; i++) {
-		series->Points->AddXY(i, averageStarsByMonth[i]);
+	private: System::Void M_Estrellas_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	M_EstrellasP->Series->Add(series);
-
-	// Configurar el gráfico para mostrar etiquetas de valores
-	series->IsValueShownAsLabel = true;
-	M_EstrellasP->ChartAreas[0]->AxisX->Title = "Mes";
-	M_EstrellasP->ChartAreas[0]->AxisY->Title = "Promedio de Estrellas";
-	M_EstrellasP->ChartAreas[0]->AxisX->Interval = 1;
-
-
-
-
-
-
-
-
-
-	// Obtener la lista de viajes del conductor
-	List<Viaje^>^ viajecitoList = controller::QueryViajesByIdConductor(conductorId);
-
-	// Inicializar una lista para almacenar todas las órdenes del conductor
-	List<Orden^>^ todasOrdenes = gcnew List<Orden^>();
-
-	// Iterar sobre la lista de viajes y obtener todas las órdenes del conductor
-	for (int i = 0; i < viajecitoList->Count; i++) {
-		List<Orden^>^ ordenes = controller::QueryOrdenesByIdViajes(viajecitoList[i]->Id);
-		todasOrdenes->AddRange(ordenes); // Agregar las órdenes del viaje actual a todasOrdenes
-	}
-
-	// Calcular el promedio de estrellas de todas las órdenes
-	double sumEstrellasTotal = 0.0;
-	int countOrdenesTotal = todasOrdenes->Count;
-
-	for each (Orden ^ orden in todasOrdenes) {
-		double estrellas = Convert::ToDouble(orden->CalificacionEstrellas);
-		sumEstrellasTotal += estrellas;
-	}
-
-	double promedioEstrellasTotal = 0.0;
-	if (countOrdenesTotal > 0) {
-		promedioEstrellasTotal = sumEstrellasTotal / countOrdenesTotal;
-	}
-
-	textestrellas->Text = "" + promedioEstrellasTotal;
-
-}
-private: System::Void M_Estrellas_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-};
+	};
 
 }
 

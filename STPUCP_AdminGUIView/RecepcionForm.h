@@ -1,4 +1,5 @@
 #pragma once
+#include "Presente.h"
 
 namespace STPUCPAdminGUIView {
 
@@ -56,9 +57,9 @@ namespace STPUCPAdminGUIView {
 
 	private: System::Windows::Forms::Label^ label7;
 	public: System::Windows::Forms::TextBox^ text_viajeId;
-	private: System::Windows::Forms::Label^ label8;
+
 	public:
-	private: System::Windows::Forms::TextBox^ text_estrellas;
+
 	private:
 
 
@@ -66,7 +67,7 @@ namespace STPUCPAdminGUIView {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -90,8 +91,6 @@ namespace STPUCPAdminGUIView {
 			this->text_ordenId = (gcnew System::Windows::Forms::TextBox());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->text_viajeId = (gcnew System::Windows::Forms::TextBox());
-			this->label8 = (gcnew System::Windows::Forms::Label());
-			this->text_estrellas = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBVehiculo))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -236,30 +235,11 @@ namespace STPUCPAdminGUIView {
 			this->text_viajeId->Size = System::Drawing::Size(203, 22);
 			this->text_viajeId->TabIndex = 14;
 			// 
-			// label8
-			// 
-			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(41, 301);
-			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(293, 16);
-			this->label8->TabIndex = 15;
-			this->label8->Text = L"Ingrese la cantida de estrellas para el conductor";
-			// 
-			// text_estrellas
-			// 
-			this->text_estrellas->Location = System::Drawing::Point(383, 298);
-			this->text_estrellas->Name = L"text_estrellas";
-			this->text_estrellas->Size = System::Drawing::Size(203, 22);
-			this->text_estrellas->TabIndex = 16;
-			this->text_estrellas->TextChanged += gcnew System::EventHandler(this, &RecepcionForm::text_estrellas_TextChanged);
-			// 
 			// RecepcionForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(793, 412);
-			this->Controls->Add(this->text_estrellas);
-			this->Controls->Add(this->label8);
 			this->Controls->Add(this->text_viajeId);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->text_ordenId);
@@ -285,48 +265,60 @@ namespace STPUCPAdminGUIView {
 
 		}
 #pragma endregion
-		
+
 	private: System::Void RecepcionForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		
+
 		int idorden_ = Convert::ToInt32(text_ordenId->Text);
 		Orden^ new_orden = controller::QueryOrderById(idorden_);
-		int idViaje = Convert::ToInt32(text_viajeId->Text);
+		int idViaje = new_orden->Id_viaje;
 		Viaje^ viajecito = controller::QueryJourneysById(idViaje);
-	
+
 		int idconductor = viajecito->ConductorId;
 		MessageBox::Show("codigo :" + idconductor);
 		Usuario^ Usuario = controller::QueryUsersById(idconductor);
 		Conductor^ conductor = dynamic_cast<Conductor^>(Usuario);
-		
+
 		textBox1->Text = conductor->PlacaCarro;
 		textBox2->Text = conductor->ColorCarro;
 		textBox4->Text = conductor->Nombre;
 		textBox3->Text = viajecito->Lugar;
 
 	}
-private: System::Void pBVehiculo_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void text_estrellas_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	int idorden = Convert::ToInt32(text_ordenId->Text);
-	int estrellas = Convert::ToInt32(text_estrellas->Text);
-	Orden^ orden = controller::QueryOrdenById(idorden);
-	MessageBox::Show("La lista Orden es : " + idorden);
+	private: System::Void pBVehiculo_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void text_estrellas_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		int idorden = Convert::ToInt32(text_ordenId->Text);
 
-	orden->Id = orden->Id;
-	orden->Id_viaje = orden->Id_viaje;
-	orden->Distrito = orden->Distrito;
-	orden->Precio = orden->Precio;
-	orden->Fecha = orden->Fecha;
-	MessageBox::Show("El número de estrellas es : " + estrellas);
-	orden->CalificacionEstrellas = estrellas;
-	controller::UpdateOrder(orden);
+		Orden^ orden = controller::QueryOrdenById(idorden);
+		MessageBox::Show("La lista Orden es : " + idorden);
 
-	MessageBox::Show("Espero que haya tenido un buen viaje", "Mensaje", MessageBoxButtons::OK, MessageBoxIcon::Information);
 
-	// Cerrar los formularios
-	this->Close(); // Cierra el formulario actual
-}
-};
+		orden->Id = orden->Id;
+		orden->Distrito = orden->Distrito;
+		orden->Precio = orden->Precio;
+		orden->Fecha = orden->Fecha;
+		orden->Id_viaje = orden->Id_viaje;
+		orden->PasajeroId = orden->PasajeroId;
+		orden->OrdenPagada = orden->OrdenPagada;
+		orden->Presente = 1;
+		controller::UpdateOrder(orden);
+
+		Presente^ presente = gcnew Presente();
+		//this->Close();
+		//boletaForm->TopMost = true;
+		presente->textOrden->Text = text_ordenId->Text;
+
+		presente->TopMost = true;
+
+
+
+
+		presente->ShowDialog();
+
+		// Cerrar los formularios
+		 // Cierra el formulario actual
+	}
+	};
 }

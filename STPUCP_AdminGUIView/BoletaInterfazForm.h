@@ -58,6 +58,7 @@ namespace STPUCPAdminGUIView {
     private: System::Windows::Forms::TextBox^ textPrecioActual;
     private: System::Windows::Forms::Label^ txtFecha;
     private: System::Windows::Forms::DateTimePicker^ dateTimePicker1;
+    private: System::Windows::Forms::Button^ button1;
     private:
 
 
@@ -92,6 +93,7 @@ namespace STPUCPAdminGUIView {
             this->textPrecioActual = (gcnew System::Windows::Forms::TextBox());
             this->txtFecha = (gcnew System::Windows::Forms::Label());
             this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
+            this->button1 = (gcnew System::Windows::Forms::Button());
             this->SuspendLayout();
             // 
             // label1
@@ -133,7 +135,7 @@ namespace STPUCPAdminGUIView {
             // 
             // button2
             // 
-            this->button2->Location = System::Drawing::Point(229, 152);
+            this->button2->Location = System::Drawing::Point(414, 145);
             this->button2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->button2->Name = L"button2";
             this->button2->Size = System::Drawing::Size(199, 23);
@@ -257,11 +259,22 @@ namespace STPUCPAdminGUIView {
             this->dateTimePicker1->Size = System::Drawing::Size(264, 22);
             this->dateTimePicker1->TabIndex = 23;
             // 
+            // button1
+            // 
+            this->button1->Location = System::Drawing::Point(227, 145);
+            this->button1->Name = L"button1";
+            this->button1->Size = System::Drawing::Size(127, 23);
+            this->button1->TabIndex = 24;
+            this->button1->Text = L"SÍ";
+            this->button1->UseVisualStyleBackColor = true;
+            this->button1->Click += gcnew System::EventHandler(this, &BoletaInterfazForm::button1_Click_1);
+            // 
             // BoletaInterfazForm
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->ClientSize = System::Drawing::Size(896, 422);
+            this->Controls->Add(this->button1);
             this->Controls->Add(this->dateTimePicker1);
             this->Controls->Add(this->txtFecha);
             this->Controls->Add(this->textPrecioActual);
@@ -337,19 +350,10 @@ namespace STPUCPAdminGUIView {
     }
 
     private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-        // Obtener el viaje por su ID
         Viaje^ viajecito = controller::QueryJourneysById(Convert::ToInt32(text_viajeid->Text));
-
-        // Mostrar el precio original del viaje
         textPrecio->Text = "" + viajecito->PrecioViaje;
-
-        // Establecer el descuento en 0
         textdescuento->Text = "" + 0;
-
-        // Mostrar el precio actual sin descuento
-        textPrecioActual->Text = "" + viajecito->PrecioViaje;
-
-        // Aquí puedes agregar cualquier otra lógica relacionada con el botón "NO"
+        textPrecioActual->Text = "" + (viajecito->PrecioViaje);
         
     }
 
@@ -403,6 +407,34 @@ namespace STPUCPAdminGUIView {
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
     this->Close();
 
+}
+private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+    // Obtener la promoción del usuario si existe
+    Contexto^ contexto = STPUCP_Model::Contexto::ObtenerInstancia();
+    Promocion^ promocion = controller::QueryPromotionsByUsuarioId(contexto->ObtenerIdUsuario());
+
+    // Obtener el viaje por su ID
+    Viaje^ viajecito = controller::QueryJourneysById(Convert::ToInt32(text_viajeid->Text));
+
+    // Mostrar el precio original del viaje
+    textPrecio->Text = "" + viajecito->PrecioViaje;
+
+    // Verificar si hay una promoción aplicable
+    if (promocion != nullptr) {
+        double porcentaje_descuento = promocion->Porcentaje;
+        double descuento = porcentaje_descuento * viajecito->PrecioViaje / 100;
+
+        // Mostrar el descuento aplicado
+        textdescuento->Text = "" + descuento;
+
+        // Mostrar el precio actualizado con descuento
+        textPrecioActual->Text = "" + (viajecito->PrecioViaje - descuento);
+    }
+    else {
+        // Si no hay promoción, mostrar descuento y precio originales
+        textdescuento->Text = "" + 0;
+        textPrecioActual->Text = "" + viajecito->PrecioViaje;
+    }
 }
 };
 }
