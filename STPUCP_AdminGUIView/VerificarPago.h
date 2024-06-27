@@ -1,4 +1,5 @@
 #pragma once
+#include "Presente.h"
 
 namespace STPUCPAdminGUIView {
 
@@ -123,8 +124,18 @@ namespace STPUCPAdminGUIView {
 
 		}
 		else {
-			if (ordencita->OrdenPagada == 0) {
-				MessageBox::Show("EL CONDUCTOR HA RECIBIDO SU PAGO, PROCEDA A ESPERAR");
+			if (ordencita->OrdenPagada == 1) {
+				MessageBox::Show("EL CONDUCTOR HA RECIBIDO SU PAGO, PROCEDA A IR AL VEHICULO A LA HORA ACORDADA Y MARCAR SUS ASISTENCIA");
+
+				Presente^ presente = gcnew Presente();
+				//this->Close();
+				//boletaForm->TopMost = true;
+				presente->textOrden->Text = textIdOrden->Text;
+
+				
+				presente->ShowDialog();
+
+
 			}
 			else {
 				MessageBox::Show("EL CONDUCTOR NO HA RECIBIDO SU PAGO, PROCEDA A HACERLO O SU ORDEN SERÁ ELIMINADA");

@@ -514,7 +514,7 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 
 	// Actualización del IdUltimoViaje del conductor
 	conductor->IdUltimoViaje = id;
-	controller::UpdateUser(conductor);
+	//controller::UpdateUser(conductor);
 
 
 	Viaje^ viajecito = gcnew Viaje();

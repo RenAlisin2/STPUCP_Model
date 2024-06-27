@@ -1,4 +1,5 @@
 #pragma once
+#include "EsperandoAsistencia.h"
 
 namespace STPUCPAdminGUIView {
 
@@ -106,8 +107,9 @@ namespace STPUCPAdminGUIView {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(380, 70);
 			this->button1->TabIndex = 0;
-			this->button1->Text = L"Terminar viaje";
+			this->button1->Text = L"ESPERAR PASAJEROS";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &ESPERANDOPAGO::button1_Click);
 			// 
 			// button2
 			// 
@@ -339,6 +341,16 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 	orden->PasajeroId = orden->PasajeroId;
 	orden->OrdenPagada = 2;
 	controller::UpdateOrder(orden);
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	EsperandoAsistencia^ esperandoAsistencia = gcnew EsperandoAsistencia();
+	//this->Close();
+	//boletaForm->TopMost = true;
+	
+	esperandoAsistencia->textviaje->Text = textViaje->Text;
+	esperandoAsistencia->ShowDialog();
+
+
 }
 };
 }
