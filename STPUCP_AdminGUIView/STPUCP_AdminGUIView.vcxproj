@@ -142,6 +142,9 @@
     <ClInclude Include="ConductorForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="EsperandoAsistencia.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="ESPERANDOPAGO.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -172,6 +175,9 @@
     <ClInclude Include="PasajeroRutaForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Presente.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="PromocionesForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -193,6 +199,9 @@
     <ClInclude Include="ServiciosForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="TerminarViaje.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="UsuariosForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -212,6 +221,7 @@
     <ClCompile Include="BL_PasajerosForm.cpp" />
     <ClCompile Include="BuscarViajesForm.cpp" />
     <ClCompile Include="ConductorForm.cpp" />
+    <ClCompile Include="EsperandoAsistencia.cpp" />
     <ClCompile Include="ESPERANDOPAGO.cpp" />
     <ClCompile Include="HuellaForm.cpp" />
     <ClCompile Include="BoletaInterfazForm.cpp" />
@@ -222,6 +232,7 @@
     <ClCompile Include="OrdenForm.cpp" />
     <ClCompile Include="PasajeroForm.cpp" />
     <ClCompile Include="PasajeroRutaForm.cpp" />
+    <ClCompile Include="Presente.cpp" />
     <ClCompile Include="PromocionesForm.cpp" />
     <ClCompile Include="QuesoyForm.cpp" />
     <ClCompile Include="RecepcionForm.cpp" />
@@ -229,6 +240,7 @@
     <ClCompile Include="RegistroForm.cpp" />
     <ClCompile Include="ServicioDriverForm.cpp" />
     <ClCompile Include="ServiciosForm.cpp" />
+    <ClCompile Include="TerminarViaje.cpp" />
     <ClCompile Include="UsuariosForm.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -268,6 +280,9 @@
       <DependentUpon>ConductorForm.h</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="EsperandoAsistencia.resx">
+      <DependentUpon>EsperandoAsistencia.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ESPERANDOPAGO.resx">
       <DependentUpon>ESPERANDOPAGO.h</DependentUpon>
     </EmbeddedResource>
@@ -297,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PasajeroRutaForm.resx">
       <DependentUpon>PasajeroRutaForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presente.resx">
+      <DependentUpon>Presente.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PromocionesForm.resx">
       <DependentUpon>PromocionesForm.h</DependentUpon>
