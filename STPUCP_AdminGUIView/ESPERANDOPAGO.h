@@ -187,6 +187,7 @@ namespace STPUCPAdminGUIView {
 			// 
 			this->textViaje->Location = System::Drawing::Point(176, 13);
 			this->textViaje->Name = L"textViaje";
+			this->textViaje->ReadOnly = true;
 			this->textViaje->Size = System::Drawing::Size(100, 22);
 			this->textViaje->TabIndex = 3;
 			// 

@@ -1,4 +1,5 @@
 #pragma once
+#include "PasajeroForm.h"
 
 namespace STPUCPAdminGUIView {
 
@@ -154,6 +155,7 @@ namespace STPUCPAdminGUIView {
 			this->empezar->TabIndex = 4;
 			this->empezar->Text = L"EMPEZARVIAJE";
 			this->empezar->UseVisualStyleBackColor = true;
+			this->empezar->Click += gcnew System::EventHandler(this, &EsperandoAsistencia::empezar_Click);
 			// 
 			// EsperandoAsistencia
 			// 
@@ -210,5 +212,14 @@ namespace STPUCPAdminGUIView {
 
 
 	}
+private: System::Void empezar_Click(System::Object^ sender, System::EventArgs^ e) {
+	PasajeroForm^ esperandoAsistencia = gcnew PasajeroForm();
+	
+	esperandoAsistencia->TopMost = true;
+
+	
+	esperandoAsistencia->ShowDialog();
+
+}
 };
 }

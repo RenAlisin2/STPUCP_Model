@@ -487,7 +487,10 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 
 	MessageBox::Show(" Lista Usuario: " + manito);
 	
-	/*Conductor^ conductor = dynamic_cast<Conductor^>(manito);
+	Conductor^ conductor = dynamic_cast<Conductor^>(manito);
+
+	STPUCP_Model::Usuario^ nuevo_usuario = gcnew STPUCP_Model::Usuario();
+	/*
 	conductor->ModeloCarro = conductor->ModeloCarro;
 	conductor->PlacaCarro = conductor->PlacaCarro;
 	conductor->ColorCarro = conductor->ColorCarro;
@@ -502,11 +505,27 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 	manito->Rol = manito->Rol;
 	manito->Correo = manito->Correo;
 	manito->DNI = manito->DNI;
-	manito->NumeroTelefono = manito->NumeroTelefono;
+	manito->NumeroTelefono = manito->NumeroTelefono;*/
 
-	manito->IdUltimoViaje = id;
-	controller::UpdateUser(manito);*/
-	Conductor^ conductor = dynamic_cast<Conductor^>(manito);
+
+
+
+
+
+
+	nuevo_usuario->Id = idConductor * 10;
+	nuevo_usuario->IdUltimoViaje = id;
+	nuevo_usuario->ApellidoPaterno = "a"; // Asumiendo que esto no es nulo
+	nuevo_usuario->ApellidoMaterno = "a"; // Asumiendo que esto no es nulo
+	nuevo_usuario->CodigoPUCP = idConductor * 10; // Asumiendo que esto no es nulo
+	nuevo_usuario->NumeroTelefono = 1; // Asumiendo que esto no es nulo
+	nuevo_usuario->Correo = "a"; // Asumiendo que esto no es nulo
+	nuevo_usuario->Contraseña = "a"; // Asumiendo que esto no es nulo
+	nuevo_usuario->Nombre = "b"; // Asumiendo que esto no es nulo
+	nuevo_usuario->Rol = "Pasajero"; // Asumiendo que esto no es nulo
+	nuevo_usuario->DNI = 1; // Asumiendo que esto no es nulo
+	controller::AddUser(nuevo_usuario);
+	
 	if (conductor == nullptr) {
 		MessageBox::Show("El usuario no es un conductor válido.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		return;

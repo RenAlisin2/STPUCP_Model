@@ -315,59 +315,60 @@ void STPUCPPersistance::Persistance::UpdateUser(Usuario^ usuario) {
     SqlConnection^ conn;
     SqlCommand^ cmd;
 
-    try {
-        conn = GetConnection();
-        String^ sqlStr = "dbo.usp_UpdateUsuario";
-        cmd = gcnew SqlCommand(sqlStr, conn);
-        cmd->CommandType = System::Data::CommandType::StoredProcedure;
-        cmd->Parameters->Add("@Id", System::Data::SqlDbType::Int)->Value = usuario->Id;
-        cmd->Parameters->Add("@ApellidoPaterno", System::Data::SqlDbType::VarChar, 100)->Value = usuario->ApellidoPaterno;
-        cmd->Parameters->Add("@ApellidoMaterno", System::Data::SqlDbType::VarChar, 100)->Value = usuario->ApellidoMaterno;
-        cmd->Parameters->Add("@CodigoPUCP", System::Data::SqlDbType::Int)->Value = usuario->CodigoPUCP;
-        cmd->Parameters->Add("@NumeroTelefono", System::Data::SqlDbType::Int)->Value = usuario->NumeroTelefono;
-        cmd->Parameters->Add("@Correo", System::Data::SqlDbType::VarChar, 100)->Value = usuario->Correo;
-        cmd->Parameters->Add("@Contrasena", System::Data::SqlDbType::VarChar, 100)->Value = usuario->Contraseña;
-        cmd->Parameters->Add("@Nombre", System::Data::SqlDbType::VarChar, 100)->Value = usuario->Nombre;
-        cmd->Parameters->Add("@Rol", System::Data::SqlDbType::VarChar, 50)->Value = usuario->Rol;
-        cmd->Parameters->Add("@DNI", System::Data::SqlDbType::Int)->Value = usuario->DNI;
-        cmd->Parameters->Add("@IdUltimaOrden", System::Data::SqlDbType::Int)->Value = usuario->IdUltimaOrden;
-        cmd->Parameters->Add("@IdUltimoViaje", System::Data::SqlDbType::Int)->Value = usuario->IdUltimoViaje;
+    //try {
+    conn = GetConnection();
+    String^ sqlStr = "dbo.usp_UpdateUsuario";
+    cmd = gcnew SqlCommand(sqlStr, conn);
+    cmd->CommandType = System::Data::CommandType::StoredProcedure;
+    cmd->Parameters->Add("@Id", System::Data::SqlDbType::Int)->Value = usuario->Id;
+    cmd->Parameters->Add("@ApellidoPaterno", System::Data::SqlDbType::VarChar, 100)->Value = usuario->ApellidoPaterno;
+    cmd->Parameters->Add("@ApellidoMaterno", System::Data::SqlDbType::VarChar, 100)->Value = usuario->ApellidoMaterno;
+    cmd->Parameters->Add("@CodigoPUCP", System::Data::SqlDbType::Int)->Value = usuario->CodigoPUCP;
+    cmd->Parameters->Add("@NumeroTelefono", System::Data::SqlDbType::Int)->Value = usuario->NumeroTelefono;
+    cmd->Parameters->Add("@Correo", System::Data::SqlDbType::VarChar, 100)->Value = usuario->Correo;
+    cmd->Parameters->Add("@Contrasena", System::Data::SqlDbType::VarChar, 100)->Value = usuario->Contraseña;
+    cmd->Parameters->Add("@Nombre", System::Data::SqlDbType::VarChar, 100)->Value = usuario->Nombre;
+    cmd->Parameters->Add("@Rol", System::Data::SqlDbType::VarChar, 50)->Value = usuario->Rol;
+    cmd->Parameters->Add("@DNI", System::Data::SqlDbType::Int)->Value = usuario->DNI;
+    //cmd->Parameters->Add("@IdUltimaOrden", System::Data::SqlDbType::Int)->Value = usuario->IdUltimaOrden;
+    //cmd->Parameters->Add("@IdUltimoViaje", System::Data::SqlDbType::Int)->Value = usuario->IdUltimoViaje;
 
-        if (dynamic_cast<Pasajero^>(usuario)) {
-            Pasajero^ pasajero = (Pasajero^)usuario;
-            cmd->Parameters->Add("@CantServiciosTomados", System::Data::SqlDbType::Int)->Value = pasajero->CantServiciosTomados;
-            cmd->Parameters->Add("@ViajesId", System::Data::SqlDbType::Int)->Value = pasajero->ViajesId;
-            cmd->Parameters->Add("@Huella", System::Data::SqlDbType::Int)->Value = pasajero->Huella;
-        }
-
-        if (dynamic_cast<Administrador^>(usuario)) {
-            Administrador^ administrador = (Administrador^)usuario;
-        }
-
-        if (dynamic_cast<Conductor^>(usuario)) {
-            Conductor^ conductor = (Conductor^)usuario;
-            cmd->Parameters->Add("@ModeloCarro", System::Data::SqlDbType::VarChar, 100)->Value = conductor->ModeloCarro;
-            cmd->Parameters->Add("@PlacaCarro", System::Data::SqlDbType::VarChar, 50)->Value = conductor->PlacaCarro;
-            cmd->Parameters->Add("@ColorCarro", System::Data::SqlDbType::VarChar, 50)->Value = conductor->ColorCarro;
-            cmd->Parameters->Add("@CantAsientos", System::Data::SqlDbType::Int)->Value = conductor->CantAsientos;
-            cmd->Parameters->Add("@FotoConductor", System::Data::SqlDbType::VarBinary)->Value = conductor->FotoConductor;
-            cmd->Parameters->Add("@FotoCarro", System::Data::SqlDbType::VarBinary)->Value = conductor->FotoCarro;
-            cmd->Parameters->Add("@BreveteConfirmacion", System::Data::SqlDbType::Bit)->Value = conductor->BreveteConfirmacion;
-            cmd->Parameters->Add("@HuellaDactilar", System::Data::SqlDbType::Int)->Value = conductor->HuellaDactilar;
-            cmd->Parameters->Add("@Calificacion", System::Data::SqlDbType::Decimal)->Value = conductor->Calificacion;
-            cmd->Parameters->Add("@CantServiciosRealizados", System::Data::SqlDbType::Int)->Value = conductor->CantServiciosRealizados;
-            cmd->Parameters->Add("@FotoYape", System::Data::SqlDbType::VarBinary)->Value = conductor->FotoYape;
-        }
-
-        cmd->Prepare();
-        cmd->ExecuteNonQuery();
+    if (dynamic_cast<Pasajero^>(usuario)) {
+        Pasajero^ pasajero = (Pasajero^)usuario;
+        cmd->Parameters->Add("@CantServiciosTomados", System::Data::SqlDbType::Int)->Value = pasajero->CantServiciosTomados;
+        cmd->Parameters->Add("@ViajesId", System::Data::SqlDbType::Int)->Value = pasajero->ViajesId;
+        cmd->Parameters->Add("@Huella", System::Data::SqlDbType::Int)->Value = pasajero->Huella;
     }
-    catch (Exception^ ex) {
+
+    if (dynamic_cast<Administrador^>(usuario)) {
+        Administrador^ administrador = (Administrador^)usuario;
+    }
+
+    if (dynamic_cast<Conductor^>(usuario)) {
+        Conductor^ conductor = (Conductor^)usuario;
+        cmd->Parameters->Add("@ModeloCarro", System::Data::SqlDbType::VarChar, 100)->Value = conductor->ModeloCarro;
+        cmd->Parameters->Add("@PlacaCarro", System::Data::SqlDbType::VarChar, 50)->Value = conductor->PlacaCarro;
+        cmd->Parameters->Add("@ColorCarro", System::Data::SqlDbType::VarChar, 50)->Value = conductor->ColorCarro;
+        cmd->Parameters->Add("@CantAsientos", System::Data::SqlDbType::Int)->Value = conductor->CantAsientos;
+        cmd->Parameters->Add("@FotoConductor", System::Data::SqlDbType::VarBinary)->Value = conductor->FotoConductor;
+        cmd->Parameters->Add("@FotoCarro", System::Data::SqlDbType::VarBinary)->Value = conductor->FotoCarro;
+        cmd->Parameters->Add("@BreveteConfirmacion", System::Data::SqlDbType::Bit)->Value = conductor->BreveteConfirmacion;
+        cmd->Parameters->Add("@HuellaDactilar", System::Data::SqlDbType::Int)->Value = conductor->HuellaDactilar;
+        cmd->Parameters->Add("@Calificacion", System::Data::SqlDbType::Decimal)->Value = conductor->Calificacion;
+        cmd->Parameters->Add("@CantServiciosRealizados", System::Data::SqlDbType::Int)->Value = conductor->CantServiciosRealizados;
+        cmd->Parameters->Add("@FotoYape", System::Data::SqlDbType::VarBinary)->Value = conductor->FotoYape;
+
+    }
+
+    cmd->Prepare();
+    cmd->ExecuteNonQuery();
+//}
+    /*catch (Exception^ ex) {
         throw ex;
     }
     finally {
         if (conn != nullptr) conn->Close();
-    }
+    }*/
 }
 
 
