@@ -38,9 +38,9 @@ namespace STPUCPAdminGUIView {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::PictureBox^ pictureBox1;
+
 	protected:
-	private: System::Windows::Forms::PictureBox^ pictureBox2;
+
 	private: System::Windows::Forms::DataVisualization::Charting::Chart^ ViajesMes;
 	private: System::Windows::Forms::DataVisualization::Charting::Chart^ OrdeenesMes;
 
@@ -63,31 +63,11 @@ namespace STPUCPAdminGUIView {
 			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
 			System::Windows::Forms::DataVisualization::Charting::Legend^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->ViajesMes = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->OrdeenesMes = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ViajesMes))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->OrdeenesMes))->BeginInit();
 			this->SuspendLayout();
-			// 
-			// pictureBox1
-			// 
-			this->pictureBox1->Location = System::Drawing::Point(58, 73);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(402, 286);
-			this->pictureBox1->TabIndex = 0;
-			this->pictureBox1->TabStop = false;
-			// 
-			// pictureBox2
-			// 
-			this->pictureBox2->Location = System::Drawing::Point(615, 73);
-			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(419, 286);
-			this->pictureBox2->TabIndex = 1;
-			this->pictureBox2->TabStop = false;
 			// 
 			// ViajesMes
 			// 
@@ -95,13 +75,14 @@ namespace STPUCPAdminGUIView {
 			this->ViajesMes->ChartAreas->Add(chartArea1);
 			legend1->Name = L"Legend1";
 			this->ViajesMes->Legends->Add(legend1);
-			this->ViajesMes->Location = System::Drawing::Point(75, 73);
+			this->ViajesMes->Location = System::Drawing::Point(396, 55);
+			this->ViajesMes->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->ViajesMes->Name = L"ViajesMes";
 			series1->ChartArea = L"ChartArea1";
 			series1->Legend = L"Legend1";
 			series1->Name = L"Series1";
 			this->ViajesMes->Series->Add(series1);
-			this->ViajesMes->Size = System::Drawing::Size(385, 286);
+			this->ViajesMes->Size = System::Drawing::Size(353, 234);
 			this->ViajesMes->TabIndex = 2;
 			this->ViajesMes->Text = L"chart1";
 			// 
@@ -111,30 +92,29 @@ namespace STPUCPAdminGUIView {
 			this->OrdeenesMes->ChartAreas->Add(chartArea2);
 			legend2->Name = L"Legend1";
 			this->OrdeenesMes->Legends->Add(legend2);
-			this->OrdeenesMes->Location = System::Drawing::Point(626, 73);
+			this->OrdeenesMes->Location = System::Drawing::Point(23, 55);
+			this->OrdeenesMes->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->OrdeenesMes->Name = L"OrdeenesMes";
 			series2->ChartArea = L"ChartArea1";
 			series2->Legend = L"Legend1";
 			series2->Name = L"Series1";
 			this->OrdeenesMes->Series->Add(series2);
-			this->OrdeenesMes->Size = System::Drawing::Size(385, 286);
+			this->OrdeenesMes->Size = System::Drawing::Size(353, 234);
 			this->OrdeenesMes->TabIndex = 3;
 			this->OrdeenesMes->Text = L"chart2";
 			// 
 			// MetricasConductorh
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1194, 502);
+			this->ClientSize = System::Drawing::Size(780, 322);
 			this->Controls->Add(this->OrdeenesMes);
 			this->Controls->Add(this->ViajesMes);
-			this->Controls->Add(this->pictureBox2);
-			this->Controls->Add(this->pictureBox1);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"MetricasConductorh";
-			this->Text = L"MetricasConductorh";
+			this->ShowIcon = false;
+			this->Text = L"Metricas del conductor";
 			this->Load += gcnew System::EventHandler(this, &MetricasConductorh::MetricasConductorh_Load);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ViajesMes))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->OrdeenesMes))->EndInit();
 			this->ResumeLayout(false);

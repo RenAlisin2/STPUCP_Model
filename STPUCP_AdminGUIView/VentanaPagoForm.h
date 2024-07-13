@@ -89,21 +89,19 @@ namespace STPUCPAdminGUIView {
 			// 
 			// pbYape
 			// 
-			this->pbYape->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->pbYape->Location = System::Drawing::Point(31, 28);
-			this->pbYape->Margin = System::Windows::Forms::Padding(4);
+			this->pbYape->BackColor = System::Drawing::SystemColors::Control;
+			this->pbYape->Location = System::Drawing::Point(23, 56);
 			this->pbYape->Name = L"pbYape";
-			this->pbYape->Size = System::Drawing::Size(380, 272);
+			this->pbYape->Size = System::Drawing::Size(285, 221);
 			this->pbYape->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pbYape->TabIndex = 0;
 			this->pbYape->TabStop = false;
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(31, 408);
-			this->button1->Margin = System::Windows::Forms::Padding(4);
+			this->button1->Location = System::Drawing::Point(23, 362);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(449, 63);
+			this->button1->Size = System::Drawing::Size(285, 51);
 			this->button1->TabIndex = 1;
 			this->button1->Text = L"Confirmar pago";
 			this->button1->UseVisualStyleBackColor = true;
@@ -112,66 +110,74 @@ namespace STPUCPAdminGUIView {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(445, 127);
+			this->label1->Location = System::Drawing::Point(161, 20);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(58, 16);
+			this->label1->Size = System::Drawing::Size(72, 13);
 			this->label1->TabIndex = 2;
-			this->label1->Text = L"Id Orden";
+			this->label1->Text = L"Id de la orden";
 			// 
 			// text_orden
 			// 
-			this->text_orden->Location = System::Drawing::Point(525, 127);
+			this->text_orden->Location = System::Drawing::Point(237, 17);
+			this->text_orden->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->text_orden->Name = L"text_orden";
 			this->text_orden->ReadOnly = true;
-			this->text_orden->Size = System::Drawing::Size(100, 22);
+			this->text_orden->Size = System::Drawing::Size(71, 20);
 			this->text_orden->TabIndex = 3;
+			this->text_orden->TextChanged += gcnew System::EventHandler(this, &VentanaPagoForm::text_orden_TextChanged);
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(445, 70);
+			this->label2->Location = System::Drawing::Point(20, 20);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(52, 16);
+			this->label2->Size = System::Drawing::Size(58, 13);
 			this->label2->TabIndex = 4;
-			this->label2->Text = L"Id Viaje";
+			this->label2->Text = L"Id del viaje";
 			// 
 			// text_viaje
 			// 
-			this->text_viaje->Location = System::Drawing::Point(525, 64);
+			this->text_viaje->Location = System::Drawing::Point(82, 17);
+			this->text_viaje->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->text_viaje->Name = L"text_viaje";
 			this->text_viaje->ReadOnly = true;
-			this->text_viaje->Size = System::Drawing::Size(100, 22);
+			this->text_viaje->Size = System::Drawing::Size(47, 20);
 			this->text_viaje->TabIndex = 5;
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(28, 347);
+			this->label3->Location = System::Drawing::Point(20, 299);
+			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(97, 16);
+			this->label3->Size = System::Drawing::Size(79, 13);
 			this->label3->TabIndex = 6;
-			this->label3->Text = L"PRECIO VIAJE";
+			this->label3->Text = L"Precio del viaje";
 			// 
 			// textPrecio
 			// 
-			this->textPrecio->Location = System::Drawing::Point(162, 341);
+			this->textPrecio->Location = System::Drawing::Point(103, 296);
+			this->textPrecio->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textPrecio->Name = L"textPrecio";
 			this->textPrecio->ReadOnly = true;
-			this->textPrecio->Size = System::Drawing::Size(100, 22);
+			this->textPrecio->Size = System::Drawing::Size(205, 20);
 			this->textPrecio->TabIndex = 7;
 			// 
 			// Fechita
 			// 
-			this->Fechita->Location = System::Drawing::Point(448, 196);
+			this->Fechita->Location = System::Drawing::Point(23, 328);
+			this->Fechita->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Fechita->Name = L"Fechita";
-			this->Fechita->Size = System::Drawing::Size(14, 22);
+			this->Fechita->Size = System::Drawing::Size(285, 20);
 			this->Fechita->TabIndex = 8;
 			// 
 			// VentanaPagoForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(669, 496);
+			this->ClientSize = System::Drawing::Size(328, 431);
 			this->Controls->Add(this->Fechita);
 			this->Controls->Add(this->textPrecio);
 			this->Controls->Add(this->label3);
@@ -181,8 +187,9 @@ namespace STPUCPAdminGUIView {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->pbYape);
-			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"VentanaPagoForm";
+			this->ShowIcon = false;
 			this->Text = L"Ventana de pago";
 			this->Load += gcnew System::EventHandler(this, &VentanaPagoForm::VentanaPagoForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbYape))->EndInit();
@@ -250,5 +257,7 @@ namespace STPUCPAdminGUIView {
 		}
 			
 	}
+private: System::Void text_orden_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

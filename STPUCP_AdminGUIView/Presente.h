@@ -74,24 +74,27 @@ namespace STPUCPAdminGUIView {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(36, 48);
+			this->label1->Location = System::Drawing::Point(17, 17);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(55, 16);
+			this->label1->Size = System::Drawing::Size(74, 13);
 			this->label1->TabIndex = 0;
-			this->label1->Text = L"IdOrden";
+			this->label1->Text = L"Id de la Orden";
 			// 
 			// textOrden
 			// 
-			this->textOrden->Location = System::Drawing::Point(125, 41);
+			this->textOrden->Location = System::Drawing::Point(95, 14);
+			this->textOrden->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textOrden->Name = L"textOrden";
-			this->textOrden->Size = System::Drawing::Size(100, 22);
+			this->textOrden->Size = System::Drawing::Size(76, 20);
 			this->textOrden->TabIndex = 1;
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(135, 152);
+			this->button1->Location = System::Drawing::Point(25, 96);
+			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(143, 56);
+			this->button1->Size = System::Drawing::Size(318, 33);
 			this->button1->TabIndex = 2;
 			this->button1->Text = L"VIAJE TERMINADO";
 			this->button1->UseVisualStyleBackColor = true;
@@ -101,41 +104,46 @@ namespace STPUCPAdminGUIView {
 			// 
 			this->label2->AutoSize = true;
 			this->label2->BackColor = System::Drawing::SystemColors::Info;
-			this->label2->Location = System::Drawing::Point(36, 75);
+			this->label2->Location = System::Drawing::Point(17, 42);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(401, 16);
+			this->label2->Size = System::Drawing::Size(326, 13);
 			this->label2->TabIndex = 3;
-			this->label2->Text = L"Presionar el botón cuando se encuentra ene el punto de encuentro";
+			this->label2->Text = L"**Presione el botón cuando se encuentre en  el punto de encuentro";
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(36, 112);
+			this->label3->Location = System::Drawing::Point(22, 66);
+			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(85, 16);
+			this->label3->Size = System::Drawing::Size(46, 13);
 			this->label3->TabIndex = 4;
-			this->label3->Text = L"ESTRELLAS";
+			this->label3->Text = L"Estrellas";
 			// 
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(5) { L"1", L"2", L"3", L"4", L"5" });
-			this->comboBox1->Location = System::Drawing::Point(135, 112);
+			this->comboBox1->Location = System::Drawing::Point(95, 63);
+			this->comboBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(121, 24);
+			this->comboBox1->Size = System::Drawing::Size(103, 21);
 			this->comboBox1->TabIndex = 5;
 			// 
 			// Presente
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(503, 245);
+			this->ClientSize = System::Drawing::Size(362, 143);
+			this->ControlBox = false;
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->textOrden);
 			this->Controls->Add(this->label1);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"Presente";
 			this->Text = L"Presente";
 			this->Load += gcnew System::EventHandler(this, &Presente::Presente_Load);

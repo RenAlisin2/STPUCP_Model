@@ -61,9 +61,10 @@ namespace STPUCPAdminGUIView {
             // 
             // button1
             // 
-            this->button1->Location = System::Drawing::Point(153, 149);
+            this->button1->Location = System::Drawing::Point(11, 154);
+            this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->button1->Name = L"button1";
-            this->button1->Size = System::Drawing::Size(199, 80);
+            this->button1->Size = System::Drawing::Size(206, 30);
             this->button1->TabIndex = 0;
             this->button1->Text = L"TERMINAR VIAJE";
             this->button1->UseVisualStyleBackColor = true;
@@ -72,22 +73,25 @@ namespace STPUCPAdminGUIView {
             // label1
             // 
             this->label1->AutoSize = true;
-            this->label1->BackColor = System::Drawing::SystemColors::ActiveCaption;
-            this->label1->Location = System::Drawing::Point(150, 89);
+            this->label1->BackColor = System::Drawing::Color::Yellow;
+            this->label1->Location = System::Drawing::Point(53, 9);
+            this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->label1->Name = L"label1";
-            this->label1->Size = System::Drawing::Size(137, 16);
+            this->label1->Size = System::Drawing::Size(103, 13);
             this->label1->TabIndex = 1;
-            this->label1->Text = L"DISFRUTE SU VIAJE";
+            this->label1->Text = L"Disfruten de su viaje";
             // 
             // PasajeroForm
             // 
-            this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+            this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-            this->ClientSize = System::Drawing::Size(625, 278);
+            this->ClientSize = System::Drawing::Size(228, 195);
             this->Controls->Add(this->label1);
             this->Controls->Add(this->button1);
+            this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->Name = L"PasajeroForm";
-            this->Text = L"ELIGE TU DESTINO";
+            this->ShowIcon = false;
+            this->Text = L"Comienza el viaje";
             this->ResumeLayout(false);
             this->PerformLayout();
 

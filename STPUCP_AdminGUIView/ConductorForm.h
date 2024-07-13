@@ -75,10 +75,10 @@ namespace STPUCPAdminGUIView {
 
 
 
-	public: System::Windows::Forms::TextBox^ txtConductorID;
+
 	private:
 
-	private: System::Windows::Forms::Label^ label8;
+
 	private: System::Windows::Forms::Label^ label9;
 	private: System::Windows::Forms::TextBox^ txtUltimoparadero;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ID;
@@ -139,8 +139,6 @@ namespace STPUCPAdminGUIView {
 			this->txtLugar = (gcnew System::Windows::Forms::TextBox());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->txtConductorID = (gcnew System::Windows::Forms::TextBox());
-			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->txtUltimoparadero = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_VIAJE))->BeginInit();
@@ -161,7 +159,7 @@ namespace STPUCPAdminGUIView {
 			this->dgv_VIAJE->RowHeadersVisible = false;
 			this->dgv_VIAJE->RowHeadersWidth = 51;
 			this->dgv_VIAJE->RowTemplate->Height = 24;
-			this->dgv_VIAJE->Size = System::Drawing::Size(751, 132);
+			this->dgv_VIAJE->Size = System::Drawing::Size(568, 132);
 			this->dgv_VIAJE->TabIndex = 33;
 			this->dgv_VIAJE->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ConductorForm::dgv_VIAJE_CellContentClick);
 			// 
@@ -217,10 +215,10 @@ namespace STPUCPAdminGUIView {
 			// 
 			// btn_add
 			// 
-			this->btn_add->Location = System::Drawing::Point(405, 75);
+			this->btn_add->Location = System::Drawing::Point(405, 46);
 			this->btn_add->Margin = System::Windows::Forms::Padding(2);
 			this->btn_add->Name = L"btn_add";
-			this->btn_add->Size = System::Drawing::Size(125, 44);
+			this->btn_add->Size = System::Drawing::Size(125, 27);
 			this->btn_add->TabIndex = 32;
 			this->btn_add->Text = L"AÑADIR";
 			this->btn_add->UseVisualStyleBackColor = true;
@@ -228,10 +226,10 @@ namespace STPUCPAdminGUIView {
 			// 
 			// btn_modificar
 			// 
-			this->btn_modificar->Location = System::Drawing::Point(405, 130);
+			this->btn_modificar->Location = System::Drawing::Point(405, 80);
 			this->btn_modificar->Margin = System::Windows::Forms::Padding(2);
 			this->btn_modificar->Name = L"btn_modificar";
-			this->btn_modificar->Size = System::Drawing::Size(125, 42);
+			this->btn_modificar->Size = System::Drawing::Size(125, 27);
 			this->btn_modificar->TabIndex = 31;
 			this->btn_modificar->Text = L"MODIFICAR";
 			this->btn_modificar->UseVisualStyleBackColor = true;
@@ -239,10 +237,10 @@ namespace STPUCPAdminGUIView {
 			// 
 			// btn_eliminar
 			// 
-			this->btn_eliminar->Location = System::Drawing::Point(405, 183);
+			this->btn_eliminar->Location = System::Drawing::Point(405, 116);
 			this->btn_eliminar->Margin = System::Windows::Forms::Padding(2);
 			this->btn_eliminar->Name = L"btn_eliminar";
-			this->btn_eliminar->Size = System::Drawing::Size(125, 49);
+			this->btn_eliminar->Size = System::Drawing::Size(125, 30);
 			this->btn_eliminar->TabIndex = 30;
 			this->btn_eliminar->Text = L"ELIMINAR";
 			this->btn_eliminar->UseVisualStyleBackColor = true;
@@ -264,9 +262,9 @@ namespace STPUCPAdminGUIView {
 			this->label5->Location = System::Drawing::Point(11, 106);
 			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(122, 13);
+			this->label5->Size = System::Drawing::Size(195, 13);
 			this->label5->TabIndex = 26;
-			this->label5->Text = L"Ingrese fecha de partida";
+			this->label5->Text = L"Ingrese fecha de partida: (Ej: 12/05/24)";
 			// 
 			// label4
 			// 
@@ -295,9 +293,9 @@ namespace STPUCPAdminGUIView {
 			this->label2->Location = System::Drawing::Point(11, 78);
 			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(74, 13);
+			this->label2->Size = System::Drawing::Size(95, 13);
 			this->label2->TabIndex = 19;
-			this->label2->Text = L"Ingrese costo:";
+			this->label2->Text = L"Ingrese costo: (S/)";
 			// 
 			// label1
 			// 
@@ -312,7 +310,7 @@ namespace STPUCPAdminGUIView {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(582, 80);
+			this->button1->Location = System::Drawing::Point(405, 160);
 			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(125, 64);
@@ -323,63 +321,62 @@ namespace STPUCPAdminGUIView {
 			// 
 			// txtID
 			// 
-			this->txtID->Location = System::Drawing::Point(194, 18);
+			this->txtID->Location = System::Drawing::Point(76, 18);
 			this->txtID->Name = L"txtID";
 			this->txtID->ReadOnly = true;
-			this->txtID->Size = System::Drawing::Size(57, 20);
+			this->txtID->Size = System::Drawing::Size(48, 20);
 			this->txtID->TabIndex = 34;
 			// 
 			// txtHoraPartida
 			// 
-			this->txtHoraPartida->Location = System::Drawing::Point(194, 46);
+			this->txtHoraPartida->Location = System::Drawing::Point(221, 46);
 			this->txtHoraPartida->Name = L"txtHoraPartida";
-			this->txtHoraPartida->Size = System::Drawing::Size(168, 20);
+			this->txtHoraPartida->Size = System::Drawing::Size(141, 20);
 			this->txtHoraPartida->TabIndex = 35;
 			// 
 			// txtCosto
 			// 
-			this->txtCosto->Location = System::Drawing::Point(194, 75);
+			this->txtCosto->Location = System::Drawing::Point(221, 75);
 			this->txtCosto->Name = L"txtCosto";
-			this->txtCosto->Size = System::Drawing::Size(168, 20);
+			this->txtCosto->Size = System::Drawing::Size(141, 20);
 			this->txtCosto->TabIndex = 36;
 			// 
 			// txtFecha
 			// 
-			this->txtFecha->Location = System::Drawing::Point(194, 103);
+			this->txtFecha->Location = System::Drawing::Point(221, 103);
 			this->txtFecha->Name = L"txtFecha";
-			this->txtFecha->Size = System::Drawing::Size(168, 20);
+			this->txtFecha->Size = System::Drawing::Size(141, 20);
 			this->txtFecha->TabIndex = 37;
 			// 
 			// txtAsientos
 			// 
-			this->txtAsientos->Location = System::Drawing::Point(194, 183);
+			this->txtAsientos->Location = System::Drawing::Point(221, 183);
 			this->txtAsientos->Name = L"txtAsientos";
-			this->txtAsientos->Size = System::Drawing::Size(168, 20);
+			this->txtAsientos->Size = System::Drawing::Size(141, 20);
 			this->txtAsientos->TabIndex = 39;
 			// 
 			// txtLugar
 			// 
-			this->txtLugar->Location = System::Drawing::Point(194, 130);
+			this->txtLugar->Location = System::Drawing::Point(221, 130);
 			this->txtLugar->Name = L"txtLugar";
-			this->txtLugar->Size = System::Drawing::Size(168, 20);
+			this->txtLugar->Size = System::Drawing::Size(141, 20);
 			this->txtLugar->TabIndex = 38;
 			// 
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(83) {
-				L"Ancón", L"", L"Ate", L"", L"Barranco", L"", L"Breña",
-					L"", L"Carabayllo", L"", L"Chaclacayo", L"", L"Chorrillos", L"", L"Cieneguilla", L"", L"Comas", L"", L"El Agustino", L"", L"Independencia",
-					L"", L"Jesús María", L"", L"La Molina", L"", L"La Victoria", L"", L"Lince", L"", L"Los Olivos", L"", L"Lurigancho", L"", L"Lurín",
-					L"", L"Magdalena del Mar", L"", L"Miraflores", L"", L"Pachacámac", L"", L"Pucusana", L"", L"Pueblo Libre", L"", L"Puente Piedra",
-					L"", L"Punta Hermosa", L"", L"Punta Negra", L"", L"Rímac", L"", L"San Bartolo", L"", L"San Borja", L"", L"San Isidro", L"", L"San Juan de Lurigancho",
-					L"", L"San Juan de Miraflores", L"", L"San Luis", L"", L"San Martín de Porres", L"", L"San Miguel", L"", L"Santa Anita", L"",
-					L"Santa María del Mar", L"", L"Santa Rosa", L"", L"Santiago de Surco", L"", L"Surquillo", L"", L"Villa El Salvador", L"", L"Villa María del Triunfo"
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(42) {
+				L"Ancón", L"Ate", L"Barranco", L"Breña", L"Carabayllo",
+					L"Chaclacayo", L"Chorrillos", L"Cieneguilla", L"Comas", L"El Agustino", L"Independencia", L"Jesús María", L"La Molina", L"La Victoria",
+					L"Lince", L"Los Olivos", L"Lurigancho", L"Lurín", L"Magdalena del Mar", L"Miraflores", L"Pachacámac", L"Pucusana", L"Pueblo Libre",
+					L"Puente Piedra", L"Punta Hermosa", L"Punta Negra", L"Rímac", L"San Bartolo", L"San Borja", L"San Isidro", L"San Juan de Lurigancho",
+					L"San Juan de Miraflores", L"San Luis", L"San Martín de Porres", L"San Miguel", L"Santa Anita", L"Santa María del Mar", L"Santa Rosa",
+					L"Santiago de Surco", L"Surquillo", L"Villa El Salvador", L"Villa María del Triunfo"
 			});
-			this->comboBox1->Location = System::Drawing::Point(194, 211);
+			this->comboBox1->Location = System::Drawing::Point(221, 211);
 			this->comboBox1->Margin = System::Windows::Forms::Padding(2);
 			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(168, 21);
+			this->comboBox1->Size = System::Drawing::Size(141, 21);
 			this->comboBox1->TabIndex = 40;
 			// 
 			// label7
@@ -392,26 +389,6 @@ namespace STPUCPAdminGUIView {
 			this->label7->TabIndex = 42;
 			this->label7->Text = L"Ingrese distrito meta:";
 			// 
-			// txtConductorID
-			// 
-			this->txtConductorID->BackColor = System::Drawing::SystemColors::InactiveCaption;
-			this->txtConductorID->ForeColor = System::Drawing::SystemColors::HotTrack;
-			this->txtConductorID->Location = System::Drawing::Point(582, 41);
-			this->txtConductorID->Name = L"txtConductorID";
-			this->txtConductorID->ReadOnly = true;
-			this->txtConductorID->Size = System::Drawing::Size(130, 20);
-			this->txtConductorID->TabIndex = 43;
-			// 
-			// label8
-			// 
-			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(578, 25);
-			this->label8->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(59, 13);
-			this->label8->TabIndex = 44;
-			this->label8->Text = L"USUARIO:";
-			// 
 			// label9
 			// 
 			this->label9->AutoSize = true;
@@ -423,20 +400,18 @@ namespace STPUCPAdminGUIView {
 			// 
 			// txtUltimoparadero
 			// 
-			this->txtUltimoparadero->Location = System::Drawing::Point(194, 157);
+			this->txtUltimoparadero->Location = System::Drawing::Point(221, 157);
 			this->txtUltimoparadero->Name = L"txtUltimoparadero";
-			this->txtUltimoparadero->Size = System::Drawing::Size(168, 20);
+			this->txtUltimoparadero->Size = System::Drawing::Size(141, 20);
 			this->txtUltimoparadero->TabIndex = 46;
 			// 
 			// ConductorForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(773, 379);
+			this->ClientSize = System::Drawing::Size(590, 401);
 			this->Controls->Add(this->txtUltimoparadero);
 			this->Controls->Add(this->label9);
-			this->Controls->Add(this->label8);
-			this->Controls->Add(this->txtConductorID);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->txtAsientos);

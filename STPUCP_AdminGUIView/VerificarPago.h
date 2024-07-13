@@ -66,9 +66,10 @@ namespace STPUCPAdminGUIView {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(112, 124);
+			this->button1->Location = System::Drawing::Point(18, 39);
+			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(256, 97);
+			this->button1->Size = System::Drawing::Size(226, 26);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"VERIFICAR";
 			this->button1->UseVisualStyleBackColor = true;
@@ -79,39 +80,44 @@ namespace STPUCPAdminGUIView {
 			this->label1->AutoSize = true;
 			this->label1->BackColor = System::Drawing::SystemColors::Menu;
 			this->label1->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label1->Location = System::Drawing::Point(95, 88);
+			this->label1->Location = System::Drawing::Point(11, 14);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(305, 16);
+			this->label1->Size = System::Drawing::Size(144, 13);
 			this->label1->TabIndex = 1;
-			this->label1->Text = L"EL CONDUCTOR ESTA VERIFICANDO EL PAGO";
+			this->label1->Text = L"**Se está verificando el pago";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(57, 257);
+			this->label2->Location = System::Drawing::Point(11, 85);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(113, 16);
+			this->label2->Size = System::Drawing::Size(102, 13);
 			this->label2->TabIndex = 2;
-			this->label2->Text = L"ID DE LA ORDEN";
+			this->label2->Text = L"Número de la Orden";
 			// 
 			// textIdOrden
 			// 
-			this->textIdOrden->Location = System::Drawing::Point(178, 257);
+			this->textIdOrden->Location = System::Drawing::Point(129, 82);
+			this->textIdOrden->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textIdOrden->Name = L"textIdOrden";
-			this->textIdOrden->Size = System::Drawing::Size(100, 22);
+			this->textIdOrden->Size = System::Drawing::Size(115, 20);
 			this->textIdOrden->TabIndex = 3;
 			// 
 			// VerificarPago
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(506, 301);
+			this->ClientSize = System::Drawing::Size(257, 116);
 			this->Controls->Add(this->textIdOrden);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->button1);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"VerificarPago";
-			this->Text = L"VerificarPago";
+			this->ShowIcon = false;
+			this->Text = L"Verificando el pago";
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

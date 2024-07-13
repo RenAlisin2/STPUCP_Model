@@ -79,6 +79,13 @@ namespace STPUCPAdminGUIView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ApellidoMaterno;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Precio;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ TiempoPenalizacion;
+	private: System::Windows::Forms::Button^ button1;
+
+
+
+
+
+
 
 	private:
 		/// <summary>
@@ -101,6 +108,12 @@ namespace STPUCPAdminGUIView {
 			this->lblFechaViaje = (gcnew System::Windows::Forms::Label());
 			this->txtNombre = (gcnew System::Windows::Forms::TextBox());
 			this->dgvBLConductores = (gcnew System::Windows::Forms::DataGridView());
+			this->BLConductoresID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Distrito = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->ApellidoPaterno = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->ApellidoMaterno = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Precio = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->TiempoPenalizacion = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->btnEliminar = (gcnew System::Windows::Forms::Button());
 			this->btnModificar = (gcnew System::Windows::Forms::Button());
 			this->btnAgregar = (gcnew System::Windows::Forms::Button());
@@ -110,18 +123,13 @@ namespace STPUCPAdminGUIView {
 			this->Id = (gcnew System::Windows::Forms::Label());
 			this->textTiempoPenalizacion = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->BLConductoresID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Distrito = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->ApellidoPaterno = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->ApellidoMaterno = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Precio = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->TiempoPenalizacion = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvBLConductores))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// txtMotivoBan
 			// 
-			this->txtMotivoBan->Location = System::Drawing::Point(153, 131);
+			this->txtMotivoBan->Location = System::Drawing::Point(141, 131);
 			this->txtMotivoBan->Name = L"txtMotivoBan";
 			this->txtMotivoBan->Size = System::Drawing::Size(140, 20);
 			this->txtMotivoBan->TabIndex = 63;
@@ -137,7 +145,7 @@ namespace STPUCPAdminGUIView {
 			// 
 			// txtApellidoMaterno
 			// 
-			this->txtApellidoMaterno->Location = System::Drawing::Point(153, 101);
+			this->txtApellidoMaterno->Location = System::Drawing::Point(141, 101);
 			this->txtApellidoMaterno->Name = L"txtApellidoMaterno";
 			this->txtApellidoMaterno->Size = System::Drawing::Size(140, 20);
 			this->txtApellidoMaterno->TabIndex = 61;
@@ -153,7 +161,7 @@ namespace STPUCPAdminGUIView {
 			// 
 			// txtApellidoPaterno
 			// 
-			this->txtApellidoPaterno->Location = System::Drawing::Point(153, 75);
+			this->txtApellidoPaterno->Location = System::Drawing::Point(141, 75);
 			this->txtApellidoPaterno->Name = L"txtApellidoPaterno";
 			this->txtApellidoPaterno->Size = System::Drawing::Size(140, 20);
 			this->txtApellidoPaterno->TabIndex = 59;
@@ -169,108 +177,29 @@ namespace STPUCPAdminGUIView {
 			// 
 			// txtNombre
 			// 
-			this->txtNombre->Location = System::Drawing::Point(153, 49);
+			this->txtNombre->Location = System::Drawing::Point(141, 49);
 			this->txtNombre->Name = L"txtNombre";
 			this->txtNombre->Size = System::Drawing::Size(140, 20);
 			this->txtNombre->TabIndex = 57;
 			// 
 			// dgvBLConductores
 			// 
+			this->dgvBLConductores->AllowUserToAddRows = false;
 			this->dgvBLConductores->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvBLConductores->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 				this->BLConductoresID,
 					this->Distrito, this->ApellidoPaterno, this->ApellidoMaterno, this->Precio, this->TiempoPenalizacion
 			});
-			this->dgvBLConductores->Location = System::Drawing::Point(19, 260);
+			this->dgvBLConductores->Location = System::Drawing::Point(14, 208);
 			this->dgvBLConductores->Name = L"dgvBLConductores";
+			this->dgvBLConductores->RowHeadersVisible = false;
 			this->dgvBLConductores->Size = System::Drawing::Size(440, 253);
 			this->dgvBLConductores->TabIndex = 56;
 			// 
-			// btnEliminar
-			// 
-			this->btnEliminar->Location = System::Drawing::Point(335, 211);
-			this->btnEliminar->Name = L"btnEliminar";
-			this->btnEliminar->Size = System::Drawing::Size(75, 23);
-			this->btnEliminar->TabIndex = 55;
-			this->btnEliminar->Text = L"Eliminar";
-			this->btnEliminar->UseVisualStyleBackColor = true;
-			this->btnEliminar->Click += gcnew System::EventHandler(this, &BL_ConductoresForm::btnEliminar_Click);
-			// 
-			// btnModificar
-			// 
-			this->btnModificar->Location = System::Drawing::Point(219, 211);
-			this->btnModificar->Name = L"btnModificar";
-			this->btnModificar->Size = System::Drawing::Size(75, 23);
-			this->btnModificar->TabIndex = 54;
-			this->btnModificar->Text = L"Modificar";
-			this->btnModificar->UseVisualStyleBackColor = true;
-			this->btnModificar->Click += gcnew System::EventHandler(this, &BL_ConductoresForm::btnModificar_Click);
-			// 
-			// btnAgregar
-			// 
-			this->btnAgregar->Location = System::Drawing::Point(102, 211);
-			this->btnAgregar->Name = L"btnAgregar";
-			this->btnAgregar->Size = System::Drawing::Size(75, 23);
-			this->btnAgregar->TabIndex = 53;
-			this->btnAgregar->Text = L"Agregar";
-			this->btnAgregar->UseVisualStyleBackColor = true;
-			this->btnAgregar->Click += gcnew System::EventHandler(this, &BL_ConductoresForm::btnAgregar_Click);
-			// 
-			// txtId
-			// 
-			this->txtId->Location = System::Drawing::Point(153, 20);
-			this->txtId->Name = L"txtId";
-			this->txtId->Size = System::Drawing::Size(64, 20);
-			this->txtId->TabIndex = 52;
-			// 
-			// lblHSalida
-			// 
-			this->lblHSalida->AutoSize = true;
-			this->lblHSalida->Location = System::Drawing::Point(11, 53);
-			this->lblHSalida->Name = L"lblHSalida";
-			this->lblHSalida->Size = System::Drawing::Size(47, 13);
-			this->lblHSalida->TabIndex = 51;
-			this->lblHSalida->Text = L"Nombre:";
-			// 
-			// lblId
-			// 
-			this->lblId->AutoSize = true;
-			this->lblId->Location = System::Drawing::Point(-19, 2);
-			this->lblId->Name = L"lblId";
-			this->lblId->Size = System::Drawing::Size(19, 13);
-			this->lblId->TabIndex = 50;
-			this->lblId->Text = L"Id:";
-			// 
-			// Id
-			// 
-			this->Id->AutoSize = true;
-			this->Id->Location = System::Drawing::Point(14, 26);
-			this->Id->Name = L"Id";
-			this->Id->Size = System::Drawing::Size(72, 13);
-			this->Id->TabIndex = 64;
-			this->Id->Text = L"CodigoPUCP:";
-			// 
-			// textTiempoPenalizacion
-			// 
-			this->textTiempoPenalizacion->Location = System::Drawing::Point(153, 160);
-			this->textTiempoPenalizacion->Name = L"textTiempoPenalizacion";
-			this->textTiempoPenalizacion->Size = System::Drawing::Size(140, 20);
-			this->textTiempoPenalizacion->TabIndex = 66;
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(11, 163);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(123, 26);
-			this->label1->TabIndex = 84;
-			this->label1->Text = L"Tiempo de Penalización:\r\n(Días)";
-			// 
 			// BLConductoresID
 			// 
-			this->BLConductoresID->HeaderText = L"CodigoPUCP";
+			this->BLConductoresID->HeaderText = L"Codigo PUCP";
 			this->BLConductoresID->Name = L"BLConductoresID";
-			this->BLConductoresID->Width = 50;
 			// 
 			// Distrito
 			// 
@@ -297,11 +226,103 @@ namespace STPUCPAdminGUIView {
 			this->TiempoPenalizacion->HeaderText = L"Tiempo de penalización";
 			this->TiempoPenalizacion->Name = L"TiempoPenalizacion";
 			// 
+			// btnEliminar
+			// 
+			this->btnEliminar->Location = System::Drawing::Point(307, 123);
+			this->btnEliminar->Name = L"btnEliminar";
+			this->btnEliminar->Size = System::Drawing::Size(142, 28);
+			this->btnEliminar->TabIndex = 55;
+			this->btnEliminar->Text = L"Eliminar";
+			this->btnEliminar->UseVisualStyleBackColor = true;
+			this->btnEliminar->Click += gcnew System::EventHandler(this, &BL_ConductoresForm::btnEliminar_Click);
+			// 
+			// btnModificar
+			// 
+			this->btnModificar->Location = System::Drawing::Point(307, 87);
+			this->btnModificar->Name = L"btnModificar";
+			this->btnModificar->Size = System::Drawing::Size(142, 30);
+			this->btnModificar->TabIndex = 54;
+			this->btnModificar->Text = L"Modificar";
+			this->btnModificar->UseVisualStyleBackColor = true;
+			this->btnModificar->Click += gcnew System::EventHandler(this, &BL_ConductoresForm::btnModificar_Click);
+			// 
+			// btnAgregar
+			// 
+			this->btnAgregar->Location = System::Drawing::Point(307, 51);
+			this->btnAgregar->Name = L"btnAgregar";
+			this->btnAgregar->Size = System::Drawing::Size(142, 30);
+			this->btnAgregar->TabIndex = 53;
+			this->btnAgregar->Text = L"Agregar";
+			this->btnAgregar->UseVisualStyleBackColor = true;
+			this->btnAgregar->Click += gcnew System::EventHandler(this, &BL_ConductoresForm::btnAgregar_Click);
+			// 
+			// txtId
+			// 
+			this->txtId->Location = System::Drawing::Point(141, 20);
+			this->txtId->Name = L"txtId";
+			this->txtId->Size = System::Drawing::Size(64, 20);
+			this->txtId->TabIndex = 52;
+			// 
+			// lblHSalida
+			// 
+			this->lblHSalida->AutoSize = true;
+			this->lblHSalida->Location = System::Drawing::Point(11, 53);
+			this->lblHSalida->Name = L"lblHSalida";
+			this->lblHSalida->Size = System::Drawing::Size(47, 13);
+			this->lblHSalida->TabIndex = 51;
+			this->lblHSalida->Text = L"Nombre:";
+			// 
+			// lblId
+			// 
+			this->lblId->AutoSize = true;
+			this->lblId->Location = System::Drawing::Point(-19, 2);
+			this->lblId->Name = L"lblId";
+			this->lblId->Size = System::Drawing::Size(19, 13);
+			this->lblId->TabIndex = 50;
+			this->lblId->Text = L"Id:";
+			// 
+			// Id
+			// 
+			this->Id->AutoSize = true;
+			this->Id->Location = System::Drawing::Point(11, 27);
+			this->Id->Name = L"Id";
+			this->Id->Size = System::Drawing::Size(72, 13);
+			this->Id->TabIndex = 64;
+			this->Id->Text = L"CodigoPUCP:";
+			// 
+			// textTiempoPenalizacion
+			// 
+			this->textTiempoPenalizacion->Location = System::Drawing::Point(141, 160);
+			this->textTiempoPenalizacion->Name = L"textTiempoPenalizacion";
+			this->textTiempoPenalizacion->Size = System::Drawing::Size(140, 20);
+			this->textTiempoPenalizacion->TabIndex = 66;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(11, 163);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(123, 26);
+			this->label1->TabIndex = 84;
+			this->label1->Text = L"Tiempo de Penalización:\r\n(Días)";
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(307, 155);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(142, 28);
+			this->button1->TabIndex = 85;
+			this->button1->Text = L"Retroceder";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &BL_ConductoresForm::button1_Click);
+			// 
 			// BL_ConductoresForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(483, 529);
+			this->ClientSize = System::Drawing::Size(483, 472);
+			this->ControlBox = false;
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->textTiempoPenalizacion);
 			this->Controls->Add(this->Id);
@@ -320,7 +341,8 @@ namespace STPUCPAdminGUIView {
 			this->Controls->Add(this->lblHSalida);
 			this->Controls->Add(this->lblId);
 			this->Name = L"BL_ConductoresForm";
-			this->Text = L"BL_ConductoresForm";
+			this->ShowIcon = false;
+			this->Text = L"BlackList de conductores";
 			this->Load += gcnew System::EventHandler(this, &BL_ConductoresForm::BL_ConductoresForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvBLConductores))->EndInit();
 			this->ResumeLayout(false);
@@ -369,6 +391,9 @@ private: System::Void btnEliminar_Click(System::Object^ sender, System::EventArg
 }
 private: System::Void BL_ConductoresForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	RefreshGrid();
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Close();
 }
 };
 }

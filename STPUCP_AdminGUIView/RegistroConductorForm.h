@@ -80,7 +80,7 @@ namespace STPUCPAdminGUIView {
             // 
             // button1
             // 
-            this->button1->Location = System::Drawing::Point(32, 391);
+            this->button1->Location = System::Drawing::Point(32, 374);
             this->button1->Name = L"button1";
             this->button1->Size = System::Drawing::Size(440, 29);
             this->button1->TabIndex = 37;
@@ -91,7 +91,7 @@ namespace STPUCPAdminGUIView {
             // label8
             // 
             this->label8->AutoSize = true;
-            this->label8->Location = System::Drawing::Point(201, 372);
+            this->label8->Location = System::Drawing::Point(201, 355);
             this->label8->Name = L"label8";
             this->label8->Size = System::Drawing::Size(97, 13);
             this->label8->TabIndex = 33;
@@ -99,7 +99,7 @@ namespace STPUCPAdminGUIView {
             // 
             // txtCantidadAsientos
             // 
-            this->txtCantidadAsientos->Location = System::Drawing::Point(229, 147);
+            this->txtCantidadAsientos->Location = System::Drawing::Point(229, 130);
             this->txtCantidadAsientos->Name = L"txtCantidadAsientos";
             this->txtCantidadAsientos->Size = System::Drawing::Size(204, 20);
             this->txtCantidadAsientos->TabIndex = 30;
@@ -107,7 +107,7 @@ namespace STPUCPAdminGUIView {
             // label4
             // 
             this->label4->AutoSize = true;
-            this->label4->Location = System::Drawing::Point(29, 150);
+            this->label4->Location = System::Drawing::Point(29, 133);
             this->label4->Name = L"label4";
             this->label4->Size = System::Drawing::Size(194, 13);
             this->label4->TabIndex = 29;
@@ -116,7 +116,7 @@ namespace STPUCPAdminGUIView {
             // label6
             // 
             this->label6->AutoSize = true;
-            this->label6->Location = System::Drawing::Point(28, 124);
+            this->label6->Location = System::Drawing::Point(28, 107);
             this->label6->Name = L"label6";
             this->label6->Size = System::Drawing::Size(126, 13);
             this->label6->TabIndex = 25;
@@ -125,7 +125,7 @@ namespace STPUCPAdminGUIView {
             // label3
             // 
             this->label3->AutoSize = true;
-            this->label3->Location = System::Drawing::Point(28, 72);
+            this->label3->Location = System::Drawing::Point(28, 55);
             this->label3->Name = L"label3";
             this->label3->Size = System::Drawing::Size(137, 13);
             this->label3->TabIndex = 23;
@@ -134,7 +134,7 @@ namespace STPUCPAdminGUIView {
             // label2
             // 
             this->label2->AutoSize = true;
-            this->label2->Location = System::Drawing::Point(28, 98);
+            this->label2->Location = System::Drawing::Point(28, 81);
             this->label2->Name = L"label2";
             this->label2->Size = System::Drawing::Size(129, 13);
             this->label2->TabIndex = 21;
@@ -151,21 +151,21 @@ namespace STPUCPAdminGUIView {
             // 
             // txtColorCarro
             // 
-            this->txtColorCarro->Location = System::Drawing::Point(229, 121);
+            this->txtColorCarro->Location = System::Drawing::Point(229, 104);
             this->txtColorCarro->Name = L"txtColorCarro";
             this->txtColorCarro->Size = System::Drawing::Size(204, 20);
             this->txtColorCarro->TabIndex = 38;
             // 
             // txtPlacaCarro
             // 
-            this->txtPlacaCarro->Location = System::Drawing::Point(229, 95);
+            this->txtPlacaCarro->Location = System::Drawing::Point(229, 78);
             this->txtPlacaCarro->Name = L"txtPlacaCarro";
             this->txtPlacaCarro->Size = System::Drawing::Size(204, 20);
             this->txtPlacaCarro->TabIndex = 39;
             // 
             // txtModeloCarro
             // 
-            this->txtModeloCarro->Location = System::Drawing::Point(229, 69);
+            this->txtModeloCarro->Location = System::Drawing::Point(229, 52);
             this->txtModeloCarro->Name = L"txtModeloCarro";
             this->txtModeloCarro->Size = System::Drawing::Size(204, 20);
             this->txtModeloCarro->TabIndex = 40;
@@ -173,7 +173,7 @@ namespace STPUCPAdminGUIView {
             // pBConductor
             // 
             this->pBConductor->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-            this->pBConductor->Location = System::Drawing::Point(32, 195);
+            this->pBConductor->Location = System::Drawing::Point(32, 178);
             this->pBConductor->Name = L"pBConductor";
             this->pBConductor->Size = System::Drawing::Size(110, 114);
             this->pBConductor->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -183,7 +183,7 @@ namespace STPUCPAdminGUIView {
             // pBCarro
             // 
             this->pBCarro->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-            this->pBCarro->Location = System::Drawing::Point(197, 195);
+            this->pBCarro->Location = System::Drawing::Point(197, 178);
             this->pBCarro->Name = L"pBCarro";
             this->pBCarro->Size = System::Drawing::Size(110, 114);
             this->pBCarro->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -192,7 +192,7 @@ namespace STPUCPAdminGUIView {
             // 
             // btnCarro
             // 
-            this->btnCarro->Location = System::Drawing::Point(197, 328);
+            this->btnCarro->Location = System::Drawing::Point(197, 311);
             this->btnCarro->Name = L"btnCarro";
             this->btnCarro->Size = System::Drawing::Size(110, 23);
             this->btnCarro->TabIndex = 43;
@@ -202,7 +202,7 @@ namespace STPUCPAdminGUIView {
             // 
             // btnConductor
             // 
-            this->btnConductor->Location = System::Drawing::Point(32, 328);
+            this->btnConductor->Location = System::Drawing::Point(32, 311);
             this->btnConductor->Name = L"btnConductor";
             this->btnConductor->Size = System::Drawing::Size(110, 23);
             this->btnConductor->TabIndex = 44;
@@ -213,7 +213,7 @@ namespace STPUCPAdminGUIView {
             // pBYape
             // 
             this->pBYape->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-            this->pBYape->Location = System::Drawing::Point(362, 195);
+            this->pBYape->Location = System::Drawing::Point(362, 178);
             this->pBYape->Name = L"pBYape";
             this->pBYape->Size = System::Drawing::Size(110, 114);
             this->pBYape->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -222,7 +222,7 @@ namespace STPUCPAdminGUIView {
             // 
             // btnQR
             // 
-            this->btnQR->Location = System::Drawing::Point(362, 328);
+            this->btnQR->Location = System::Drawing::Point(362, 311);
             this->btnQR->Name = L"btnQR";
             this->btnQR->Size = System::Drawing::Size(110, 23);
             this->btnQR->TabIndex = 47;
@@ -234,7 +234,7 @@ namespace STPUCPAdminGUIView {
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-            this->ClientSize = System::Drawing::Size(512, 434);
+            this->ClientSize = System::Drawing::Size(512, 411);
             this->Controls->Add(this->btnQR);
             this->Controls->Add(this->pBYape);
             this->Controls->Add(this->btnConductor);
@@ -253,7 +253,8 @@ namespace STPUCPAdminGUIView {
             this->Controls->Add(this->label2);
             this->Controls->Add(this->label1);
             this->Name = L"RegistroConductorForm";
-            this->Text = L"RegistroConductorForm";
+            this->ShowIcon = false;
+            this->Text = L"Registro del Conductor";
             this->Load += gcnew System::EventHandler(this, &RegistroConductorForm::RegistroConductorForm_Load);
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBConductor))->EndInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBCarro))->EndInit();

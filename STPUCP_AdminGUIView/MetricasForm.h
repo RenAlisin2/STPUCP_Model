@@ -89,21 +89,21 @@ namespace STPUCPAdminGUIView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea3 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea4 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea5 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend5 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series5 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea6 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend6 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series6 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea7 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend7 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series7 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea8 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend8 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series8 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea9 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend9 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series9 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea10 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend10 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series10 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -147,7 +147,7 @@ namespace STPUCPAdminGUIView {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(126, 35);
+			this->label1->Location = System::Drawing::Point(86, 35);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(205, 13);
 			this->label1->TabIndex = 1;
@@ -165,7 +165,7 @@ namespace STPUCPAdminGUIView {
 			// IDUsuario
 			// 
 			this->IDUsuario->AutoSize = true;
-			this->IDUsuario->Location = System::Drawing::Point(128, 517);
+			this->IDUsuario->Location = System::Drawing::Point(88, 517);
 			this->IDUsuario->Name = L"IDUsuario";
 			this->IDUsuario->Size = System::Drawing::Size(97, 13);
 			this->IDUsuario->TabIndex = 4;
@@ -174,7 +174,7 @@ namespace STPUCPAdminGUIView {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(542, 517);
+			this->label4->Location = System::Drawing::Point(493, 514);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(112, 13);
 			this->label4->TabIndex = 5;
@@ -221,17 +221,18 @@ namespace STPUCPAdminGUIView {
 			this->salirToolStripMenuItem->Name = L"salirToolStripMenuItem";
 			this->salirToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->salirToolStripMenuItem->Text = L"Salir";
+			this->salirToolStripMenuItem->Click += gcnew System::EventHandler(this, &MetricasForm::salirToolStripMenuItem_Click);
 			// 
 			// txtCodigoPasajero
 			// 
-			this->txtCodigoPasajero->Location = System::Drawing::Point(231, 514);
+			this->txtCodigoPasajero->Location = System::Drawing::Point(191, 514);
 			this->txtCodigoPasajero->Name = L"txtCodigoPasajero";
 			this->txtCodigoPasajero->Size = System::Drawing::Size(100, 20);
 			this->txtCodigoPasajero->TabIndex = 11;
 			// 
 			// txtCodigoConductor
 			// 
-			this->txtCodigoConductor->Location = System::Drawing::Point(660, 514);
+			this->txtCodigoConductor->Location = System::Drawing::Point(611, 511);
 			this->txtCodigoConductor->Name = L"txtCodigoConductor";
 			this->txtCodigoConductor->Size = System::Drawing::Size(100, 20);
 			this->txtCodigoConductor->TabIndex = 12;
@@ -239,16 +240,16 @@ namespace STPUCPAdminGUIView {
 			// M_EstrellasP
 			// 
 			this->M_EstrellasP->BackColor = System::Drawing::Color::WhiteSmoke;
-			chartArea1->Name = L"ChartArea1";
-			this->M_EstrellasP->ChartAreas->Add(chartArea1);
-			legend1->Name = L"Legend1";
-			this->M_EstrellasP->Legends->Add(legend1);
-			this->M_EstrellasP->Location = System::Drawing::Point(451, 312);
+			chartArea6->Name = L"ChartArea1";
+			this->M_EstrellasP->ChartAreas->Add(chartArea6);
+			legend6->Name = L"Legend1";
+			this->M_EstrellasP->Legends->Add(legend6);
+			this->M_EstrellasP->Location = System::Drawing::Point(441, 306);
 			this->M_EstrellasP->Name = L"M_EstrellasP";
-			series1->ChartArea = L"ChartArea1";
-			series1->Legend = L"Legend1";
-			series1->Name = L"Estrellas";
-			this->M_EstrellasP->Series->Add(series1);
+			series6->ChartArea = L"ChartArea1";
+			series6->Legend = L"Legend1";
+			series6->Name = L"Estrellas";
+			this->M_EstrellasP->Series->Add(series6);
 			this->M_EstrellasP->Size = System::Drawing::Size(392, 202);
 			this->M_EstrellasP->TabIndex = 13;
 			this->M_EstrellasP->Text = L"chart1";
@@ -256,16 +257,16 @@ namespace STPUCPAdminGUIView {
 			// M_ServiciosTP
 			// 
 			this->M_ServiciosTP->BackColor = System::Drawing::Color::WhiteSmoke;
-			chartArea2->Name = L"ChartArea1";
-			this->M_ServiciosTP->ChartAreas->Add(chartArea2);
-			legend2->Name = L"Legend1";
-			this->M_ServiciosTP->Legends->Add(legend2);
+			chartArea7->Name = L"ChartArea1";
+			this->M_ServiciosTP->ChartAreas->Add(chartArea7);
+			legend7->Name = L"Legend1";
+			this->M_ServiciosTP->Legends->Add(legend7);
 			this->M_ServiciosTP->Location = System::Drawing::Point(43, 64);
 			this->M_ServiciosTP->Name = L"M_ServiciosTP";
-			series2->ChartArea = L"ChartArea1";
-			series2->Legend = L"Legend1";
-			series2->Name = L"Servicios";
-			this->M_ServiciosTP->Series->Add(series2);
+			series7->ChartArea = L"ChartArea1";
+			series7->Legend = L"Legend1";
+			series7->Name = L"Servicios";
+			this->M_ServiciosTP->Series->Add(series7);
 			this->M_ServiciosTP->Size = System::Drawing::Size(392, 202);
 			this->M_ServiciosTP->TabIndex = 14;
 			this->M_ServiciosTP->Text = L"chart1";
@@ -273,16 +274,16 @@ namespace STPUCPAdminGUIView {
 			// M_ServiciosT
 			// 
 			this->M_ServiciosT->BackColor = System::Drawing::Color::WhiteSmoke;
-			chartArea3->Name = L"ChartArea1";
-			this->M_ServiciosT->ChartAreas->Add(chartArea3);
-			legend3->Name = L"Legend1";
-			this->M_ServiciosT->Legends->Add(legend3);
+			chartArea8->Name = L"ChartArea1";
+			this->M_ServiciosT->ChartAreas->Add(chartArea8);
+			legend8->Name = L"Legend1";
+			this->M_ServiciosT->Legends->Add(legend8);
 			this->M_ServiciosT->Location = System::Drawing::Point(40, 306);
 			this->M_ServiciosT->Name = L"M_ServiciosT";
-			series3->ChartArea = L"ChartArea1";
-			series3->Legend = L"Legend1";
-			series3->Name = L"Servicios";
-			this->M_ServiciosT->Series->Add(series3);
+			series8->ChartArea = L"ChartArea1";
+			series8->Legend = L"Legend1";
+			series8->Name = L"Servicios";
+			this->M_ServiciosT->Series->Add(series8);
 			this->M_ServiciosT->Size = System::Drawing::Size(392, 202);
 			this->M_ServiciosT->TabIndex = 15;
 			this->M_ServiciosT->Text = L"chart1";
@@ -290,16 +291,16 @@ namespace STPUCPAdminGUIView {
 			// M_Estrellas
 			// 
 			this->M_Estrellas->BackColor = System::Drawing::Color::WhiteSmoke;
-			chartArea4->Name = L"ChartArea1";
-			this->M_Estrellas->ChartAreas->Add(chartArea4);
-			legend4->Name = L"Legend1";
-			this->M_Estrellas->Legends->Add(legend4);
-			this->M_Estrellas->Location = System::Drawing::Point(451, 64);
+			chartArea9->Name = L"ChartArea1";
+			this->M_Estrellas->ChartAreas->Add(chartArea9);
+			legend9->Name = L"Legend1";
+			this->M_Estrellas->Legends->Add(legend9);
+			this->M_Estrellas->Location = System::Drawing::Point(441, 64);
 			this->M_Estrellas->Name = L"M_Estrellas";
-			series4->ChartArea = L"ChartArea1";
-			series4->Legend = L"Legend1";
-			series4->Name = L"Estrellas";
-			this->M_Estrellas->Series->Add(series4);
+			series9->ChartArea = L"ChartArea1";
+			series9->Legend = L"Legend1";
+			series9->Name = L"Estrellas";
+			this->M_Estrellas->Series->Add(series9);
 			this->M_Estrellas->Size = System::Drawing::Size(392, 202);
 			this->M_Estrellas->TabIndex = 16;
 			this->M_Estrellas->Text = L"chart1";
@@ -307,25 +308,25 @@ namespace STPUCPAdminGUIView {
 			// 
 			// RolesReport
 			// 
-			chartArea5->Name = L"ChartArea1";
-			this->RolesReport->ChartAreas->Add(chartArea5);
-			legend5->Name = L"Legend1";
-			this->RolesReport->Legends->Add(legend5);
-			this->RolesReport->Location = System::Drawing::Point(866, 64);
-			this->RolesReport->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			chartArea10->Name = L"ChartArea1";
+			this->RolesReport->ChartAreas->Add(chartArea10);
+			legend10->Name = L"Legend1";
+			this->RolesReport->Legends->Add(legend10);
+			this->RolesReport->Location = System::Drawing::Point(848, 64);
+			this->RolesReport->Margin = System::Windows::Forms::Padding(2);
 			this->RolesReport->Name = L"RolesReport";
-			series5->ChartArea = L"ChartArea1";
-			series5->Legend = L"Legend1";
-			series5->Name = L"Roles";
-			this->RolesReport->Series->Add(series5);
+			series10->ChartArea = L"ChartArea1";
+			series10->Legend = L"Legend1";
+			series10->Name = L"Roles";
+			this->RolesReport->Series->Add(series10);
 			this->RolesReport->Size = System::Drawing::Size(258, 202);
 			this->RolesReport->TabIndex = 18;
 			this->RolesReport->Text = L"chart1";
 			// 
 			// Metrica_Pasajero
 			// 
-			this->Metrica_Pasajero->Location = System::Drawing::Point(131, 539);
-			this->Metrica_Pasajero->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Metrica_Pasajero->Location = System::Drawing::Point(91, 539);
+			this->Metrica_Pasajero->Margin = System::Windows::Forms::Padding(2);
 			this->Metrica_Pasajero->Name = L"Metrica_Pasajero";
 			this->Metrica_Pasajero->Size = System::Drawing::Size(200, 19);
 			this->Metrica_Pasajero->TabIndex = 19;
@@ -335,8 +336,8 @@ namespace STPUCPAdminGUIView {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(545, 539);
-			this->button2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button2->Location = System::Drawing::Point(496, 536);
+			this->button2->Margin = System::Windows::Forms::Padding(2);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(215, 19);
 			this->button2->TabIndex = 20;
@@ -357,7 +358,7 @@ namespace STPUCPAdminGUIView {
 			// textestrellas
 			// 
 			this->textestrellas->Location = System::Drawing::Point(894, 438);
-			this->textestrellas->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->textestrellas->Margin = System::Windows::Forms::Padding(2);
 			this->textestrellas->Name = L"textestrellas";
 			this->textestrellas->ReadOnly = true;
 			this->textestrellas->Size = System::Drawing::Size(105, 20);
@@ -894,7 +895,10 @@ namespace STPUCPAdminGUIView {
 	}
 	private: System::Void M_Estrellas_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void salirToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Close();
+	}
+};
 
 }
 

@@ -36,11 +36,11 @@ namespace STPUCPAdminGUIView {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::MenuStrip^ menuStrip1;
-	private: System::Windows::Forms::ToolStripMenuItem^ archivoToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ nuevoToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ modificarToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ salirToolStripMenuItem;
+
+
+
+
+
 
 	private: System::Windows::Forms::Label^ lblNombre;
 
@@ -152,6 +152,8 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ ModeloVehiculo;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ PlacaVehiculo;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColorVehiculo;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
+private: System::Windows::Forms::GroupBox^ groupBox1;
+private: System::Windows::Forms::Button^ button1;
 
 
 
@@ -194,11 +196,6 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
-			this->archivoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->nuevoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->modificarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->salirToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->lblNombre = (gcnew System::Windows::Forms::Label());
 			this->btnAgregar = (gcnew System::Windows::Forms::Button());
 			this->btnModificar = (gcnew System::Windows::Forms::Button());
@@ -250,55 +247,19 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->label13 = (gcnew System::Windows::Forms::Label());
-			this->menuStrip1->SuspendLayout();
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvUsuarios))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBConductor))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBCarro))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBQR))->BeginInit();
+			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
-			// 
-			// menuStrip1
-			// 
-			this->menuStrip1->AllowMerge = false;
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->archivoToolStripMenuItem });
-			this->menuStrip1->Location = System::Drawing::Point(0, 0);
-			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(1198, 24);
-			this->menuStrip1->TabIndex = 0;
-			this->menuStrip1->Text = L"menuStrip1";
-			// 
-			// archivoToolStripMenuItem
-			// 
-			this->archivoToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
-				this->nuevoToolStripMenuItem,
-					this->modificarToolStripMenuItem, this->salirToolStripMenuItem
-			});
-			this->archivoToolStripMenuItem->Name = L"archivoToolStripMenuItem";
-			this->archivoToolStripMenuItem->Size = System::Drawing::Size(60, 20);
-			this->archivoToolStripMenuItem->Text = L"Archivo";
-			// 
-			// nuevoToolStripMenuItem
-			// 
-			this->nuevoToolStripMenuItem->Name = L"nuevoToolStripMenuItem";
-			this->nuevoToolStripMenuItem->Size = System::Drawing::Size(125, 22);
-			this->nuevoToolStripMenuItem->Text = L"Nuevo";
-			// 
-			// modificarToolStripMenuItem
-			// 
-			this->modificarToolStripMenuItem->Name = L"modificarToolStripMenuItem";
-			this->modificarToolStripMenuItem->Size = System::Drawing::Size(125, 22);
-			this->modificarToolStripMenuItem->Text = L"Modificar";
-			// 
-			// salirToolStripMenuItem
-			// 
-			this->salirToolStripMenuItem->Name = L"salirToolStripMenuItem";
-			this->salirToolStripMenuItem->Size = System::Drawing::Size(125, 22);
-			this->salirToolStripMenuItem->Text = L"Salir";
 			// 
 			// lblNombre
 			// 
 			this->lblNombre->AutoSize = true;
-			this->lblNombre->Location = System::Drawing::Point(12, 56);
+			this->lblNombre->Location = System::Drawing::Point(16, 76);
 			this->lblNombre->Name = L"lblNombre";
 			this->lblNombre->Size = System::Drawing::Size(47, 13);
 			this->lblNombre->TabIndex = 2;
@@ -307,9 +268,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// btnAgregar
 			// 
-			this->btnAgregar->Location = System::Drawing::Point(30, 246);
+			this->btnAgregar->Location = System::Drawing::Point(15, 237);
 			this->btnAgregar->Name = L"btnAgregar";
-			this->btnAgregar->Size = System::Drawing::Size(91, 33);
+			this->btnAgregar->Size = System::Drawing::Size(105, 33);
 			this->btnAgregar->TabIndex = 7;
 			this->btnAgregar->Text = L"Agregar";
 			this->btnAgregar->UseVisualStyleBackColor = true;
@@ -317,9 +278,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// btnModificar
 			// 
-			this->btnModificar->Location = System::Drawing::Point(153, 246);
+			this->btnModificar->Location = System::Drawing::Point(149, 237);
 			this->btnModificar->Name = L"btnModificar";
-			this->btnModificar->Size = System::Drawing::Size(87, 33);
+			this->btnModificar->Size = System::Drawing::Size(106, 33);
 			this->btnModificar->TabIndex = 8;
 			this->btnModificar->Text = L"Modificar";
 			this->btnModificar->UseVisualStyleBackColor = true;
@@ -327,9 +288,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// btnEliminar
 			// 
-			this->btnEliminar->Location = System::Drawing::Point(275, 246);
+			this->btnEliminar->Location = System::Drawing::Point(283, 237);
 			this->btnEliminar->Name = L"btnEliminar";
-			this->btnEliminar->Size = System::Drawing::Size(89, 33);
+			this->btnEliminar->Size = System::Drawing::Size(106, 33);
 			this->btnEliminar->TabIndex = 9;
 			this->btnEliminar->Text = L"Eliminar";
 			this->btnEliminar->UseVisualStyleBackColor = true;
@@ -345,7 +306,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 					this->UsuarioNombre, this->ApellidoPaterno, this->ApellidoMaterno, this->Contraseña, this->DNI, this->Teléfono, this->CorreoElectrónico,
 					this->TipoUsuario, this->ModeloVehiculo, this->PlacaVehiculo, this->ColorVehiculo, this->CantidadAsientos
 			});
-			this->dgvUsuarios->Location = System::Drawing::Point(12, 289);
+			this->dgvUsuarios->Location = System::Drawing::Point(15, 281);
 			this->dgvUsuarios->Name = L"dgvUsuarios";
 			this->dgvUsuarios->RowHeadersVisible = false;
 			this->dgvUsuarios->Size = System::Drawing::Size(1174, 230);
@@ -421,7 +382,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// txtNombre
 			// 
-			this->txtNombre->Location = System::Drawing::Point(111, 52);
+			this->txtNombre->Location = System::Drawing::Point(115, 74);
 			this->txtNombre->Name = L"txtNombre";
 			this->txtNombre->Size = System::Drawing::Size(140, 20);
 			this->txtNombre->TabIndex = 11;
@@ -430,7 +391,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// lblApellidoPaterno
 			// 
 			this->lblApellidoPaterno->AutoSize = true;
-			this->lblApellidoPaterno->Location = System::Drawing::Point(12, 85);
+			this->lblApellidoPaterno->Location = System::Drawing::Point(15, 103);
 			this->lblApellidoPaterno->Name = L"lblApellidoPaterno";
 			this->lblApellidoPaterno->Size = System::Drawing::Size(87, 13);
 			this->lblApellidoPaterno->TabIndex = 12;
@@ -440,7 +401,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// lblApellidoMaterno
 			// 
 			this->lblApellidoMaterno->AutoSize = true;
-			this->lblApellidoMaterno->Location = System::Drawing::Point(12, 112);
+			this->lblApellidoMaterno->Location = System::Drawing::Point(16, 129);
 			this->lblApellidoMaterno->Name = L"lblApellidoMaterno";
 			this->lblApellidoMaterno->Size = System::Drawing::Size(89, 13);
 			this->lblApellidoMaterno->TabIndex = 13;
@@ -449,7 +410,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// txtApellidoPaterno
 			// 
-			this->txtApellidoPaterno->Location = System::Drawing::Point(111, 81);
+			this->txtApellidoPaterno->Location = System::Drawing::Point(115, 99);
 			this->txtApellidoPaterno->Name = L"txtApellidoPaterno";
 			this->txtApellidoPaterno->Size = System::Drawing::Size(140, 20);
 			this->txtApellidoPaterno->TabIndex = 14;
@@ -457,7 +418,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// txtApellidoMaterno
 			// 
-			this->txtApellidoMaterno->Location = System::Drawing::Point(111, 109);
+			this->txtApellidoMaterno->Location = System::Drawing::Point(115, 125);
 			this->txtApellidoMaterno->Name = L"txtApellidoMaterno";
 			this->txtApellidoMaterno->Size = System::Drawing::Size(140, 20);
 			this->txtApellidoMaterno->TabIndex = 15;
@@ -466,7 +427,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// lblCodigoPUCP
 			// 
 			this->lblCodigoPUCP->AutoSize = true;
-			this->lblCodigoPUCP->Location = System::Drawing::Point(12, 28);
+			this->lblCodigoPUCP->Location = System::Drawing::Point(16, 29);
 			this->lblCodigoPUCP->Name = L"lblCodigoPUCP";
 			this->lblCodigoPUCP->Size = System::Drawing::Size(72, 13);
 			this->lblCodigoPUCP->TabIndex = 16;
@@ -475,7 +436,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// txtCodigoPUCP
 			// 
-			this->txtCodigoPUCP->Location = System::Drawing::Point(111, 27);
+			this->txtCodigoPUCP->Location = System::Drawing::Point(115, 22);
 			this->txtCodigoPUCP->Name = L"txtCodigoPUCP";
 			this->txtCodigoPUCP->Size = System::Drawing::Size(140, 20);
 			this->txtCodigoPUCP->TabIndex = 17;
@@ -483,7 +444,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// txtContraseña
 			// 
-			this->txtContraseña->Location = System::Drawing::Point(111, 135);
+			this->txtContraseña->Location = System::Drawing::Point(115, 151);
 			this->txtContraseña->Name = L"txtContraseña";
 			this->txtContraseña->Size = System::Drawing::Size(140, 20);
 			this->txtContraseña->TabIndex = 19;
@@ -491,7 +452,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(12, 138);
+			this->label1->Location = System::Drawing::Point(16, 155);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(64, 13);
 			this->label1->TabIndex = 18;
@@ -500,7 +461,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(12, 166);
+			this->label2->Location = System::Drawing::Point(274, 23);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(83, 13);
 			this->label2->TabIndex = 20;
@@ -508,17 +469,17 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// txtTipoUsuario
 			// 
-			this->txtTipoUsuario->Location = System::Drawing::Point(111, 162);
+			this->txtTipoUsuario->Location = System::Drawing::Point(372, 22);
 			this->txtTipoUsuario->Name = L"txtTipoUsuario";
-			this->txtTipoUsuario->Size = System::Drawing::Size(140, 20);
+			this->txtTipoUsuario->Size = System::Drawing::Size(151, 20);
 			this->txtTipoUsuario->TabIndex = 21;
 			// 
 			// pBConductor
 			// 
 			this->pBConductor->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->pBConductor->Location = System::Drawing::Point(565, 47);
+			this->pBConductor->Location = System::Drawing::Point(554, 35);
 			this->pBConductor->Name = L"pBConductor";
-			this->pBConductor->Size = System::Drawing::Size(138, 147);
+			this->pBConductor->Size = System::Drawing::Size(162, 181);
 			this->pBConductor->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pBConductor->TabIndex = 42;
 			this->pBConductor->TabStop = false;
@@ -526,9 +487,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// pBCarro
 			// 
 			this->pBCarro->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->pBCarro->Location = System::Drawing::Point(793, 47);
+			this->pBCarro->Location = System::Drawing::Point(759, 35);
 			this->pBCarro->Name = L"pBCarro";
-			this->pBCarro->Size = System::Drawing::Size(138, 147);
+			this->pBCarro->Size = System::Drawing::Size(162, 186);
 			this->pBCarro->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pBCarro->TabIndex = 43;
 			this->pBCarro->TabStop = false;
@@ -536,16 +497,16 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// pBQR
 			// 
 			this->pBQR->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->pBQR->Location = System::Drawing::Point(1015, 47);
+			this->pBQR->Location = System::Drawing::Point(965, 35);
 			this->pBQR->Name = L"pBQR";
-			this->pBQR->Size = System::Drawing::Size(138, 147);
+			this->pBQR->Size = System::Drawing::Size(162, 186);
 			this->pBQR->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pBQR->TabIndex = 44;
 			this->pBQR->TabStop = false;
 			// 
 			// txtAsientos
 			// 
-			this->txtAsientos->Location = System::Drawing::Point(364, 168);
+			this->txtAsientos->Location = System::Drawing::Point(101, 106);
 			this->txtAsientos->Name = L"txtAsientos";
 			this->txtAsientos->Size = System::Drawing::Size(151, 20);
 			this->txtAsientos->TabIndex = 56;
@@ -553,7 +514,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(274, 171);
+			this->label3->Location = System::Drawing::Point(3, 109);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(84, 13);
 			this->label3->TabIndex = 55;
@@ -561,7 +522,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// txtColor
 			// 
-			this->txtColor->Location = System::Drawing::Point(364, 140);
+			this->txtColor->Location = System::Drawing::Point(101, 80);
 			this->txtColor->Name = L"txtColor";
 			this->txtColor->Size = System::Drawing::Size(151, 20);
 			this->txtColor->TabIndex = 54;
@@ -569,7 +530,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(274, 145);
+			this->label4->Location = System::Drawing::Point(3, 83);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(34, 13);
 			this->label4->TabIndex = 53;
@@ -577,15 +538,15 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// txtDNI
 			// 
-			this->txtDNI->Location = System::Drawing::Point(364, 30);
+			this->txtDNI->Location = System::Drawing::Point(115, 202);
 			this->txtDNI->Name = L"txtDNI";
-			this->txtDNI->Size = System::Drawing::Size(151, 20);
+			this->txtDNI->Size = System::Drawing::Size(140, 20);
 			this->txtDNI->TabIndex = 52;
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(274, 35);
+			this->label5->Location = System::Drawing::Point(18, 203);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(29, 13);
 			this->label5->TabIndex = 51;
@@ -593,14 +554,14 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// txtPlaca
 			// 
-			this->txtPlaca->Location = System::Drawing::Point(364, 112);
+			this->txtPlaca->Location = System::Drawing::Point(101, 54);
 			this->txtPlaca->Name = L"txtPlaca";
 			this->txtPlaca->Size = System::Drawing::Size(151, 20);
 			this->txtPlaca->TabIndex = 50;
 			// 
 			// txtModelo
 			// 
-			this->txtModelo->Location = System::Drawing::Point(364, 84);
+			this->txtModelo->Location = System::Drawing::Point(101, 28);
 			this->txtModelo->Name = L"txtModelo";
 			this->txtModelo->Size = System::Drawing::Size(151, 20);
 			this->txtModelo->TabIndex = 49;
@@ -608,7 +569,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(274, 117);
+			this->label6->Location = System::Drawing::Point(3, 57);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(37, 13);
 			this->label6->TabIndex = 48;
@@ -617,7 +578,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(274, 89);
+			this->label7->Location = System::Drawing::Point(3, 31);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(45, 13);
 			this->label7->TabIndex = 47;
@@ -625,15 +586,15 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// txtTelefono
 			// 
-			this->txtTelefono->Location = System::Drawing::Point(364, 56);
+			this->txtTelefono->Location = System::Drawing::Point(115, 176);
 			this->txtTelefono->Name = L"txtTelefono";
-			this->txtTelefono->Size = System::Drawing::Size(151, 20);
+			this->txtTelefono->Size = System::Drawing::Size(140, 20);
 			this->txtTelefono->TabIndex = 46;
 			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(274, 61);
+			this->label8->Location = System::Drawing::Point(16, 180);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(52, 13);
 			this->label8->TabIndex = 45;
@@ -641,7 +602,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// txtBreveteEnRegla
 			// 
-			this->txtBreveteEnRegla->Location = System::Drawing::Point(364, 194);
+			this->txtBreveteEnRegla->Location = System::Drawing::Point(101, 132);
 			this->txtBreveteEnRegla->Name = L"txtBreveteEnRegla";
 			this->txtBreveteEnRegla->Size = System::Drawing::Size(151, 20);
 			this->txtBreveteEnRegla->TabIndex = 60;
@@ -649,7 +610,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(270, 197);
+			this->label9->Location = System::Drawing::Point(5, 135);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(88, 13);
 			this->label9->TabIndex = 59;
@@ -657,7 +618,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// 
 			// txtcorreo
 			// 
-			this->txtcorreo->Location = System::Drawing::Point(111, 188);
+			this->txtcorreo->Location = System::Drawing::Point(115, 48);
 			this->txtcorreo->Name = L"txtcorreo";
 			this->txtcorreo->Size = System::Drawing::Size(140, 20);
 			this->txtcorreo->TabIndex = 58;
@@ -665,7 +626,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// label10
 			// 
 			this->label10->AutoSize = true;
-			this->label10->Location = System::Drawing::Point(12, 191);
+			this->label10->Location = System::Drawing::Point(16, 51);
 			this->label10->Name = L"label10";
 			this->label10->Size = System::Drawing::Size(97, 13);
 			this->label10->TabIndex = 57;
@@ -674,7 +635,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// label11
 			// 
 			this->label11->AutoSize = true;
-			this->label11->Location = System::Drawing::Point(587, 203);
+			this->label11->Location = System::Drawing::Point(589, 224);
 			this->label11->Name = L"label11";
 			this->label11->Size = System::Drawing::Size(96, 13);
 			this->label11->TabIndex = 61;
@@ -683,7 +644,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// label12
 			// 
 			this->label12->AutoSize = true;
-			this->label12->Location = System::Drawing::Point(812, 203);
+			this->label12->Location = System::Drawing::Point(802, 224);
 			this->label12->Name = L"label12";
 			this->label12->Size = System::Drawing::Size(91, 13);
 			this->label12->TabIndex = 62;
@@ -692,34 +653,56 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			// label13
 			// 
 			this->label13->AutoSize = true;
-			this->label13->Location = System::Drawing::Point(1051, 203);
+			this->label13->Location = System::Drawing::Point(1023, 224);
 			this->label13->Name = L"label13";
 			this->label13->Size = System::Drawing::Size(64, 13);
 			this->label13->TabIndex = 63;
 			this->label13->Text = L"Foto del QR";
 			// 
+			// groupBox1
+			// 
+			this->groupBox1->Controls->Add(this->txtBreveteEnRegla);
+			this->groupBox1->Controls->Add(this->label9);
+			this->groupBox1->Controls->Add(this->txtAsientos);
+			this->groupBox1->Controls->Add(this->label3);
+			this->groupBox1->Controls->Add(this->txtColor);
+			this->groupBox1->Controls->Add(this->label4);
+			this->groupBox1->Controls->Add(this->txtPlaca);
+			this->groupBox1->Controls->Add(this->txtModelo);
+			this->groupBox1->Controls->Add(this->label6);
+			this->groupBox1->Controls->Add(this->label7);
+			this->groupBox1->Location = System::Drawing::Point(277, 54);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(265, 168);
+			this->groupBox1->TabIndex = 64;
+			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"Campos de los Conductores";
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(414, 237);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(109, 33);
+			this->button1->TabIndex = 65;
+			this->button1->Text = L"Retroceder";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &UsuariosForm::button1_Click);
+			// 
 			// UsuariosForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1198, 541);
+			this->ClientSize = System::Drawing::Size(1162, 541);
+			this->ControlBox = false;
+			this->Controls->Add(this->button1);
+			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->label13);
 			this->Controls->Add(this->label12);
 			this->Controls->Add(this->label11);
-			this->Controls->Add(this->txtBreveteEnRegla);
-			this->Controls->Add(this->label9);
 			this->Controls->Add(this->txtcorreo);
 			this->Controls->Add(this->label10);
-			this->Controls->Add(this->txtAsientos);
-			this->Controls->Add(this->label3);
-			this->Controls->Add(this->txtColor);
-			this->Controls->Add(this->label4);
 			this->Controls->Add(this->txtDNI);
 			this->Controls->Add(this->label5);
-			this->Controls->Add(this->txtPlaca);
-			this->Controls->Add(this->txtModelo);
-			this->Controls->Add(this->label6);
-			this->Controls->Add(this->label7);
 			this->Controls->Add(this->txtTelefono);
 			this->Controls->Add(this->label8);
 			this->Controls->Add(this->pBQR);
@@ -741,17 +724,16 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantidadAsientos;
 			this->Controls->Add(this->btnModificar);
 			this->Controls->Add(this->btnAgregar);
 			this->Controls->Add(this->lblNombre);
-			this->Controls->Add(this->menuStrip1);
-			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"UsuariosForm";
-			this->Text = L"UsuariosForm";
+			this->ShowIcon = false;
+			this->Text = L"Mantenimiento de Usuarios";
 			this->Load += gcnew System::EventHandler(this, &UsuariosForm::UsuariosForm_Load_1);
-			this->menuStrip1->ResumeLayout(false);
-			this->menuStrip1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvUsuarios))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBConductor))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBCarro))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBQR))->EndInit();
+			this->groupBox1->ResumeLayout(false);
+			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -942,6 +924,16 @@ private: System::Void txtId_TextChanged(System::Object^ sender, System::EventArg
 private: System::Void lblNombre_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void lblId_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void salirToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Close();
+}
+private: System::Void modificarToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void nuevoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Close();
 }
 };
 }

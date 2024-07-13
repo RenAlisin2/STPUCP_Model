@@ -70,7 +70,7 @@ namespace STPUCPAdminGUIView {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(20, 28);
+			this->label1->Location = System::Drawing::Point(15, 15);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(126, 13);
 			this->label1->TabIndex = 0;
@@ -78,10 +78,10 @@ namespace STPUCPAdminGUIView {
 			// 
 			// CONTINUAR
 			// 
-			this->CONTINUAR->Location = System::Drawing::Point(23, 56);
+			this->CONTINUAR->Location = System::Drawing::Point(18, 41);
 			this->CONTINUAR->Margin = System::Windows::Forms::Padding(2);
 			this->CONTINUAR->Name = L"CONTINUAR";
-			this->CONTINUAR->Size = System::Drawing::Size(123, 27);
+			this->CONTINUAR->Size = System::Drawing::Size(148, 27);
 			this->CONTINUAR->TabIndex = 1;
 			this->CONTINUAR->Text = L"Verificarme";
 			this->CONTINUAR->UseVisualStyleBackColor = true;
@@ -90,7 +90,7 @@ namespace STPUCPAdminGUIView {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(184, 28);
+			this->label2->Location = System::Drawing::Point(167, 15);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(61, 13);
 			this->label2->TabIndex = 2;
@@ -98,18 +98,18 @@ namespace STPUCPAdminGUIView {
 			// 
 			// textIdViaje
 			// 
-			this->textIdViaje->Location = System::Drawing::Point(251, 25);
+			this->textIdViaje->Location = System::Drawing::Point(234, 12);
 			this->textIdViaje->Name = L"textIdViaje";
 			this->textIdViaje->ReadOnly = true;
-			this->textIdViaje->Size = System::Drawing::Size(75, 20);
+			this->textIdViaje->Size = System::Drawing::Size(87, 20);
 			this->textIdViaje->TabIndex = 3;
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(187, 56);
+			this->button1->Location = System::Drawing::Point(170, 41);
 			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(123, 27);
+			this->button1->Size = System::Drawing::Size(151, 27);
 			this->button1->TabIndex = 4;
 			this->button1->Text = L"Volver";
 			this->button1->UseVisualStyleBackColor = true;
@@ -119,14 +119,15 @@ namespace STPUCPAdminGUIView {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(358, 102);
+			this->ClientSize = System::Drawing::Size(358, 77);
+			this->ControlBox = false;
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->textIdViaje);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->CONTINUAR);
 			this->Controls->Add(this->label1);
 			this->Name = L"HuellaForm";
-			this->Text = L"HuellaForm";
+			this->Text = L"Verficiación Biométrica";
 			this->Load += gcnew System::EventHandler(this, &HuellaForm::HuellaForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();

@@ -300,8 +300,8 @@ bool STPUCPAdminController::controller::LeerHuella(int huellaconductor)
 			OpenPort();
 			ArduinoPort->Write("L");
 			//while (ArduinoPort->ReadLine() != nullptr) {}
-			System::Threading::Thread::Sleep(10000);
-			num = Convert::ToInt32(ArduinoPort->ReadLine());
+			//System::Threading::Thread::Sleep(10000);
+			//num = Convert::ToInt32(ArduinoPort->ReadLine());
 			num = huellaconductor; //COMENTAR
 			if (num == huellaconductor) {
 				valido = true;

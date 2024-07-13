@@ -62,8 +62,10 @@ namespace STPUCPAdminGUIView {
 
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::Button^ button4;
-	private: System::Windows::Forms::Label^ label3;
+
 	private: System::Windows::Forms::Button^ ELIMINAR;
+	private: System::Windows::Forms::GroupBox^ groupBox1;
+	private: System::Windows::Forms::Label^ label3;
 
 	protected:
 
@@ -95,27 +97,29 @@ namespace STPUCPAdminGUIView {
 			this->textId = (gcnew System::Windows::Forms::TextBox());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->ELIMINAR = (gcnew System::Windows::Forms::Button());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->label3 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvRecepcionPago))->BeginInit();
+			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(11, 194);
-			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button1->Location = System::Drawing::Point(11, 182);
+			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(285, 57);
+			this->button1->Size = System::Drawing::Size(285, 29);
 			this->button1->TabIndex = 0;
-			this->button1->Text = L"Esperar Pasajeros";
+			this->button1->Text = L"Esperar pasajeros";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &ESPERANDOPAGO::button1_Click);
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(301, 194);
+			this->button2->Location = System::Drawing::Point(301, 183);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(315, 57);
+			this->button2->Size = System::Drawing::Size(315, 28);
 			this->button2->TabIndex = 1;
 			this->button2->Text = L"Actualizar Lista";
 			this->button2->UseVisualStyleBackColor = true;
@@ -184,7 +188,7 @@ namespace STPUCPAdminGUIView {
 			// textViaje
 			// 
 			this->textViaje->Location = System::Drawing::Point(65, 12);
-			this->textViaje->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->textViaje->Margin = System::Windows::Forms::Padding(2);
 			this->textViaje->Name = L"textViaje";
 			this->textViaje->ReadOnly = true;
 			this->textViaje->Size = System::Drawing::Size(76, 20);
@@ -203,25 +207,25 @@ namespace STPUCPAdminGUIView {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(651, 63);
+			this->label2->Location = System::Drawing::Point(6, 26);
 			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(123, 13);
+			this->label2->Size = System::Drawing::Size(71, 13);
 			this->label2->TabIndex = 5;
-			this->label2->Text = L"Ingrese el ID de la orden";
+			this->label2->Text = L"Ingrese ID de";
 			// 
 			// textId
 			// 
-			this->textId->Location = System::Drawing::Point(642, 86);
-			this->textId->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->textId->Location = System::Drawing::Point(106, 32);
+			this->textId->Margin = System::Windows::Forms::Padding(2);
 			this->textId->Name = L"textId";
-			this->textId->Size = System::Drawing::Size(142, 20);
+			this->textId->Size = System::Drawing::Size(46, 20);
 			this->textId->TabIndex = 6;
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(642, 116);
-			this->button3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button3->Location = System::Drawing::Point(9, 107);
+			this->button3->Margin = System::Windows::Forms::Padding(2);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(74, 20);
 			this->button3->TabIndex = 7;
@@ -231,8 +235,8 @@ namespace STPUCPAdminGUIView {
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(720, 117);
-			this->button4->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button4->Location = System::Drawing::Point(88, 107);
+			this->button4->Margin = System::Windows::Forms::Padding(2);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(64, 19);
 			this->button4->TabIndex = 8;
@@ -240,49 +244,61 @@ namespace STPUCPAdminGUIView {
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &ESPERANDOPAGO::button4_Click);
 			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(650, 172);
-			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(129, 13);
-			this->label3->TabIndex = 9;
-			this->label3->Text = L"¿Desea eliminar la orden\?";
-			this->label3->Click += gcnew System::EventHandler(this, &ESPERANDOPAGO::label3_Click);
-			// 
 			// ELIMINAR
 			// 
-			this->ELIMINAR->Location = System::Drawing::Point(642, 194);
-			this->ELIMINAR->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->ELIMINAR->Location = System::Drawing::Point(9, 65);
+			this->ELIMINAR->Margin = System::Windows::Forms::Padding(2);
 			this->ELIMINAR->Name = L"ELIMINAR";
-			this->ELIMINAR->Size = System::Drawing::Size(143, 57);
+			this->ELIMINAR->Size = System::Drawing::Size(143, 26);
 			this->ELIMINAR->TabIndex = 10;
 			this->ELIMINAR->Text = L"Eliminar";
 			this->ELIMINAR->UseVisualStyleBackColor = true;
 			this->ELIMINAR->Click += gcnew System::EventHandler(this, &ESPERANDOPAGO::ELIMINAR_Click);
 			// 
+			// groupBox1
+			// 
+			this->groupBox1->Controls->Add(this->label3);
+			this->groupBox1->Controls->Add(this->ELIMINAR);
+			this->groupBox1->Controls->Add(this->button4);
+			this->groupBox1->Controls->Add(this->button3);
+			this->groupBox1->Controls->Add(this->textId);
+			this->groupBox1->Controls->Add(this->label2);
+			this->groupBox1->Location = System::Drawing::Point(633, 41);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(165, 136);
+			this->groupBox1->TabIndex = 11;
+			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"¿Desea eliminar la orden\?";
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(7, 39);
+			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(95, 13);
+			this->label3->TabIndex = 11;
+			this->label3->Text = L"la orden a eliminar:";
+			this->label3->Click += gcnew System::EventHandler(this, &ESPERANDOPAGO::label3_Click_1);
+			// 
 			// ESPERANDOPAGO
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(810, 270);
-			this->Controls->Add(this->ELIMINAR);
-			this->Controls->Add(this->label3);
-			this->Controls->Add(this->button4);
-			this->Controls->Add(this->button3);
-			this->Controls->Add(this->textId);
-			this->Controls->Add(this->label2);
+			this->ClientSize = System::Drawing::Size(810, 225);
+			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->textViaje);
 			this->Controls->Add(this->dgvRecepcionPago);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"ESPERANDOPAGO";
 			this->Text = L"Recepcion de Pago";
 			this->Load += gcnew System::EventHandler(this, &ESPERANDOPAGO::ESPERANDOPAGO_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvRecepcionPago))->EndInit();
+			this->groupBox1->ResumeLayout(false);
+			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -358,6 +374,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	esperandoAsistencia->ShowDialog();
 
 
+}
+private: System::Void label3_Click_1(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

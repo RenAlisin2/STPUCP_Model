@@ -37,10 +37,10 @@ namespace STPUCPAdminGUIView {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::MenuStrip^ menuStrip1;
+
 	protected:
-	private: System::Windows::Forms::ToolStripMenuItem^ archivoToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ salirToolStripMenuItem;
+
+
 	private: System::Windows::Forms::TextBox^ txtUltimoParadero;
 
 	private: System::Windows::Forms::Label^ lblUltimoParadero;
@@ -88,6 +88,7 @@ namespace STPUCPAdminGUIView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ UltimParadero;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Precio;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Distrito;
+	private: System::Windows::Forms::Button^ button1;
 
 
 	private:
@@ -103,9 +104,6 @@ namespace STPUCPAdminGUIView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
-			this->archivoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->salirToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->txtUltimoParadero = (gcnew System::Windows::Forms::TextBox());
 			this->lblUltimoParadero = (gcnew System::Windows::Forms::Label());
 			this->txtDescripcion = (gcnew System::Windows::Forms::TextBox());
@@ -128,38 +126,13 @@ namespace STPUCPAdminGUIView {
 			this->lblId = (gcnew System::Windows::Forms::Label());
 			this->lblPrecio = (gcnew System::Windows::Forms::Label());
 			this->txtPrecio = (gcnew System::Windows::Forms::TextBox());
-			this->menuStrip1->SuspendLayout();
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvServicios))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// menuStrip1
-			// 
-			this->menuStrip1->AllowMerge = false;
-			this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->archivoToolStripMenuItem });
-			this->menuStrip1->Location = System::Drawing::Point(0, 0);
-			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
-			this->menuStrip1->Size = System::Drawing::Size(608, 24);
-			this->menuStrip1->TabIndex = 0;
-			this->menuStrip1->Text = L"menuStrip1";
-			// 
-			// archivoToolStripMenuItem
-			// 
-			this->archivoToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->salirToolStripMenuItem });
-			this->archivoToolStripMenuItem->Name = L"archivoToolStripMenuItem";
-			this->archivoToolStripMenuItem->Size = System::Drawing::Size(60, 20);
-			this->archivoToolStripMenuItem->Text = L"Archivo";
-			// 
-			// salirToolStripMenuItem
-			// 
-			this->salirToolStripMenuItem->Name = L"salirToolStripMenuItem";
-			this->salirToolStripMenuItem->Size = System::Drawing::Size(96, 22);
-			this->salirToolStripMenuItem->Text = L"Salir";
-			// 
 			// txtUltimoParadero
 			// 
-			this->txtUltimoParadero->Location = System::Drawing::Point(142, 150);
+			this->txtUltimoParadero->Location = System::Drawing::Point(134, 137);
 			this->txtUltimoParadero->Name = L"txtUltimoParadero";
 			this->txtUltimoParadero->Size = System::Drawing::Size(140, 20);
 			this->txtUltimoParadero->TabIndex = 31;
@@ -167,7 +140,7 @@ namespace STPUCPAdminGUIView {
 			// lblUltimoParadero
 			// 
 			this->lblUltimoParadero->AutoSize = true;
-			this->lblUltimoParadero->Location = System::Drawing::Point(25, 150);
+			this->lblUltimoParadero->Location = System::Drawing::Point(17, 140);
 			this->lblUltimoParadero->Name = L"lblUltimoParadero";
 			this->lblUltimoParadero->Size = System::Drawing::Size(85, 13);
 			this->lblUltimoParadero->TabIndex = 30;
@@ -175,14 +148,14 @@ namespace STPUCPAdminGUIView {
 			// 
 			// txtDescripcion
 			// 
-			this->txtDescripcion->Location = System::Drawing::Point(142, 120);
+			this->txtDescripcion->Location = System::Drawing::Point(134, 107);
 			this->txtDescripcion->Name = L"txtDescripcion";
 			this->txtDescripcion->Size = System::Drawing::Size(140, 20);
 			this->txtDescripcion->TabIndex = 29;
 			// 
 			// txtFechaViaje
 			// 
-			this->txtFechaViaje->Location = System::Drawing::Point(142, 90);
+			this->txtFechaViaje->Location = System::Drawing::Point(134, 77);
 			this->txtFechaViaje->Name = L"txtFechaViaje";
 			this->txtFechaViaje->Size = System::Drawing::Size(140, 20);
 			this->txtFechaViaje->TabIndex = 28;
@@ -190,7 +163,7 @@ namespace STPUCPAdminGUIView {
 			// lblDescripcion
 			// 
 			this->lblDescripcion->AutoSize = true;
-			this->lblDescripcion->Location = System::Drawing::Point(25, 120);
+			this->lblDescripcion->Location = System::Drawing::Point(17, 112);
 			this->lblDescripcion->Name = L"lblDescripcion";
 			this->lblDescripcion->Size = System::Drawing::Size(42, 13);
 			this->lblDescripcion->TabIndex = 27;
@@ -199,7 +172,7 @@ namespace STPUCPAdminGUIView {
 			// lblFechaViaje
 			// 
 			this->lblFechaViaje->AutoSize = true;
-			this->lblFechaViaje->Location = System::Drawing::Point(25, 93);
+			this->lblFechaViaje->Location = System::Drawing::Point(17, 80);
 			this->lblFechaViaje->Name = L"lblFechaViaje";
 			this->lblFechaViaje->Size = System::Drawing::Size(81, 13);
 			this->lblFechaViaje->TabIndex = 26;
@@ -207,22 +180,24 @@ namespace STPUCPAdminGUIView {
 			// 
 			// txtHoraSalida
 			// 
-			this->txtHoraSalida->Location = System::Drawing::Point(142, 61);
+			this->txtHoraSalida->Location = System::Drawing::Point(134, 48);
 			this->txtHoraSalida->Name = L"txtHoraSalida";
 			this->txtHoraSalida->Size = System::Drawing::Size(140, 20);
 			this->txtHoraSalida->TabIndex = 25;
 			// 
 			// dgvServicios
 			// 
+			this->dgvServicios->AllowUserToAddRows = false;
 			this->dgvServicios->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvServicios->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 				this->UsuarioID,
 					this->HoraSalida, this->FechaViaje, this->Distrito, this->UltimParadero, this->Precio
 			});
-			this->dgvServicios->Location = System::Drawing::Point(20, 265);
+			this->dgvServicios->Location = System::Drawing::Point(12, 203);
 			this->dgvServicios->Name = L"dgvServicios";
+			this->dgvServicios->RowHeadersVisible = false;
 			this->dgvServicios->RowHeadersWidth = 51;
-			this->dgvServicios->Size = System::Drawing::Size(580, 253);
+			this->dgvServicios->Size = System::Drawing::Size(421, 253);
 			this->dgvServicios->TabIndex = 24;
 			this->dgvServicios->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ServiciosForm::dgvServicios_CellClick);
 			// 
@@ -270,9 +245,9 @@ namespace STPUCPAdminGUIView {
 			// 
 			// btnEliminar
 			// 
-			this->btnEliminar->Location = System::Drawing::Point(330, 216);
+			this->btnEliminar->Location = System::Drawing::Point(296, 145);
 			this->btnEliminar->Name = L"btnEliminar";
-			this->btnEliminar->Size = System::Drawing::Size(75, 23);
+			this->btnEliminar->Size = System::Drawing::Size(130, 26);
 			this->btnEliminar->TabIndex = 23;
 			this->btnEliminar->Text = L"Eliminar";
 			this->btnEliminar->UseVisualStyleBackColor = true;
@@ -280,9 +255,9 @@ namespace STPUCPAdminGUIView {
 			// 
 			// btnModificar
 			// 
-			this->btnModificar->Location = System::Drawing::Point(214, 216);
+			this->btnModificar->Location = System::Drawing::Point(296, 113);
 			this->btnModificar->Name = L"btnModificar";
-			this->btnModificar->Size = System::Drawing::Size(75, 23);
+			this->btnModificar->Size = System::Drawing::Size(130, 26);
 			this->btnModificar->TabIndex = 22;
 			this->btnModificar->Text = L"Modificar";
 			this->btnModificar->UseVisualStyleBackColor = true;
@@ -290,9 +265,9 @@ namespace STPUCPAdminGUIView {
 			// 
 			// btnAgregar
 			// 
-			this->btnAgregar->Location = System::Drawing::Point(97, 216);
+			this->btnAgregar->Location = System::Drawing::Point(296, 82);
 			this->btnAgregar->Name = L"btnAgregar";
-			this->btnAgregar->Size = System::Drawing::Size(75, 23);
+			this->btnAgregar->Size = System::Drawing::Size(130, 25);
 			this->btnAgregar->TabIndex = 21;
 			this->btnAgregar->Text = L"Agregar";
 			this->btnAgregar->UseVisualStyleBackColor = true;
@@ -300,7 +275,7 @@ namespace STPUCPAdminGUIView {
 			// 
 			// txtId
 			// 
-			this->txtId->Location = System::Drawing::Point(142, 31);
+			this->txtId->Location = System::Drawing::Point(134, 18);
 			this->txtId->Name = L"txtId";
 			this->txtId->Size = System::Drawing::Size(64, 20);
 			this->txtId->TabIndex = 20;
@@ -308,7 +283,7 @@ namespace STPUCPAdminGUIView {
 			// lblHSalida
 			// 
 			this->lblHSalida->AutoSize = true;
-			this->lblHSalida->Location = System::Drawing::Point(25, 64);
+			this->lblHSalida->Location = System::Drawing::Point(17, 51);
 			this->lblHSalida->Name = L"lblHSalida";
 			this->lblHSalida->Size = System::Drawing::Size(80, 13);
 			this->lblHSalida->TabIndex = 19;
@@ -317,7 +292,7 @@ namespace STPUCPAdminGUIView {
 			// lblId
 			// 
 			this->lblId->AutoSize = true;
-			this->lblId->Location = System::Drawing::Point(25, 38);
+			this->lblId->Location = System::Drawing::Point(17, 25);
 			this->lblId->Name = L"lblId";
 			this->lblId->Size = System::Drawing::Size(19, 13);
 			this->lblId->TabIndex = 18;
@@ -326,7 +301,7 @@ namespace STPUCPAdminGUIView {
 			// lblPrecio
 			// 
 			this->lblPrecio->AutoSize = true;
-			this->lblPrecio->Location = System::Drawing::Point(25, 179);
+			this->lblPrecio->Location = System::Drawing::Point(17, 169);
 			this->lblPrecio->Name = L"lblPrecio";
 			this->lblPrecio->Size = System::Drawing::Size(75, 13);
 			this->lblPrecio->TabIndex = 32;
@@ -334,16 +309,28 @@ namespace STPUCPAdminGUIView {
 			// 
 			// txtPrecio
 			// 
-			this->txtPrecio->Location = System::Drawing::Point(142, 179);
+			this->txtPrecio->Location = System::Drawing::Point(134, 166);
 			this->txtPrecio->Name = L"txtPrecio";
 			this->txtPrecio->Size = System::Drawing::Size(140, 20);
 			this->txtPrecio->TabIndex = 33;
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(296, 51);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(130, 25);
+			this->button1->TabIndex = 34;
+			this->button1->Text = L"Retroceder";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &ServiciosForm::button1_Click);
 			// 
 			// ServiciosForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(608, 549);
+			this->ClientSize = System::Drawing::Size(450, 469);
+			this->ControlBox = false;
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->txtPrecio);
 			this->Controls->Add(this->lblPrecio);
 			this->Controls->Add(this->txtUltimoParadero);
@@ -360,13 +347,10 @@ namespace STPUCPAdminGUIView {
 			this->Controls->Add(this->txtId);
 			this->Controls->Add(this->lblHSalida);
 			this->Controls->Add(this->lblId);
-			this->Controls->Add(this->menuStrip1);
-			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"ServiciosForm";
-			this->Text = L"ServiciosForm";
+			this->ShowIcon = false;
+			this->Text = L"Servicios";
 			this->Load += gcnew System::EventHandler(this, &ServiciosForm::ServiciosForm_Load);
-			this->menuStrip1->ResumeLayout(false);
-			this->menuStrip1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvServicios))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -424,6 +408,11 @@ private: System::Void dgvServicios_CellClick(System::Object^ sender, System::Win
 }
 private: System::Void ServiciosForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	RefreshGrid();
+}
+private: System::Void salirToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Close();
 }
 };
 }
