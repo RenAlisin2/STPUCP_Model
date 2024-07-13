@@ -193,6 +193,9 @@
     <ClInclude Include="RegistroForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="RegistroHuellaForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="ServicioDriverForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -238,6 +241,7 @@
     <ClCompile Include="RecepcionForm.cpp" />
     <ClCompile Include="RegistroConductorForm.cpp" />
     <ClCompile Include="RegistroForm.cpp" />
+    <ClCompile Include="RegistroHuellaForm.cpp" />
     <ClCompile Include="ServicioDriverForm.cpp" />
     <ClCompile Include="ServiciosForm.cpp" />
     <ClCompile Include="TerminarViaje.cpp" />

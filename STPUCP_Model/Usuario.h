@@ -18,6 +18,7 @@ namespace STPUCP_Model {
             property String^ Rol;
             property int IdUltimoViaje;
             property int IdUltimaOrden;
+            property int Huella;
 
             //Añadimos DNI para que verifique el brevete con este
             property int DNI;

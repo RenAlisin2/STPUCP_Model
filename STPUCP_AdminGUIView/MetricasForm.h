@@ -41,13 +41,13 @@ namespace STPUCPAdminGUIView {
 	protected:
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::PictureBox^ pictureBox2;
+
 	private: System::Windows::Forms::Label^ IDUsuario;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::PictureBox^ pictureBox3;
-	private: System::Windows::Forms::Label^ label6;
-	private: System::Windows::Forms::PictureBox^ pictureBox4;
+
+
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
 	private: System::Windows::Forms::ToolStripMenuItem^ archivoToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ salirToolStripMenuItem;
@@ -65,12 +65,13 @@ namespace STPUCPAdminGUIView {
 
 
 	private: System::Windows::Forms::DataVisualization::Charting::Chart^ M_Estrellas;
-	private: System::Windows::Forms::PictureBox^ pictureBox5;
+
 	private: System::Windows::Forms::DataVisualization::Charting::Chart^ RolesReport;
 	private: System::Windows::Forms::Button^ Metrica_Pasajero;
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::TextBox^ textestrellas;
+	private: System::Windows::Forms::Label^ label6;
 
 
 
@@ -106,13 +107,10 @@ namespace STPUCPAdminGUIView {
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->IDUsuario = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
-			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->pictureBox4 = (gcnew System::Windows::Forms::PictureBox());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->archivoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->salirToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -122,120 +120,82 @@ namespace STPUCPAdminGUIView {
 			this->M_ServiciosTP = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->M_ServiciosT = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->M_Estrellas = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
-			this->pictureBox5 = (gcnew System::Windows::Forms::PictureBox());
 			this->RolesReport = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->Metrica_Pasajero = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->textestrellas = (gcnew System::Windows::Forms::TextBox());
+			this->label6 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->M_EstrellasP))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->M_ServiciosTP))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->M_ServiciosT))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->M_Estrellas))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->RolesReport))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// pictureBox1
 			// 
-			this->pictureBox1->Location = System::Drawing::Point(57, 79);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
+			this->pictureBox1->Location = System::Drawing::Point(43, 64);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(519, 249);
+			this->pictureBox1->Size = System::Drawing::Size(389, 202);
 			this->pictureBox1->TabIndex = 0;
 			this->pictureBox1->TabStop = false;
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(168, 43);
-			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label1->Location = System::Drawing::Point(126, 35);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(261, 16);
+			this->label1->Size = System::Drawing::Size(205, 13);
 			this->label1->TabIndex = 1;
 			this->label1->Text = L"Métrica de Servicios tomados de Usuarios";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(763, 43);
-			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label2->Location = System::Drawing::Point(514, 35);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(284, 16);
+			this->label2->Size = System::Drawing::Size(223, 13);
 			this->label2->TabIndex = 3;
 			this->label2->Text = L"Métrica de Estrellas promedio de Conductores";
-			// 
-			// pictureBox2
-			// 
-			this->pictureBox2->Location = System::Drawing::Point(639, 376);
-			this->pictureBox2->Margin = System::Windows::Forms::Padding(4);
-			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(519, 249);
-			this->pictureBox2->TabIndex = 2;
-			this->pictureBox2->TabStop = false;
 			// 
 			// IDUsuario
 			// 
 			this->IDUsuario->AutoSize = true;
-			this->IDUsuario->Location = System::Drawing::Point(54, 684);
-			this->IDUsuario->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->IDUsuario->Location = System::Drawing::Point(128, 517);
 			this->IDUsuario->Name = L"IDUsuario";
-			this->IDUsuario->Size = System::Drawing::Size(123, 16);
+			this->IDUsuario->Size = System::Drawing::Size(97, 13);
 			this->IDUsuario->TabIndex = 4;
 			this->IDUsuario->Text = L"Código de Usuario:";
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(706, 691);
-			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label4->Location = System::Drawing::Point(542, 517);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(140, 16);
+			this->label4->Size = System::Drawing::Size(112, 13);
 			this->label4->TabIndex = 5;
 			this->label4->Text = L"Código del Conductor:";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(168, 434);
-			this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label5->Location = System::Drawing::Point(126, 353);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(292, 16);
+			this->label5->Size = System::Drawing::Size(230, 13);
 			this->label5->TabIndex = 7;
 			this->label5->Text = L"Métrica de Servicios tomados por cada Usuario";
 			// 
 			// pictureBox3
 			// 
-			this->pictureBox3->Location = System::Drawing::Point(57, 376);
-			this->pictureBox3->Margin = System::Windows::Forms::Padding(4);
+			this->pictureBox3->Location = System::Drawing::Point(43, 306);
 			this->pictureBox3->Name = L"pictureBox3";
-			this->pictureBox3->Size = System::Drawing::Size(519, 249);
+			this->pictureBox3->Size = System::Drawing::Size(389, 202);
 			this->pictureBox3->TabIndex = 6;
 			this->pictureBox3->TabStop = false;
-			// 
-			// label6
-			// 
-			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(777, 434);
-			this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(170, 16);
-			this->label6->TabIndex = 9;
-			this->label6->Text = L"Metricas de Viajes por mes";
-			// 
-			// pictureBox4
-			// 
-			this->pictureBox4->Location = System::Drawing::Point(666, 79);
-			this->pictureBox4->Margin = System::Windows::Forms::Padding(4);
-			this->pictureBox4->Name = L"pictureBox4";
-			this->pictureBox4->Size = System::Drawing::Size(519, 249);
-			this->pictureBox4->TabIndex = 8;
-			this->pictureBox4->TabStop = false;
 			// 
 			// menuStrip1
 			// 
@@ -244,7 +204,8 @@ namespace STPUCPAdminGUIView {
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->archivoToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(1727, 28);
+			this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
+			this->menuStrip1->Size = System::Drawing::Size(1135, 24);
 			this->menuStrip1->TabIndex = 10;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -252,29 +213,27 @@ namespace STPUCPAdminGUIView {
 			// 
 			this->archivoToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->salirToolStripMenuItem });
 			this->archivoToolStripMenuItem->Name = L"archivoToolStripMenuItem";
-			this->archivoToolStripMenuItem->Size = System::Drawing::Size(73, 24);
+			this->archivoToolStripMenuItem->Size = System::Drawing::Size(60, 20);
 			this->archivoToolStripMenuItem->Text = L"Archivo";
 			// 
 			// salirToolStripMenuItem
 			// 
 			this->salirToolStripMenuItem->Name = L"salirToolStripMenuItem";
-			this->salirToolStripMenuItem->Size = System::Drawing::Size(121, 26);
+			this->salirToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->salirToolStripMenuItem->Text = L"Salir";
 			// 
 			// txtCodigoPasajero
 			// 
-			this->txtCodigoPasajero->Location = System::Drawing::Point(224, 678);
-			this->txtCodigoPasajero->Margin = System::Windows::Forms::Padding(4);
+			this->txtCodigoPasajero->Location = System::Drawing::Point(231, 514);
 			this->txtCodigoPasajero->Name = L"txtCodigoPasajero";
-			this->txtCodigoPasajero->Size = System::Drawing::Size(132, 22);
+			this->txtCodigoPasajero->Size = System::Drawing::Size(100, 20);
 			this->txtCodigoPasajero->TabIndex = 11;
 			// 
 			// txtCodigoConductor
 			// 
-			this->txtCodigoConductor->Location = System::Drawing::Point(881, 685);
-			this->txtCodigoConductor->Margin = System::Windows::Forms::Padding(4);
+			this->txtCodigoConductor->Location = System::Drawing::Point(660, 514);
 			this->txtCodigoConductor->Name = L"txtCodigoConductor";
-			this->txtCodigoConductor->Size = System::Drawing::Size(132, 22);
+			this->txtCodigoConductor->Size = System::Drawing::Size(100, 20);
 			this->txtCodigoConductor->TabIndex = 12;
 			// 
 			// M_EstrellasP
@@ -284,14 +243,13 @@ namespace STPUCPAdminGUIView {
 			this->M_EstrellasP->ChartAreas->Add(chartArea1);
 			legend1->Name = L"Legend1";
 			this->M_EstrellasP->Legends->Add(legend1);
-			this->M_EstrellasP->Location = System::Drawing::Point(635, 376);
-			this->M_EstrellasP->Margin = System::Windows::Forms::Padding(4);
+			this->M_EstrellasP->Location = System::Drawing::Point(451, 312);
 			this->M_EstrellasP->Name = L"M_EstrellasP";
 			series1->ChartArea = L"ChartArea1";
 			series1->Legend = L"Legend1";
 			series1->Name = L"Estrellas";
 			this->M_EstrellasP->Series->Add(series1);
-			this->M_EstrellasP->Size = System::Drawing::Size(523, 249);
+			this->M_EstrellasP->Size = System::Drawing::Size(392, 202);
 			this->M_EstrellasP->TabIndex = 13;
 			this->M_EstrellasP->Text = L"chart1";
 			// 
@@ -302,14 +260,13 @@ namespace STPUCPAdminGUIView {
 			this->M_ServiciosTP->ChartAreas->Add(chartArea2);
 			legend2->Name = L"Legend1";
 			this->M_ServiciosTP->Legends->Add(legend2);
-			this->M_ServiciosTP->Location = System::Drawing::Point(57, 79);
-			this->M_ServiciosTP->Margin = System::Windows::Forms::Padding(4);
+			this->M_ServiciosTP->Location = System::Drawing::Point(43, 64);
 			this->M_ServiciosTP->Name = L"M_ServiciosTP";
 			series2->ChartArea = L"ChartArea1";
 			series2->Legend = L"Legend1";
 			series2->Name = L"Servicios";
 			this->M_ServiciosTP->Series->Add(series2);
-			this->M_ServiciosTP->Size = System::Drawing::Size(523, 249);
+			this->M_ServiciosTP->Size = System::Drawing::Size(392, 202);
 			this->M_ServiciosTP->TabIndex = 14;
 			this->M_ServiciosTP->Text = L"chart1";
 			// 
@@ -320,14 +277,13 @@ namespace STPUCPAdminGUIView {
 			this->M_ServiciosT->ChartAreas->Add(chartArea3);
 			legend3->Name = L"Legend1";
 			this->M_ServiciosT->Legends->Add(legend3);
-			this->M_ServiciosT->Location = System::Drawing::Point(53, 376);
-			this->M_ServiciosT->Margin = System::Windows::Forms::Padding(4);
+			this->M_ServiciosT->Location = System::Drawing::Point(40, 306);
 			this->M_ServiciosT->Name = L"M_ServiciosT";
 			series3->ChartArea = L"ChartArea1";
 			series3->Legend = L"Legend1";
 			series3->Name = L"Servicios";
 			this->M_ServiciosT->Series->Add(series3);
-			this->M_ServiciosT->Size = System::Drawing::Size(523, 249);
+			this->M_ServiciosT->Size = System::Drawing::Size(392, 202);
 			this->M_ServiciosT->TabIndex = 15;
 			this->M_ServiciosT->Text = L"chart1";
 			// 
@@ -338,25 +294,16 @@ namespace STPUCPAdminGUIView {
 			this->M_Estrellas->ChartAreas->Add(chartArea4);
 			legend4->Name = L"Legend1";
 			this->M_Estrellas->Legends->Add(legend4);
-			this->M_Estrellas->Location = System::Drawing::Point(666, 79);
-			this->M_Estrellas->Margin = System::Windows::Forms::Padding(4);
+			this->M_Estrellas->Location = System::Drawing::Point(451, 64);
 			this->M_Estrellas->Name = L"M_Estrellas";
 			series4->ChartArea = L"ChartArea1";
 			series4->Legend = L"Legend1";
 			series4->Name = L"Estrellas";
 			this->M_Estrellas->Series->Add(series4);
-			this->M_Estrellas->Size = System::Drawing::Size(523, 249);
+			this->M_Estrellas->Size = System::Drawing::Size(392, 202);
 			this->M_Estrellas->TabIndex = 16;
 			this->M_Estrellas->Text = L"chart1";
 			this->M_Estrellas->Click += gcnew System::EventHandler(this, &MetricasForm::M_Estrellas_Click);
-			// 
-			// pictureBox5
-			// 
-			this->pictureBox5->Location = System::Drawing::Point(1236, 79);
-			this->pictureBox5->Name = L"pictureBox5";
-			this->pictureBox5->Size = System::Drawing::Size(394, 249);
-			this->pictureBox5->TabIndex = 17;
-			this->pictureBox5->TabStop = false;
 			// 
 			// RolesReport
 			// 
@@ -364,21 +311,23 @@ namespace STPUCPAdminGUIView {
 			this->RolesReport->ChartAreas->Add(chartArea5);
 			legend5->Name = L"Legend1";
 			this->RolesReport->Legends->Add(legend5);
-			this->RolesReport->Location = System::Drawing::Point(1236, 79);
+			this->RolesReport->Location = System::Drawing::Point(866, 64);
+			this->RolesReport->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->RolesReport->Name = L"RolesReport";
 			series5->ChartArea = L"ChartArea1";
 			series5->Legend = L"Legend1";
 			series5->Name = L"Roles";
 			this->RolesReport->Series->Add(series5);
-			this->RolesReport->Size = System::Drawing::Size(394, 249);
+			this->RolesReport->Size = System::Drawing::Size(258, 202);
 			this->RolesReport->TabIndex = 18;
 			this->RolesReport->Text = L"chart1";
 			// 
 			// Metrica_Pasajero
 			// 
-			this->Metrica_Pasajero->Location = System::Drawing::Point(376, 678);
+			this->Metrica_Pasajero->Location = System::Drawing::Point(131, 539);
+			this->Metrica_Pasajero->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Metrica_Pasajero->Name = L"Metrica_Pasajero";
-			this->Metrica_Pasajero->Size = System::Drawing::Size(238, 23);
+			this->Metrica_Pasajero->Size = System::Drawing::Size(200, 19);
 			this->Metrica_Pasajero->TabIndex = 19;
 			this->Metrica_Pasajero->Text = L"Generar Metrica Pasajero";
 			this->Metrica_Pasajero->UseVisualStyleBackColor = true;
@@ -386,9 +335,10 @@ namespace STPUCPAdminGUIView {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(1047, 684);
+			this->button2->Location = System::Drawing::Point(545, 539);
+			this->button2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(226, 23);
+			this->button2->Size = System::Drawing::Size(215, 19);
 			this->button2->TabIndex = 20;
 			this->button2->Text = L"Genererar Metrica Usuario";
 			this->button2->UseVisualStyleBackColor = true;
@@ -397,64 +347,71 @@ namespace STPUCPAdminGUIView {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(1218, 563);
+			this->label3->Location = System::Drawing::Point(891, 406);
+			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(360, 16);
+			this->label3->Size = System::Drawing::Size(108, 13);
 			this->label3->TabIndex = 21;
-			this->label3->Text = L"PROMEDIO DE ESTRELLLAS GENERAL DEL PASAJERO";
+			this->label3->Text = L"Promedio de Estrellas";
 			// 
 			// textestrellas
 			// 
-			this->textestrellas->Location = System::Drawing::Point(1221, 603);
+			this->textestrellas->Location = System::Drawing::Point(894, 438);
+			this->textestrellas->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textestrellas->Name = L"textestrellas";
 			this->textestrellas->ReadOnly = true;
-			this->textestrellas->Size = System::Drawing::Size(126, 22);
+			this->textestrellas->Size = System::Drawing::Size(105, 20);
 			this->textestrellas->TabIndex = 22;
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Location = System::Drawing::Point(891, 419);
+			this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(105, 13);
+			this->label6->TabIndex = 23;
+			this->label6->Text = L"general del pasajero:";
 			// 
 			// MetricasForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1727, 782);
+			this->ClientSize = System::Drawing::Size(1135, 609);
+			this->ControlBox = false;
+			this->Controls->Add(this->label6);
 			this->Controls->Add(this->textestrellas);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->Metrica_Pasajero);
 			this->Controls->Add(this->RolesReport);
-			this->Controls->Add(this->pictureBox5);
 			this->Controls->Add(this->M_Estrellas);
 			this->Controls->Add(this->M_ServiciosT);
 			this->Controls->Add(this->M_ServiciosTP);
 			this->Controls->Add(this->M_EstrellasP);
 			this->Controls->Add(this->txtCodigoConductor);
 			this->Controls->Add(this->txtCodigoPasajero);
-			this->Controls->Add(this->label6);
-			this->Controls->Add(this->pictureBox4);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->pictureBox3);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->IDUsuario);
 			this->Controls->Add(this->label2);
-			this->Controls->Add(this->pictureBox2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;
-			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"MetricasForm";
+			this->ShowIcon = false;
 			this->Text = L"MetricasForm";
 			this->Load += gcnew System::EventHandler(this, &MetricasForm::MetricasForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->M_EstrellasP))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->M_ServiciosTP))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->M_ServiciosT))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->M_Estrellas))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->RolesReport))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
