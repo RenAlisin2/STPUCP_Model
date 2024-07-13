@@ -17,7 +17,7 @@ namespace STPUCP_Model {
         property bool ListaNegra;
         property int ViajesId;
         property String^ MotivoBan;
-        property int Huella;
+        //property int Huella;
        
         Pasajero() {}
         Pasajero(int id, String^ apellidoPaterno, String^ apellidoMaterno, int codigoPUCP, int numeroTelefono, String^ correo, String^ contraseña, String^ nombre, String^ rol, int dni, int tiempoPenalizacion, int cantServiciosTomados , bool listaNegra, int ViajesId, String^ motivoBan, int huella) :
@@ -27,7 +27,7 @@ namespace STPUCP_Model {
             CantServiciosTomados = cantServiciosTomados;
             ListaNegra = listaNegra;
             MotivoBan = motivoBan;
-            Huella = huella;
+            //Huella = huella;
         }
 
         void ElegirVehiculo();

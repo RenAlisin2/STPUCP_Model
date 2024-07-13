@@ -45,7 +45,7 @@ namespace STPUCPAdminGUIView {
     private: System::Windows::Forms::PictureBox^ pBCarro;
     private: System::Windows::Forms::Button^ btnCarro;
     private: System::Windows::Forms::Button^ btnConductor;
-    private: System::Windows::Forms::Button^ btnHuella;
+
     private: System::Windows::Forms::PictureBox^ pBYape;
     private: System::Windows::Forms::Button^ btnQR;
 
@@ -71,7 +71,6 @@ namespace STPUCPAdminGUIView {
             this->pBCarro = (gcnew System::Windows::Forms::PictureBox());
             this->btnCarro = (gcnew System::Windows::Forms::Button());
             this->btnConductor = (gcnew System::Windows::Forms::Button());
-            this->btnHuella = (gcnew System::Windows::Forms::Button());
             this->pBYape = (gcnew System::Windows::Forms::PictureBox());
             this->btnQR = (gcnew System::Windows::Forms::Button());
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pBConductor))->BeginInit();
@@ -81,9 +80,9 @@ namespace STPUCPAdminGUIView {
             // 
             // button1
             // 
-            this->button1->Location = System::Drawing::Point(77, 434);
+            this->button1->Location = System::Drawing::Point(32, 391);
             this->button1->Name = L"button1";
-            this->button1->Size = System::Drawing::Size(356, 57);
+            this->button1->Size = System::Drawing::Size(440, 29);
             this->button1->TabIndex = 37;
             this->button1->Text = L"Verificarme";
             this->button1->UseVisualStyleBackColor = true;
@@ -92,7 +91,7 @@ namespace STPUCPAdminGUIView {
             // label8
             // 
             this->label8->AutoSize = true;
-            this->label8->Location = System::Drawing::Point(205, 406);
+            this->label8->Location = System::Drawing::Point(201, 372);
             this->label8->Name = L"label8";
             this->label8->Size = System::Drawing::Size(97, 13);
             this->label8->TabIndex = 33;
@@ -117,7 +116,7 @@ namespace STPUCPAdminGUIView {
             // label6
             // 
             this->label6->AutoSize = true;
-            this->label6->Location = System::Drawing::Point(29, 124);
+            this->label6->Location = System::Drawing::Point(28, 124);
             this->label6->Name = L"label6";
             this->label6->Size = System::Drawing::Size(126, 13);
             this->label6->TabIndex = 25;
@@ -126,7 +125,7 @@ namespace STPUCPAdminGUIView {
             // label3
             // 
             this->label3->AutoSize = true;
-            this->label3->Location = System::Drawing::Point(29, 72);
+            this->label3->Location = System::Drawing::Point(28, 72);
             this->label3->Name = L"label3";
             this->label3->Size = System::Drawing::Size(137, 13);
             this->label3->TabIndex = 23;
@@ -135,7 +134,7 @@ namespace STPUCPAdminGUIView {
             // label2
             // 
             this->label2->AutoSize = true;
-            this->label2->Location = System::Drawing::Point(29, 98);
+            this->label2->Location = System::Drawing::Point(28, 98);
             this->label2->Name = L"label2";
             this->label2->Size = System::Drawing::Size(129, 13);
             this->label2->TabIndex = 21;
@@ -211,15 +210,6 @@ namespace STPUCPAdminGUIView {
             this->btnConductor->UseVisualStyleBackColor = true;
             this->btnConductor->Click += gcnew System::EventHandler(this, &RegistroConductorForm::btnConductor_Click);
             // 
-            // btnHuella
-            // 
-            this->btnHuella->Location = System::Drawing::Point(197, 371);
-            this->btnHuella->Name = L"btnHuella";
-            this->btnHuella->Size = System::Drawing::Size(110, 23);
-            this->btnHuella->TabIndex = 46;
-            this->btnHuella->Text = L"Huella dactilar";
-            this->btnHuella->UseVisualStyleBackColor = true;
-            // 
             // pBYape
             // 
             this->pBYape->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
@@ -244,9 +234,8 @@ namespace STPUCPAdminGUIView {
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-            this->ClientSize = System::Drawing::Size(512, 503);
+            this->ClientSize = System::Drawing::Size(512, 434);
             this->Controls->Add(this->btnQR);
-            this->Controls->Add(this->btnHuella);
             this->Controls->Add(this->pBYape);
             this->Controls->Add(this->btnConductor);
             this->Controls->Add(this->btnCarro);
@@ -292,6 +281,7 @@ namespace STPUCPAdminGUIView {
             conductor->Contraseña = usuario_registrado->Contraseña;
             conductor->Nombre = usuario_registrado->Nombre;
             conductor->DNI = usuario_registrado->DNI;
+            conductor->Huella = usuario_registrado->Huella;
 
             // Datos específicos del conductor
             conductor->ModeloCarro = txtModeloCarro->Text;

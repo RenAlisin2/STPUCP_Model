@@ -74,6 +74,7 @@ namespace STPUCPAdminController {
 		static void OpenPort();
 		static void ClosePort();
 
-		//static bool GuardarHuella();
+		static int Guardar_Huella(int huella);
+		static bool LeerHuella(int huellaconductor);
 	};
 }

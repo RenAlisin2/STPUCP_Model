@@ -24,15 +24,20 @@ namespace STPUCPAdminGUIView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Threading;
 
 	/// <summary>
 	/// Resumen de AdminMainForm
-	/// </summary>
+	/// </summary
 	public ref class AdminMainForm : public System::Windows::Forms::Form
 	{
 	public:
 		static Usuario^ user; //Cuando no hay un usuario identificado será null y cundo halla alguno cambiará al usuario identificado//
 		//con este miembro se habilitarán las opciones del menu
+		Thread^ myThread;
+	
+
+
 		AdminMainForm(void)
 		{
 			InitializeComponent();
@@ -118,12 +123,12 @@ namespace STPUCPAdminGUIView {
 			this->pasajerosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ofrecerServicioToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->viajeToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->metricasConductorToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->escogerServicioToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->transporteToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->metricasUsuarioToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
-			this->metricasConductorToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
@@ -139,8 +144,8 @@ namespace STPUCPAdminGUIView {
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Padding = System::Windows::Forms::Padding(5, 2, 0, 2);
-			this->menuStrip1->Size = System::Drawing::Size(848, 28);
+			this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
+			this->menuStrip1->Size = System::Drawing::Size(636, 24);
 			this->menuStrip1->TabIndex = 1;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -148,13 +153,13 @@ namespace STPUCPAdminGUIView {
 			// 
 			this->archivoToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->salirToolStripMenuItem });
 			this->archivoToolStripMenuItem->Name = L"archivoToolStripMenuItem";
-			this->archivoToolStripMenuItem->Size = System::Drawing::Size(77, 24);
+			this->archivoToolStripMenuItem->Size = System::Drawing::Size(63, 20);
 			this->archivoToolStripMenuItem->Text = L" Archivo";
 			// 
 			// salirToolStripMenuItem
 			// 
 			this->salirToolStripMenuItem->Name = L"salirToolStripMenuItem";
-			this->salirToolStripMenuItem->Size = System::Drawing::Size(121, 26);
+			this->salirToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->salirToolStripMenuItem->Text = L"Salir";
 			this->salirToolStripMenuItem->Click += gcnew System::EventHandler(this, &AdminMainForm::salirToolStripMenuItem_Click);
 			// 
@@ -165,27 +170,27 @@ namespace STPUCPAdminGUIView {
 					this->conductoresToolStripMenuItem, this->ordenesToolStripMenuItem
 			});
 			this->modificarToolStripMenuItem->Name = L"modificarToolStripMenuItem";
-			this->modificarToolStripMenuItem->Size = System::Drawing::Size(87, 24);
+			this->modificarToolStripMenuItem->Size = System::Drawing::Size(70, 20);
 			this->modificarToolStripMenuItem->Text = L"Modificar";
 			// 
 			// serviciosToolStripMenuItem
 			// 
 			this->serviciosToolStripMenuItem->Name = L"serviciosToolStripMenuItem";
-			this->serviciosToolStripMenuItem->Size = System::Drawing::Size(150, 26);
+			this->serviciosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->serviciosToolStripMenuItem->Text = L"Servicios";
 			this->serviciosToolStripMenuItem->Click += gcnew System::EventHandler(this, &AdminMainForm::serviciosToolStripMenuItem_Click);
 			// 
 			// conductoresToolStripMenuItem
 			// 
 			this->conductoresToolStripMenuItem->Name = L"conductoresToolStripMenuItem";
-			this->conductoresToolStripMenuItem->Size = System::Drawing::Size(150, 26);
+			this->conductoresToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->conductoresToolStripMenuItem->Text = L"Usuarios";
 			this->conductoresToolStripMenuItem->Click += gcnew System::EventHandler(this, &AdminMainForm::conductoresToolStripMenuItem_Click);
 			// 
 			// ordenesToolStripMenuItem
 			// 
 			this->ordenesToolStripMenuItem->Name = L"ordenesToolStripMenuItem";
-			this->ordenesToolStripMenuItem->Size = System::Drawing::Size(150, 26);
+			this->ordenesToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->ordenesToolStripMenuItem->Text = L"Ordenes";
 			this->ordenesToolStripMenuItem->Click += gcnew System::EventHandler(this, &AdminMainForm::ordenesToolStripMenuItem_Click);
 			// 
@@ -193,13 +198,13 @@ namespace STPUCPAdminGUIView {
 			// 
 			this->métricasToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->verToolStripMenuItem });
 			this->métricasToolStripMenuItem->Name = L"métricasToolStripMenuItem";
-			this->métricasToolStripMenuItem->Size = System::Drawing::Size(79, 24);
+			this->métricasToolStripMenuItem->Size = System::Drawing::Size(64, 20);
 			this->métricasToolStripMenuItem->Text = L"Métricas";
 			// 
 			// verToolStripMenuItem
 			// 
 			this->verToolStripMenuItem->Name = L"verToolStripMenuItem";
-			this->verToolStripMenuItem->Size = System::Drawing::Size(113, 26);
+			this->verToolStripMenuItem->Size = System::Drawing::Size(90, 22);
 			this->verToolStripMenuItem->Text = L"Ver";
 			this->verToolStripMenuItem->Click += gcnew System::EventHandler(this, &AdminMainForm::verToolStripMenuItem_Click);
 			// 
@@ -207,13 +212,13 @@ namespace STPUCPAdminGUIView {
 			// 
 			this->promocionesToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->verTodasToolStripMenuItem });
 			this->promocionesToolStripMenuItem->Name = L"promocionesToolStripMenuItem";
-			this->promocionesToolStripMenuItem->Size = System::Drawing::Size(109, 24);
+			this->promocionesToolStripMenuItem->Size = System::Drawing::Size(89, 20);
 			this->promocionesToolStripMenuItem->Text = L"Promociones";
 			// 
 			// verTodasToolStripMenuItem
 			// 
 			this->verTodasToolStripMenuItem->Name = L"verTodasToolStripMenuItem";
-			this->verTodasToolStripMenuItem->Size = System::Drawing::Size(113, 26);
+			this->verTodasToolStripMenuItem->Size = System::Drawing::Size(90, 22);
 			this->verTodasToolStripMenuItem->Text = L"Ver";
 			this->verTodasToolStripMenuItem->Click += gcnew System::EventHandler(this, &AdminMainForm::verTodasToolStripMenuItem_Click);
 			// 
@@ -224,20 +229,20 @@ namespace STPUCPAdminGUIView {
 					this->pasajerosToolStripMenuItem
 			});
 			this->blackListToolStripMenuItem->Name = L"blackListToolStripMenuItem";
-			this->blackListToolStripMenuItem->Size = System::Drawing::Size(80, 24);
+			this->blackListToolStripMenuItem->Size = System::Drawing::Size(65, 20);
 			this->blackListToolStripMenuItem->Text = L"BlackList";
 			// 
 			// verToolStripMenuItem1
 			// 
 			this->verToolStripMenuItem1->Name = L"verToolStripMenuItem1";
-			this->verToolStripMenuItem1->Size = System::Drawing::Size(224, 26);
+			this->verToolStripMenuItem1->Size = System::Drawing::Size(142, 22);
 			this->verToolStripMenuItem1->Text = L"Conductores";
 			this->verToolStripMenuItem1->Click += gcnew System::EventHandler(this, &AdminMainForm::verToolStripMenuItem1_Click);
 			// 
 			// pasajerosToolStripMenuItem
 			// 
 			this->pasajerosToolStripMenuItem->Name = L"pasajerosToolStripMenuItem";
-			this->pasajerosToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->pasajerosToolStripMenuItem->Size = System::Drawing::Size(142, 22);
 			this->pasajerosToolStripMenuItem->Text = L"Pasajeros";
 			this->pasajerosToolStripMenuItem->Click += gcnew System::EventHandler(this, &AdminMainForm::pasajerosToolStripMenuItem_Click);
 			// 
@@ -248,15 +253,22 @@ namespace STPUCPAdminGUIView {
 					this->metricasConductorToolStripMenuItem
 			});
 			this->ofrecerServicioToolStripMenuItem->Name = L"ofrecerServicioToolStripMenuItem";
-			this->ofrecerServicioToolStripMenuItem->Size = System::Drawing::Size(128, 24);
+			this->ofrecerServicioToolStripMenuItem->Size = System::Drawing::Size(102, 20);
 			this->ofrecerServicioToolStripMenuItem->Text = L"Ofrecer Servicio";
 			// 
 			// viajeToolStripMenuItem
 			// 
 			this->viajeToolStripMenuItem->Name = L"viajeToolStripMenuItem";
-			this->viajeToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->viajeToolStripMenuItem->Size = System::Drawing::Size(176, 22);
 			this->viajeToolStripMenuItem->Text = L"Viaje";
 			this->viajeToolStripMenuItem->Click += gcnew System::EventHandler(this, &AdminMainForm::viajeToolStripMenuItem_Click);
+			// 
+			// metricasConductorToolStripMenuItem
+			// 
+			this->metricasConductorToolStripMenuItem->Name = L"metricasConductorToolStripMenuItem";
+			this->metricasConductorToolStripMenuItem->Size = System::Drawing::Size(176, 22);
+			this->metricasConductorToolStripMenuItem->Text = L"MetricasConductor";
+			this->metricasConductorToolStripMenuItem->Click += gcnew System::EventHandler(this, &AdminMainForm::metricasConductorToolStripMenuItem_Click);
 			// 
 			// escogerServicioToolStripMenuItem
 			// 
@@ -265,30 +277,29 @@ namespace STPUCPAdminGUIView {
 					this->metricasUsuarioToolStripMenuItem
 			});
 			this->escogerServicioToolStripMenuItem->Name = L"escogerServicioToolStripMenuItem";
-			this->escogerServicioToolStripMenuItem->Size = System::Drawing::Size(129, 24);
+			this->escogerServicioToolStripMenuItem->Size = System::Drawing::Size(103, 20);
 			this->escogerServicioToolStripMenuItem->Text = L"Escoger servicio";
 			// 
 			// transporteToolStripMenuItem
 			// 
 			this->transporteToolStripMenuItem->Name = L"transporteToolStripMenuItem";
-			this->transporteToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->transporteToolStripMenuItem->Size = System::Drawing::Size(159, 22);
 			this->transporteToolStripMenuItem->Text = L"Transporte";
 			this->transporteToolStripMenuItem->Click += gcnew System::EventHandler(this, &AdminMainForm::transporteToolStripMenuItem_Click);
 			// 
 			// metricasUsuarioToolStripMenuItem
 			// 
 			this->metricasUsuarioToolStripMenuItem->Name = L"metricasUsuarioToolStripMenuItem";
-			this->metricasUsuarioToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->metricasUsuarioToolStripMenuItem->Size = System::Drawing::Size(159, 22);
 			this->metricasUsuarioToolStripMenuItem->Text = L"MetricasUsuario";
 			this->metricasUsuarioToolStripMenuItem->Click += gcnew System::EventHandler(this, &AdminMainForm::metricasUsuarioToolStripMenuItem_Click);
 			// 
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(1, 31);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
+			this->pictureBox1->Location = System::Drawing::Point(0, 25);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(319, 166);
+			this->pictureBox1->Size = System::Drawing::Size(239, 135);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox1->TabIndex = 3;
 			this->pictureBox1->TabStop = false;
@@ -296,34 +307,26 @@ namespace STPUCPAdminGUIView {
 			// pictureBox2
 			// 
 			this->pictureBox2->BackColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->pictureBox2->Location = System::Drawing::Point(317, 31);
-			this->pictureBox2->Margin = System::Windows::Forms::Padding(4);
+			this->pictureBox2->Location = System::Drawing::Point(238, 25);
 			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(528, 59);
+			this->pictureBox2->Size = System::Drawing::Size(396, 48);
 			this->pictureBox2->TabIndex = 6;
 			this->pictureBox2->TabStop = false;
 			// 
-			// metricasConductorToolStripMenuItem
-			// 
-			this->metricasConductorToolStripMenuItem->Name = L"metricasConductorToolStripMenuItem";
-			this->metricasConductorToolStripMenuItem->Size = System::Drawing::Size(224, 26);
-			this->metricasConductorToolStripMenuItem->Text = L"MetricasConductor";
-			this->metricasConductorToolStripMenuItem->Click += gcnew System::EventHandler(this, &AdminMainForm::metricasConductorToolStripMenuItem_Click);
-			// 
 			// AdminMainForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(848, 750);
+			this->ClientSize = System::Drawing::Size(636, 609);
 			this->ControlBox = false;
 			this->Controls->Add(this->pictureBox2);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->menuStrip1);
 			this->IsMdiContainer = true;
 			this->MainMenuStrip = this->menuStrip1;
-			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"AdminMainForm";
 			this->Text = L"AdminMainForm";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &AdminMainForm::AdminMainForm_FormClosed);
 			this->Load += gcnew System::EventHandler(this, &AdminMainForm::AdminMainForm_Load);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
@@ -369,7 +372,28 @@ private: System::Void verToolStripMenuItem1_Click(System::Object^ sender, System
 private: System::Void AdminMainForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	LoginForm^ loginForm = gcnew LoginForm(this); //Le mandamos este objeto(form) al login
 	loginForm->ShowDialog();
+	myThread = gcnew Thread(gcnew ThreadStart(this, &AdminMainForm::MyExecutionProcess));
+	myThread->Start();
 }
+	   delegate void Midelegado(String^);
+	   void UpdateTitle(String^ newTitle) {
+		   this->Text = newTitle;
+	   }
+	   void MyExecutionProcess() {
+		   String^ title = "CARPUCP - ";
+		   while (true) {
+			   try {
+				   myThread->Sleep(1000);
+				   Invoke(gcnew Midelegado(this, &AdminMainForm::UpdateTitle), title + DateTime::Now);
+			   } 
+			   catch (Exception^ ex) {
+				   return;
+			   }
+			   
+		   }
+	   }
+
+
 private: System::Void ordenesToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	OrdenForm^ ordenForm = gcnew OrdenForm();
 	//ordenForm->MdiParent = this;
@@ -452,6 +476,9 @@ private: System::Void metricasConductorToolStripMenuItem_Click(System::Object^ s
 	MetricasConductorh^ metricaconductor = gcnew MetricasConductorh();
 	metricaconductor->ShowDialog();
 
+}
+private: System::Void AdminMainForm_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+	
 }
 };
 }

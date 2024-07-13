@@ -271,12 +271,13 @@ int STPUCPPersistance::Persistance::AddUser(Usuario^ usuario) {
         cmd->Parameters->Add("@DNI", System::Data::SqlDbType::Int)->Value = usuario->DNI;
         cmd->Parameters->Add("@IdUltimaOrden", System::Data::SqlDbType::Int)->Value = usuario->IdUltimaOrden;
         cmd->Parameters->Add("@IdUltimoViaje", System::Data::SqlDbType::Int)->Value = usuario->IdUltimoViaje;
+        cmd->Parameters->Add("@Huella", System::Data::SqlDbType::Int)->Value = usuario->Huella;
 
         if (dynamic_cast<Pasajero^>(usuario)) {
             Pasajero^ pasajero = (Pasajero^)usuario;
             cmd->Parameters->Add("@CantServiciosTomados", System::Data::SqlDbType::Int)->Value = pasajero->CantServiciosTomados;
             cmd->Parameters->Add("@ViajesId", System::Data::SqlDbType::Int)->Value = pasajero->ViajesId;
-            cmd->Parameters->Add("@Huella", System::Data::SqlDbType::Int)->Value = pasajero->Huella;
+            //cmd->Parameters->Add("@Huella", System::Data::SqlDbType::Int)->Value = pasajero->Huella;
         }
 
         if (dynamic_cast<Administrador^>(usuario)) {
@@ -292,7 +293,7 @@ int STPUCPPersistance::Persistance::AddUser(Usuario^ usuario) {
             cmd->Parameters->Add("@FotoConductor", System::Data::SqlDbType::VarBinary)->Value = conductor->FotoConductor;
             cmd->Parameters->Add("@FotoCarro", System::Data::SqlDbType::VarBinary)->Value = conductor->FotoCarro;
             cmd->Parameters->Add("@BreveteConfirmacion", System::Data::SqlDbType::Bit)->Value = conductor->BreveteConfirmacion;
-            cmd->Parameters->Add("@HuellaDactilar", System::Data::SqlDbType::Int)->Value = conductor->HuellaDactilar;
+            //cmd->Parameters->Add("@HuellaDactilar", System::Data::SqlDbType::Int)->Value = conductor->HuellaDactilar;
             cmd->Parameters->Add("@Calificacion", System::Data::SqlDbType::Decimal)->Value = conductor->Calificacion;
             cmd->Parameters->Add("@CantServiciosRealizados", System::Data::SqlDbType::Int)->Value = conductor->CantServiciosRealizados;
             cmd->Parameters->Add("@FotoYape", System::Data::SqlDbType::VarBinary)->Value = conductor->FotoYape;
@@ -337,7 +338,7 @@ void STPUCPPersistance::Persistance::UpdateUser(Usuario^ usuario) {
         Pasajero^ pasajero = (Pasajero^)usuario;
         cmd->Parameters->Add("@CantServiciosTomados", System::Data::SqlDbType::Int)->Value = pasajero->CantServiciosTomados;
         cmd->Parameters->Add("@ViajesId", System::Data::SqlDbType::Int)->Value = pasajero->ViajesId;
-        cmd->Parameters->Add("@Huella", System::Data::SqlDbType::Int)->Value = pasajero->Huella;
+        //cmd->Parameters->Add("@Huella", System::Data::SqlDbType::Int)->Value = pasajero->Huella;
     }
 
     if (dynamic_cast<Administrador^>(usuario)) {
@@ -353,7 +354,7 @@ void STPUCPPersistance::Persistance::UpdateUser(Usuario^ usuario) {
         cmd->Parameters->Add("@FotoConductor", System::Data::SqlDbType::VarBinary)->Value = conductor->FotoConductor;
         cmd->Parameters->Add("@FotoCarro", System::Data::SqlDbType::VarBinary)->Value = conductor->FotoCarro;
         cmd->Parameters->Add("@BreveteConfirmacion", System::Data::SqlDbType::Bit)->Value = conductor->BreveteConfirmacion;
-        cmd->Parameters->Add("@HuellaDactilar", System::Data::SqlDbType::Int)->Value = conductor->HuellaDactilar;
+        //cmd->Parameters->Add("@HuellaDactilar", System::Data::SqlDbType::Int)->Value = conductor->HuellaDactilar;
         cmd->Parameters->Add("@Calificacion", System::Data::SqlDbType::Decimal)->Value = conductor->Calificacion;
         cmd->Parameters->Add("@CantServiciosRealizados", System::Data::SqlDbType::Int)->Value = conductor->CantServiciosRealizados;
         cmd->Parameters->Add("@FotoYape", System::Data::SqlDbType::VarBinary)->Value = conductor->FotoYape;
@@ -443,13 +444,13 @@ Usuario^ STPUCPPersistance::Persistance::QueryUsersById(int UsuarioID) {
                 }
                 else {
                     ((Pasajero^)usuario)->ViajesId = Convert::ToInt32(reader["ViajesId"]->ToString());
-                }
+                }/*
                 if (reader["Huella"] == DBNull::Value) {
                     ((Pasajero^)usuario)->Huella = 0;
                 }
                 else {
                     ((Pasajero^)usuario)->Huella = Convert::ToInt32(reader["Huella"]->ToString());
-                }
+                }*/
             }
             else if (rol == "Administrador") {
                 usuario = gcnew Administrador();
@@ -463,7 +464,7 @@ Usuario^ STPUCPPersistance::Persistance::QueryUsersById(int UsuarioID) {
                 ((Conductor^)usuario)->FotoConductor = (array<Byte>^)reader["FotoConductor"];
                 ((Conductor^)usuario)->FotoCarro = (array<Byte>^)reader["FotoCarro"];
                 ((Conductor^)usuario)->BreveteConfirmacion = Convert::ToBoolean(reader["BreveteConfirmacion"]);
-                ((Conductor^)usuario)->HuellaDactilar = reader["HuellaDactilar"]->ToString();
+                //((Conductor^)usuario)->HuellaDactilar = reader["HuellaDactilar"]->ToString();
                 ((Conductor^)usuario)->Calificacion = Convert::ToDouble(reader["Calificacion"]);
                 ((Conductor^)usuario)->CantServiciosRealizados = Convert::ToInt32(reader["CantServiciosRealizados"]);
                 ((Conductor^)usuario)->FotoYape = (array<Byte>^)reader["FotoYape"];
@@ -493,6 +494,12 @@ Usuario^ STPUCPPersistance::Persistance::QueryUsersById(int UsuarioID) {
             }
             else {
                 usuario->IdUltimoViaje = Convert::ToInt32(reader["IdUltimoViaje"]->ToString());
+            }
+            if (reader["Huella"] == DBNull::Value) {
+                usuario->Huella = 0;
+            }
+            else {
+                usuario->Huella = Convert::ToInt32(reader["Huella"]);
             }
         }
     }
@@ -544,13 +551,13 @@ List<Usuario^>^ STPUCPPersistance::Persistance::QueryAllUsers() {
                 }
                 else {
                     ((Pasajero^)usuario)->ViajesId = Convert::ToInt32(reader["ViajesId"]->ToString());
-                }
+                }/*
                 if (reader["Huella"] == DBNull::Value) {
                     ((Pasajero^)usuario)->Huella = 0;
                 }
                 else {
                     ((Pasajero^)usuario)->Huella = Convert::ToInt32(reader["Huella"]->ToString());
-                }
+                }*/
             }
             else if (rol == "Administrador") {
                 usuario = gcnew Administrador();
@@ -566,7 +573,7 @@ List<Usuario^>^ STPUCPPersistance::Persistance::QueryAllUsers() {
                 ((Conductor^)usuario)->FotoConductor = (array<Byte>^)reader["FotoConductor"];
                 ((Conductor^)usuario)->FotoCarro = (array<Byte>^)reader["FotoCarro"];
                 ((Conductor^)usuario)->BreveteConfirmacion = Convert::ToBoolean(reader["BreveteConfirmacion"]->ToString());
-                ((Conductor^)usuario)->HuellaDactilar = reader["HuellaDactilar"]->ToString();
+                //((Conductor^)usuario)->HuellaDactilar = reader["HuellaDactilar"]->ToString();
                 ((Conductor^)usuario)->Calificacion = Convert::ToDouble(reader["Calificacion"]->ToString());
                 ((Conductor^)usuario)->CantServiciosRealizados = Convert::ToInt32(reader["CantServiciosRealizados"]->ToString());
                 ((Conductor^)usuario)->FotoYape = (array<Byte>^)reader["FotoYape"];
@@ -596,6 +603,12 @@ List<Usuario^>^ STPUCPPersistance::Persistance::QueryAllUsers() {
             }
             else {
                 usuario->IdUltimoViaje = Convert::ToInt32(reader["IdUltimoViaje"]->ToString());
+            }
+            if (reader["Huella"] == DBNull::Value) {
+                usuario->Huella = 0;
+            }
+            else {
+                usuario->Huella = Convert::ToInt32(reader["Huella"]);
             }
             usuarios->Add(usuario);
         }

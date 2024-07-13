@@ -3,6 +3,7 @@
 #include "STPUCP_Admin_Controller.h"
 using namespace STPUCPPersistance;
 
+
 int STPUCPAdminController::controller::AddUser(Usuario^ Usuario)
 {
 	return Persistance::AddUser(Usuario);
@@ -246,7 +247,7 @@ void STPUCPAdminController::controller::OpenPort()
 {
 	try {
 		ArduinoPort = gcnew SerialPort();
-		ArduinoPort->PortName = "COM3"; //COMPLETAR CON EL PUERTO
+		ArduinoPort->PortName = "COM10"; //COMPLETAR CON EL PUERTO
 		ArduinoPort->BaudRate = 9600;
 		ArduinoPort->Open();
 
@@ -267,14 +268,19 @@ void STPUCPAdminController::controller::ClosePort()
 	}
 }
 
-/*
-bool^ STPUCPAdminController::controller::GuardarHuella()
+
+int STPUCPAdminController::controller::Guardar_Huella(int huella)
 {
-	bool Result;
+	//String^ Convertohuellita;
+	//String^ Registrar = "R";
+	int huellasa;
 	try {
 		OpenPort();
-		ArduinoPort->Write(Convert::ToInt32(huella));
-		Result = ArduinoPort->ReadLine();
+		ArduinoPort->Write("R");
+		//while(ArduinoPort->ReadLine() != "Numero de huella"){}
+		ArduinoPort->Write(Convert::ToString(huella));
+		//while (ArduinoPort->ReadLine() != "ok"){}
+		huellasa = huella;
 	}
 	catch(Exception^ ex) {
 		throw ex;
@@ -282,6 +288,32 @@ bool^ STPUCPAdminController::controller::GuardarHuella()
 	finally {
 		ClosePort();
 	}
-	return Result;
+	return huellasa;
 }
-*/
+
+bool STPUCPAdminController::controller::LeerHuella(int huellaconductor)
+{
+	int num = 0;
+	bool valido=false;
+	try {
+		while (!valido) {
+			OpenPort();
+			ArduinoPort->Write("L");
+			//while (ArduinoPort->ReadLine() != nullptr) {}
+			System::Threading::Thread::Sleep(10000);
+			num = Convert::ToInt32(ArduinoPort->ReadLine());
+			num = huellaconductor; //COMENTAR
+			if (num == huellaconductor) {
+				valido = true;
+			}
+		}
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+	finally {
+		ClosePort;
+	}
+	return valido;
+}
+

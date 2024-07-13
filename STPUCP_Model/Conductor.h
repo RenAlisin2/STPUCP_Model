@@ -20,7 +20,7 @@ namespace STPUCP_Model {
             property array<Byte>^ FotoConductor;
             property array<Byte>^ FotoCarro;
             property bool BreveteConfirmacion;
-            property String^ HuellaDactilar;
+            //property String^ HuellaDactilar;
             property double Calificacion;
             property int CantServiciosRealizados;
             property int TiempoPenalizacion;
@@ -39,7 +39,7 @@ namespace STPUCP_Model {
                 this->FotoConductor = fotoConductor;
                 this->FotoCarro = fotoCarro;
                 this->BreveteConfirmacion = breveteConfirmacion;
-                this->HuellaDactilar = huellaDactilar;
+                //this->HuellaDactilar = huellaDactilar;
                 this->Calificacion = calificacion;
                 this->CantServiciosRealizados = cantServiciosRealizados;
                 this->TiempoPenalizacion = tiempoPenalizacion;
